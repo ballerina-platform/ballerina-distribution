@@ -10,16 +10,19 @@ Run the service by executing the following command.
 
 ::: out graphql_subscriptions.server.out :::
 
-Send the following document to the GraphQL endpoint to test the service using any GraphQL client that supports subscriptions to test the service.
+Send the following document to the GraphQL endpoint to test the service using a GraphQL client that supports subscriptions to test the service.
 
 ::: code graphql_subscriptions.graphql :::
 
-It should return the following values.
+It should return similar to the following response.
+
+>**Note:** The response will be updated in real-time and the response can be different due to the random name generation.
 
 ::: out graphql_subscriptions.client.out :::
 
 >**Tip:** You can invoke the above service via the [GraphiQL client](/learn/by-example/graphql-graphiql/).
 
 ## Related links
+
 - [`graphql` module - API documentation](https://lib.ballerina.io/ballerina/graphql/latest)
 - [GraphQL `Subscription` type - Specification](/spec/graphql/#313-the-subscription-type)
