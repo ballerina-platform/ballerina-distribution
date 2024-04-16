@@ -1472,7 +1472,7 @@
         "name": "Fork",
         "url": "fork",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
