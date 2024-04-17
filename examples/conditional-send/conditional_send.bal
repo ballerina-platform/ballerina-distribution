@@ -6,37 +6,26 @@ public function main() {
     worker w1 {
         // A send action can be used in a conditional context.
         if isDataReady {
-            10 -> w2;
+            10 -> function;
         }
     }
-
-    worker w2 returns int|error:NoMessage {
-        // The send action corresponding to this receive action is conditionally executed.
-        // Thus, there is a possibility that the send action may not get executed.
-        // Therefore, the static type of the receive includes the `error:NoMessage` type
-        // indicating the absence of a message in such cases.
-        int|error:NoMessage a = <- w1;
-        return a;
-    }
-
-    worker w3 {
+    worker w2 {
         if isDataReady {
-            1 -> w4;
+            1 -> function;
         } else {
-            0 -> w4;
+            0 -> function;
         }
     }
 
-    worker w4 returns int|error:NoMessage {
-        // Two different conditional send actions exists within the worker `w3`.
-        // Therefore, an alternate receive action can be used to receive them.
-        int|error:NoMessage d = <- w3 | w3;
-        return d;
-    }
+    // The send action corresponding to this receive action is conditionally executed.
+    // Thus, there is a possibility that the send action may not get executed.
+    // Therefore, the static type of the receive includes the `error:NoMessage` type
+    // indicating the absence of a message in such cases.
+    int|error:NoMessage w1Message = <- w1;
+    io:println(w1Message);
 
-    int|error:NoMessage w2Result = wait w2;
-    io:println(w2Result);
-
-    int|error:NoMessage w4Result = wait w4;
-    io:println(w4Result);
+    // Two different conditional send actions exist within the worker `w3`.
+    // Therefore, an alternate receive action can be used to receive them.
+    int|error:NoMessage w2Message = <- w2 | w2;
+    io:println(w2Message);
 }
