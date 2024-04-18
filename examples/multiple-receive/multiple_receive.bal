@@ -16,12 +16,12 @@ public function main() {
         3 -> w3;
     }
 
-    worker w3 returns Result {
+    worker w3 returns json {
         // The worker waits until both values are received.
         Result result = <- {a: w1, b: w2};
-        return result;
+        return result.toJson();
     }
 
-    Result result = wait w3;
+    json result = wait w3;
     io:println(result);
 }
