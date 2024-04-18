@@ -49,9 +49,5 @@ function fetch(string url) returns json|error {
     return payload["args"];
 }
 
-function getJsonProperty(json|error data) returns json|error? {
-    if data is error {
-        return data.message();
-    }
-    return data.'worker;
-}
+function getJsonProperty(json|error data) returns json|error? =>
+    data is error ? data.message() : data.'worker;
