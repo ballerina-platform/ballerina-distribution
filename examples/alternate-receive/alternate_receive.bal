@@ -4,35 +4,39 @@ import ballerina/lang.runtime;
 
 public function main() {
     worker w1 {
-        fetch("https://postman-echo.com/get?worker=w1") -> w3;
+        map<json>|error result = fetch("https://postman-echo.com/get?worker=w1");
+        result -> w3;
     }
 
     worker w2 {
         runtime:sleep(3);
-        fetch("https://postman-echo.com/get?worker=w2") -> w3;
+        map<json>|error result = fetch("https://postman-echo.com/get?worker=w2");
+        result -> w3;
     }
 
     worker w3 returns json|error? {
         // The value of the variable `result` is set as soon as the value from either
         // worker `w1` or `w2` is received.
-        json|error result = <- w1 | w2;
+        map<json>|error result = <- w1 | w2;
         return getJsonProperty(result);
     }
 
     worker w4 returns error? {
         // invalid url
-        fetch("https://postman-echo.com/ge?worker=w4") -> w6;
+        map<json>|error result = fetch("https://postman-echo.com/ge?worker=w4");
+        result -> w6;
     }
 
     worker w5 returns error? {
         runtime:sleep(2);
-        fetch("https://postman-echo.com/get?worker=w5") -> w6;
+        map<json>|error result = fetch("https://postman-echo.com/get?worker=w5");
+        result -> w6;
     }
 
     worker w6 returns json|error? {
         // Alternate receive action waits until a message that is not an error is received. 
         // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
-        json|error result = <- w4 | w5;
+        map<json>|error result = <- w4 | w5;
         return getJsonProperty(result);
     }
 
@@ -43,11 +47,11 @@ public function main() {
     io:println(w6Result);
 }
 
-function fetch(string url) returns json|error {
+function fetch(string url) returns map<json>|error {
     http:Client cl = check new (url);
-    map<json> payload = check cl->get("");
-    return payload["args"];
+    record {map<json> args;} payload = check cl->get("");
+    return payload.args;
 }
 
-function getJsonProperty(json|error data) returns json|error? =>
+function getJsonProperty(map<json>|error data) returns json|error =>
     data is error ? data.message() : data.'worker;
