@@ -6,7 +6,6 @@ xmlns "http://tempuri.org/" as quer;
 public function main() returns error? {
     int additionA = 37;
     int additionB = 73;
-    io:println(string`Addition: ${additionA} + ${additionB}`);
 
     soap12:Client soapClient = check new ("http://www.dneonline.com/calculator.asmx?WSDL");
     xml body = xml `<soap:Envelope
@@ -20,11 +19,12 @@ public function main() returns error? {
                         </soap:Body>
                     </soap:Envelope>`;
 
-    // `sendOnly()` fires and forgets a request to a SOAP endpoint.
+    // `sendOnly()` fires and forgets a request.
     check soapClient->sendOnly(body, "http://tempuri.org/Add");
 
-    // `sendReceive()` sends a request to a SOAP endpoint and get the response in `xml` or `mime:Entity[]` type
+    // `sendReceive()` sends a request to a SOAP endpoint
+    // and receives the response in `xml` or `mime:Entity[]` format.
     xml response = check soapClient->sendReceive(body, "http://tempuri.org/Add");
     xml result = response/**/<quer:AddResult>/*;
-    io:println("Result: ", result);
+    io:println(string `Sum: ${additionA} + ${additionB} = `, result);
 }

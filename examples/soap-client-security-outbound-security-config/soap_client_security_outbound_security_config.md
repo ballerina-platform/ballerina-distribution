@@ -1,6 +1,6 @@
 # SOAP client security - Outbound security configuration
 
-The `soap` client can be configured to apply outbound security configurations, decrypting the data in the SOAP response, and verifying the digital signature for security validation.
+The `soap` client can be configured to apply outbound security configurations for decrypting the data in the SOAP response, and verifying the digital signature for security validation. The configurations can be set by passing `soap:OutboundSecurityConfig` to the `outboundSecurity` field of the client.
 
 ::: code soap_client_security_outbound_security_config.bal :::
 

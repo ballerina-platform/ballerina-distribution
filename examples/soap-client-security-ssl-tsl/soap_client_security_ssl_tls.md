@@ -1,6 +1,6 @@
 # SOAP client security - SSL/TLS
 
-The `soap` client can be configured to apply HTTP security configurations using the `httpConfig` parameter. Here, it demonstrates applying an SSL certificate to establish an HTTPS connection between the server and the client. The SOAP client can support all client security configurations supported by the HTTP client.
+The `soap` client can be configured to apply HTTP security configurations using the `httpConfig` parameter. SSL certificate can be applied using the `secureSocket` field to establish an HTTPS connection between the server and the client. The SOAP client can support all client security configurations supported by the HTTP client.
 
 ::: code soap_client_security_ssl_tls.bal :::
 

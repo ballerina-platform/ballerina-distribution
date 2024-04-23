@@ -1,3 +1,2 @@
 $ bal run soap_send_receive.bal
-Addition: 37 + 73
-Result: 110
+Sum: 37 + 73 = 110
