@@ -4,8 +4,7 @@ import ballerina/soap.soap12;
 
 public function main() returns error? {
     crypto:PrivateKey verificationKey = check crypto:decodeRsaPrivateKeyFromKeyFile(
-        "../resource/path/to/private.key",
-        "password"
+        "../resource/path/to/private.key"
     );
     crypto:PublicKey decryptionKey = check crypto:decodeRsaPublicKeyFromCertFile(
         "../resource/path/to/public.crt"
