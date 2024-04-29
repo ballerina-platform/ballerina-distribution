@@ -1,0 +1,2 @@
+description: This example demonstrates applying HTTP security configurations for a Ballerina SOAP client.
+keywords: ballerina, ballerina by example, soap, http, client, security, ssl, tls
