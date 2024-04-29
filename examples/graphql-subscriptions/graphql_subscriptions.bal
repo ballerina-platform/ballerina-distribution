@@ -3,7 +3,6 @@ import ballerina/lang.runtime;
 import ballerina/random;
 
 service /graphql on new graphql:Listener(9090) {
-
     private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
 
     resource function get names() returns string[] {
