@@ -41,29 +41,28 @@ public isolated client class Client {
     # Retrieves a PaymentMethod object.
     #
     # + payment_method - Payment Method
-    # + payment\ method\ name - Payment Method
-    # + X\-LIMIT - limit of the payment
+    # + headers - Headers to be sent with the request
+    # + queries - Queries to be sent with the request
     # + return - Successful response.
-    remote isolated function getPaymentMethodsPaymentMethod(string payment_method, string payment\ method\ name, string X\-LIMIT) returns json|error {
+    remote isolated function getPaymentMethodsPaymentMethod(string payment_method, GetPaymentMethodsPaymentMethodHeaders headers, *GetPaymentMethodsPaymentMethodQueries queries) returns json|error {
         string resourcePath = string `/v1/payment_methods/${getEncodedUri(payment_method)}`;
-        map<anydata> queryParam = {"payment method name": payment\ method\ name};
-        resourcePath = resourcePath + check getPathForQueryParam(queryParam);
-        map<any> headerValues = {"X-LIMIT": X\-LIMIT};
-        map<string|string[]> httpHeaders = getMapForHeaders(headerValues);
+        resourcePath = resourcePath + check getPathForQueryParam(queries);
+        map<string|string[]> httpHeaders = getMapForHeaders(headers);
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
     # Creates a new customer object.
     #
     # + customer - Customer ID
+    # + headers - Headers to be sent with the request
     # + payload - Customer Details
     # + return - Successful response.
-    remote isolated function postCustomers(string customer, customer_customer_body payload) returns customer|error {
+    remote isolated function postCustomers(string customer, customer_customer_body payload, map<string|string[]> headers = {}) returns customer|error {
         string resourcePath = string `/v1/customer/${getEncodedUri(customer)}`;
         http:Request request = new;
         map<Encoding> requestBodyEncoding = {"address": {style: DEEPOBJECT, explode: true}};
         string encodedRequestBody = createFormURLEncodedRequestBody(payload, requestBodyEncoding);
         request.setPayload(encodedRequestBody, "application/x-www-form-urlencoded");
-        return self.clientEp->post(resourcePath, request);
+        return self.clientEp->post(resourcePath, request, headers);
     }
 }

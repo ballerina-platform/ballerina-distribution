@@ -18,6 +18,12 @@ public type customer_address record {
     string state?;
 };
 
+# Represents the Headers record for the operation: getPaymentMethodsPaymentMethod
+public type GetPaymentMethodsPaymentMethodHeaders record {
+    # limit of the payment
+    string X\-LIMIT;
+};
+
 # Provides settings related to HTTP/1.x protocol.
 public type ClientHttp1Settings record {|
     # Specifies whether to reuse a connection for multiple requests
@@ -27,6 +33,12 @@ public type ClientHttp1Settings record {|
     # Proxy server related options
     ProxyConfig proxy?;
 |};
+
+# Represents the Queries record for the operation: getPaymentMethodsPaymentMethod
+public type GetPaymentMethodsPaymentMethodQueries record {
+    # Payment Method
+    string payment\ method\ name;
+};
 
 # Proxy server configurations to be used with the HTTP client endpoint.
 public type ProxyConfig record {|
