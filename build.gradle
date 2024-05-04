@@ -28,7 +28,6 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
     shortVersion = project.version.split("-")[0]
-    dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
     ballerinaJreVersion = project.ballerinaJreVersion
     ballerinaCommandVersion = project.ballerinaCommandVersion
