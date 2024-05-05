@@ -1,0 +1,2 @@
+description: This example demonstrates applying inbound security configurations for SOAP envelopes when the request is made.
+keywords: ballerina, ballerina by example, soap, client, security, inbound security

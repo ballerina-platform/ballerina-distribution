@@ -3,6 +3,7 @@ import ballerina/lang.runtime;
 import ballerina/random;
 
 service /graphql on new graphql:Listener(9090) {
+
     private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
 
     resource function get names() returns string[] {
@@ -30,7 +31,7 @@ class NameGenerator {
         self.names = names;
     }
 
-   // The `next` method picks a random name from the list and returns it.
+    // The `next` method picks a random name from the list and returns it.
     public isolated function next() returns record {|string value;|}|error? {
         // Sleep for 1 second to simulate a delay.
         runtime:sleep(1);
