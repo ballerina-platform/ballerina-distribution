@@ -1483,6 +1483,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Synchronize message passing",
         "url": "synchronize-message-passing",
         "verifyBuild": true,
