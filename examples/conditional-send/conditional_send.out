@@ -1,0 +1,3 @@
+$ bal run conditional_send.bal
+10
+1

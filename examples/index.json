@@ -1045,6 +1045,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSONPath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1469,8 +1476,22 @@
         "isLearnByExample": true
       },
       {
+        "name": "Conditional send",
+        "url": "conditional-send",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1494,6 +1515,13 @@
         "url": "flush",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Fork",
+        "url": "fork",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -4203,7 +4231,7 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Data serialization/deserialization",
+        "name": "Serialization/Deserialization",
         "url": "avro-serdes",
         "verifyBuild": true,
         "verifyOutput": true,
