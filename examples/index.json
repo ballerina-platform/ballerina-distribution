@@ -4234,7 +4234,7 @@
         "name": "Serialization/Deserialization",
         "url": "avro-serdes",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false
       }
