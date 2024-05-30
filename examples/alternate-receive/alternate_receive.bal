@@ -22,7 +22,7 @@ public function main() {
     }
 
     worker w4 returns error? {
-        // invalid url
+        // invalid URL
         map<json>|error result = fetch("https://postman-echo.com/ge?worker=w4");
         result -> w6;
     }
@@ -35,7 +35,7 @@ public function main() {
 
     worker w6 returns json|error? {
         // Alternate receive action waits until a message that is not an error is received. 
-        // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
+        // Since `w4` returns an error, it waits further and sets the value that is received from `w5`.
         map<json>|error result = <- w4 | w5;
         return getJsonProperty(result);
     }
