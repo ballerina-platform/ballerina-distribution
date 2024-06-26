@@ -472,7 +472,7 @@ jobs:
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
       - name: cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
+        uses: sigstore/cosign-installer@v3.5.0
       - name: Create macos-pkg Installer
         id: run_installers_pkg
         run: |
