@@ -15,3 +15,8 @@ CVE-2024-21742
 # Fixed version is released yet
 CVE-2023-33201
 CVE-2023-33202 
+
+# Bouncy castle vulnerabilities are not yet fixed
+CVE-2024-29857
+CVE-2024-30171
+CVE-2024-30172
