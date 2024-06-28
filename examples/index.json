@@ -1476,6 +1476,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Alternate receive",
+        "url": "alternate-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Conditional send",
         "url": "conditional-send",
         "verifyBuild": true,
