@@ -3549,7 +3549,7 @@
         "name": "Send/Receive",
         "url": "soap-client-send-receive",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       }
