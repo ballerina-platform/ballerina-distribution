@@ -2721,7 +2721,7 @@
       },
       {
         "name": "Self-signed JWT authentication",
-        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "url": "graphql-client-security-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
