@@ -1,0 +1,2 @@
+description: This BBE demonstrates the conversion from CSV source, which can be provided as a string, byte array, byte block stream, record array or string array of array, into a record array in Ballerina.
+keywords: ballerina, ballerina by example, BBE, csv, record, stream, byte array, string array

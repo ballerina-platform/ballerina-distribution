@@ -4612,6 +4612,41 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "CSV to record array",
+        "url": "csv-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "CSV to record array with projection",
+        "url": "csv-to-record-array-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "CSV to anydata array",
+        "url": "csv-to-anydata-array",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "CSV to anydata array with projection",
+        "url": "csv-to-anydata-array-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
