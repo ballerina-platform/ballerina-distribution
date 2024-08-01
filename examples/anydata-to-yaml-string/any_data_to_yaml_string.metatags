@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to convert a subtype of `anydata` value to a YAML format string.
+keywords: ballerina, ballerina by example, BBE, yaml, yaml to string, record to yaml
