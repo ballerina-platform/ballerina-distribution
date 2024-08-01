@@ -4636,6 +4636,34 @@
     ]
   },
   {
+    "title": "YAML data",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "YAML to anydata",
+        "url": "yaml-to-anydata",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "YAML to anydata with projection",
+        "url": "yaml-to-anydata-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Anydata to YAML string",
+        "url": "anydata-to-yaml-string",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
