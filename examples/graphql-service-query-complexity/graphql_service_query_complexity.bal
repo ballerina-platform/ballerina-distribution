@@ -42,7 +42,7 @@ service class Profile {
 service graphql:Service /graphql on new graphql:Listener(9090) {
 
     @graphql:ResourceConfig {
-        complexity: 20
+        complexity: 20 // Assigning a complexity value to the `profile` field
     }
     resource function get profile(@graphql:ID int id) returns Profile {
         // Return a dummy profile object
