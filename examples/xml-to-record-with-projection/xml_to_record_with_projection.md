@@ -6,4 +6,4 @@ For more information on the underlying module, see the [`data.xmldata` module](h
 
 ::: code xml_to_record_with_projection.bal :::
 
-::: out xml_to_record_with_projection.bal :::
+::: out xml_to_record_with_projection.out :::
