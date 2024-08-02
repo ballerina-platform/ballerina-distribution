@@ -30,6 +30,6 @@ This will result in an error as the query complexity exceeds the maximum complex
 
 ## Related links
 
-- [`graphql:ServiceConfig` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerConfiguration)
-- [`graphql:ListenerSecureSocket` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ListenerSecureSocket)
-- [GraphQL service SSL/TLS - Specification](/spec/graphql/#8311-ssltls)
+- [`graphql:ServiceConfig` record - API documentation](https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig)
+- [GraphQL `queryComplexityConfiguration` - Specification](/spec/graphql/#7110-query-complexity-configurations)
+- [GraphQL query complexity validation - Specification](/spec/graphql/#1091-query-complexity-validation)
