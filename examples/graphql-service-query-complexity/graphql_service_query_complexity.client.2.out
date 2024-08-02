@@ -1,0 +1,2 @@
+curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile1: profile(id: 1) { name age } profile2: profile(id: 2) { name age } }" }' 'http://localhost:9090/graphql'
+{"errors":[{"message":"The operation exceeds the maximum query complexity threshold. Maximum allowed complexity: 50, actual complexity: 62", "locations":[{"line":1, "column":1}]}]}

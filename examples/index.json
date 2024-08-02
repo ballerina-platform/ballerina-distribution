@@ -2601,6 +2601,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
