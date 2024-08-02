@@ -10,13 +10,13 @@ service /stocks on new http:Listener(9090) {
 }
 
 class StockPriceEventGenerator {
-    int i = 0;
+    int eventCounter = 0;
 
     public isolated function next() returns record {|http:SseEvent value;|}|error? {
-        if self.i == 5 {
+        if self.eventCounter == 5 {
             return ();
         }
-        self.i += 1;
+        self.eventCounter += 1;
         runtime:sleep(1);
         float stockPrice = (check random:createIntInRange(1, 1000)) * random:createDecimal();
         http:SseEvent event = {data: stockPrice.toString()};
