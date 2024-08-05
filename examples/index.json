@@ -2258,7 +2258,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server-Sent Events",
+        "name": "Server-sent events",
         "url": "http-sse-service",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2337,7 +2337,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server-Sent Events",
+        "name": "Server-sent events",
         "url": "http-sse-client",
         "verifyBuild": true,
         "verifyOutput": false,
