@@ -1,0 +1,3 @@
+$ bal run csv_to_record_array_with_projection.bal
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald"},{"name":"To Kill a Mockingbird","author":"Harper Lee"}]
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald"},{"name":"To Kill a Mockingbird","author":"Harper Lee"}]

@@ -1,0 +1,5 @@
+$ bal run csv_to_record_array.bal
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald","year":1925},{"name":"To Kill a Mockingbird","author":"Harper Lee","year":1960}]
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald","year":1925},{"name":"To Kill a Mockingbird","author":"Harper Lee","year":1960}]
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald","year":1925},{"name":"To Kill a Mockingbird","author":"Harper Lee","year":1960}]
+[{"name":"The Great Gatsby","author":"F. Scott Fitzgerald","year":1925},{"name":"To Kill a Mockingbird","author":"Harper Lee","year":1960}]

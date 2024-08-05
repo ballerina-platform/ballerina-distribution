@@ -1,0 +1,5 @@
+$ bal run csv_to_anydata_array.bal
+[["The Great Gatsby","F. Scott Fitzgerald",1925],["To Kill a Mockingbird","Harper Lee",1960]]
+[["The Great Gatsby","F. Scott Fitzgerald",1925],["To Kill a Mockingbird","Harper Lee",1960]]
+[["The Great Gatsby","F. Scott Fitzgerald","1925"],["To Kill a Mockingbird","Harper Lee","1960"]]
+[["The Great Gatsby","F. Scott Fitzgerald",1925],["To Kill a Mockingbird","Harper Lee",1960]]

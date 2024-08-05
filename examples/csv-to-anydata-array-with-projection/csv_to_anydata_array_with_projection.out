@@ -1,0 +1,3 @@
+$ bal run csv_to_anydata_array_with_projection.bal
+[["The Great Gatsby","F. Scott Fitzgerald"],["To Kill a Mockingbird","Harper Lee"]]
+[["The Great Gatsby","F. Scott Fitzgerald"],["To Kill a Mockingbird","Harper Lee"]]
