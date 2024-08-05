@@ -7,7 +7,7 @@ The `http:Client` in Ballerina supports receiving real-time data from services u
 ## Prerequisites
 - Run the HTTP service given in the [Server-Sent Events](/learn/by-example/http-sse-service/) example.
 
-Run the client program by executing the command below.
+Run the client program by executing the following command..
 
 ::: out http_sse_client.client.out :::
 
