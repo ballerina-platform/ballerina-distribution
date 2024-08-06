@@ -15,12 +15,15 @@ type DatabaseConfig record {|
 public function main() returns error? {
 
     ServerConfig serverConfig = {
-        database: {dbName: "userDB", username: "testUser"},
+        database: {
+            dbName: "userDB",
+            username: "testUser"
+        },
         port: 3000,
         host: "localhost"
     };
 
-    // Serialize a ballerina value to a YAML value.
+    // Serialize a Ballerina value to a string in YAML format.
     string serverConfigYamlStr = check yaml:toYamlString(serverConfig);
     io:println(serverConfigYamlStr);
 }

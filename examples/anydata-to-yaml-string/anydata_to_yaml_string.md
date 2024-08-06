@@ -1,6 +1,6 @@
 # Anydata to YAML string conversion
 
-The `data.yaml` library provides `toYamlString` API to convert a subtype of `anydata` value to a YAML format string.
+The `data.yaml` library provides the `toYamlString` function to convert a value belonging to `anydata` to a string in YAML format.
 
 For more information on the underlying module, see the [`data.yaml` module](https://lib.ballerina.io/ballerina/data.yaml/latest/).
 
