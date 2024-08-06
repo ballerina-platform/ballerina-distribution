@@ -7,10 +7,12 @@ type ServerConfig record {|
     string protocol;
 |};
 
-final string yamlString = "host: \"localhost\"\n" +
-        "port: 8080\n" +
-        "protocol: \"http\"\n" +
-        "database:\n";
+
+final string yamlString = string
+        `
+        host: "localhost"
+        port: 8080
+        protocol: "http"`;
 
 public function main() returns error? {
     // Parse the YAML string to a record type.
