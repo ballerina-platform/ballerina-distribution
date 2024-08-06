@@ -13,24 +13,24 @@ final string yamlString = "host: \"localhost\"\n" +
         "database:\n";
 
 public function main() returns error? {
-    // Convert the YAML string to a record type.
+    // Parse the YAML string to a record type.
     ServerConfig serverConfig1 = check yaml:parseString(yamlString);
     io:println(serverConfig1);
 
     byte[] yamlByteArr = yamlString.toBytes();
-    // Convert the YAML byte array to a record type.
+    // Parse the YAML byte array to a record type.
     ServerConfig serverConfig2 = check yaml:parseBytes(yamlByteArr);
     io:println(serverConfig2);
 
-    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(yamlString));
-    // Convert the YAML byte block stream to a record type.
+    stream<byte[], error?> byteBlockStream = new (new StreamImplementor(yamlString));
+    // Parse the YAML byte block stream to a record type.
     ServerConfig serverConfig3 = check yaml:parseStream(byteBlockStream);
     io:println(serverConfig3);
 }
 
-// Defines a class called `ByteBlockGenerator`, which implements the `next()` method.
+// Defines a class called `StreamImplementor`, which implements the `next()` method.
 // This will be invoked when the `next()` method of the stream gets invoked.
-class ByteBlockGenerator {
+class StreamImplementor {
     private int index = 0;
     private final byte[] byteArr;
     private final int arraySize;
