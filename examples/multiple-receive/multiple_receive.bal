@@ -1,27 +1,29 @@
+import ballerina/http;
 import ballerina/io;
 import ballerina/lang.runtime;
 
 type Result record {
-    int a;
-    int b;
+    json|error a;
+    json|error b;
 };
 
 public function main() {
     worker w1 {
-        2 -> w3;
+        fetch("https://postman-echo.com/get?worker=w1") -> function;
     }
 
     worker w2 {
         runtime:sleep(2);
-        3 -> w3;
+        fetch("https://postman-echo.com/get?worker=w2") -> function;
     }
 
-    worker w3 returns json {
-        // The worker waits until both values are received.
-        Result result = <- {a: w1, b: w2};
-        return result.toJson();
-    }
-
-    json result = wait w3;
+    // The worker waits until both values are received.
+    Result result = <- {a: w1, b: w2};
     io:println(result);
+}
+
+function fetch(string url) returns json|error {
+    http:Client cl = check new (url);
+    record {map<json> args;} payload = check cl->get("");
+    return payload.args.'worker;
 }
