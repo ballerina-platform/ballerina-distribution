@@ -3,13 +3,7 @@
 import ballerina/constraint;
 import ballerina/http;
 
-public type Customer_customer_body record {
-    Customer_address address?;
-    # An integer amount in %s that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice.
-    int balance?;
-};
-
-public type Customer_address record {
+public type customer_address record {
     @constraint:String {maxLength: 5000}
     string city?;
     @constraint:String {maxLength: 5000}
@@ -24,10 +18,10 @@ public type Customer_address record {
     string state?;
 };
 
-public type Customer record {
-    # The customer's address.
-    Customer_address? address?;
-    string name?;
+# Represents the Headers record for the operation: getPaymentMethodsPaymentMethod
+public type GetPaymentMethodsPaymentMethodHeaders record {
+    # limit of the payment
+    string X\-LIMIT;
 };
 
 # Provides settings related to HTTP/1.x protocol.
@@ -39,6 +33,12 @@ public type ClientHttp1Settings record {|
     # Proxy server related options
     ProxyConfig proxy?;
 |};
+
+# Represents the Queries record for the operation: getPaymentMethodsPaymentMethod
+public type GetPaymentMethodsPaymentMethodQueries record {
+    # Payment Method
+    string payment\ method\ name;
+};
 
 # Proxy server configurations to be used with the HTTP client endpoint.
 public type ProxyConfig record {|
@@ -87,3 +87,15 @@ public type ConnectionConfig record {|
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
 |};
+
+public type customer_customer_body record {
+    customer_address address?;
+    # An integer amount in %s that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice.
+    int balance?;
+};
+
+public type customer record {
+    # The customer's address.
+    customer_address? address?;
+    string name?;
+};

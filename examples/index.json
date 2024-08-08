@@ -1045,6 +1045,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSONPath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1469,8 +1476,22 @@
         "isLearnByExample": true
       },
       {
+        "name": "Conditional send",
+        "url": "conditional-send",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1494,6 +1515,13 @@
         "url": "flush",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Fork",
+        "url": "fork",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -2573,6 +2601,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2693,7 +2729,7 @@
       },
       {
         "name": "Self-signed JWT authentication",
-        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "url": "graphql-client-security-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3513,6 +3549,52 @@
     ]
   },
   {
+    "title": "SOAP client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive",
+        "url": "soap-client-send-receive",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SOAP client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "soap-client-security-ssl-tsl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Inbound Security",
+        "url": "soap-client-security-inbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Outbound Security",
+        "url": "soap-client-security-outbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",
@@ -4146,6 +4228,21 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Serialization/Deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false
       }
