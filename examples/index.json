@@ -790,7 +790,7 @@
   },
   {
     "title": "Tables",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -4616,6 +4616,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "YAML data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "YAML to anydata",
+        "url": "yaml-to-anydata",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "YAML to anydata with projection",
+        "url": "yaml-to-anydata-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Serialize to YAML string",
+        "url": "anydata-to-yaml-string",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },

@@ -1,0 +1,2 @@
+$ bal run yaml_to_anydata_with_projection.bal
+{"host":"localhost","port":8080,"remotePorts":[9000,9001],"database":{"dbName":"testdb","username":"dbuser"}}

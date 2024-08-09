@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to convert a YAML source, which can be provided as a string, byte array, or byte block stream, into a subtype of Ballerina anydata.
+keywords: ballerina, ballerina by example, BBE, yaml, record, stream, byte array

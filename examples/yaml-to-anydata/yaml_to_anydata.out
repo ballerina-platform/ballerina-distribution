@@ -1,0 +1,4 @@
+$ bal run yaml_to_anydata.bal
+{"host":"localhost","port":8080,"protocol":"http"}
+{"host":"localhost","port":8080,"protocol":"http"}
+{"host":"localhost","port":8080,"protocol":"http"}
