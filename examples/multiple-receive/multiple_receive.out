@@ -1,0 +1,2 @@
+$ bal run multiple_receive.bal
+{"a":"w1","b":"w2"}
