@@ -14,9 +14,8 @@ type DatabaseConfig record {|
 |};
 
 public function main() returns error? {
-    // Can read from a file as well.
-    string yamlString = string
-        `
+    // Similar to content read from a YAML file.
+    string yamlString = string `
         host: "localhost"
         port: 8080
         remotePorts: [9000, 9001, 9002, 9003]

@@ -24,15 +24,15 @@ public function main() returns error? {
     ServerConfig serverConfig2 = check yaml:parseBytes(yamlByteArr);
     io:println(serverConfig2);
 
-    stream<byte[], error?> byteBlockStream = new (new StreamImplementor(yamlString));
+    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(yamlString));
     // Parse the YAML byte block stream to a record type.
     ServerConfig serverConfig3 = check yaml:parseStream(byteBlockStream);
     io:println(serverConfig3);
 }
 
-// Defines a class called `StreamImplementor`, which implements the `next()` method.
+// Defines a class called `ByteBlockGenerator`, which is stream implementer with `next()` method.
 // This will be invoked when the `next()` method of the stream gets invoked.
-class StreamImplementor {
+class ByteBlockGenerator {
     private int index = 0;
     private final byte[] byteArr;
     private final int arraySize;
