@@ -3,16 +3,19 @@ import ballerina/io;
 import ballerina/lang.runtime;
 
 public function main() {
-    alternateReceiveDemo("https://postman-echo.com/get?worker=w1", "https://postman-echo.com/get?worker=w2");
+    // Both arguments passed to the function are valid URLs.
+    // Thus alternate receive in worker `w3` sets the
+    // first value it rececives from a worker as the result.
+    fetchFirst("https://postman-echo.com/get?worker=w1", "https://postman-echo.com/get?worker=w2");
 
-    // Since the first parameter passed to the function is an invalid URL
-    // the worker `w1` in alternateReceive function returns an error.
+    // The first argument passed to the function is an invalid URL.
+    // The worker `w1` in `fetchFirst` function returns an error.
     // Thus alternate receive in worker `w3` waits further and sets
     // the value that is received from `w2` as the result.
-    alternateReceiveDemo("https://postman-echo.com/ge?worker=w4", "https://postman-echo.com/get?worker=w5");
+    fetchFirst("https://postman-echo.com/ge?worker=w4", "https://postman-echo.com/get?worker=w5");
 }
 
-function alternateReceiveDemo(string url1, string url2) {
+function fetchFirst(string url1, string url2) {
     worker w1 {
         map<json>|error result = fetch(url1);
         result -> w3;
