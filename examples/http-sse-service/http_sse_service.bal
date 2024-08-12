@@ -3,21 +3,23 @@ import ballerina/lang.runtime;
 import ballerina/random;
 
 service /stocks on new http:Listener(9090) {
-    // This function returns a stream of SSE with stock prices
+    // This resource method returns a stream of `http:SseEvent` (with stock prices)
+    // to push real-time data to clients using server-event events (SSE).
     resource function get .() returns stream<http:SseEvent, error?> {
-        // Create a new instance of StockPriceEventGenerator to generate stock price events
+        // Create a new value of type `StockPriceEventGenerator` to generate stock price events.
         StockPriceEventGenerator generator = new;
-        // Return a new stream that uses the generator to produce events
+        // Return a new stream that uses the generator to produce events.
         return new (generator);
     }
 }
 
-// Define a class to generate stock price events
+// Define a stream implementor that can be used to create a stream 
+// of `http:SseEvent`, representing stock price events.
 class StockPriceEventGenerator {
     int eventCounter = 0;
 
     public isolated function next() returns record {|http:SseEvent value;|}|error? {
-        // If the eventCounter reaches 5, stop generating events by returning nil
+        // If the eventCounter reaches 5, stop generating events by returning nil.
         if self.eventCounter == 5 {
             return ();
         }
