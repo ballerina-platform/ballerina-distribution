@@ -2,9 +2,13 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/lang.runtime;
 
+type Response record {
+    record {string 'worker;} args;
+};
+
 type Result record {
-    json|error a;
-    json|error b;
+    string|error a;
+    string|error b;
 };
 
 public function main() {
@@ -22,8 +26,8 @@ public function main() {
     io:println(result);
 }
 
-function fetch(string url) returns json|error {
+function fetch(string url) returns string|error {
     http:Client cl = check new (url);
-    record {map<json> args;} payload = check cl->get("");
-    return payload.args.'worker;
+    Response {args: {'worker: 'worker}} = check cl->get("");
+    return 'worker;
 }
