@@ -178,7 +178,7 @@ ballerina-lang.boolean-0.0.0.jar                                                
 ballerina-lang.decimal-0.0.0.jar                                                                    jar            apache2             
 ballerina-avro-0.1.2.jar                                                                            jar            apache2             
 ballerina-lang.function-0.0.0.jar                                                                   jar            apache2             
-ballerina-auth-2.11.0.jar                                                                           jar            apache2             
+ballerina-auth-2.11.2.jar                                                                           jar            apache2
 ballerina-tcp-1.10.0.jar                                                                            jar            apache2             
 ballerina-lang.array-0.0.0.jar                                                                      jar            apache2             
 ballerina-lang.string-0.0.0.jar                                                                     jar            apache2             
@@ -200,7 +200,7 @@ ballerina-cloud-3.0.0.jar                                                       
 ballerina-url-2.4.0.jar                                                                             jar            apache2             
 ballerina-lang.stream-0.0.0.jar                                                                     jar            apache2             
 ballerina-cache-3.8.0.jar                                                                           jar            apache2             
-ballerina-sql-1.13.0.jar                                                                            jar            apache2             
+ballerina-sql-1.13.2.jar                                                                            jar            apache2
 ballerina-lang.int-0.0.0.jar                                                                        jar            apache2             
 ballerina-xslt-2.6.0.jar                                                                            jar            apache2             
 ballerina-lang.error-0.0.0.jar                                                                      jar            apache2             
@@ -222,7 +222,7 @@ ballerina-log-2.9.0.jar                                                         
 ballerina-jwt-2.11.0.jar                                                                            jar            apache2             
 ballerina-oauth2-2.11.0.jar                                                                         jar            apache2             
 ballerina-mime-2.9.0.jar                                                                            jar            apache2             
-ballerina-crypto-2.7.0.jar                                                                          jar            apache2             
+ballerina-crypto-2.7.2.jar                                                                          jar            apache2
 ballerina-test-0.0.0.jar                                                                            jar            apache2             
 ballerina-lang.table-0.0.0.jar                                                                      jar            apache2             
 ballerina-grpc.types.any-1.11.0.jar                                                                 jar            apache2             
@@ -248,8 +248,8 @@ ballerina-soap-1.0.0.jar                                                        
 ballerina-soap.soap12-1.0.0.jar                                                                     jar            apache2             
 ballerina-soap.wssec-1.0.0.jar                                                                      jar            apache2             
 ballerina-soap.soap11-1.0.0.jar                                                                     jar            apache2             
-ballerina-http.httpscerr-2.11.0.jar                                                                 jar            apache2             
-ballerina-http-2.11.0.jar                                                                           jar            apache2             
+ballerina-http.httpscerr-2.11.3.jar                                                                 jar            apache2
+ballerina-http-2.11.3.jar                                                                           jar            apache2
 ballerina-lang.annotations-0.0.0.jar                                                                jar            apache2             
 ballerina-lang.regexp-0.0.0.jar                                                                     jar            apache2             
 ballerina-file-1.9.0.jar                                                                            jar            apache2             
@@ -318,9 +318,9 @@ cloud-compiler-plugin-3.0.0.jar                                                 
 url-native-2.4.0.jar                                                                                jar            apache2             
 cache-compiler-plugin-3.8.0.jar                                                                     jar            apache2
 cache-native-3.8.0.jar                                                                              jar            apache2
-sql-compiler-plugin-1.13.0.jar                                                                      jar            apache2
+sql-compiler-plugin-1.13.2.jar                                                                      jar            apache2
 HikariCP-3.3.1.jar                                                                                  bundle         apache2             
-sql-native-1.13.0.jar                                                                               jar            apache2
+sql-native-1.13.2.jar                                                                               jar            apache2
 jakarta.activation-1.2.2.jar                                                                        bundle         edl1                
 Saxon-HE-11.4.jar                                                                                   jar            mpl10               
 xslt-native-2.6.0.jar                                                                               jar            apache2             
