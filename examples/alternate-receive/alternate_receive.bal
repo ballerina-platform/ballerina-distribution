@@ -10,14 +10,16 @@ public function main() {
     // Both arguments passed to the function `getFirstFetched` are valid URLs.
     // Thus, the alternate receive action in worker `w3` sets the
     // first value it receives from a worker as the result.
-    string? firstFetched = getFirstFetched("https://postman-echo.com/get?worker=w1", "https://postman-echo.com/get?worker=w2");
+    string? firstFetched = getFirstFetched("https://postman-echo.com/get?worker=w1",
+            "https://postman-echo.com/get?worker=w2");
     io:println(firstFetched);
 
     // The first argument passed to the `getFirstFetched` function is an invalid URL.
     // The worker `w1` in `getFirstFetched` function returns an error.
     // Thus, the alternate receive action in worker `w3` waits further
     // and sets the value that is received from `w2` as the result.
-    firstFetched = getFirstFetched("https://postman-echo.com/ge?worker=w4", "https://postman-echo.com/get?worker=w5");
+    firstFetched = getFirstFetched("https://postman-echo.com/ge?worker=w4",
+            "https://postman-echo.com/get?worker=w5");
     io:println(firstFetched);
 }
 
