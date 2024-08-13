@@ -10,15 +10,15 @@ public function main() returns error? {
         password: "adminpassword"
     });
 
+    // Creates an `ldap:Entry` record for the new entry.
+    ldap:Entry addEntry = {
+        "objectClass": ["top", "person"],
+        "sn": "user",
+        "cn": "user"
+    };
+
     // Adds an entry to the directory server.
-    ldap:LdapResponse addResponse = check ldapClient->add(
-        "cn=user,dc=example,dc=com",
-        {
-            "objectClass": ["top", "person"],
-            "sn": "user",
-            "cn": "user"
-        }
-    );
+    ldap:LdapResponse addResponse = check ldapClient->add("cn=user,dc=example,dc=com", addEntry);
     io:println("Add Response: ", addResponse.resultCode);
 
     // Deletes an entry from the directory server.
