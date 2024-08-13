@@ -10,11 +10,11 @@ public function main() returns error? {
         password: "adminpassword"
     });
 
+    // Searches for an entry in the directory server.
     ldap:SearchResult searchResult = check ldapClient->search(
         "cn=user,dc=example,dc=com",
         "(sn=user)",
         ldap:SUB
     );
-
     io:println("Search Response: ", searchResult.resultCode);
 }
