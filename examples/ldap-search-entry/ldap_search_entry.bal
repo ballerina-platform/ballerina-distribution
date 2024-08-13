@@ -2,7 +2,7 @@ import ballerina/io;
 import ballerina/ldap;
 
 public function main() returns error? {
-    // Initialized a new LDAP client.
+    // Initializes a new LDAP client.
     ldap:Client ldapClient = check new ({
         hostName: "localhost",
         port: 389,
