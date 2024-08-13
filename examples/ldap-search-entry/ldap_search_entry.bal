@@ -1,16 +1,17 @@
-import ballerina/ldap;
 import ballerina/io;
+import ballerina/ldap;
 
 public function main() returns error? {
-    ldap:Client ldap = check new({
+    // Initialized a new LDAP client.
+    ldap:Client ldapClient = check new ({
         hostName: "localhost",
         port: 389,
         domainName: "cn=admin,dc=example,dc=com",
         password: "adminpassword"
     });
 
-    ldap:SearchResult searchResult = check ldap->search(
-        "cn=user,dc=example,dc=com", 
+    ldap:SearchResult searchResult = check ldapClient->search(
+        "cn=user,dc=example,dc=com",
         "(sn=user)",
         ldap:SUB
     );

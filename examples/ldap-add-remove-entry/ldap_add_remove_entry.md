@@ -1,4 +1,4 @@
-# LDAP Client - Add/Remove entries
+# LDAP client - Add/Remove entries
 
 The `ldap:Client` connects to a directory server and performs various operations on directories. Currently, it supports the generic LDAP operations; `add`, `modify`, `modifyDN`, `compare`, `search`, `searchWithType`, `delete`, and `close`.
 

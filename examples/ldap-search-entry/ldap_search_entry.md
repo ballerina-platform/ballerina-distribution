@@ -1,4 +1,4 @@
-# LDAP Client - Seacrh for an entry
+# LDAP client - Seacrh for an entry
 
 The `ldap:Client` connects to a directory server and performs various operations on directories. Currently, it supports the main LDAP operations; `add`, `modify`, `modifyDN`, `compare`, `search`, `searchWithType`, `delete`, and `close`.
 
