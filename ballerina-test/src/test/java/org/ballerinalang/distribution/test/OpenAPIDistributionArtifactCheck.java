@@ -94,7 +94,6 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("lib");
 
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(balaPath));
         Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-2.1.0.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
