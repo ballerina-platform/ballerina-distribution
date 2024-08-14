@@ -1,0 +1,5 @@
+[tool]
+id="disttest"
+
+[[dependency]]
+path="./resources/DistTestCommand-1.1.0.jar"
