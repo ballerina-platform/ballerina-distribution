@@ -4,7 +4,7 @@ import ballerina/random;
 
 service /stocks on new http:Listener(9090) {
     // This resource method returns a stream of `http:SseEvent` (with stock prices)
-    // to push real-time data to clients using server-event events (SSE).
+    // to push real-time data to clients using server-sent events (SSE).
     resource function get .() returns stream<http:SseEvent, error?> {
         // Create a new value of type `StockPriceEventGenerator` to generate stock price events.
         StockPriceEventGenerator generator = new;

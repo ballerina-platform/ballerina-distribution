@@ -1,6 +1,6 @@
 # HTTP service - Server-sent events
 
-Ballerina HTTP services support pushing real-time data to clients using Server-event events (SSE). A stream of type `http:SseEvent` can be returned from service resource methods. This feature automatically handles sending SSE and sets the content type to `text/event-stream` and the transfer encoding to chunked.
+Ballerina HTTP services support pushing real-time data to clients using server-sent events (SSE). A stream of type `http:SseEvent` can be returned from service resource methods. This feature automatically handles sending SSE and sets the content type to `text/event-stream` and the transfer encoding to chunked.
 
 ::: code http_sse_service.bal :::
 
