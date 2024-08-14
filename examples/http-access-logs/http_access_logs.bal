@@ -1,6 +1,6 @@
 import ballerina/http;
 
-type Album readonly & record {|
+public type Album readonly & record {|
     string title;
     string artist;
 |};
