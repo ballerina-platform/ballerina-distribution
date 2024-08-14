@@ -63,6 +63,7 @@ public class CentralTestUtils {
     static final String BALLERINA_CENTRAL_ACCESS_TOKEN = "BALLERINA_CENTRAL_ACCESS_TOKEN";
     static final String BALLERINA_TOML = "Ballerina.toml";
     static final String DEPENDENCIES_TOML = "Dependencies.toml";
+    static final String BAL_TOOL_TOML = "BalTool.toml";
     static final String MAIN_BAL = "main.bal";
     static final String COMMON_VERSION = "1.0.0";
     static final String TEST_PREFIX = "test_";
