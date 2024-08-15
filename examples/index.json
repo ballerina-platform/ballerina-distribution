@@ -790,7 +790,7 @@
   },
   {
     "title": "Tables",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -4639,7 +4639,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Anydata to YAML string",
+        "name": "Serialize to YAML string",
         "url": "anydata-to-yaml-string",
         "verifyBuild": true,
         "verifyOutput": true,
