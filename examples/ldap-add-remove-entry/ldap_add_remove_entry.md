@@ -16,5 +16,7 @@ The `delete` operation removes an entry from a directory server. It requires a `
 ::: out ldap_add_remove_entry.server.out :::
 
 ## Related links
-- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)
+- [`ldap:Client` `add` operation - API documentation](https://central.ballerina.io/ballerina/ldap/latest#Client-add)
+- [`ldap:Client` `delete` operation - API documentation](https://central.ballerina.io/ballerina/ldap/latest#Client-delete)
 - [`ldap` module - API documentation](https://lib.ballerina.io/ballerina/ldap/latest/)
+- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)

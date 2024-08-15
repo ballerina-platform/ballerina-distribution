@@ -20,5 +20,6 @@ When a directory server processes a valid search request, it finds entries withi
 ::: out ldap_search_entry.server.out :::
 
 ## Related links
-- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)
+- [`ldap:Client` `search` operation - API documentation](https://central.ballerina.io/ballerina/ldap/latest#Client-search)
 - [`ldap` module - API documentation](https://lib.ballerina.io/ballerina/ldap/latest/)
+- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)
