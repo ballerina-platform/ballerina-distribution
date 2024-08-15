@@ -14,9 +14,8 @@ type DatabaseConfig record {|
 |};
 
 public function main() returns error? {
-    // Can read from a file as well.
-    string yamlString = string
-        `
+    // Similar to content read from a YAML file.
+    string yamlString = string `
         host: "localhost"
         port: 8080
         remotePorts: [9000, 9001, 9002, 9003]
@@ -28,5 +27,7 @@ public function main() returns error? {
 
     // Based on the expected type, it selectively converts the YAML string to the record type.
     ServerConfig serverConfig = check yaml:parseString(yamlString);
+    // The `password` field is excluded in the created record value.
+    // Only the first two elements from the source are used to create the `remotePorts` array.
     io:println(serverConfig);
 }
