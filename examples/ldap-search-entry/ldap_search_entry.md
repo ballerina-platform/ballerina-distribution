@@ -13,12 +13,12 @@ When a directory server processes a valid search request, it finds entries withi
 ::: code ldap_search_entry.bal :::
 
 ## Prerequisites
-- Make sure to keep an LDAP server up and running while running the example.
+- Ensure that an LDAP server is up and running locally on port 389 while running the example.
 
 - Run the example by executing the command below.
 
 ::: out ldap_search_entry.server.out :::
 
 ## Related links
-- [`ldap:Client` - API documentation](https://lib.ballerina.io/ballerina/ldap/latest#Client)
+- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)
 - [`ldap` module - API documentation](https://lib.ballerina.io/ballerina/ldap/latest/)

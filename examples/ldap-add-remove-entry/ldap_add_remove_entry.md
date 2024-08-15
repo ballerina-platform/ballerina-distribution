@@ -9,14 +9,12 @@ The `delete` operation removes an entry from a directory server. It requires a `
 ::: code ldap_add_remove_entry.bal :::
 
 ## Prerequisites
-
-- Make sure to keep an LDAP server up and running while running the example.
+- Ensure that an LDAP server is up and running locally on port 389 while running the example.
 
 - Run the example by executing the command below.
 
 ::: out ldap_add_remove_entry.server.out :::
 
 ## Related links
-
-- [`ldap:Client` - API documentation](https://lib.ballerina.io/ballerina/ldap/latest#Client)
+- [`ldap:Client` - Specification](/spec/ldap/#2-ldap-client)
 - [`ldap` module - API documentation](https://lib.ballerina.io/ballerina/ldap/latest/)
