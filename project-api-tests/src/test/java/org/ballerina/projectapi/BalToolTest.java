@@ -43,8 +43,9 @@ import java.util.stream.Collectors;
 import static io.ballerina.projects.util.ProjectConstants.BALA_DIR_NAME;
 import static io.ballerina.projects.util.ProjectConstants.CENTRAL_REPOSITORY_CACHE_NAME;
 import static io.ballerina.projects.util.ProjectConstants.REPOSITORIES_DIR;
-import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
 import static org.ballerina.projectapi.CentralTestUtils.OUTPUT_NOT_CONTAINS_EXP_MSG;
+import static org.ballerina.projectapi.CentralTestUtils.TEST_MODE_ACTIVE;
+import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
 import static org.ballerina.projectapi.CentralTestUtils.getString;
 import static org.ballerina.projectapi.CentralTestUtils.isToolAvailableInCentral;
@@ -56,6 +57,7 @@ import static org.ballerina.projectapi.TestUtils.executeToolCommand;
 
 public class BalToolTest {
     private Path tempWorkspaceDirectory;
+    private Path tempHomeDirectory;
     private final String orgName = "bctestorg";
     private static final String toolId = "disttest";
     private static final String nonExistingTool = "disttest2";
@@ -75,10 +77,12 @@ public class BalToolTest {
     @BeforeClass()
     public void setUp() throws IOException, InterruptedException {
         TestUtils.setupDistributions();
+        tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
         tempWorkspaceDirectory = Files.createTempDirectory("bal-test-integration-packaging-workspace-");
+        createSettingToml(tempHomeDirectory);
         setToolEnvironmentsForSubCommands();
         Map<String, String> envVariables = getEnvVariables();
-        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
+        envVariables.put(TEST_MODE_ACTIVE, "true");
         if (!isToolAvailableInCentral(toolId, tempWorkspaceDirectory, envVariables)) {
             Assert.fail("Tool " + toolId + " is not available in central");
         }
@@ -994,7 +998,6 @@ public class BalToolTest {
     }
 
     private ToolEnvironment getToolEnvironment(ToolSubCommand subCommand) throws IOException {
-        Path tempHomeDirectory = Files.createTempDirectory("bal-test-integration-packaging-home-");
         Map<String, String> envVariables = TestUtils.addEnvVariables(getEnvVariables(),
                 tempHomeDirectory);
         Path balToolsTomlPath = tempHomeDirectory.resolve(".config").resolve("bal-tools.toml");

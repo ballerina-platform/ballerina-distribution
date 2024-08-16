@@ -30,8 +30,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
+import static org.ballerina.projectapi.CentralTestUtils.TEST_MODE_ACTIVE;
 
 /**
  * Utility class for tests.
@@ -156,7 +156,7 @@ public class TestUtils {
      */
     static Map<String, String> addEnvVariables(Map<String, String> envVariables, Path tempHomeDirectory) {
         envVariables.put(BALLERINA_HOME_DIR, tempHomeDirectory.toString());
-        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
+        envVariables.put(TEST_MODE_ACTIVE, "true");
         return envVariables;
     }
 }
