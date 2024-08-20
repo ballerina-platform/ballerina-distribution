@@ -18,7 +18,6 @@ type Invoice record {
 @xmldata:Namespace {
     uri: "http://example1.com"
 }
-
 type Item record {
     string itemCode;
     int count;
