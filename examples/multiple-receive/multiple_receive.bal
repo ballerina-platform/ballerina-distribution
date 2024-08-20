@@ -28,6 +28,6 @@ public function main() {
 
 function fetch(string url) returns string|error {
     http:Client cl = check new (url);
-    Response {args: {'worker: 'worker}} = check cl->get("");
+    Response {args: {'worker}} = check cl->get("");
     return 'worker;
 }
