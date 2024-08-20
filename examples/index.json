@@ -3838,6 +3838,29 @@
     ]
   },
   {
+    "title": "LDAP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Add/Remove entries",
+        "url": "ldap-add-remove-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Search for an entry",
+        "url": "ldap-search-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "JMS service",
     "column": 3,
     "category": "Network libraries",
