@@ -25,7 +25,7 @@ public function main() returns error? {
           username: "dbuser"
           password: "dbpassword"`;
 
-    // Based on the expected type, it selectively converts the YAML string to the record type.
+    // Based on the expected type, this function selectively constructs the record type from the YAML string.
     ServerConfig serverConfig = check yaml:parseString(yamlString);
     // The `password` field is excluded in the created record value.
     // Only the first two elements from the source are used to create the `remotePorts` array.

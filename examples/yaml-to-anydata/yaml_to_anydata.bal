@@ -14,17 +14,17 @@ final string yamlString = string
         protocol: "http"`;
 
 public function main() returns error? {
-    // Parse the YAML string to a record type.
+    // Parse the YAML string as a record.
     ServerConfig serverConfig1 = check yaml:parseString(yamlString);
     io:println(serverConfig1);
 
     byte[] yamlByteArr = yamlString.toBytes();
-    // Parse the YAML byte array to a record type.
+    // Parse the YAML byte array as a record.
     ServerConfig serverConfig2 = check yaml:parseBytes(yamlByteArr);
     io:println(serverConfig2);
 
     stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(yamlString));
-    // Parse the YAML byte block stream to a record type.
+    // Parse the YAML byte block stream as a record.
     ServerConfig serverConfig3 = check yaml:parseStream(byteBlockStream);
     io:println(serverConfig3);
 }
