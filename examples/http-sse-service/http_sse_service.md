@@ -12,6 +12,8 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_sse_service.client.out :::
 
+>**Tip:** You can invoke the above service via the [Client server-sent events](learn/by-example/http-sse-client/) example.
+
 ## Related links
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [Resource return types - Specification](/spec/http/#235-return-types)
