@@ -3,12 +3,12 @@ import ballerina/ldap;
 
 public function main() returns error? {
     // Initializes a new LDAP client with credentials.
-    ldap:Client ldapClient = check new ({
-        hostName: "localhost",
-        port: 389,
-        domainName: "cn=admin,dc=example,dc=com",
-        password: "adminpassword"
-    });
+    ldap:Client ldapClient = check new (
+        hostName = "localhost",
+        port = 389,
+        domainName = "cn=admin,dc=example,dc=com",
+        password = "adminpassword"
+    );
 
     // Creates an `ldap:Entry` record for the new entry.
     ldap:Entry addEntry = {
