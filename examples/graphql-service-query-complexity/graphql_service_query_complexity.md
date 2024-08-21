@@ -1,6 +1,6 @@
 # GraphQL service - Query Complexity
 
-a `graphql:Service` can be secured by limiting the complexity of the operations that can be executed. This can be done by setting a maximum complexity threshold for a given service. The query complexity is calculated by assigning a complexity value to each field in the GraphQL schema. The complexity of an operation is the sum of the complexity values of the fields in the operation.
+A `graphql:Service` can be secured by limiting the complexity of the operations that can be executed. This can be done by setting a maximum complexity threshold for a given service. The query complexity is calculated by assigning a complexity value to each field in the GraphQL schema. The complexity of an operation is the sum of the complexity values of the fields in the operation.
 
 ::: code graphql_service_query_complexity.bal :::
 
