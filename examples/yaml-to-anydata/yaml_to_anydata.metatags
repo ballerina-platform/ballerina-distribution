@@ -1,2 +1,2 @@
-description: This BBE demonstrates how to parse a YAML source, which can be provided as a string, byte array, or byte block stream, as a value that belongs to a subtype of Ballerina anydata.
+description: This BBE demonstrates how to parse a YAML source, which can be provided as a string, byte array, or byte block stream, as a value that belongs to a subtype of anydata.
 keywords: ballerina, ballerina by example, BBE, yaml, record, stream, byte array
