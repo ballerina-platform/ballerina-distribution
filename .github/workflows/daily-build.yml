@@ -184,6 +184,13 @@ jobs:
           tags: ballerina/ballerina-devcontainer:nightly-test
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+      - name: Clean up created artifacts
+        run: |
+          rm -rf installers/linux-deb/target/ballerina-*-linux-x64.deb
+          rm -rf installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          rm -rf ballerina/build/distributions/ballerina-*-macos.zip
+          rm -rf ballerina/build/distributions/ballerina-*-macos-arm.zip
+          rm -rf ballerina/build/distributions/ballerina-*-windows.zip
       - name: Run Trivy vulnerability scanner for dev container docker image
         uses: aquasecurity/trivy-action@master
         with:
