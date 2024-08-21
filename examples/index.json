@@ -4614,7 +4614,7 @@
         "name": "Record to XML conversion",
         "url": "xml-from-record-conversion",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": false
       }
     ]
