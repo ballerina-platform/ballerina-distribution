@@ -118,6 +118,12 @@ public class TestUtils {
         return executeCommand("help", distributionName, sourceDirectory, args, envProperties);
     }
 
+    public static Process executeNewCommand(String distributionName, Path sourceDirectory,
+                                            List<String> args, Map<String, String> envProperties)
+            throws IOException, InterruptedException {
+        return executeCommand("new", distributionName, sourceDirectory, args, envProperties);
+    }
+
     /**
      * Clean and setup the distribution.
      *
