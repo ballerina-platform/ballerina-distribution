@@ -20,6 +20,7 @@ function fetch(string workerParam) returns string|error {
 }
 
 public function main() {
+    // Workers `w1` and `w2` fetch content using the respective arguments.
     worker w1 {
         fetch("w1") -> function;
     }
