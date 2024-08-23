@@ -20,7 +20,8 @@ function fetch(string workerParam) returns string|error {
 }
 
 public function main() {
-    // Workers `w1` and `w2` fetch content using the respective arguments.
+    // Workers `w1` and `w2` call the `fetch` function to retrieve content. The workers 
+    // send the result of calling the `fetch` function to the default worker.
     worker w1 {
         fetch("w1") -> function;
     }
@@ -30,7 +31,7 @@ public function main() {
         fetch("w2") -> function;
     }
 
-    // The worker waits until both values are received.
+    // The multiple receive action is used to receive values from both workers.
     Result result = <- {a: w1, b: w2};
     io:println(result);
 }
