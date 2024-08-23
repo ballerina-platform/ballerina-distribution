@@ -8,8 +8,10 @@ type Response record {
     } args;
 };
 
+// Concurrently fetch content from two URLs using workers `w1` and `w2` and
+// return the first non-error value received by worker `w3` from either `w1` or `w2`.
 function getFirstFetched(string url1, string url2) returns string? {
-    // workers `w1` and `w2` fetches the content from the respective URLs.
+    // Workers `w1` and `w2` fetch content from `url1` and `url2` respectively.
     worker w1 {
         string|error result = fetch(url1);
         result -> w3;
@@ -28,7 +30,7 @@ function getFirstFetched(string url1, string url2) returns string? {
         return result is error ? () : result;
     }
 
-    // The value returned from the worker `w3` is set to the variable `w3Result`.
+    // The value returned from worker `w3` is set to the variable `w3Result`.
     string? w3Result = wait w3;
     return w3Result;
 }
@@ -48,7 +50,7 @@ public function main() {
     io:println(firstFetched);
 
     // The first argument passed to the `getFirstFetched` function is an invalid URL.
-    // The worker `w1` in `getFirstFetched` function returns an error.
+    // Therefore, the worker `w1` in the `getFirstFetched` function returns an error.
     // Thus, the alternate receive action in worker `w3` waits further
     // and sets the value that is received from `w2` as the result.
     firstFetched = getFirstFetched("https://postman-echo.com/ge?worker=w4",
