@@ -23,6 +23,7 @@ function getFirstFetched(string url1, string url2) returns string? {
         result -> w3;
     }
 
+    // Worker `w3` waits until one of workers return a non-error value. 
     worker w3 returns string? {
         // The value of the variable `result` is set as soon as
         // a non-error message is received from either worker `w1` or `w2`.
