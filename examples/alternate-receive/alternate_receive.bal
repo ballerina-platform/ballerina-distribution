@@ -8,8 +8,8 @@ type Response record {
     } args;
 };
 
-// Concurrently fetch content from two URLs using workers `w1` and `w2` and
-// return the first non-error value received by worker `w3` from either `w1` or `w2`.
+// Concurrently fetch content from two URLs using workers and
+// return the first non-error value received.
 function getFirstFetched(string url1, string url2) returns string? {
     // Workers `w1` and `w2` fetch content from `url1` and `url2` respectively.
     worker w1 {
@@ -23,7 +23,7 @@ function getFirstFetched(string url1, string url2) returns string? {
         result -> w3;
     }
 
-    // Worker `w3` waits until one of workers return a non-error value. 
+    // Worker `w3` waits until one of the workers returns a non-error value. 
     worker w3 returns string? {
         // The value of the variable `result` is set as soon as
         // a non-error message is received from either worker `w1` or `w2`.
