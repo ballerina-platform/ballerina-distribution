@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to selectively convert fields from a YAML source, which can be provided as a string, byte array, or byte block stream, into a Ballerina record with projection.
+keywords: ballerina, ballerina by example, BBE, yaml, record, data projection 

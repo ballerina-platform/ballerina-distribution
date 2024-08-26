@@ -1,0 +1,7 @@
+$ bal run http_sse_client.bal
+
+Stock price: 249.9963321685791
+Stock price: 56.58070945739746
+Stock price: 571.2127494812012
+Stock price: 217.98820853233337
+Stock price: 21.891758739948273
