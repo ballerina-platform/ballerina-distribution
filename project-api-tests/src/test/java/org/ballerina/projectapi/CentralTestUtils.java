@@ -59,9 +59,11 @@ public class CentralTestUtils {
 
     static final String BALLERINA_HOME_DIR = "BALLERINA_HOME_DIR";
     static final String BALLERINA_DEV_CENTRAL = "BALLERINA_DEV_CENTRAL";
+    static final String TEST_MODE_ACTIVE = "TEST_MODE_ACTIVE";
     static final String BALLERINA_CENTRAL_ACCESS_TOKEN = "BALLERINA_CENTRAL_ACCESS_TOKEN";
     static final String BALLERINA_TOML = "Ballerina.toml";
     static final String DEPENDENCIES_TOML = "Dependencies.toml";
+    static final String BAL_TOOL_TOML = "BalTool.toml";
     static final String MAIN_BAL = "main.bal";
     static final String COMMON_VERSION = "1.0.0";
     static final String TEST_PREFIX = "test_";
@@ -97,19 +99,28 @@ public class CentralTestUtils {
      * @throws IOException i/o exception when writing to file
      */
     static void createSettingToml(Path dirPath) throws IOException {
-        String content = "[central]\n accesstoken = \"" + getToken() + "\"";
+        String content = "[central]\n accesstoken = \"" + getProdToken() + "\"";
         Files.write(dirPath.resolve("Settings.toml"), content.getBytes(), StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
     }
 
     /**
-     * Get token of ballerina-central-bot required to push the module.
+     * Get token of ballerina-dev-central required to push the module.
      *
      * @return token required to push the module.
      */
-    private static String getToken() {
+    private static String getDevToken() {
         // staging and dev both has the same access token
         return System.getenv("devCentralToken");
+    }
+
+    /**
+     * Get token of ballerina-central required to push the module.
+     *
+     * @return token required to push the module.
+     */
+    private static String getProdToken() {
+        return System.getenv("prodCentralToken");
     }
 
     /**
