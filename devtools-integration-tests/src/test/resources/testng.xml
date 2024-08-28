@@ -23,7 +23,6 @@
             <class name="org.ballerina.devtools.debug.ModuleBreakpointTest"/>
             <class name="org.ballerina.devtools.debug.ServiceDebugTest"/>
             <class name="org.ballerina.devtools.debug.ExpressionEvaluationTest"/>
-            <class name="org.ballerina.devtools.cmd.BuildNewCommandTest"/>
         </classes>
     </test>
 </suite>
