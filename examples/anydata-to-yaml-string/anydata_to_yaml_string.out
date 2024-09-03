@@ -1,0 +1,6 @@
+$ bal run anydata_to_yaml_string.bal
+host: localhost
+port: 3000
+database:
+  dbName: userDB
+  username: testUser

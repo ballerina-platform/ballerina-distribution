@@ -1,6 +1,6 @@
 # HTTP service - Access logs
 
-Ballerina allows enabling HTTP access logs, which can be used to record the HTTP requests handled by the application. HTTP access logs are disabled by default. Set `console=true` under `ballerina.http.accessLogConfig` in the `Config.toml` file to enable them. Additionally, the `path` field can be used to specify the file path to save the access logs.
+Ballerina allows enabling HTTP access logs, which can be used to record the HTTP requests handled by the application. HTTP access logs are disabled by default. Set `console=true` under `ballerina.http.accessLogConfig` in the `Config.toml` file to enable them. Additionally, the `path` field can be used to specify the file path to save the access logs. The log format can be specified as either `flat` or `json` using the optional `format` field (defaults to `flat`). Furthermore, you can customize the logged attributes using the optional `attributes` field.
 
 ::: code http_access_logs.bal :::
 

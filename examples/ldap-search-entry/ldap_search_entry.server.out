@@ -1,0 +1,2 @@
+$ bal run ldap_search_entry.bal
+Search Response: SUCCESS

@@ -1,0 +1,3 @@
+$ bal run ldap_add_remove_entry.bal
+Add Response: SUCCESS
+Delete Response: SUCCESS
