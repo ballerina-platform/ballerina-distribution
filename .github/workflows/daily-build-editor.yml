@@ -38,8 +38,8 @@ jobs:
           TEST_MODE_ACTIVE: true
         run:  |
           cd ballerina-dev-tools
-          DEV_TOOLS_VERSION=$(grep "^version=" gradle.properties | cut -d'=' -f2)
-          echo "::set-output name=version::$DEV_TOOLS_VERSION"
+          echo "::set-output name=version::$(grep "^version=" gradle.properties | cut -d'=' -f2)"
+          echo "::set-output name=langVersion::$(grep "^ballerinaLangVersion=" gradle.properties | cut -d'=' -f2)"
           ./gradlew clean build --stacktrace --scan -x test  --console=plain --no-daemon --continue publishToMavenLocal
           cd ..
       - name: Checkout Distribution Repository
@@ -71,9 +71,10 @@ jobs:
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
         run: |
-            cd ballerina-distribution
-            sed -i "s/^devToolsVersion=.*/devToolsVersion=${{ steps.build-dev-tools.outputs.version }}/" gradle.properties
-            ./gradlew clean build --stacktrace --scan -x test --console=plain --no-daemon --continue -x project-api-tests:test
+          cd ballerina-distribution
+          sed -i "s/^devToolsVersion=.*/devToolsVersion=${{ steps.build-dev-tools.outputs.version }}/" gradle.properties
+          sed -i "s/^ballerinaLangVersion=.*/ballerinaLangVersion=${{ steps.build-dev-tools.outputs.langVersion }}/" gradle.properties
+          ./gradlew clean build --stacktrace --scan -x test --console=plain --no-daemon --continue -x project-api-tests:test
       - name: Create linux-deb
         id: run_installers_deb
         run: |
