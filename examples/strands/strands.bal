@@ -12,7 +12,7 @@ public function main() {
     io:println("In function worker");
 
     // By default, named workers are multitasked cooperatively, not preemptively.
-    // Each named worker has a `strand` (a logical thread of control) and
+    // Each named worker has a strand (a logical thread of control) and
     // the execution switches between strands only at specific `yield` points.
     worker A {
         io:println("In worker A");
@@ -26,7 +26,7 @@ public function main() {
         io:println("Worker B end");
     }
 
-    // Explicitly waiting on named workers until they complete.
+    // Explicitly wait for named workers to complete.
     // This guarantees that the Ballerina program will not terminate till 
     // the workers have completed their execution.
     wait A;
