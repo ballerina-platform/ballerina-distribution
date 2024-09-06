@@ -73,6 +73,7 @@ jobs:
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          prodCentralToken: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
@@ -113,7 +114,7 @@ jobs:
           exit-code: '1'
           timeout: "10m0s"
       - name: cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
+        uses: sigstore/cosign-installer@v3.5.0
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -472,7 +473,7 @@ jobs:
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
       - name: cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
+        uses: sigstore/cosign-installer@v3.5.0
       - name: Create macos-pkg Installer
         id: run_installers_pkg
         run: |
@@ -614,7 +615,7 @@ jobs:
         run: echo "${WIX}bin" >> $GITHUB_PATH
         shell: bash
       - name: Set cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
+        uses: sigstore/cosign-installer@v3.5.0
       - name: Download Windows Installer Zip
         run: |
           echo default login ${{ secrets.BALLERINA_BOT_USERNAME }} password ${{ secrets.BALLERINA_BOT_TOKEN }} >> _netrc

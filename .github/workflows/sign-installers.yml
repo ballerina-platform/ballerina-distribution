@@ -20,7 +20,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: cosign-installer
-        uses: sigstore/cosign-installer@v3.0.3
+        uses: sigstore/cosign-installer@v3.5.0
       - name: Install Node
         uses: actions/setup-node@v2
         with:

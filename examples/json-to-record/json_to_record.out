@@ -1,0 +1,5 @@
+$ bal run json_to_record.bal
+{"name":"Clean Code","author":"Robert C. Martin","year":2008}
+{"name":"Clean Code","author":"Robert C. Martin","year":2008}
+{"name":"Clean Code","author":"Robert C. Martin","year":2008}
+{"name":"Clean Code","author":"Robert C. Martin","year":2008}

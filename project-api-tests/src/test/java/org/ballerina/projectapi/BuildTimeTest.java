@@ -37,8 +37,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_DEV_CENTRAL;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
+import static org.ballerina.projectapi.CentralTestUtils.TEST_MODE_ACTIVE;
 import static org.ballerina.projectapi.CentralTestUtils.createSettingToml;
 import static org.ballerina.projectapi.CentralTestUtils.deleteFiles;
 import static org.ballerina.projectapi.CentralTestUtils.getEnvVariables;
@@ -107,7 +107,7 @@ public class BuildTimeTest {
      */
     private Map<String, String> addEnvVariables(Map<String, String> envVariables) {
         envVariables.put(BALLERINA_HOME_DIR, tempHome.toString());
-        envVariables.put(BALLERINA_DEV_CENTRAL, "true");
+        envVariables.put(TEST_MODE_ACTIVE, "true");
         return envVariables;
     }
 
