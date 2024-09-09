@@ -16,11 +16,11 @@ Add `Employee`, `Department`, `Workspace`, and `Building` entities with relation
 ::: code persist_model.bal :::
 
 #### Generate client APIs
-> **Note:** The client APIs can be generated using the `bal persist generate` command which is one time generation and the generated client code is a part of the project. We can also integrate the client code generation with the build process of the project by executing the `bal persist add` command. This will add the client code generation as a build task in the `Ballerina.toml` file. For more information, see [Persist CLI Commands](learn/persist-cli-tool/).
-
 Execute the command below to generate the Ballerina client API.
 
 ::: out persist_generate.out :::
+
+> **Note:** The `bal persist generate` command is a one-time generation task, and the generated client code is a part of the project. We can also integrate the client code generation with the project's build process by executing the `bal persist add` command. This command will add the client code generation as a build task in the `Ballerina.toml` file. See [Persist CLI Commands](learn/persist-cli-tool/) for more information.
 
 #### Use the generated client API
 Using the generated client API, you can retrieve the record with relations from the data store with both `get` and `get by key` resource methods.
