@@ -27,7 +27,7 @@ public client class Client {
 public function main() returns error? {
     Client albumClient = check new ("localhost:9090");
 
-    // `->` is used to access the resource/remote functions in the client class.
+    // `->` is used to access the resource/remote methods in the client class.
     // Sends a `GET` request to the `/albums` resource.
     Album[] albums = check albumClient->/["albums"];
     io:println(albums);
