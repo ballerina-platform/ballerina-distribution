@@ -1,4 +1,3 @@
-$ bal persist generate
+$ bal persist generate --datastore inmemory --module store
 
-Generated Ballerina Client, Types, and Scripts to ./generated/store directory.
-You can now start using Ballerina Client in your code.
+Persist client and entity types generated successfully in the store directory.
