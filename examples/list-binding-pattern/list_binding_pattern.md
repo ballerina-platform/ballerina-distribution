@@ -11,4 +11,3 @@ A list binding pattern binds members of a list to variables. It can contain more
 - [Binding patterns](/learn/by-example/binding-patterns/)
 - [Arrays](/learn/by-example/arrays/)
 - [Tuples](/learn/by-example/tuples/)
-- [List sub typing](/learn/by-example/list-subtyping)
