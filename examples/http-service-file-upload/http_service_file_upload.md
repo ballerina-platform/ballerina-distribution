@@ -13,3 +13,4 @@ Run the service as follows.
 ## Related links
 - [`getByteStream()` - API documentation](https://lib.ballerina.io/ballerina/http/latest#Request#getByteStream)
 - [`http` module - Specification](/spec/http/#41-service-configuration)
+- [Binary Data](/learn/by-example/binary-data/)

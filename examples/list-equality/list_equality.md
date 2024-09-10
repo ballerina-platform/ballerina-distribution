@@ -10,5 +10,3 @@ You can use `==` and `!=` on lists to check the deep equality of two lists: two 
 - [Tuples](/learn/by-example/tuples)
 - [Arrays](/learn/by-example/arrays)
 - [List sub typing](/learn/by-example/list-subtyping)
-
-[comment]: # (Add equality expression link)

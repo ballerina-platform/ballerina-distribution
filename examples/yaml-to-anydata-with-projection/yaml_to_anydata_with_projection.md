@@ -9,3 +9,6 @@ For more information on the underlying module, see the [`data.yaml` module](http
 ::: code yaml_to_anydata_with_projection.bal :::
 
 ::: out yaml_to_anydata_with_projection.out :::
+
+## Related links
+- [Binary Data](/learn/by-example/binary-data/)
