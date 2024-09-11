@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -472,6 +479,13 @@
       {
         "name": "Binary data",
         "url": "binary-data",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
