@@ -53,14 +53,14 @@ jobs:
           ./mat/ParseHeapDump.sh ./dump.hprof org.eclipse.mat.api:suspects
 
       - name: Upload Heap Dumps
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: heap_dump-${{ matrix.branch }}.hprof
           path: '*.hprof'
 
       - name: Upload Leaks Suspects
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: Leak_Suspects-${{ matrix.branch }}
