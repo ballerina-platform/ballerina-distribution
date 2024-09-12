@@ -51,27 +51,27 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
       - name: Archive Ballerina ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina ZIP
           path: ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux installer ZIP
           path: ballerina/build/distributions/ballerina-*-linux.zip
       - name: Archive MacOS installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive Windows Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows Installer ZIP
           path: ballerina/build/distributions/ballerina-*-windows.zip
