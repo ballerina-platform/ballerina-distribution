@@ -6,4 +6,4 @@ For more information on the underlying module, see the [`data.jsondata` module](
 
 ::: code json_to_record_with_projection.bal :::
 
-::: out json_to_record_with_projection.bal :::
+::: out json_to_record_with_projection.out :::

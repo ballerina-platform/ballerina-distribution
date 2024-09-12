@@ -232,18 +232,13 @@ isolated function getPathForQueryParam(map<anydata> queryParam, map<Encoding> en
 #
 # + headerParam - Headers  map
 # + return - Returns generated map or error at failure of client initialization
-isolated function getMapForHeaders(map<any> headerParam) returns map<string|string[]> {
+isolated function getMapForHeaders(map<anydata> headerParam) returns map<string|string[]> {
     map<string|string[]> headerMap = {};
     foreach var [key, value] in headerParam.entries() {
-        if value is string || value is string[] {
-            headerMap[key] = value;
-        } else if value is int[] {
-            string[] stringArray = [];
-            foreach int intValue in value {
-                stringArray.push(intValue.toString());
-            }
-            headerMap[key] = stringArray;
-        } else if value is SimpleBasicType {
+        if value is SimpleBasicType[] {
+            headerMap[key] = from SimpleBasicType data in value
+                select data.toString();
+        } else {
             headerMap[key] = value.toString();
         }
     }

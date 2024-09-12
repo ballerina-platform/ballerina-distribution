@@ -28,7 +28,6 @@ description = 'Ballerina - Tools - Parent'
 ext {
     ballerinaLangVersion = project.ballerinaLangVersion
     shortVersion = project.version.split("-")[0]
-    dataMapperVersion = project.dataMapperVersion
     c2cVersion = project.c2cVersion
     ballerinaJreVersion = project.ballerinaJreVersion
     ballerinaCommandVersion = project.ballerinaCommandVersion
@@ -135,9 +134,6 @@ subprojects {
 
         /* Ballerina Dev Tools */
         devTools "org.ballerinalang:ballerina-dev-tools:${devToolsVersion}"
-
-        /* Data Mapper extension */
-        exten "org.ballerinax.datamapper:datamapper-extension:${dataMapperVersion}@jar"
 
         externalTestJars (group: 'mysql', name: 'mysql-connector-java', version: "8.0.21") {
             transitive = false
