@@ -283,7 +283,7 @@ jobs:
           sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
           sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
       - name: Download Ballerina rpm Installer
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: Linux Installer rpm
       - name: Install Ballerina RPM
@@ -311,7 +311,7 @@ jobs:
         with:
           ref: 2201.3.x
       - name: Download MacOS Intaller Zip
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: MacOS Installer ZIP
       - name: Create macos-pkg
@@ -363,7 +363,7 @@ jobs:
       - name: Install GUID Generator
         run: dotnet tool install -g dotnet-guid --version 0.5.2
       - name: Download Windows Intaller Zip
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: Windows Installer ZIP
       - name: Create windows-msi
