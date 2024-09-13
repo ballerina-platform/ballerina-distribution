@@ -76,7 +76,7 @@ function testFunc() returns error? {
 
     test:assertEquals(outputs[2], 
     "Converted civil value: {\"utcOffset\":{\"hours\":5,\"minutes\":30},\"timeAbbrev\":\"Asia/Colombo\",\"dayOfWeek\":1,\"year\":2021,\"month\":4,\"day\":12,\"hour\":23,\"minute\":20,\"second\":50.52}");
-    test:assertEquals(outputs[3], "Civil string representation: 2021-04-12T17:50:50.520Z");
+    test:assertEquals(outputs[3], "Civil string representation: 2021-04-12T23:20:50.520+05:30");
     test:assertEquals(outputs[4], "Email formatted string: Mon, 3 Dec 2007 10:15:30 Z");
 
     test:assertEquals(outputs[5], 
