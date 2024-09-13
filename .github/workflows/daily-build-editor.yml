@@ -93,32 +93,32 @@ jobs:
           name: Ballerina ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina Short Name ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux deb
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux Installer deb
           path: ballerina-distribution/installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Archive Linux rpm
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux Installer rpm
           path: ballerina-distribution/installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
       - name: Archive MacOS Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS Installer ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive MacOS-ARM Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS-ARM Installer ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-macos-arm.zip
       - name: Archive Windows Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows Installer ZIP
           path: ballerina-distribution/ballerina/build/distributions/ballerina-*-windows.zip
