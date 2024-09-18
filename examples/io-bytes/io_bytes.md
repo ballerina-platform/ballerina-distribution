@@ -11,4 +11,4 @@ To run this sample, use the `bal run` command.
 ::: out io_bytes.out :::
 
 ## Related links
-- [Binary Data](/learn/by-example/binary-data/)
+- [Binary data](/learn/by-example/binary-data/)
