@@ -1,11 +1,12 @@
 import ballerina/io;
 
 public function main() {
-    // Byte values ranging from 0 to 255
+    // The `byte` type consists of integers ranging from `0` to `255`.
     byte b = 255;
     io:println(b);
 
-    // Byte values can be assigned to int
+    // Since the set of possible `byte` values is a subset of `int` values,
+    // the `byte` type is a subtype of the `int` type.
     int i = b;
     io:println(i);
 }

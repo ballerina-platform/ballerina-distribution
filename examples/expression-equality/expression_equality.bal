@@ -4,7 +4,7 @@ public function main() {
     map<string> student = {"name": "John", "age": "25"};
     map<anydata> student2 = {"name": "John", "age": "25"};
 
-    // The output will be `true` because the values are the same.
+    // The output will be `true` because the values are considered equal based on their content.
     io:println(student == student2);
 
     // The output will be `false` because the values are the same.
@@ -13,7 +13,7 @@ public function main() {
     // The output will be `false` because the references are different.
     io:println(student === student2);
 
-    // This assigns the reference of `student` to `student3`.
+    // Assign the value assigned to the `student` variable to the `student3` variable.
     map<string> student3 = student;
 
     // The output will be `true` because the references are the same.
@@ -27,7 +27,7 @@ public function main() {
 
     // The output will be `true` because the values are the same.
     io:println(a == b);
-    // Since simple type values do not have a storage identity,
-    // `===` will return `true` because the values are the same.
+    // Since values of simple types do not have a storage identity,
+    // `===` will evaluate to `true` because the values are the same.
     io:println(a === b);
 }
