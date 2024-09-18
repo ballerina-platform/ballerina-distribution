@@ -11,3 +11,6 @@ For more information on the underlying module, see the [`crypto` module](https:/
 Run the program by executing the command below.
 
 ::: out security_crypto.out :::
+
+## Related links
+- [Binary data](/learn/by-example/binary-data/)
