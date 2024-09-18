@@ -20,9 +20,32 @@ function matchCommand(any commands) {
     }
 }
 
+function matchWithMatchGuard(any lst) {
+    match lst {
+        // The list binding pattern below binds lists that contain two members
+        // of the types `string` and `int` respectively.
+        var [s, i] if s is string && i is int => {
+            io:println("First member is a string and second member is an int: ", lst);
+        }
+        // The list binding pattern below binds lists that contain two members
+        // where the type of the first memeber is `float`.
+        var [s, _] if s is float => {
+            io:println("First member is a float: ", lst);
+        }
+        // This pattern check is for a single variable of the type `float`.
+        var s if s is float => {
+            io:println("Value is a float: ", lst);
+        }
+    }
+}
+
 public function main() {
     matchCommand(["Show"]);
     matchCommand(["Remove", "*", true]);
     matchCommand(["Copy", ["a.bal", "b.bal"]]);
     matchCommand(1);
+
+    matchWithMatchGuard(["Hello", 45]);
+    matchWithMatchGuard([4.5, true]);
+    matchWithMatchGuard(5.6);
 }
