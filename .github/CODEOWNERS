@@ -1,7 +1,22 @@
-# Lines starting with '#' are comments.
+# This is a comment.
 # Each line is a file pattern followed by one or more owners.
 
 # See: https://help.github.com/articles/about-codeowners/
 
-# These owners will be the default owners for everything in the repo.
-*       @hevayo @keizer619
+*       @keizer619
+
+# Components
+/ballerina-test-automation/ @keizer619
+/ballerina-test/ @keizer619
+/build-time-tests/ @azinneera
+/cache-generator/ @warunalakshitha
+/config/ @keizer619
+/devtools-integration-tests/ @azinneera
+/dist-repo-builder/ @keizer619
+/examples/ @MaryamZi @NipunaRanasinghe @gimantha
+/gradle/ @keizer619 
+/installers/ @keizer619
+/language-server-simulator/ @kavinduZoysa
+/project-api-tests/ @azinneera
+/resources/ @keizer619
+/stdlib-integration-tests/ @NipunaRanasinghe
