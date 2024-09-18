@@ -8,7 +8,8 @@ public function main() {
     // equality of members.
     io:println(student == student2);
 
-    // The output will be false because the values are not equal due to differences in their content.
+    // The output will be `false` because the values are considered equal based on the
+    // equality of members.
     io:println(student != student2);
     
     // The output will be `false` because the references are different.
