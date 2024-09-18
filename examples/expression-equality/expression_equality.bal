@@ -7,7 +7,7 @@ public function main() {
     // The output will be `true` because the values are considered equal based on their content.
     io:println(student == student2);
 
-    // The output will be `false` because the values are the same.
+    // The output will be `false` because the values are not considered equal based on their content.
     io:println(student != student2);
     
     // The output will be `false` because the references are different.
@@ -25,7 +25,7 @@ public function main() {
     int a = 1;
     anydata b = 1;
 
-    // The output will be `true` because the values are the same.
+    // The output will be `true` because the values are considered equal based on their content.
     io:println(a == b);
     // Since values of simple types do not have a storage identity,
     // `===` will evaluate to `true` because the values are the same.
