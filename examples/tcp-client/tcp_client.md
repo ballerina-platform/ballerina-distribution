@@ -14,3 +14,4 @@ Run the client program by executing the command below.
 ## Related links
 - [`tcp:Client` client object - API documentation](https://lib.ballerina.io/ballerina/tcp/latest#Client)
 - [TCP Client - Specification](/spec/tcp/#4-client)
+- [Binary data](/learn/by-example/binary-data/)
