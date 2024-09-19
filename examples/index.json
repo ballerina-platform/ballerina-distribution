@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -409,6 +416,20 @@
       {
         "name": "Expression-oriented style",
         "url": "expression-oriented-style",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Equality",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [ 
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

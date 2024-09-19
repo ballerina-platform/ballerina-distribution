@@ -8,6 +8,5 @@ Binary data is represented by arrays of byte values. It is a special syntax for 
 
 ## Related links
 - [Arrays](/learn/by-example/arrays)
+- [Byte type](/learn/by-example/byte-type)
 - [Integers](/learn/by-example/integers)
-
-[comment]: # (Add byte type BBE link)
