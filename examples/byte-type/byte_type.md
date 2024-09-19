@@ -5,3 +5,6 @@ The byte type in Ballerina represents an 8-bit unsigned integer, with values ran
 ::: code byte_type.bal :::
 
 ::: out byte_type.out :::
+
+## Related links
+- [Built-in integer subtypes](/learn/by-example/built-in-integer-subtypes/)
