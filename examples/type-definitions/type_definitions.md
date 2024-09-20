@@ -1,6 +1,6 @@
 # Type definitions
 
-A type definition gives a name for a type. Its name is just an alias for the type, like `typedef` in C.
+A type definition gives a name for a type. The name is just an alias for the type.
 
 ::: code type_definitions.bal :::
 
