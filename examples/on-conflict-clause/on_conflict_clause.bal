@@ -7,32 +7,53 @@ type Student record {|
 |};
 
 public function main() {
-    error onConflictError = error("Key Conflict", message = "record with same key exists.");
-
     table<Student> students = table [
             {id: 1, name: "John", score: 100},
             {id: 2, name: "Jane", score: 150},
             {id: 1, name: "John", score: 200}
         ];
 
-    // The result of the following will be an error since the key `John` is duplicated.
+    // The result of the following will be an error since the key `John` is duplicated
+    // and `isSafeReplace()` function returns an error for the name `John`
     map<int>|error studentScores = map from var {name, score} in students
                                    select [name, score]
-                                   on conflict onConflictError;
+                                   on conflict isSafeReplace(name);
 
     io:println(studentScores);
 
-    // The value `100` of the key `John` will be replaced by the second occurrence value `200`.
-    map<int> lastRoundScore = map from var student in students
-                              select [student.name, student.score]
-                              on conflict ();
+    // The result of the following will be an error since the key `1` is duplicated
+    // and `isSafeReplace()` function returns an error for the name `John`
+    table<Student> key(id)|error studentScoresTable = table key(id) from var student in students
+                                                      select student
+                                                      on conflict isSafeReplace(student.name);
+
+    io:println(studentScoresTable);
+
+    table<Student> students2 = table [
+            {id: 1, name: "John", score: 100},
+            {id: 2, name: "Mike", score: 150},
+            {id: 2, name: "Mike", score: 200}
+        ];
+
+    // The value `100` of the key `Mike` will be replaced by the second occurrence value `200`
+    // since `isSafeReplace()` function returns `null` for the name 'Mike`
+    map<int>|error lastRoundScore = map from var student in students2
+                                    select [student.name, student.score]
+                                    on conflict isSafeReplace(student.name);
 
     io:println(lastRoundScore);
 
-    // The result of the following will be an error since the key `1` is duplicated.
-    table<Student> key(id)|error studentScoresTable = table key(id) from var student in students
-                                                      select student
-                                                      on conflict onConflictError;
+    // The return value will be just the construct type if the `on conflict` clause
+    // always returns `()`
+    map<int> lastRoundScore2 = map from var student in students2
+                               select [student.name, student.score]
+                               on conflict ();
 
-    io:println(studentScoresTable);
+    io:println(lastRoundScore2);
+}
+
+function isSafeReplace(string name) returns error? {
+    if name == "John" {
+        return error("Key Conflict", message = "record with same key exists.");
+    }
 }
