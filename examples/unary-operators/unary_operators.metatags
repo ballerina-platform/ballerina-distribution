@@ -1,0 +1,2 @@
+description: This BBE introduces the unary operators associated with ballerina types.
+keywords: ballerina, ballerina by example, bbe, operators, unary operators, bitwise operators, int, float, boolean, -, ~, !

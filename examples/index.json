@@ -121,6 +121,20 @@
     ]
   },
   {
+    "title": "Operators",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Unary operators",
+        "url": "unary-operators",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Conditional statements",
     "column": 0,
     "category": "Language concepts",
