@@ -1,13 +1,13 @@
-# HTTP client - Server-Sent Events
+# HTTP client - Server-sent events
 
-The `http:Client` in Ballerina supports receiving real-time data from services using Server-Sent Events (SSE). It allows payload-binding of a stream of `http:SseEvent` when consuming SSE from a service. This payload binding fails if the content type header is not present in the response or does not have the value `text/event-stream`.
+The HTTP client supports receiving real-time data from services using server-sent events (SSE). It allows payload-binding of a stream of `http:SseEvent` when consuming SSE from a service. This payload binding fails if the content type header is not present in the response or does not have the value `text/event-stream`.
 
 ::: code http_sse_client.bal :::
 
 ## Prerequisites
-- Run the HTTP service given in the [Server-Sent Events](/learn/by-example/http-sse-service/) example.
+- Run the HTTP service given in the [Server-sent events](/learn/by-example/http-sse-service/) example.
 
-Run the client program by executing the command below.
+Run the client program by executing the following command.
 
 ::: out http_sse_client.client.out :::
 

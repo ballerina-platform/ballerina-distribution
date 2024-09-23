@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -416,8 +423,22 @@
     ]
   },
   {
+    "title": "Equality",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [ 
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Lists",
-    "column": 1,
+    "column": 0,
     "category": "Language concepts",
     "samples": [
       {
@@ -768,29 +789,8 @@
     ]
   },
   {
-    "title": "Regular Expressions",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "RegExp type",
-        "url": "regexp-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
     "title": "Tables",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -825,7 +825,7 @@
   },
   {
     "title": "Query expressions",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -1177,6 +1177,27 @@
     ]
   },
   {
+    "title": "Regular Expressions",
+    "column": 2,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "RegExp type",
+        "url": "regexp-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp operations",
+        "url": "regexp-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Metadata",
     "column": 2,
     "category": "Language concepts",
@@ -1295,7 +1316,7 @@
   },
   {
     "title": "Error handling",
-    "column": 3,
+    "column": 2,
     "category": "Language concepts",
     "samples": [
       {
@@ -1351,7 +1372,7 @@
   },
   {
     "title": "Ignore return values and errors",
-    "column": 3,
+    "column": 2,
     "category": "Language concepts",
     "samples": [
       {
@@ -1471,6 +1492,20 @@
       {
         "name": "Inter-worker message passing",
         "url": "inter-worker-message-passing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Alternate receive",
+        "url": "alternate-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Multiple receive",
+        "url": "multiple-receive",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -2258,7 +2293,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server-Sent Events",
+        "name": "Server-sent events",
         "url": "http-sse-service",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2337,7 +2372,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server-Sent Events",
+        "name": "Server-sent events",
         "url": "http-sse-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2348,7 +2383,7 @@
   },
   {
     "title": "HTTP service interceptors",
-    "column": 1,
+    "column": 0,
     "category": "Network libraries",
     "samples": [
       {
@@ -2613,6 +2648,14 @@
       {
         "name": "Cache invalidation",
         "url": "graphql-service-cache-invalidation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3839,6 +3882,29 @@
     ]
   },
   {
+    "title": "LDAP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Add/Remove entries",
+        "url": "ldap-add-remove-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Search for an entry",
+        "url": "ldap-search-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "JMS service",
     "column": 3,
     "category": "Network libraries",
@@ -4460,6 +4526,21 @@
     ]
   },
   {
+    "title": "OS",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Environment variables",
+        "url": "environment-variables",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "File",
     "column": 2,
     "category": "Common libraries",
@@ -4552,7 +4633,7 @@
   },
   {
     "title": "UUID",
-    "column": 3,
+    "column": 2,
     "category": "Common libraries",
     "samples": [
       {
@@ -4582,21 +4663,6 @@
         "url": "xslt-transformation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "OS",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Environment variables",
-        "url": "environment-variables",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes varying output",
         "isLearnByExample": false
       }
     ]
@@ -4633,6 +4699,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "YAML data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "YAML to anydata",
+        "url": "yaml-to-anydata",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "YAML to anydata with projection",
+        "url": "yaml-to-anydata-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Serialize to YAML string",
+        "url": "anydata-to-yaml-string",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -4682,7 +4776,7 @@
       }
     ]
   },
-   {
+  {
     "title": "AWS Lambda",
     "column": 2,
     "category": "Deployment",
@@ -4725,7 +4819,7 @@
       }
     ]
   },
-    {
+  {
     "title": "Azure Functions",
     "column": 3,
     "category": "Deployment",
@@ -4768,7 +4862,7 @@
       }
     ]
   },
-   {
+  {
     "title": "Query data",
     "column": 0,
     "category": "Bal persist",
@@ -4867,15 +4961,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
@@ -4887,6 +4972,15 @@
       {
         "name": "Gauge-based metrics",
         "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

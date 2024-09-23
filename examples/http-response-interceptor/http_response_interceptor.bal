@@ -15,7 +15,7 @@ table<Album> key(title) albums = table [
 service class ResponseInterceptor {
     *http:ResponseInterceptor;
 
-    // The `interceptResponse` remote function will be executed for all the
+    // The `interceptResponse` remote method will be executed for all the
     // responses. A `RequestContext` is used to share data between interceptors.
     remote function interceptResponse(http:RequestContext ctx,
             http:Response res) returns http:NextService|error? {
