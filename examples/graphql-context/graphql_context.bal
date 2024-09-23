@@ -1,6 +1,5 @@
 import ballerina/graphql;
 import ballerina/http;
-import ballerina/lang.value;
 
 @graphql:ServiceConfig {
     // Initialization of the `graphqlContext` should be provided to the `contextInit` field.
@@ -51,9 +50,7 @@ service class Profile {
 isolated function validateScope(graphql:Context context, string[] allowedScopes) returns error? {
     // Retrieves the `scope` attribute from the context. This will return a `graphql:Error` if
     // the `scope` is not found in the context.
-    value:Cloneable|isolated object {} scopeValue = check context.get("scope");
-    // Ensure that the obtained scope is a string value.
-    final string scope = check scopeValue.ensureType();
+    final string scope = check context.get("scope").ensureType();
     // If the scope doesn't matches any of the allowed scopes return and `error`.
     if !allowedScopes.some(allowedScope => scope == allowedScope) {
         // Returns an `error` if the required scope is not found.
