@@ -2784,6 +2784,15 @@
         "disableVerificationReason": "Service cannot be stopped",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query parameter",
+        "url": "websocket-query-parameter",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
