@@ -1,8 +1,6 @@
 $ bal run list_binding_pattern_in_match_statement.bal
 Show
-Remove *
+Remove directories *
+Remove files f.txt
 Copy a.bal into b.bal
 Unrecognized command.
-First member is a string and second member is an int: ["Hello",45]
-First member is a float: [4.5,true]
-Value is a float: 5.6
