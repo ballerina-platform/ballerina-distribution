@@ -1,0 +1,2 @@
+description: This BBE introduces the binary operators associated with ballerina types.
+keywords: ballerina, ballerina by example, bbe, operators, binary operators, botwise operators, int, float, string, boolean, +, -, /, %, *, , <, >, <=, >=, >>, <<, >>>, ||, &&, |, &, ^
