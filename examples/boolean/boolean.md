@@ -1,6 +1,6 @@
 # Boolean
 
-The `boolean` type has two values: `true`, `false`. The `!` operator works on booleans only.  `&&` and `||` operators short-circuit as in C. Usual comparison operators (`==`, `!=`, `<`, `>`, `<=`, and `>=`) produce boolean values.
+The `boolean` type has two values: `true`, `false`. The `!` operator works on booleans only.  `&&` and `||` operators short-circuit - the second operand is not evaluated if the result of evaluating the first operand is sufficient to identify the result of the logical expression. Usual comparison operators (`==`, `!=`, `<`, `>`, `<=`, and `>=`) produce boolean values.
 
 ::: code boolean.bal :::
 
