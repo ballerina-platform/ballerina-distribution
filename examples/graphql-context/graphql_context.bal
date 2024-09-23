@@ -38,8 +38,9 @@ service class Profile {
 
     resource function get age() returns int => self.age;
 
-    // If the context is needed, it should be defined as a parameter of the resolver function.
-    // There is no need to pass the context via the `init` method from the parent resolver.
+    // If the context is needed, it should just be specified as a parameter of the resolver method.
+    // Ballerina handles propagating the context, and therefore, it is not required to be passed 
+    // as an argument to the `init` method from the parent resolver.
     resource function get salary(graphql:Context context) returns float|error {
         // The salary information will be returned only if the scope is `admin`.
         check validateScope(context, ["admin"]);
@@ -51,7 +52,7 @@ isolated function validateScope(graphql:Context context, string[] allowedScopes)
     // Retrieves the `scope` attribute from the context. This will return a `graphql:Error` if
     // the `scope` is not found in the context.
     final string scope = check context.get("scope").ensureType();
-    // If the scope doesn't matches any of the allowed scopes return and `error`.
+    // If the scope doesn't matches any of the allowed scopes return an `error`.
     if !allowedScopes.some(allowedScope => scope == allowedScope) {
         // Returns an `error` if the required scope is not found.
         return error("Permission denied");
