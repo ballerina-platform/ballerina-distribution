@@ -8,13 +8,13 @@ type Student record {|
 
 public function main() {
     table<Student> students = table [
-            {id: 1, name: "John", score: 100},
-            {id: 2, name: "Jane", score: 150},
-            {id: 1, name: "John", score: 200}
+            {id: 1, name: "Admin", score: 100},
+            {id: 2, name: "John", score: 150},
+            {id: 1, name: "Admin", score: 200}
         ];
 
-    // The result of the following will be an error since the key `John` is duplicated
-    // and `isSafeReplace()` function returns an error for the name `John`.
+    // The result of the following will be an error since the key `Admin` is duplicated
+    // and `isSafeReplace()` function returns an error for the name `Admin`.
     map<int>|error studentScores = map from var {name, score} in students
                                    select [name, score]
                                    on conflict isSafeReplace(name);
@@ -22,7 +22,7 @@ public function main() {
     io:println(studentScores);
 
     // The result of the following will be an error since the key `1` is duplicated
-    // and `isSafeReplace()` function returns an error for the name `John`.
+    // and `isSafeReplace()` function returns an error for the name `Admin`.
     table<Student> key(id)|error studentScoresTable = table key(id) from var student in students
                                                       select student
                                                       on conflict isSafeReplace(student.name);
@@ -30,7 +30,7 @@ public function main() {
     io:println(studentScoresTable);
 
     table<Student> students2 = table [
-            {id: 1, name: "John", score: 100},
+            {id: 1, name: "Admin", score: 100},
             {id: 2, name: "Mike", score: 150},
             {id: 2, name: "Mike", score: 200}
         ];
@@ -53,7 +53,7 @@ public function main() {
 }
 
 function isSafeReplace(string name) returns error? {
-    if name == "John" {
+    if name == "Admin" {
         return error("Key Conflict", message = "record with same key exists.");
     }
 }

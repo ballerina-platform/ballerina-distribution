@@ -1,5 +1,5 @@
 $ bal run on_conflict_clause.bal
 error("Key Conflict",message="record with same key exists.")
 error("Key Conflict",message="record with same key exists.")
-{"John":100,"Mike":200}
-{"John":100,"Mike":200}
+{"Admin":100,"Mike":200}
+{"Admin":100,"Mike":200}
