@@ -4701,6 +4701,20 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Convert CSV string to array of anydata arrays",
+        "url": "csv-string-to-anydata-array",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
