@@ -4,64 +4,62 @@ public function main() {
     int a = 10;
     int b = 20;
 
-    // Addition
+    // Adds two integers.
     io:println(a + b);
-    // Subtraction
+    // Subtracts two integers.
     io:println(a - b);
-    // Multiplication
+    // Multiplies two integers.
     io:println(a * b);
-    // Division between two integers
+    // Divides two integers.
     io:println(b / a);
-    // Modulus
+    // Computes the modulus of two integers.
     io:println(b % a);
-    // Less than
+    // Compares two integers.
     io:println(a < b);
-    // Greater than or equal
     io:println(a >= b);
 
     float e = 10.5;
     float f = 20.5;
 
-    // Addition
+    // Adds two floating-point numbers.
     io:println(e + f);
-    // Subtraction
+    // Subtracts two floating-point numbers.
     io:println(e - f);
-    // Multiplication
+    // Multiplies two floating-point numbers.
     io:println(e * f);
-    // Division
+    // Divides two floating-point numbers.
     io:println(e / f);
-    // Less than or equal
+    // Compares two floating-point numbers.
     io:println(e <= f);
-    // Greater than
     io:println(e > f);
 
     boolean c = true;
     boolean d = false;
 
-    // Logical AND
+    // Performs logical AND between two boolean values.
     io:println(c && d);
-    // Logical OR
+    // Performs logical OR between two boolean values.
     io:println(c || d);
 
     int g = 10;
     int h = 20;
 
-    // Bitwise AND
+    // Performs bitwise AND between two integers.
     io:println(g & h);
-    // Bitwise OR
+    // Performs bitwise OR between two integers.
     io:println(g | h);
-    // Bitwise XOR
+    // Performs bitwise XOR between two integers.
     io:println(g ^ h);
-    // Left shift: shifts bits of g to the left by 2, filling right with zeros
+    // Left shifts an integer by 2 bits.
     io:println(g << 2);
-    // Signed right shift: shifts bits of g to the right by 2, filling left with the sign bit
+    // Right shifts an integer by 2 bits (signed).
     io:println(g >> 2);
-    // Unsigned right shift: shifts bits of g to the right by 2, filling left with zeros
+    // Right shifts an integer by 2 bits (unsigned).
     io:println(g >>> 2);
 
     string i = "Hello";
     string j = "Ballerina";
 
-    // String concatenation
+    // Concatenates two strings.
     io:println(i + " " + j);
 }
