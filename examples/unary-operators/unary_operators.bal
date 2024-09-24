@@ -3,18 +3,18 @@ import ballerina/io;
 public function main() {
     int a = 10;
 
-    // Negates the value
+    // Negate the value of `a`.
     io:println(-a);
-    // Bitwise NOT
+    // Perform bitwise NOT on `a`.
     io:println(~a);
 
-    float b = 10.5;
+    float b = -10.5;
 
-    // Negates the value
+    // Negate the value of `b`.
     io:println(-b);
 
     boolean c = true;
 
-    // Logical NOT
+    // Perform logical NOT on `c`.
     io:println(!c);
 }
