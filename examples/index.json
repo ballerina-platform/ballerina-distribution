@@ -4701,6 +4701,20 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Parse CSV byte streams to array of records",
+        "url": "csv-streams-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
