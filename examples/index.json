@@ -4706,7 +4706,7 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Convert CSV string into a record array",
+        "name": "Convert CSV string to Ballerina record array",
         "url": "csv-string-to-record-array",
         "verifyBuild": true,
         "verifyOutput": true,
