@@ -4706,7 +4706,7 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Parse CSV byte streams to array of records",
+        "name": "Parse CSV byte streams to records",
         "url": "csv-streams-to-record-array",
         "verifyBuild": true,
         "verifyOutput": true,
