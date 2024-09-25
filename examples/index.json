@@ -4701,6 +4701,20 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Transform CSV records to custom types",
+        "url": "transform-csv-to-ballerina-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
