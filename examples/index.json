@@ -4701,6 +4701,20 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Parse CSV lists to custom types",
+        "url": "parse-csv-lists",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
