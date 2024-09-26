@@ -1231,6 +1231,13 @@
         "verifyOutput": true,
         "isLearnByExample": true
       }
+      {
+        "name": "RegExp match operations",
+        "url": "regexp-match-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
     ]
   },
   {
