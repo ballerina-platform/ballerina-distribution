@@ -1,4 +1,4 @@
-$ bal run regexp-match-operations.bal
+$ bal run regexp_match_operations.bal
 Product Code: ELEC-1234, Valid: true
 Product Type: ELEC
 Unique ID: 1234
