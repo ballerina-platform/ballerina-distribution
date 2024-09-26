@@ -2,4 +2,5 @@ $ bal run unary_operators.bal
 -10
 -11
 10.5
+-10.5
 false

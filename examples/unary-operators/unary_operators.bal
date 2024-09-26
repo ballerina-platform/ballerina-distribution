@@ -5,16 +5,20 @@ public function main() {
 
     // Negate the value of `a`.
     io:println(-a);
-    // Perform bitwise NOT on `a`.
+    
+    // Invert the bits of `a`.
     io:println(~a);
 
     float b = -10.5;
 
     // Negate the value of `b`.
     io:println(-b);
+    
+    // Return the value of `b`.
+    io:println(+b);
 
     boolean c = true;
 
-    // Perform logical NOT on `c`.
+    // Invert the boolean value of `c`.
     io:println(!c);
 }
