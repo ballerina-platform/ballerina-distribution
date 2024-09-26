@@ -1,19 +1,6 @@
 import ballerina/io;
 import ballerina/lang.regexp;
 
-function printGroupsWithinLog(regexp:Groups logGroup) {
-    // The first element in the `logGroup` is the entire matched string.
-    // The subsequent elements in `logGroup` represent the captured groups 
-    // (timestamp, component, message).
-    string timestamp = (<regexp:Span>logGroup[1]).substring();
-    string component = (<regexp:Span>logGroup[2]).substring();
-    string logMessage = (<regexp:Span>logGroup[3]).substring();
-
-    io:println(string `Timestamp: ${timestamp}`);
-    io:println(string `Component: ${component}`);
-    io:println(string `Message: ${logMessage}`);
-}
-
 public function main() {
     string logContent = string `
         2024-09-19 10:02:01 WARN  [UserLogin] - Failed login attempt for user: johndoe
@@ -52,4 +39,17 @@ public function main() {
     foreach regexp:Groups logGroup in allErrorLogGroups {
         printGroupsWithinLog(logGroup);
     }
+}
+
+function printGroupsWithinLog(regexp:Groups logGroup) {
+    // The first element in the `logGroup` is the entire matched string.
+    // The subsequent elements in `logGroup` represent the captured groups 
+    // (timestamp, component, message).
+    string timestamp = (<regexp:Span>logGroup[1]).substring();
+    string component = (<regexp:Span>logGroup[2]).substring();
+    string logMessage = (<regexp:Span>logGroup[3]).substring();
+
+    io:println(string `Timestamp: ${timestamp}`);
+    io:println(string `Component: ${component}`);
+    io:println(string `Message: ${logMessage}`);
 }
