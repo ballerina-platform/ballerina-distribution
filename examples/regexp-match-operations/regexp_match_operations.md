@@ -2,9 +2,9 @@
 
 The ``RegExp`` type include a set of langlib functions for matching patterns in strings, enabling operations to find, validate, group, and extract data based on regular expressions.
 
-::: code regexp-match-operations.bal :::
+::: code regexp_match_operations.bal :::
 
-::: out regexp-match-operations.out :::
+::: out regexp_match_operations.out :::
 
 ## Related links
 - [RegExp type](/learn/by-example/regexp-type)
