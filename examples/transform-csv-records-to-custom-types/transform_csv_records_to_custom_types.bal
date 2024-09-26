@@ -6,7 +6,7 @@ type Employee record {|
     int empId;
     string empName;
     string department;
-    float salary;
+    decimal salary;
 |};
 
 // Represents the salary details of an employee.
@@ -17,7 +17,7 @@ type EmployeeSalary record {|
         value: "empId"
     }
     int id;
-    float salary;
+    decimal salary;
 |};
 
 public function main() returns error? {
@@ -29,7 +29,7 @@ public function main() returns error? {
 
     // Transform the `employees` array into an array of `EmployeeSalary` records.
     // Only the fields specified in the `EmployeeSalary` type (`id` and `salary`) 
-    // are included in the resulting array.
+    // are included in the values in the resulting array.
     EmployeeSalary[] employeeSalaries = check csv:transform(employees);
     io:println(employeeSalaries);
 

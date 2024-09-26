@@ -4707,7 +4707,7 @@
     "samples": [
       {
         "name": "Transform CSV records to custom types",
-        "url": "transform-csv-to-ballerina-types",
+        "url": "transform-csv-records-to-custom-types",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
