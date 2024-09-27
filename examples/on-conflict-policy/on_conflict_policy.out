@@ -1,0 +1,3 @@
+$ bal run on_conflict_policy.bal
+{"John":200,"Jane":150}
+error("Key Conflict",message="Duplicate key has an odd score")
