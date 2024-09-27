@@ -9,6 +9,5 @@ You can use `==` and `!=` on lists to check the deep equality of two lists: two 
 ## Related links
 - [Tuples](/learn/by-example/tuples)
 - [Arrays](/learn/by-example/arrays)
+- [Expression equality](/learn/by-example/expression-equality)
 - [List sub typing](/learn/by-example/list-subtyping)
-
-[comment]: # (Add equality expression link)
