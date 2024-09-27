@@ -1,6 +1,6 @@
 import ballerina/io;
 
-const switchStatus = "ON";
+const SWITCH_STATUS = "ON";
 
 function matchValue(any val) returns string {
     // The value of the `val` variable is matched against the given value match patterns.
@@ -15,7 +15,7 @@ function matchValue(any val) returns string {
         "STOP" => {
             return "STOP";
         }
-        switchStatus => {
+        SWITCH_STATUS => {
             return "Switch ON";
         }
         // Use `_` to match type `any`.
@@ -30,6 +30,6 @@ public function main() {
     io:println(matchValue(1));
     io:println(matchValue(2));
     io:println(matchValue("STOP"));
-    io:println(matchValue(switchStatus));
+    io:println(matchValue(SWITCH_STATUS));
     io:println(matchValue("default"));
 }
