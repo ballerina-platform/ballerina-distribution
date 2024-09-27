@@ -11,7 +11,7 @@ public function main() {
     string s2 = string `Backtick:${"`"}`;
     io:println(s2);
 
-    // If required, a single-line string can be split into a multiline string template by breaking
+    // If required, a single-line string template can be split into a multiline string template by breaking
     // at an interpolation point or using string concatenation.
     string s3 = string `A string-template-expr is evaluated by evaluating the expression in each interpolation in ${
         ""}the order in which they occur.`;
