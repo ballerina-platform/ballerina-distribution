@@ -22,18 +22,21 @@ public function main() returns error? {
                                 2|Doe|HR
                                 3|Jane|Finance
                                 4|John|Engineering`; 
-                                
-    // Parse the CSV string into an array of `Employee` records with specified options.
+
+    // Defines the options for parsing the CSV string.                            
     // The `|` character is used as the delimiter for separating fields.
     // The `\` character is used to escape characters (e.g., quotes) within the data.
     // The `#` character indicates the start of a comment, lines starting with `#` will be ignored.
     // The second and fourth data rows will be skipped during parsing.
-    Employee[] employees = check csv:parseString(csvString, {
+    csv:ParseOptions parseOptions = {
         delimiter: "|",
         escapeChar: "\\",
         comment: "#",
         skipLines: [2, 4]
-    });
+    };
+
+    // Parse the CSV string into an array of `Employee` records with specified options.
+    Employee[] employees = check csv:parseString(csvString, parseOptions);
     io:println(employees);
 
     Employee[] employeeRecords = [
@@ -43,7 +46,13 @@ public function main() returns error? {
         {id: 4, name: "John", department: "Engineering"}
     ];
     
-    // Transform the employee records into `EmployeeDepartment` records, skipping the second and fourth lines.
-    EmployeeDepartment[] employeeDepartments = check csv:transform(employeeRecords, {skipLines: [2, 4]});
+    // Defines the options for transforming the `Employee` records.
+    // The second and fourth data rows will be skipped during transformation.
+    csv:TransformOptions transformOptions = {
+        skipLines: [2, 4]
+    };
+
+    // Transform the `employee` records into `EmployeeDepartment` records with specified options.
+    EmployeeDepartment[] employeeDepartments = check csv:transform(employeeRecords, transformOptions);
     io:println(employeeDepartments);
 }
