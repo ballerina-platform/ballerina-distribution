@@ -16,6 +16,9 @@ public function main() {
         // If valid, extract the product type and unique ID from the match groups.
         regexp:Groups? matchGroups = productCodePattern.fullMatchGroups(productCode);
         if matchGroups is regexp:Groups {
+            // The first element in the `matchGroups` is the entire matched string.
+            // The subsequent elements in `matchGroups` represent the captured groups
+            // (productType, uniqueID).
             string productType = (<regexp:Span>matchGroups[1]).substring();
             string uniqueID = (<regexp:Span>matchGroups[2]).substring();
 
@@ -25,16 +28,20 @@ public function main() {
     }
 
     // Match product code from a specific starting index in the string.
-    regexp:Span productCode = <regexp:Span>productCodePattern.matchAt("Product code: FURN-5678", 14);
-    io:println(string `Matched product: ${productCode.substring()}`);
+    regexp:Span? productCode = productCodePattern.matchAt("Product code: FURN-5678", 14);
+    if productCode is regexp:Span {
+        io:println(string `Matched product: ${productCode.substring()}`);
+    }
 
     // Regular expression to extract production time (HH:MM) from a log string
     string:RegExp timePattern = re `([01][0-9]|2[0-3]):([0-5][0-9])`;
 
     // Find groups of the matching string from a specified starting index.
-    regexp:Groups timeMatchGroups = <regexp:Groups>timePattern.matchGroupsAt("Production time: 14:35", 17);
-    string hour = (<regexp:Span>timeMatchGroups[1]).substring();
-    string minutes = (<regexp:Span>timeMatchGroups[2]).substring();
-    io:println(string `Production hour: ${hour}`);
-    io:println(string `Production minute: ${minutes}`);
+    regexp:Groups? timeMatchGroups = timePattern.matchGroupsAt("Production time: 14:35", 17);
+    if timeMatchGroups is regexp:Groups {
+        string hour = (<regexp:Span>timeMatchGroups[1]).substring();
+        string minutes = (<regexp:Span>timeMatchGroups[2]).substring();
+        io:println(string `Production hour: ${hour}`);
+        io:println(string `Production minutes: ${minutes}`);
+    }
 }
