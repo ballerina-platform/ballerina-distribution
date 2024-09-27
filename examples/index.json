@@ -4739,6 +4739,13 @@
         "category": "Common libraries",
         "samples": [
           {
+            "name": "Convert CSV string to records",
+            "url": "csv-string-to-record-array",
+            "verifyBuild": true,
+            "verifyOutput": true,
+            "isLearnByExample": true
+          },
+          {
             "name": "Parse CSV byte streams to records",
             "url": "csv-streams-to-record-array",
             "verifyBuild": true,
