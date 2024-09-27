@@ -4727,6 +4727,13 @@
     "category": "Common libraries",
     "samples": [
       {
+        "name": "Convert CSV string to records",
+        "url": "csv-string-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Handle CSV with custom configurations",
         "url": "csv-user-configurations",
         "verifyBuild": true,
