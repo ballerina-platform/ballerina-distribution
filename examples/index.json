@@ -1244,7 +1244,7 @@
         "name": "Module lifecycle",
         "url": "module-lifecycle",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
