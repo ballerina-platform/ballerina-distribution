@@ -1,5 +1,5 @@
 $ bal run time_zone.bal
-Event Time in UTC: [1643496480,0]
-Event Time in System's Local Time: {"timeAbbrev":"Asia/Colombo","dayOfWeek":0,"year":2022,"month":1,"day":30,"hour":4,"minute":18,"second":0}
-Event Time in Europe/London: {"timeAbbrev":"Europe/London","dayOfWeek":6,"year":2022,"month":1,"day":29,"hour":22,"minute":48,"second":0}
-Event Time in Asia/Tokyo: {"timeAbbrev":"Asia/Tokyo","dayOfWeek":0,"year":2022,"month":1,"day":30,"hour":7,"minute":48,"second":0}
+Event time in UTC: [1643496480,0]
+Event time in system's local time: {"timeAbbrev":"Asia/Colombo","dayOfWeek":0,"year":2022,"month":1,"day":30,"hour":4,"minute":18,"second":0}
+Event time in Europe/London time zone: {"timeAbbrev":"Europe/London","dayOfWeek":6,"year":2022,"month":1,"day":29,"hour":22,"minute":48,"second":0}
+Event time in Asia/Tokyo time zone: {"timeAbbrev":"Asia/Tokyo","dayOfWeek":0,"year":2022,"month":1,"day":30,"hour":7,"minute":48,"second":0}
