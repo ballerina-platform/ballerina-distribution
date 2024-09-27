@@ -15,27 +15,35 @@ public function main() {
     // 1. Timestamp (e.g., 2024-09-19 10:03:17).
     // 2. Component (e.g., Database, Scheduler).
     // 3. Log message (e.g., Connection to database timed out).
-    string:RegExp errorLogPattern = re `(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) ERROR \[(\w+)\] - (.*)`;
+    string:RegExp errorLogPattern = re `(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) ERROR \[(\w+)\]\s-\s(.*)`;
 
     // Retrieving the first error log from the `logContent`.
-    regexp:Span firstErrorLog = <regexp:Span>errorLogPattern.find(logContent);
+    regexp:Span? firstErrorLog = errorLogPattern.find(logContent);
+    if firstErrorLog == () {
+        io:println("Failed to find a error log");
+        return;
+    }
     io:println(string `First error log: ${firstErrorLog.substring()}`);
 
     // Retrieving all error logs from the `logContent`.
     regexp:Span[] allErrorLogs = errorLogPattern.findAll(logContent);
-    io:println("All error logs:");
+    io:println("\n", "All error logs:");
     foreach regexp:Span errorLog in allErrorLogs {
         io:println(errorLog.substring());
     }
 
     // Retrieving groups (timestamp, component, message) from the first error log.
-    regexp:Groups firstErrorLogGroups = <regexp:Groups>errorLogPattern.findGroups(logContent);
-    io:println("\nGroups within first error log:");
+    regexp:Groups? firstErrorLogGroups = errorLogPattern.findGroups(logContent);
+    if firstErrorLogGroups == () {
+        io:println("Failed to find groups in first error log");
+        return;
+    }
+    io:println("\n", "Groups within first error log:");
     printGroupsWithinLog(firstErrorLogGroups);
 
     // Retrieving groups from all error logs.
     regexp:Groups[] allErrorLogGroups = errorLogPattern.findAllGroups(logContent);
-    io:println("\nGroups in all error logs");
+    io:println("\n", "Groups in all error logs");
     foreach regexp:Groups logGroup in allErrorLogGroups {
         printGroupsWithinLog(logGroup);
     }
