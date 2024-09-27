@@ -258,8 +258,8 @@ ballerina-soap.soap12-1.1.0.jar                                                 
 ballerina-soap.soap11-1.1.0.jar                                                                     jar            apache2             
 ballerina-soap-1.1.0.jar                                                                            jar            apache2             
 ballerina-soap.wssec-1.1.0.jar                                                                      jar            apache2             
-ballerina-http-2.11.1.jar                                                                           jar            apache2
-ballerina-http.httpscerr-2.11.1.jar                                                                 jar            apache2
+ballerina-http-2.12.1.jar                                                                           jar            apache2
+ballerina-http.httpscerr-2.12.1.jar                                                                 jar            apache2
 ballerina-lang.annotations-0.0.0.jar                                                                jar            apache2             
 ballerina-lang.regexp-0.0.0.jar                                                                     jar            apache2             
 ballerina-file-1.10.0.jar                                                                           jar            apache2             
@@ -391,7 +391,7 @@ wss4j-ws-security-dom-3.0.1.jar                                                 
 wss4j-ws-security-common-3.0.1.jar                                                                  bundle         apache2             
 xmlsec-3.0.3.jar                                                                                    bundle         apache2             
 ballerina-to-openapi-2.1.0.jar                                              jar            apache2             
-http-compiler-plugin-2.11.1.jar                                             jar            apache2
+http-compiler-plugin-2.12.1.jar                                             jar            apache2
 file-compiler-plugin-1.10.0.jar                                             jar            apache2             
 file-native-1.10.0.jar                                                      jar            apache2             
 
