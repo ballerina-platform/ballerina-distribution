@@ -6,7 +6,9 @@ It is possible to access elements in XML.
 
 - `x.id` accesses the required attribute named `id`: the result is an error if there is no such attribute or if `x` is not a singleton.
 
-- `x?.id` accesses an optional attribute named `id`: the result is `()` if there is no such attribute. The `lang.xml` langlib provides the other operations.
+- `x?.id` accesses an optional attribute named `id`: the result is `()` if there is no such attribute. 
+
+The `lang.xml` langlib provides the other operations.
 
 ::: code xml_access.bal :::
 

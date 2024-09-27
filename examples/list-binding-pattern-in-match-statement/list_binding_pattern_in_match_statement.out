@@ -1,5 +1,6 @@
 $ bal run list_binding_pattern_in_match_statement.bal
 Show
-Remove *
+Remove directories *
+Remove files f.txt
 Copy a.bal into b.bal
 Unrecognized command.
