@@ -24,6 +24,7 @@ public function main() {
     int remainder = b % a;
     io:println(remainder);
 
+    // `>`, `<`, `>=` and `<=` are use to perform the relative order of two values.
     // Check if `a` is less than `b`.
     boolean isLessThan = a < b;
     io:println(isLessThan);
@@ -70,6 +71,10 @@ public function main() {
     boolean logicalOr = c || d;
     io:println(logicalOr);
 
+    // `false` is considered less than `true`.
+    boolean isLessThanBoolean = d < c;
+    io:println(isLessThanBoolean); 
+
     int g = 10;
     int h = 20;
 
@@ -103,4 +108,8 @@ public function main() {
     // Concatenate two strings.
     string concatenatedString = i + " " + j;
     io:println(concatenatedString);
+
+    // Check if `i` is lexicographically greater than `y` in Unicode code point order.
+    boolean isGreaterThanString = i > j;
+    io:println(isGreaterThanString);
 }
