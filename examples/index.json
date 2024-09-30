@@ -132,6 +132,14 @@
     "column": 0,
     "category": "Language concepts",
     "samples": [
+
+      {
+        "name": "Binary operators",
+        "url": "binary-operators",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
       {
         "name": "Unary operators",
         "url": "unary-operators",

@@ -1,0 +1,25 @@
+$ bal run binary_operators.bal
+30
+-10
+200
+2
+0
+true
+false
+31.0
+-10.0
+215.25
+0.5121951219512195
+true
+false
+false
+true
+true
+0
+30
+30
+40
+2
+2
+Hello Ballerina
+true
