@@ -1,5 +1,10 @@
 import ballerina/log;
 
+public type User record {
+    string name;
+    int age;
+};
+
 public function main() {
     // The Ballerina log API provides functions to log at four levels, which are `DEBUG`, `ERROR`, `INFO`, and `WARN`.
     log:printDebug("debug log");

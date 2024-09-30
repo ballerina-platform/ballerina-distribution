@@ -3,4 +3,4 @@ time=2024-09-27T16:11:50.079+05:30 level=ERROR module="" message="error log"
 time=2024-09-27T16:11:50.120+05:30 level=INFO module="" message="info log"
 time=2024-09-27T16:11:50.122+05:30 level=WARN module="" message="warn log"
 time=2024-09-27T16:11:50.134+05:30 level=INFO module="" message="info log" id=845315 name="foo" successful=true user={"name":"Harry","age":20}
-time=2024-09-27T16:11:50.157+05:30 level=ERROR module="" message="error log with cause" error={"causes":[],"message":"something went wrong!","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"logging.bal","lineNumber":19}]} id=845315 name="foo"
+time=2024-09-27T16:11:50.157+05:30 level=ERROR module="" message="error log with cause" error={"causes":[],"message":"something went wrong!","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"logging.bal","lineNumber":24}]} id=845315 name="foo"
