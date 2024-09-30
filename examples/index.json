@@ -906,6 +906,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Advanced conflict handling",
+        "url": "advanced-conflict-handling",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Iterate over XML with a query",
         "url": "iterating-over-xml-with-query",
         "verifyBuild": true,

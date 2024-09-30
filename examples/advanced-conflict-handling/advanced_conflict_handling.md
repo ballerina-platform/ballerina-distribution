@@ -1,15 +1,13 @@
-# `on conflict` clause
+# Advanced conflict handling
 
-When constructing a map or a table with a key sequence using a query expression, there can be conflicting keys. The `on conflict` clause can be specified after the `select` clause to handle these cases.
+We can implement a custom conflict-handling policy to determine whether to replace a value or throw an error in the event of conflicting keys when constructing a map or table.
 
-The `on conflict` clause uses the syntax `on conflict <expression>`, where the expression must be of type `error?`. If a conflicting key is found, and the expression evaluates to an error, that error becomes the result of the query expression. If it evaluates to `null` or the `on conflict` clause is absent, the old value is replaced by the new value.
+::: code advanced_conflict_handling.bal :::
 
-::: code on_conflict_clause.bal :::
-
-::: out on_conflict_clause.out :::
+::: out advanced_conflict_handling :::
 
 ## Related links
-- [Advanced conflict handling](/learn/by-example/advanced-conflict-handling)
+- [On conflict clause](/learn/by-example/on-conflict-clause)
 - [Query expressions](/learn/by-example/query-expressions)
 - [Sort iterable objects using query](/learn/by-example/sort-iterable-objects)
 - [Let clause in query expression](/learn/by-example/let-clause)
