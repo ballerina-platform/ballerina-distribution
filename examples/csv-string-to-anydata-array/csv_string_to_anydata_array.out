@@ -1,0 +1,4 @@
+$ bal run csv_string_to_anydata_array.bal
+[["Effective Java","Joshua Bloch","45.99","2018-01-01"],["Clean Code","Robert C. Martin","37.50","2008-08-01"]]
+[["Effective Java","Joshua Bloch",45.99,"2018-01-01"],["Clean Code","Robert C. Martin",37.5,"2008-08-01"]]
+[["Effective Java","Joshua Bloch"],["Clean Code","Robert C. Martin"]]
