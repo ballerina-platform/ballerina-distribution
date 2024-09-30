@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -125,9 +132,17 @@
     "column": 0,
     "category": "Language concepts",
     "samples": [
+
       {
         "name": "Binary operators",
         "url": "binary-operators",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Unary operators",
+        "url": "unary-operators",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -423,6 +438,20 @@
       {
         "name": "Expression-oriented style",
         "url": "expression-oriented-style",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Equality",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [ 
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -894,6 +923,13 @@
       {
         "name": "On conflict clause",
         "url": "on-conflict-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Advanced conflict handling",
+        "url": "advanced-conflict-handling",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -4429,6 +4465,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Time Zone",
+        "url": "time-zone",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
       }
     ]
   },
@@ -4945,15 +4988,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
@@ -4965,6 +4999,15 @@
       {
         "name": "Gauge-based metrics",
         "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

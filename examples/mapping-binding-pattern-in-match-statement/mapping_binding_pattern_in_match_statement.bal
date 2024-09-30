@@ -43,6 +43,21 @@ function matchTime3(Day day) {
     }
 }
 
+function matchTime4(Time time) {
+    match time {
+        // The binding pattern below has a rest binding pattern to capture the additional 
+        // fields that may be specified in the open record value assigned to the `time` variable.
+        // The condition here checks whether the open record has the field `meridiem`.
+        var {hours, minutes, ...rest}
+                if rest["meridiem"] !is () && rest["meridiem"] == "PM" => {
+            io:println(hours + 12, ", ", minutes);
+        }
+        _ => {
+            io:println(time.hours, ", ", time.minutes);
+        }
+    }
+}
+
 public function main() {
     Time time = {hours: 3, minutes: 20, "seconds": 40, "milli-seconds": 500};
     matchTime1(time);
@@ -50,4 +65,8 @@ public function main() {
 
     Day day = {t: time};
     matchTime3(day);
+
+    Time time2 = {hours: 11, minutes: 21, "seconds": 52, "meridiem": "PM"};
+    matchTime4(time2);
+    matchTime4(time);
 }
