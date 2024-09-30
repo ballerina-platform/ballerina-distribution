@@ -4,21 +4,32 @@ public function main() {
     int a = 10;
 
     // Negate the value of `a`.
-    io:println(-a);
+    int negatedInt = -a;
+    io:println(negatedInt);
     
     // Invert the bits of `a`.
-    io:println(~a);
+    int bitwiseInvertedInt = ~a;
+    io:println(bitwiseInvertedInt);
 
-    float b = -10.5;
+    int:Signed8 b = 127;
 
     // Negate the value of `b`.
-    io:println(-b);
+    int negatedSigned8Int = -b;
+    io:println(negatedSigned8Int);
+
+    float c = -10.5;
+
+    // Negate the value of `c`.
+    float negatedFloat = -c;
+    io:println(negatedFloat);
     
-    // Return the value of `b`.
-    io:println(+b);
+    // Using the `+` operator returns the value of its operand expression.
+    float unchangedFloat = +c;
+    io:println(unchangedFloat);
 
-    boolean c = true;
+    boolean d = true;
 
-    // Invert the boolean value of `c`.
-    io:println(!c);
+    // Invert the boolean value of `d`.
+    boolean negatedBoolean = !d;
+    io:println(negatedBoolean);
 }
