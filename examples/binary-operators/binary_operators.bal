@@ -4,51 +4,51 @@ public function main() {
     int a = 10;
     int b = 20;
 
-    // Add two integers.
+    // Perform integer addition.
     int sum = a + b;
     io:println(sum);
 
-    // Subtract two integers.
+    // Perform integer subtraction.
     int difference = a - b;
     io:println(difference);
 
-    // Multiply two integers.
+    // Perform integer multiplication.
     int product = a * b;
     io:println(product);
 
-    // Divide two integers.
+    // Perform integer division.
     int quotient = b / a;
     io:println(quotient);
 
-    // Compute the integer remainder.
+    // Perform integer remainder.
     int remainder = b % a;
     io:println(remainder);
 
-    // `>`, `<`, `>=` and `<=` are use to perform the relative order of two values.
+    // `>`, `<`, `>=` and `<=` are used to test the relative order of two values.
     // Check if `a` is less than `b`.
     boolean isLessThan = a < b;
     io:println(isLessThan);
 
     // Check if `a` is greater than or equal to `b`.
-    boolean isGreaterOrEqual = a >= b;
-    io:println(isGreaterOrEqual);
+    boolean isGreaterThanOrEqual = a >= b;
+    io:println(isGreaterThanOrEqual);
 
     float e = 10.5;
     float f = 20.5;
 
-    // Add two floating-point numbers.
+    // Perform floating-point addition.
     float floatSum = e + f;
     io:println(floatSum);
 
-    // Subtract two floating-point numbers.
+    // Perform floating-point subtraction.
     float floatDifference = e - f;
     io:println(floatDifference);
 
-    // Multiply two floating-point numbers.
+    // Perform floating-point multiplication.
     float floatProduct = e * f;
     io:println(floatProduct);
 
-    // Divide two floating-point numbers.
+    // Perform floating-point division.
     float floatQuotient = e / f;
     io:println(floatQuotient);
 
@@ -63,7 +63,7 @@ public function main() {
     boolean c = true;
     boolean d = false;
 
-    // Perform logical AND between two boolean values.
+    // Perform the logical AND operation between two boolean values.
     boolean logicalAnd = c && d;
     io:println(logicalAnd);
 
@@ -71,9 +71,9 @@ public function main() {
     boolean logicalOr = c || d;
     io:println(logicalOr);
 
-    // `false` is considered less than `true`.
+    // For the `<` operator, `d < c` evaluates to `true` when `d` is `false` and `c` is `true`.
     boolean isLessThanBoolean = d < c;
-    io:println(isLessThanBoolean); 
+    io:println(isLessThanBoolean);
 
     int g = 10;
     int h = 20;
@@ -109,7 +109,7 @@ public function main() {
     string concatenatedString = i + " " + j;
     io:println(concatenatedString);
 
-    // Check if `i` is lexicographically greater than `y` in Unicode code point order.
+    // Check if `i` is lexicographically greater than `j` in Unicode code point order.
     boolean isGreaterThanString = i > j;
     io:println(isGreaterThanString);
 }
