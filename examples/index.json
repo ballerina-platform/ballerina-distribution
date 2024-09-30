@@ -906,8 +906,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "On conflict policy",
-        "url": "on-conflict-policy",
+        "name": "Advanced conflict handling",
+        "url": "advanced-conflict-handling",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

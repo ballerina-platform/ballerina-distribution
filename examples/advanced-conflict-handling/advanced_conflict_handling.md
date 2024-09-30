@@ -1,10 +1,10 @@
-# `on conflict` policy
+# Advanced conflict handling
 
 We can implement a custom conflict-handling policy to determine whether to replace a value or throw an error in the event of conflicting keys when constructing a map or table.
 
-::: code on_conflict_policy.bal :::
+::: code advanced_conflict_handling.bal :::
 
-::: out on_conflict_policy.out :::
+::: out advanced_conflict_handling :::
 
 ## Related links
 - [On conflict clause](/learn/by-example/on-conflict-clause)

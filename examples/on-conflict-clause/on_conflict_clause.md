@@ -9,7 +9,7 @@ The `on conflict` clause uses the syntax `on conflict <expression>`, where the e
 ::: out on_conflict_clause.out :::
 
 ## Related links
-- [On conflict policy](/learn/by-example/on-conflict-policy)
+- [Advanced conflict handling](/learn/by-example/advanced-conflict-handling)
 - [Query expressions](/learn/by-example/query-expressions)
 - [Sort iterable objects using query](/learn/by-example/sort-iterable-objects)
 - [Let clause in query expression](/learn/by-example/let-clause)
