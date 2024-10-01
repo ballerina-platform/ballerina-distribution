@@ -9,5 +9,6 @@ function testText() returns websocket:Error? {
     check wsClient->writeMessage(msg);
     string serviceReply = check wsClient->readMessage();
     test:assertEquals(serviceReply, "Hello!, How are you?");
+    check wsClient->close();
 }
 
