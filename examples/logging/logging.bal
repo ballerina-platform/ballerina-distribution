@@ -17,7 +17,7 @@ public function main() {
          age: 20
     };
     // You can pass any number of key/value pairs, which need to be displayed in the log message.
-    // These can be of the `anydata` type including int, string, and boolean, records, etc.
+    // These can be of the `anydata` type including int, string, boolean, records, etc.
     log:printInfo("info log", id = 845315, name = "foo", successful = true, user = user);
 
     // Optionally, an error can be passed to the functions.
