@@ -4,7 +4,7 @@ service /chat on new websocket:Listener(9090) {
 
     // The `userName` parameter in the resource method is treated as a query parameter,
     // which is extracted from the request URI. For example, invoking this service with
-    // the URI `ws://localhost:9090/chat?userName=xyz` passes `xyz` as the value
+    // the URI `ws://localhost:9090/chat?userName=John` passes `John` as the value
     // to the `userName` parameter defined in the resource method.
     resource function get .(string userName) returns websocket:Service {
         return new ChatService(userName);
