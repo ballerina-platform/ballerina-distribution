@@ -139,15 +139,14 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Unary operators",
+        "url": "unary-operators",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
-      // ,
-      // {
-      //   "name": "Unary operators",
-      //   "url": "unary-operators",
-      //   "verifyBuild": true,
-      //   "verifyOutput": true,
-      //   "isLearnByExample": true
-      // }
     ]
   },
   {
