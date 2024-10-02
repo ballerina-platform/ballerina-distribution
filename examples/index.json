@@ -4767,6 +4767,55 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Convert CSV string to records",
+        "url": "csv-string-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert CSV string to arrays",
+        "url": "csv-string-to-anydata-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Parse CSV byte streams to records",
+        "url": "csv-streams-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Parse CSV lists to custom types",
+        "url": "parse-csv-lists",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Transform CSV records to custom types",
+        "url": "transform-csv-records-to-custom-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Handle CSV with custom configurations",
+        "url": "csv-user-configurations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
