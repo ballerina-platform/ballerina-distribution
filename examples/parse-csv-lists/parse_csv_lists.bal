@@ -29,13 +29,17 @@ public function main() returns error? {
     ];
 
     // Parse the CSV list into an array of `Employee` records by specifying custom headers.
-    Employee[] employees = check csv:parseList(csvList, {customHeaders: ["empId", "empName", "department", "salary"]});
+    Employee[] employees = check csv:parseList(csvList, {
+        customHeaders: ["empId", "empName", "department", "salary"]
+    });
     io:println(employees);
 
     // Parse the CSV list into an array of `EmployeeSalary` records by specifying custom headers.
     // Only the fields specified in the EmployeeSalary type (`id` and `salary`) 
     // are included in the resulting array.
-    EmployeeSalary[] employeeSalaries = check csv:parseList(csvList, {customHeaders: ["empId", "empName", "department", "salary"]});
+    EmployeeSalary[] employeeSalaries = check csv:parseList(csvList, {
+        customHeaders: ["empId", "empName", "department", "salary"]
+    });
     io:println(employeeSalaries);
 
     // Parse the CSV list into an array of `anydata` arrays.
