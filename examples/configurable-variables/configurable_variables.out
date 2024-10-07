@@ -1,1 +1,3 @@
 $ bal run configurable_variables.bal
+host: localhost
+password: password
