@@ -1,3 +1,8 @@
 $ bal run error_reporting.bal
-123
-error("not a digit")
+message: failed to parse digit
+details {"stringValue":"1x3"}
+stack trace: [callableName: parseInt  fileName: error_reporting.bal lineNumber: 14,callableName: main  fileName: error_reporting.bal lineNumber: 62]
+cause: error("unexpected char for digit value",charValue="x")
+    message: unexpected char for digit value
+    details {"charValue":"x"}
+    stack trace: [callableName: parseDigit  fileName: error_reporting.bal lineNumber: 56,callableName: parseInt  fileName: error_reporting.bal lineNumber: 10,callableName: main  fileName: error_reporting.bal lineNumber: 62]
