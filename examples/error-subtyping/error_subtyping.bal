@@ -1,21 +1,46 @@
 import ballerina/io;
 
-// `distinct` creates a new subtype.
-type XErr distinct error;
-type YErr distinct error;
+type InvalidIntDetail record {|
+    int value;
+|};
 
-type Err XErr|YErr;
+type InvalidI32Detail record {|
+    int:Signed32 value;
+|};
 
-// The name of the distinct type can be used with the `error` constructor to create an error value 
-// of that type. `err` holds an `error` value of type `XErr`.
-Err err = error XErr("Whoops!");
+type InvalidIntError error<InvalidIntDetail>;
 
-function desc(Err err) returns string {
-    // The `is` operator can be used to distinguish distinct subtypes.
-    return err is XErr ? "X" : "Y";
+type InvalidI32Error error<InvalidI32Detail>;
 
+type DistinctIntError distinct error<InvalidIntDetail>;
+
+type AnotherDistinctIntError distinct error<InvalidIntDetail>;
+
+function createInvalidIntError(int value) returns InvalidIntError {
+    return error("Invalid int", value = value);
+}
+
+function createDistinctInvalidIntError(int value) returns DistinctIntError {
+    return error("Invalid int", value = value);
+}
+
+function createInvalidI32Error(int:Signed32 value) returns InvalidI32Error {
+    return error("Invalid i32", value = value);
 }
 
 public function main() {
-    io:println(desc(err));
+    InvalidI32Error e1 = createInvalidI32Error(5);
+    // This is true because `InvalidI32Detail` is a subtype of `InvalidIntDetail`.
+    io:println(e1 is InvalidIntError);
+
+    InvalidIntError e2 = createInvalidIntError(5);
+    // This is false because `e2` don't have the type id corresponding to `DistinctIntError`.
+    io:println(e2 is DistinctIntError);
+
+    DistinctIntError e3 = createDistinctInvalidIntError(5);
+    // This is true because `InvalidInt` is not a distinct type, thus it ignores the type id of `e3`.
+    io:println(e3 is InvalidIntError);
+
+    // This is false because `DistinctIntError` and `AnotherDistinctIntError` have different type ids.
+    io:println(e3 is AnotherDistinctIntError);
 }
