@@ -6,8 +6,4 @@ For more information, see [Configure a sample Ballerina service](/learn/configur
 
 ::: code configurable_variables.bal :::
 
-To run the example, copy the following content to a file named `Config.toml` in the current directory.
-
-::: code Config.toml :::
-
 ::: out configurable_variables.out :::
