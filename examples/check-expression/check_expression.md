@@ -1,8 +1,6 @@
 # Check expression
 
-`check E` is used with an expression `E` that might result in an `error` value. If `E` results in an `error` value , then, `check` makes the function return that `error` value immediately.
-
-The type of `check E` does not include `error`. The control flow remains explicit.
+In Ballerina, it is common to write an expression that may result in an error, such as calling a function that could return an error value, checking if the result belongs to the `error` type and immediately returning that value. You can use the `check` expression to simplify this pattern.
 
 ::: code check_expression.bal :::
 
