@@ -61,57 +61,57 @@ jobs:
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
           openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Ballerina ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina ZIP
           path: ballerina/build/distributions/ballerina-*-swan-lake.zip
       - name: Archive Ballerina Short Name ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Linux deb
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux Installer deb
           path: installers/linux-deb/target/ballerina-*-linux-x64.deb
       - name: Archive Linux rpm
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
       - name: Archive MacOS Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos.zip
       - name: Archive MacOS-ARM Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS-ARM Installer ZIP
           path: ballerina/build/distributions/ballerina-*-macos-arm.zip
       - name: Archive Windows Installer ZIP
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows Installer ZIP
           path: ballerina/build/distributions/ballerina-*-windows.zip
       - name: Archive Linux deb Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux deb Hashes
           path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256
       - name: Archive Linux rpm Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Linux rpm Hashes
           path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256
       - name: Archive Ballerina Zip Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina Zip Hashes
           path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
       - name: Archive Ballerina Short Name Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Ballerina Short Name Hashes
           path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
@@ -236,6 +236,7 @@ jobs:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          prodCentralToken: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
@@ -282,7 +283,7 @@ jobs:
           sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
           sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
       - name: Download Ballerina rpm Installer
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: Linux Installer rpm
       - name: Install Ballerina RPM
@@ -314,7 +315,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17.0.7'
       - name: Download MacOS Intaller Zip
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: MacOS Installer ZIP
       - name: Create macos-pkg
@@ -327,12 +328,12 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-x64.pkg
       - name: Archive MacOS pkg Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS pkg Hashes
           path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256
       - name: Archive MacOS pkg
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS Installer pkg
           path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
@@ -364,7 +365,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17.0.7'
       - name: Download MacOS-ARM Intaller Zip
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: MacOS-ARM Installer ZIP
       - name: Create macos-arm-pkg
@@ -377,12 +378,12 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg
       - name: Archive MacOS-ARM pkg Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS-ARM pkg Hashes
           path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256
       - name: Archive MacOS-ARM pkg
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS Installer ARM pkg
           path: installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg
@@ -409,7 +410,7 @@ jobs:
         run: echo "${WIX}bin" >> $GITHUB_PATH
         shell: bash
       - name: Download Windows Intaller Zip
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: Windows Installer ZIP
       - name: Create windows-msi
@@ -423,12 +424,12 @@ jobs:
         run: |
           openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-*-windows-x64.msi
       - name: Archive Windows msi Hashes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows msi Hashes
           path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256
       - name: Archive Windows msi
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Windows Installer msi
           path: w\target\msi\ballerina-*-windows-x64.msi

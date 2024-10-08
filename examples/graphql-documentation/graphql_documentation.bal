@@ -1,6 +1,6 @@
 import ballerina/graphql;
 
-// All the types that are used in the GraphQL service can have doc comments to add as documentation.
+// All the types that are used in the GraphQL service can have documentation.
 # Represents a profile.
 # + name - The name of the profile
 # + age - The age of the profile
@@ -11,7 +11,7 @@ type Profile record {|
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Add doc comments to reflect them in the generated GraphQL schema.
+    // Add documentation to reflect them in the generated GraphQL schema.
     # Returns a profile using the provided ID.
     # + id - The ID of the profile
     # + return - The profile with the requested ID

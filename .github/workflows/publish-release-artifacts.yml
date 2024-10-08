@@ -106,7 +106,7 @@ jobs:
           echo "}" >> $fileName
 
       - name: Archive metadata json
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Metadata JSON
           path: ${{ steps.set-version.outputs.version }}/metadata.json

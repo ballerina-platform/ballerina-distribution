@@ -20,7 +20,7 @@
 <suite name="Ballerina-Dev-Tools-Test-Suite">
     <test name="ballerina-dev-tools-tests" parallel="false">
         <packages>
-<!--            <package name="org.ballerina.projectapi"/>-->
+            <package name="org.ballerina.projectapi"/>
         </packages>
     </test>
 </suite>
