@@ -1377,6 +1377,13 @@
         "isLearnByExample": true
       },
       {
+          "name": "Trap expression",
+          "url": "trap-expression",
+          "verifyBuild": true,
+          "verifyOutput": true,
+          "isLearnByExample": true
+      },
+      {
         "name": "Type intersection for error types",
         "url": "error-type-intersection",
         "verifyBuild": true,
