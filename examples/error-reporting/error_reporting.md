@@ -1,7 +1,7 @@
 # Errors
 In Ballerina invalid states are represented by `error` values. Each error value has,
 1. Message, a human-readable `string` describing the error.
-2. Cause, which is an `error` value if this error was caused by another error. Otherwise `nil`.
+2. Cause, which is an `error` value if this error was caused by another error, otherwise nil.
 3. Detail, a mapping value which can be used to provide additional information about the error.
 4. Stack trace, a snapshot of the state of the execution stack when the error value was created.
 

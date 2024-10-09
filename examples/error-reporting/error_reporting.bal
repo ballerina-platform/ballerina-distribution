@@ -1,67 +1,40 @@
 import ballerina/io;
 
-function parseInt(string s) returns int|error {
-    if s.length() == 0 {
-        return error("empty string"); // Create error with only a message.
+type Person record {
+    string name;
+    int age;
+};
+
+function validatePeople(Person[] people) returns error? {
+    if people.length() == 0 {
+        // Create error with only a message.
+        return error("empty people array");
     }
-    int pow = 0;
-    int val = 0;
-    foreach string:Char char in s {
-        int|error digit = parseDigit(char);
-        if digit is error {
-            // Create a new error value that include the error from parsing as
-            // the cause.
-            return error("failed to parse digit", digit, stringValue = s);
+
+    foreach Person p in people {
+        error? err = validatePerson(p);
+        if err != () {
+            // Create a new error with previous error as the cause and people in the detail.
+            return error("failed to validate people", err, people = people);
         }
-        val += val * 10 + digit;
-        pow += 1;
     }
-    return val;
 }
 
-function parseDigit(string:Char s) returns int|error {
-    match s {
-        "1" => {
-            return 1;
-        }
-        "2" => {
-            return 2;
-        }
-        "3" => {
-            return 3;
-        }
-        "4" => {
-            return 4;
-        }
-        "5" => {
-            return 5;
-        }
-        "6" => {
-            return 6;
-        }
-        "7" => {
-            return 7;
-        }
-        "8" => {
-            return 8;
-        }
-        "9" => {
-            return 9;
-        }
-        "0" => {
-            return 0;
-        }
-        _ => {
-            // Create an error value with field `charValue` in it's detail.
-            return error("unexpected char for digit value", charValue = s);
-        }
+function validatePerson(Person person) returns error? {
+    if person.age < 0 {
+        // Create a new error we person in the detail to help debugging.
+        return error("age cannot be negative", person = person);
     }
 }
 
 public function main() {
-    int|error result = parseInt("1x3");
-    if result is error {
-        printError(result);
+    Person[] people = [
+        {name: "Alice", age: 25},
+        {name: "Bob", age: -1}
+    ];
+    error? err = validatePeople(people);
+    if err != () {
+        printError(err);
     }
 }
 
@@ -70,11 +43,11 @@ function printError(error err, int depth = 0) {
     string indent = "".join(...from int _ in 0 ..< depth
         select "    ");
     io:println(indent + "message: ", err.message());
-    io:println(indent + "details ", err.detail());
+    io:println(indent + "details: ", err.detail());
     io:println(indent + "stack trace: ", err.stackTrace());
     error? cause = err.cause();
     if cause != () {
-        io:println(indent + "cause: ", cause);
+        io:println(indent + "cause: ");
         printError(cause, depth + 1);
     }
 }
