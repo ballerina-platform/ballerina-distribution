@@ -11,7 +11,10 @@ For all the supported key value properties, see [Code to Cloud specification](ht
 ::: code Cloud.toml :::
 
 Execute the `bal build` command to build the Ballerina package. Code to Cloud generates only one container per package.
->**Note:** For Mac users with Apple Silicon chips, run `export DOCKER_DEFAULT_PLATFORM=linux/amd64` before building the image. This is necessary because the Ballerina base image doesn't yet support the M1 chip.
+>**Note:** For Mac users with Apple Silicon chips, set an environment variable `DOCKER_DEFAULT_PLATFORM` to `linux/amd64`, before building the image. This is because the Ballerina Docker image is not supported on Apple Silicon chips yet.
+> ```
+> export DOCKER_DEFAULT_PLATFORM=linux/amd64
+> ```
 
 ::: out build_output.out :::
 
