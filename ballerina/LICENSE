@@ -174,7 +174,7 @@ ballerina-lang.future-0.0.0.jar                                                 
 ballerina-io-1.6.1.jar                                                                              jar            apache2             
 ballerina-lang.boolean-0.0.0.jar                                                                    jar            apache2             
 ballerina-lang.decimal-0.0.0.jar                                                                    jar            apache2             
-ballerina-avro-1.0.0.jar                                                                            jar            apache2             
+ballerina-avro-1.0.1.jar                                                                            jar            apache2             
 ballerina-lang.function-0.0.0.jar                                                                   jar            apache2             
 ballerina-auth-2.11.2.jar                                                                           jar            apache2             
 ballerina-tcp-1.10.1.jar                                                                            jar            apache2             
@@ -268,10 +268,10 @@ jsch-0.1.55.jar                                                                 
 ftp-native-2.10.1.jar                                                                               jar            apache2             
 commons-net-3.9.0.jar                                                                               bundle         apache2             
 io-native-1.6.1.jar                                                                                 jar            apache2             
-avro-1.11.3.jar                                                                                     bundle         apache2             
+avro-1.11.4.jar                                                                                     bundle         apache2             
 jackson-databind-2.17.0.jar                                                                         bundle         apache2             
 jackson-annotations-2.17.0.jar                                                                      bundle         apache2             
-avro-native-1.0.0.jar                                                                               jar            apache2             
+avro-native-1.0.1.jar                                                                               jar            apache2             
 jackson-core-2.17.0.jar                                                                             bundle         apache2             
 auth-native-2.11.2.jar                                                                              jar            apache2             
 tcp-compiler-plugin-1.10.1.jar                                                                      jar            apache2             
