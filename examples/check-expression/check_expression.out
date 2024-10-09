@@ -1,3 +1,4 @@
 $ bal run check_expression.bal
 error("{ballerina/lang.int}NumberParsingError",message="'string' value 'hello' cannot be converted to 'int'")
 error("{ballerina/lang.int}NumberParsingError",message="'string' value 'hello' cannot be converted to 'int'")
+
