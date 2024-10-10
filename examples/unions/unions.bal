@@ -20,7 +20,7 @@ public function main() {
     io:println(nameToString(name1));
     io:println(nameToString(name2));
 
-    map<string?> grades1 = {
+    map<string|()> grades1 = {
         math: "80",
         physics: (),
         chemistry: "76"
@@ -58,10 +58,10 @@ function nameToString(Name nm) returns string {
     }
 }
 
-function parseGrades(map<string?> grades) returns map<int>|error {
+function parseGrades(map<string|()> grades) returns map<int>|error {
     map<int> parsedGrades = {};
 
-    foreach [string, string?] [subject, grade] in grades.entries() {
+    foreach [string, string|()] [subject, grade] in grades.entries() {
         // If the `grade` value is `()`, continue on to the next entry.
         if grade is () {
             continue;
