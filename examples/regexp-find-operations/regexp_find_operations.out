@@ -1,0 +1,23 @@
+$ bal run regexp_find_operations.bal
+First error log: 2024-09-19 10:03:17 ERROR [Database] - Connection to database timed out
+
+All error logs:
+2024-09-19 10:03:17 ERROR [Database] - Connection to database timed out
+2024-09-19 10:06:10 ERROR [Scheduler] - Failed to start data backup: Permission denied
+2024-09-19 10:12:30 ERROR [RequestHandler] - 404 Not Found: /api/v1/products
+
+Groups within first error log:
+Timestamp: 2024-09-19 10:03:17
+Component: Database
+Message: Connection to database timed out
+
+Groups in all error logs
+Timestamp: 2024-09-19 10:03:17
+Component: Database
+Message: Connection to database timed out
+Timestamp: 2024-09-19 10:06:10
+Component: Scheduler
+Message: Failed to start data backup: Permission denied
+Timestamp: 2024-09-19 10:12:30
+Component: RequestHandler
+Message: 404 Not Found: /api/v1/products
