@@ -1,0 +1,4 @@
+$ bal run trap_expression.bal
+Error: error("{ballerina}DivisionByZero",message=" / by zero")
+Error: error("deep down in the code")
+

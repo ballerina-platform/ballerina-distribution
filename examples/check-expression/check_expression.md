@@ -1,9 +1,9 @@
 # Check expression
 
-`check E` is used with an expression `E` that might result in an `error` value. If `E` results in an `error` value , then, `check` makes the function return that `error` value immediately.
-
-The type of `check E` does not include `error`. The control flow remains explicit.
+If an expression can cause an `error`, you can use the `check` expression to indicate you want to terminate the execution of the current scope with that error as the result. Generally this is done by returning the error value from the current function.
 
 ::: code check_expression.bal :::
 
 ::: out check_expression.out :::
+
++ [`check` semantics](https://ballerina.io/learn/concurrency/#check-semantics)
