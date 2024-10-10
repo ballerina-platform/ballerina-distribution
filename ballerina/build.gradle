@@ -652,6 +652,7 @@ task packageDistMacArm(type: Zip) {
         exclude "distributions/ballerina-version"
         exclude "distributions/installer-version"
         exclude "/bin/bal.bat"
+        exclude "/bin/bal.windows.gitbash"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
     }
@@ -739,6 +740,7 @@ task packageDistWindows(type: Zip) {
         exclude "/bin/bal"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        rename "/bin/bal.windows.gitbash" "/bin/bal"
     }
 
     /* Files */
