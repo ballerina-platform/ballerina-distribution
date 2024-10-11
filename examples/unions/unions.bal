@@ -25,9 +25,9 @@ public function main() {
         physics: (),
         chemistry: "76"
     };
-    // Parsing a map with grades values that are either the string
+    // Parsing a map with grade values that are either the string
     // representation of an integer or nil results in a map of
-    // the just the non-nil grades as integers.
+    // just the non-nil grades as integers.
     map<int>|error parseGrades1 = parseGrades(grades1);
     io:println(parseGrades1);
 
@@ -74,7 +74,7 @@ function parseGrades(map<string|()> grades) returns map<int>|error {
         // value is expected.
         int|error parsedGrade = int:fromString(grade);
 
-        // If the `parsedGrade` value is an error value terminate the
+        // If the `parsedGrade` value is an error value, terminate the
         // execution of this function and return the error value.
         if parsedGrade is error {
             return parsedGrade;
