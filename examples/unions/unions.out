@@ -1,3 +1,5 @@
 $ bal run unions.bal
 Rowan Atkinson
 Leslie Banks
+{"math":80,"chemistry":76}
+error("{ballerina/lang.int}NumberParsingError",message="'string' value 'N/A' cannot be converted to 'int'")
