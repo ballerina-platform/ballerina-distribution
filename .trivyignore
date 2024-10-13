@@ -15,3 +15,6 @@ CVE-2024-21742
 # Fixed version is released yet
 CVE-2023-33201
 CVE-2023-33202
+
+# Will be fixed with the next release: https://github.com/wso2-enterprise/internal-support-ballerina/issues/800
+CVE-2024-47554
