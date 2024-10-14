@@ -1,6 +1,6 @@
 # Check expression
 
-If an expression can cause an `error`, you can use the `check` expression to indicate you want to terminate the execution of the current scope with that error as the result. Generally this is done by returning the error value from the current function.
+If an expression can evaluate to an error value, you can use the `check` expression to indicate that you want the execution of the current block to terminate with that error as the result. This results in the error value being returned from the current function/worker, unless the `check` expression is used in a failure-handling statement (e.g., statement with on fail, retry statement).
 
 ::: code check_expression.bal :::
 

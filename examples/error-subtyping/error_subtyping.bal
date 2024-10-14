@@ -9,19 +9,19 @@ type InvalidI32Detail record {|
     int:Signed32 value;
 |};
 
-// `error` with `InvalidIntDetail` as the detail type.
+// Error with the `InvalidIntDetail` type as the detail type.
 type InvalidIntError error<InvalidIntDetail>;
 
 // `error` with `InvalidI32Detail` as the detail type. Thus it is a subtype of `InvalidIntError`.
 type InvalidI32Error error<InvalidI32Detail>;
 
-// `error` with `InvalidIntDetail` as the detail type and a unique type ID.
-// Therefore this is a proper subtype of `InvalidIntError`, but don't have a subtype relationship 
+// Distinct error with the `InvalidIntDetail` type as the detail type and a unique type ID.
+// Therefore, this is a proper subtype of `InvalidIntError`, but doesn't have a subtype relationship 
 // with `AnotherDistinctIntError` because they have different type IDs.
 type DistinctIntError distinct error<InvalidIntDetail>;
 
 // Another `error` with `InvalidIntDetail` as the detail type and different type ID to `DistinctIntError`
-// This is also a proper subtype of `InvalidIntError`, but don't have a subtype relationship with `DistinctIntError`
+// This is also a proper subtype of `InvalidIntError`, but doesn't have a subtype relationship with `DistinctIntError`
 type AnotherDistinctIntError distinct error<InvalidIntDetail>;
 
 public function main() {
@@ -39,7 +39,7 @@ public function main() {
     io:println(e3 is AnotherDistinctIntError);
 }
 
-// Helper functions to create errors
+// Helper functions to create errors.
 function createInvalidIntError(int value) returns InvalidIntError {
     return error("Invalid int", value = value);
 }
@@ -51,4 +51,3 @@ function createDistinctInvalidIntError(int value) returns DistinctIntError {
 function createInvalidI32Error(int:Signed32 value) returns InvalidI32Error {
     return error("Invalid i32", value = value);
 }
-

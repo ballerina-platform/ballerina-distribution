@@ -1,8 +1,10 @@
 $ bal run error_reporting.bal
-message: failed to validate people
-details: {"people":[{"name":"Alice","age":25},{"name":"Bob","age":-1}]}
-stack trace: [callableName: validatePeople  fileName: error_reporting.bal lineNumber: 18,callableName: main  fileName: error_reporting.bal lineNumber: 35]
-cause: 
-    message: age cannot be negative
-    details: {"person":{"name":"Bob","age":-1}}
-    stack trace: [callableName: validatePerson  fileName: error_reporting.bal lineNumber: 26,callableName: validatePeople  fileName: error_reporting.bal lineNumber: 15,callableName: main  fileName: error_reporting.bal lineNumber: 35]
+Validating Alice
+Validating Bob
+Message: Validation failed for a person
+Detail: {"person":{"name":"Bob","age":-1}}
+Stack trace: [callableName: validatePeople  fileName: error_reporting.bal lineNumber: 20,callableName: main  fileName: error_reporting.bal lineNumber: 40]
+Cause:
+Message: Age cannot be negative
+Detail: {"age":-1}
+Stack trace: [callableName: validatePerson  fileName: error_reporting.bal lineNumber: 30,callableName: validatePeople  fileName: error_reporting.bal lineNumber: 16,callableName: main  fileName: error_reporting.bal lineNumber: 40]

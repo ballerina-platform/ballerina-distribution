@@ -32,7 +32,7 @@ function createDistinctNumericInputError(int value) returns DistinctNumericInput
 
 public function main() {
     NumericInputError e1 = createNumericInputError(5);
-    // `e1` belong to `InputError` since it's detail type is a subtype of `InputErrorDetail`.
+    // `e1` belong to `InputError` since its detail type is a subtype of `InputErrorDetail`.
     io:println(e1 is InputError);
 
     // `e1` doesn't belong to `DistinctInputError` since it doesn't have the type id of `DistinctInputError`.

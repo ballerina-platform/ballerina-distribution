@@ -1,15 +1,16 @@
 import ballerina/io;
 
-// Same as `intFromBytesWithCheck` but with explicit error handling.
 function intFromBytes(byte[] bytes) returns int|error {
     string|error res = string:fromBytes(bytes);
-    // Handling the error explicitly.
+    // Explicitly check if the result is an error and 
+    // immediately return if so.
     if res is error {
         return res;
     }
     return int:fromString(res);
 }
 
+// Same as `intFromBytes` but with `check` instead of explicitly checking for error and returning.
 function intFromBytesWithCheck(byte[] bytes) returns int|error {
     string str = check string:fromBytes(bytes);
     return int:fromString(str);
