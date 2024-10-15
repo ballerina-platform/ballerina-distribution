@@ -1,5 +1,6 @@
 import ballerina/io;
 
+// Convert `bytes` to a `string` value and then to an `int` value.
 function intFromBytes(byte[] bytes) returns int|error {
     string|error res = string:fromBytes(bytes);
     // Explicitly check if the result is an error and 
