@@ -12,7 +12,7 @@ type InvalidI32Detail record {|
 // Error with the `InvalidIntDetail` type as the detail type.
 type InvalidIntError error<InvalidIntDetail>;
 
-// `error` with `InvalidI32Detail` as the detail type. Thus it is a subtype of `InvalidIntError`.
+// Error with `InvalidI32Detail` as the detail type. Thus it is a subtype of `InvalidIntError`.
 type InvalidI32Error error<InvalidI32Detail>;
 
 // Distinct error with the `InvalidIntDetail` type as the detail type and a unique type ID.
@@ -20,7 +20,7 @@ type InvalidI32Error error<InvalidI32Detail>;
 // with `AnotherDistinctIntError` because they have different type IDs.
 type DistinctIntError distinct error<InvalidIntDetail>;
 
-// Another `error` with `InvalidIntDetail` as the detail type and different type ID to `DistinctIntError`
+// Another distinct error with `InvalidIntDetail` as the detail type, but a different type ID to `DistinctIntError`
 // This is also a proper subtype of `InvalidIntError`, but doesn't have a subtype relationship with `DistinctIntError`
 type AnotherDistinctIntError distinct error<InvalidIntDetail>;
 

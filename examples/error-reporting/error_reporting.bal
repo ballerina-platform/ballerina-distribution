@@ -37,6 +37,8 @@ public function main() {
         {name: "Bob", age: -1},
         {name: "Charlie", age: 30}
     ];
+    // Note how the `Person` value after the value for which validation fails is
+    // not processed.
     error? err = validatePeople(people);
     if err is error {
         printError(err);
