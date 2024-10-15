@@ -1,0 +1,3 @@
+$ bal run csv_string_to_record_array.bal
+[{"name":"Effective Java","author":"Joshua Bloch","price":45.99,"publishedDate":"2018-01-01"},{"name":"Clean Code","author":"Robert C. Martin","price":37.5,"publishedDate":"2008-08-01"}]
+[{"name":"Effective Java","author":"Joshua Bloch"},{"name":"Clean Code","author":"Robert C. Martin"}]

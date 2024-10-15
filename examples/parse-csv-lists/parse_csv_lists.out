@@ -1,0 +1,4 @@
+$ bal run parse_csv_lists.bal
+[{"empId":1,"empName":"John","department":"Engineering","salary":1000.0},{"empId":2,"empName":"Doe","department":"HR","salary":2000.0},{"empId":3,"empName":"Jane","department":"Finance","salary":3000.0}]
+[{"id":1,"salary":1000.0},{"id":2,"salary":2000.0},{"id":3,"salary":3000.0}]
+[[1,"John","Engineering",1000.0],[2,"Doe","HR",2000.0],[3,"Jane","Finance",3000.0]]

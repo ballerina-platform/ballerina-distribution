@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -114,6 +121,28 @@
       {
         "name": "Strings",
         "url": "strings",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Operators",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [
+
+      {
+        "name": "Binary operators",
+        "url": "binary-operators",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Unary operators",
+        "url": "unary-operators",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -416,8 +445,22 @@
     ]
   },
   {
+    "title": "Equality",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [ 
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Lists",
-    "column": 1,
+    "column": 0,
     "category": "Language concepts",
     "samples": [
       {
@@ -768,29 +811,8 @@
     ]
   },
   {
-    "title": "Regular Expressions",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "RegExp type",
-        "url": "regexp-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
     "title": "Tables",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -825,7 +847,7 @@
   },
   {
     "title": "Query expressions",
-    "column": 2,
+    "column": 1,
     "category": "Language concepts",
     "samples": [
       {
@@ -901,6 +923,13 @@
       {
         "name": "On conflict clause",
         "url": "on-conflict-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Advanced conflict handling",
+        "url": "advanced-conflict-handling",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1177,6 +1206,27 @@
     ]
   },
   {
+    "title": "Regular Expressions",
+    "column": 2,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "RegExp type",
+        "url": "regexp-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp operations",
+        "url": "regexp-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Metadata",
     "column": 2,
     "category": "Language concepts",
@@ -1295,7 +1345,7 @@
   },
   {
     "title": "Error handling",
-    "column": 3,
+    "column": 2,
     "category": "Language concepts",
     "samples": [
       {
@@ -1327,6 +1377,13 @@
         "isLearnByExample": true
       },
       {
+          "name": "Trap expression",
+          "url": "trap-expression",
+          "verifyBuild": true,
+          "verifyOutput": true,
+          "isLearnByExample": true
+      },
+      {
         "name": "Type intersection for error types",
         "url": "error-type-intersection",
         "verifyBuild": true,
@@ -1351,7 +1408,7 @@
   },
   {
     "title": "Ignore return values and errors",
-    "column": 3,
+    "column": 2,
     "category": "Language concepts",
     "samples": [
       {
@@ -2362,7 +2419,7 @@
   },
   {
     "title": "HTTP service interceptors",
-    "column": 1,
+    "column": 0,
     "category": "Network libraries",
     "samples": [
       {
@@ -2801,6 +2858,15 @@
       {
         "name": "Error handling",
         "url": "websocket-service-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Query parameter",
+        "url": "websocket-query-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -4415,6 +4481,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Time Zone",
+        "url": "time-zone",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
       }
     ]
   },
@@ -4701,6 +4774,55 @@
     ]
   },
   {
+    "title": "CSV data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Convert CSV string to records",
+        "url": "csv-string-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert CSV string to arrays",
+        "url": "csv-string-to-anydata-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Parse CSV byte streams to records",
+        "url": "csv-streams-to-record-array",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Parse CSV lists to custom types",
+        "url": "parse-csv-lists",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Transform CSV records to custom types",
+        "url": "transform-csv-records-to-custom-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Handle CSV with custom configurations",
+        "url": "csv-user-configurations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
@@ -4746,7 +4868,7 @@
       }
     ]
   },
-   {
+  {
     "title": "AWS Lambda",
     "column": 2,
     "category": "Deployment",
@@ -4789,7 +4911,7 @@
       }
     ]
   },
-    {
+  {
     "title": "Azure Functions",
     "column": 3,
     "category": "Deployment",
@@ -4832,7 +4954,7 @@
       }
     ]
   },
-   {
+  {
     "title": "Query data",
     "column": 0,
     "category": "Bal persist",
@@ -4931,15 +5053,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
@@ -4951,6 +5064,15 @@
       {
         "name": "Gauge-based metrics",
         "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

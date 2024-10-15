@@ -1,0 +1,7 @@
+$ bal run unary_operators.bal
+-10
+-11
+-127
+10.5
+-10.5
+false
