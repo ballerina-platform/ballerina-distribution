@@ -34,6 +34,6 @@ public function main() {
     // `e2` belongs to `InputError` since its detail type is a subtype of `InputErrorDetail`.
     io:println(e2 is InputError);
 
-    // `e2` belongs to `DistinctInputError` since its type ID set include the type id of `DistinctInputError`.
+    // `e2` belongs to `DistinctInputError` since its type ID set includes the type id of `DistinctInputError`.
     io:println(e2 is DistinctInputError);
 }
