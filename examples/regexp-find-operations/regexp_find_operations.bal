@@ -11,13 +11,13 @@ public function main() {
         2024-09-19 10:11:55 INFO  [Security] - Security scan completed, no issues found
         2024-09-19 10:12:30 ERROR [RequestHandler] - 404 Not Found: /api/v1/products`;
 
-    // Regex to match error logs with three groups:
+    // Regular expression to match error logs with three groups:
     // 1. Timestamp (e.g., 2024-09-19 10:03:17).
     // 2. Component (e.g., Database, Scheduler).
     // 3. Log message (e.g., Connection to database timed out).
     string:RegExp errorLogPattern = re `(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) ERROR \[(\w+)\]\s-\s(.*)`;
 
-    // Retrieving the first error log from the `logContent`.
+    // Retrieve the first error log from `logContent`.
     regexp:Span? firstErrorLog = errorLogPattern.find(logContent);
     if firstErrorLog == () {
         io:println("Failed to find a error log");
