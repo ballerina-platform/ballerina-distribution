@@ -59,7 +59,6 @@ task unpackBallerinaJre(type: Download) {
     src([
             "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-linux-arm-64-${ballerinaJreVersion}.zip",
-//            "https://github.com/NipunaMadhushan/ballerina-examples/releases/download/test-1.0.0/ballerina-jre-linux-arm-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-win-64-${ballerinaJreVersion}.zip"
