@@ -80,6 +80,16 @@ jobs:
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+      - name: Archive Linux Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-linux.zip
+      - name: Archive Linux-ARM Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-ARM Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-linux-arm.zip
       - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v4
         with:
@@ -308,6 +318,42 @@ jobs:
         env:
           TEST_MODE_ACTIVE: true
 
+  ubuntu-arm-installer-build:
+
+    needs: ubuntu-build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17.0.7'
+      - name: Download Linux-ARM Installer Zip
+        uses: actions/download-artifact@v4
+        with:
+          name: Linux-ARM Installer ZIP
+      - name: Create linux-arm deb
+        working-directory: installers/linux-deb
+        run: |
+          ./build-ballerina-linux-deb-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../ -a arm
+          echo "Created linux-arm-deb successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-arm-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-arm-x64.deb
+      - name: Archive Linux deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-ARM Installer deb
+          path: installers/linux-deb/target/ballerina-*-linux-arm-x64.deb
+      - name: Archive Linux deb Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux deb Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-arm-x64.deb.sha256
+
   macos-installer-build:
 
     needs: ubuntu-build
@@ -321,7 +367,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17.0.7'
-      - name: Download MacOS Intaller Zip
+      - name: Download MacOS Installer Zip
         uses: actions/download-artifact@v4
         with:
           name: MacOS Installer ZIP
