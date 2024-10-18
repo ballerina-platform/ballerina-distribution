@@ -1,6 +1,6 @@
 # RegExp find operations
 
-The `RegExp` type provides a set of language library functions to find patterns within strings. These functions enable efficient pattern matching, grouping, and extraction based on specific regular expressions.
+The `RegExp` type provides a set of langlib functions to find patterns within strings. These functions enable efficient pattern matching, grouping, and extraction based on specific regular expressions.
 
 ::: code regexp_find_operations.bal :::
 
