@@ -1,22 +1,7 @@
 # Raw templates
 
-A raw template is a backtick template without a tag. Exposes result of phase 1 without further processing. Raw template is evaluated by evaluating each expression and creating an object containing.
-
-- an `array` of the `strings` separated by insertions
-- an `array` of the results of expression evaluation and an `array` of `strings` separating
-
->**Important use case:** SQL parameters.
-
->**Note:** The relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency. This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file. This sample is written using H2 2.1.210 and it is recommended to use H2 JAR with versions higher than 2.1.210.
-
-For a sample configuration and more information on the underlying module, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).
+Raw template is a backtick string without a tag (such as `string` or `xml`). Backtick string is a sequence of characters interleaved with interpolations (`${expression}`), wrapped by a pair of backticks. The result of evaluating such a raw template is a `RawTemplate` object that has two fields `(readonly & string[]) strings` and `(any|error)[] insertions`.  `strings` array will have string literals in the backtick string broken at interpolations and `insertions` array will have the resultant value of evaluating each interpolation.
 
 ::: code raw_templates.bal :::
-
-Add the relevant database driver JAR details to the `Ballerina.toml` file.
-
-::: code Ballerina.toml :::
-
-Build and run the project using the `bal run` command.
 
 ::: out raw_templates.out :::
