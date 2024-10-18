@@ -1,6 +1,6 @@
 # RegExp operations
 
-The ``RegExp`` type supports a set of anguage library functions for replacing patterns in strings.
+The `RegExp` type supports a set of langlib functions to replace parts of strings that match specific patterns.
 
 ::: code regexp_replace_operations.bal :::
 
