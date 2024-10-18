@@ -35,7 +35,7 @@ ext {
     picocliVersion = "4.0.1"
     testngVersion = "7.6.1"
     netLingalaZip4jVersion = "2.8.0"
-    commonsIoVersion = "2.6"
+    commonsIoVersion = "2.15.1"
     commonsLang3Version = "3.9"
     lsp4jDebugVersion = "0.7.1"
     puppycrawlCheckstyleVersion = "10.12.1"
