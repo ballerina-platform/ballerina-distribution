@@ -6,8 +6,6 @@ If more explicit control over error type relations is desired you can use `disti
 
 Note that you can create subtypes of distinct error types by intersecting them with other error types.
 
-```ballerina 
-
 ::: code error_subtyping.bal :::
 
 ::: out error_subtyping.out :::
