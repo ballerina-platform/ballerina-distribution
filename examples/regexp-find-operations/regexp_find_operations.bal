@@ -23,7 +23,7 @@ public function main() {
         io:println("Failed to find a error log");
         return;
     }
-    io:println(string `First error log: ${firstErrorLog.substring()}`);
+    io:println("First error log: ", firstErrorLog.substring());
 
     // Retrieving all error logs from the `logContent`.
     regexp:Span[] allErrorLogs = errorLogPattern.findAll(logContent);
@@ -53,11 +53,18 @@ function printGroupsWithinLog(regexp:Groups logGroup) {
     // The first element in the `logGroup` is the entire matched string.
     // The subsequent elements in `logGroup` represent the captured groups 
     // (timestamp, component, message).
-    string timestamp = (<regexp:Span>logGroup[1]).substring();
-    string component = (<regexp:Span>logGroup[2]).substring();
-    string logMessage = (<regexp:Span>logGroup[3]).substring();
+    string timestamp = extractStringFromMatchGroup(logGroup[1]);
+    string component = extractStringFromMatchGroup(logGroup[2]);
+    string logMessage = extractStringFromMatchGroup(logGroup[3]);
 
-    io:println(string `Timestamp: ${timestamp}`);
-    io:println(string `Component: ${component}`);
-    io:println(string `Message: ${logMessage}`);
+    io:println("Timestamp: ", timestamp);
+    io:println("Component: ", component);
+    io:println("Message: ", logMessage);
+}
+
+function extractStringFromMatchGroup(regexp:Span? span) returns string {
+    if span !is regexp:Span {
+        return "";
+    }
+    return span.substring();
 }
