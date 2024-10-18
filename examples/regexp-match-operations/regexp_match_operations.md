@@ -1,6 +1,6 @@
 # RegExp operations
 
-The `RegExp` type include a set of langlib functions for matching patterns in strings, enabling operations to find, validate, group, and extract data based on regular expressions.
+The `RegExp` type support a set of langlib functions to match patterns in strings and enable operations such as finding, validating, grouping, and extracting data based on regular expressions.
 
 ::: code regexp_match_operations.bal :::
 
