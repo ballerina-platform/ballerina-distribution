@@ -14,4 +14,8 @@ CVE-2024-21742
 
 # Fixed version is released yet
 CVE-2023-33201
-CVE-2023-33202 
+CVE-2023-33202
+
+# Temporary false positive
+CVE-2024-7254
+CVE-2024-47554
