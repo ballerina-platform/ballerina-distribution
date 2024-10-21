@@ -1,3 +1,5 @@
 $ bal run
-{"ORDERID":1,"CUSTOMERID":1,"NOOFITEMS":20}
-{"ORDERID":2,"CUSTOMERID":1,"NOOFITEMS":15}
+["",", ",", ",""]
+[5,10,false]
+["",", ",", ",""]
+[5,10,false]
