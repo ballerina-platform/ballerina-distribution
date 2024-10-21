@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/lang.regexp;
 
-public function main() {
+public function main() returns error? {
     string[] productCodes = ["ELEC-1234", "FURN-5678", "CLOT-1111", "FOOD-3333", "BAR-123"];
 
     // Regular expression to match and validate product codes.
@@ -21,10 +21,12 @@ public function main() {
         regexp:Groups? matchGroups = productCodePattern.fullMatchGroups(productCode);
         if matchGroups is regexp:Groups {
             // The first member in the `matchGroups` tuple is the entire matched string.
-            // The subsequent members represent the captured groups.
+            // The subsequent members represent the captured groups
             // (assigned to `productType` and `uniqueID` respectively).
-            io:println("Product Type: ", extractStringFromMatchGroup(matchGroups[1]));
-            io:println("Unique ID: ", extractStringFromMatchGroup(matchGroups[2]));
+            io:println("Product Type: ",
+                    (check matchGroups[1].ensureType(regexp:Span)).substring());
+            io:println("Unique ID: ",
+                    (check matchGroups[2].ensureType(regexp:Span)).substring());
         }
     }
 
@@ -42,16 +44,9 @@ public function main() {
     regexp:Groups? timeMatchGroups = timePattern.matchGroupsAt(
             "Production time: 14:35, Production time: 16:15", 41);
     if timeMatchGroups is regexp:Groups {
-        string hour = (<regexp:Span>timeMatchGroups[1]).substring();
-        string minutes = (<regexp:Span>timeMatchGroups[2]).substring();
+        string hour = (check timeMatchGroups[1].ensureType(regexp:Span)).substring();
+        string minutes = (check timeMatchGroups[2].ensureType(regexp:Span)).substring();
         io:println("Production hour: ", hour);
         io:println("Production minutes: ", minutes);
     }
-}
-
-function extractStringFromMatchGroup(regexp:Span? span) returns string {
-    if span !is regexp:Span {
-        return "";
-    }
-    return span.substring();
 }
