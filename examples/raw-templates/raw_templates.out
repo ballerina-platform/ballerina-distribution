@@ -1,3 +1,5 @@
 $ bal run
-["x is ",". y is ",". result of calling foo is ",""]
-[5,error("foo"),false]
+["",", ",", ",""]
+[5,10,false]
+["",", ",", ",""]
+[5,10,false]
