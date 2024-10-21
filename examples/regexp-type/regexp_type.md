@@ -4,7 +4,7 @@
 
 The `RegExp` type is defined in the `lang.regexp` module, and can also be referenced using the type alias named the same in the `lang.string` module. The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
 
-A `RegExp` value can be created by using the regexp template expression or calling the `fromString` method of the [lang.regexp](https://lib.ballerina.io/ballerina/lang.regexp/latest#fromString) module. 
+A `RegExp` value can be created by using the regexp template expression or calling the [`fromString` method of the lang.regexp](https://lib.ballerina.io/ballerina/lang.regexp/latest#fromString) module. 
 
 ::: code regexp_type.bal :::
 
