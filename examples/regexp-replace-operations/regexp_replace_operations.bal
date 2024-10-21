@@ -2,7 +2,7 @@ import ballerina/io;
 
 public function main() {
     string creditCardNumber = "1234-5678-9876-5432";
-    string:RegExp pattern = re `(\d{4})-(\d{4})-(\d{4})`;
+    string:RegExp pattern = re `\d{4}-\d{4}-\d{4}`;
     // Replace the first occurrence of the credit card pattern with a masked representation.
     string maskedCardNumber = pattern.replace(creditCardNumber, "****-****-****");
     io:println(maskedCardNumber);
