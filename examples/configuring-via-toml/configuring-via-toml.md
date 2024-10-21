@@ -10,4 +10,8 @@ For more information, see [Configure via TOML syntax](/learn/provide-values-to-c
 
 ::: code configuring_via_toml.bal :::
 
+To run the example, copy the following content to a file named `Config.toml` in the current directory.
+
+::: code Config.toml :::
+
 ::: out configuring_via_toml.out :::
