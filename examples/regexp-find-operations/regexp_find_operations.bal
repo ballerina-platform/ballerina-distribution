@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/lang.regexp;
 
-public function main() {
+public function main() returns error? {
     string logContent = string `
         2024-09-19 10:02:01 WARN  [UserLogin] - Failed login attempt for user: johndoe
         2024-09-19 10:03:17 ERROR [Database] - Connection to database timed out
@@ -25,46 +25,39 @@ public function main() {
     }
     io:println("First error log: ", firstErrorLog.substring());
 
-    // Retrieving all error logs from the `logContent`.
+    // Retrieve all error logs from the `logContent`.
     regexp:Span[] allErrorLogs = errorLogPattern.findAll(logContent);
-    io:println("\n", "All error logs:");
+    io:println("\nAll error logs:");
     foreach regexp:Span errorLog in allErrorLogs {
         io:println(errorLog.substring());
     }
 
-    // Retrieving groups (timestamp, component, message) from the first error log.
+    // Retrieve groups (timestamp, component, message) from the first error log.
     regexp:Groups? firstErrorLogGroups = errorLogPattern.findGroups(logContent);
     if firstErrorLogGroups == () {
         io:println("Failed to find groups in first error log");
         return;
     }
-    io:println("\n", "Groups within first error log:");
-    printGroupsWithinLog(firstErrorLogGroups);
+    io:println("\nGroups within first error log:");
+    check printGroupsWithinLog(firstErrorLogGroups);
 
-    // Retrieving groups from all error logs.
+    // Retrieve groups from all error logs.
     regexp:Groups[] allErrorLogGroups = errorLogPattern.findAllGroups(logContent);
-    io:println("\n", "Groups in all error logs");
+    io:println("\nGroups in all error logs");
     foreach regexp:Groups logGroup in allErrorLogGroups {
-        printGroupsWithinLog(logGroup);
+        check printGroupsWithinLog(logGroup);
     }
 }
 
-function printGroupsWithinLog(regexp:Groups logGroup) {
+function printGroupsWithinLog(regexp:Groups logGroup) returns error? {
     // The first element in the `logGroup` is the entire matched string.
     // The subsequent elements in `logGroup` represent the captured groups 
     // (timestamp, component, message).
-    string timestamp = extractStringFromMatchGroup(logGroup[1]);
-    string component = extractStringFromMatchGroup(logGroup[2]);
-    string logMessage = extractStringFromMatchGroup(logGroup[3]);
+    string timestamp = (check logGroup[1].ensureType(regexp:Span)).substring();
+    string component = (check logGroup[2].ensureType(regexp:Span)).substring();
+    string logMessage = (check logGroup[3].ensureType(regexp:Span)).substring();
 
     io:println("Timestamp: ", timestamp);
     io:println("Component: ", component);
     io:println("Message: ", logMessage);
-}
-
-function extractStringFromMatchGroup(regexp:Span? span) returns string {
-    if span !is regexp:Span {
-        return "";
-    }
-    return span.substring();
 }
