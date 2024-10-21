@@ -1,4 +1,6 @@
 $ bal run regexp_type.bal
+Pattern `[a-zA-Z0-9]` matches `a`: true
+Pattern `[a-zA-Z0-9]` matches `a1`: false
 Pattern `HELLO*` matches `HELLO`: true
 Pattern `a+` matches `aaa`: true
 Pattern `abc|${"xyz"}` matches `xyz`: true
