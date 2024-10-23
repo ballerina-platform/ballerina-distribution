@@ -1,5 +1,5 @@
 $ bal run
-["",", ",", ",""]
+["",", fixed_string1,  ",", ",", fixed_string3"]
 [5,10,false]
-["",", ",", ",""]
+["fixed_string4, ",", ",", fixed_string_5, ",""]
 [5,10,false]
