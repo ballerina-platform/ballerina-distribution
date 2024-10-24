@@ -13,6 +13,7 @@ public function main() returns error? {
         boolean isValidProductCode = productCodePattern.isFullMatch(productCode);
         io:println(string `Product Code: ${productCode}, Valid: ${isValidProductCode}`);
 
+        // If the product code is invalid, skip further processing.
         if !isValidProductCode {
             continue;
         }
@@ -22,7 +23,7 @@ public function main() returns error? {
         if matchGroups is regexp:Groups {
             // The first member in the `matchGroups` tuple is the entire matched string.
             // The subsequent members represent the captured groups
-            // (assigned to `productType` and `uniqueID` respectively).
+            // corresponding to product type and unique ID respectively.
             io:println("Product Type: ",
                     (check matchGroups[1].ensureType(regexp:Span)).substring());
             io:println("Unique ID: ",
