@@ -1,6 +1,6 @@
 # Join iterable objects
 
-A `join` clause performs an inner or left outer equijoin. The result is similar to using the nested `from` clauses and `where` clause.
+A `join` clause performs an inner or left outer equi-join. The result is similar to using the nested `from` clauses and a `where` clause. Variables declared in the query expression before the join clause are accessible only on the left side of the join condition, while variables declared in the join clause are accessible only on the right side of the join condition.
 
 ::: code joining_iterable_objects.bal :::
 
