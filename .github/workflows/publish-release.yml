@@ -162,7 +162,6 @@ jobs:
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Create linux-deb Installer
-        id: run_installers_deb
         run: |
           cd installers/linux-deb
           ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
@@ -502,7 +501,6 @@ jobs:
         env:
           TEST_MODE_ACTIVE: true
       - name: Create linux-arm-deb Installer
-        id: run_installers_deb
         run: |
           cd installers/linux-deb
           ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions -a arm
