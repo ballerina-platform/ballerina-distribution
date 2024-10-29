@@ -14,12 +14,14 @@ public function main() {
     int col1 = 5;
     int col2 = 10;
 
-    // Allow any value as interpolations since object:RawTemplate has any|error[] as insertions type.
+    // Any value is allowed as an interpolations with a value of the `object:RawTemplate` type 
+    // since it has `(any|error)[]` as the `insertions` type.
     object:RawTemplate rawTemplate = `${col1}, fixed_string1,  ${col2}, ${col3()}, fixed_string3`;
     io:println(rawTemplate.strings);
     io:println(rawTemplate.insertions);
 
-    // Ensure we have 2 ints followed by a boolean value as interpolations based on insertions type.
+    // With the custom `MyCSVRawTemplate ` raw template type, the compiler 
+    // expects two integers followed by a boolean value as interpolations.
     MyCSVRawTemplate myCSVRawTemplate = `fixed_string4, ${col1}, ${col2}, fixed_string_5, ${col3()}`;
     io:println(myCSVRawTemplate.strings);
     io:println(myCSVRawTemplate.insertions);
