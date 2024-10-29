@@ -14,7 +14,7 @@ public function main() {
     int col1 = 5;
     int col2 = 10;
 
-    // Any value is allowed as an interpolations with a value of the `object:RawTemplate` type 
+    // Any value is allowed as an interpolation when defining a value of the `object:RawTemplate` type 
     // since it has `(any|error)[]` as the `insertions` type.
     object:RawTemplate rawTemplate = `${col1}, fixed_string1,  ${col2}, ${col3()}, fixed_string3`;
     io:println(rawTemplate.strings);
