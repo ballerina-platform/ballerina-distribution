@@ -12,6 +12,6 @@ A `RegExp` value can be created by using the regexp template expression or calli
 
 ## Related links
 - [Ballerina regular expression grammar](https://ballerina.io/spec/lang/master/#section_10.1)
-- [RegExp langlib functions overview](/learn/by-example/regexp_operations_overview)
+- [RegExp langlib functions overview](/learn/by-example/regexp-operations-overview)
 - [RegExp API Docs](https://lib.ballerina.io/ballerina/lang.regexp)
 - [string API Docs](https://lib.ballerina.io/ballerina/lang.string)
