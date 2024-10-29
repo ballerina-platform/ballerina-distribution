@@ -1219,7 +1219,7 @@
       },
       {
         "name": "RegExp operations overview",
-        "url": "regexp_operations_overview",
+        "url": "regexp-operations-overview",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
