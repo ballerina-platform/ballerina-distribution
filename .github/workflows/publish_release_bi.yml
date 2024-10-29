@@ -45,6 +45,8 @@ jobs:
           TEST_MODE_ACTIVE: true
         run: |
           cd ballerina-dev-tools
+          VERSION=$((grep -w 'version' | cut -d= -f2 | cut -d- -f1) < gradle.properties)
+          sed -i "s/^version=.*/version=$VERSION/" gradle.properties
           echo "::set-output name=version::$(grep "^version=" gradle.properties | cut -d'=' -f2)"
           echo "::set-output name=langVersion::$(grep "^ballerinaLangVersion=" gradle.properties | cut -d'=' -f2)"
           ./gradlew clean build --stacktrace --scan -x test  --console=plain --no-daemon --continue publishToMavenLocal
