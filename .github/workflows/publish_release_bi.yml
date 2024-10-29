@@ -48,6 +48,8 @@ jobs:
           echo "::set-output name=version::$(grep "^version=" gradle.properties | cut -d'=' -f2)"
           echo "::set-output name=langVersion::$(grep "^ballerinaLangVersion=" gradle.properties | cut -d'=' -f2)"
           ./gradlew clean build --stacktrace --scan -x test  --console=plain --no-daemon --continue publishToMavenLocal
+          cd ..
+          rm -rf ballerina-dev-tools
       - name: Set version env variable
         id: version-set
         run: |
