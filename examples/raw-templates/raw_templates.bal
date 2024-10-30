@@ -1,31 +1,28 @@
 import ballerina/io;
-import ballerinax/java.jdbc;
-import ballerina/sql;
 
-jdbc:Client dbClient = check new (url = "jdbc:h2:file:./master/orderdb",
-                           user = "test", password = "test");
-
-public function main() returns error? {
-    // Uses a raw template to create the `Orders` table.
-    _ = check dbClient->execute(`CREATE TABLE IF NOT EXISTS Orders
-                                (orderId INTEGER NOT NULL, customerId INTEGER, noOfItems INTEGER,
-                                PRIMARY KEY (orderId))`);
-    // Uses a raw template to insert values to the `Orders` table.
-    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (1, 1, 20)`);
-    _ = check dbClient->execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (2, 1, 15)`);
-
-    stream<record {| anydata...; |}, sql:Error?> strm = getOrders(1);
-    record {|record {} value;|}|sql:Error? v = strm.next();
-    while (v is record {|record {} value;|}) {
-        record {} value = v.value;
-        io:println(value);
-        v = strm.next();
-    }
+function col3() returns boolean {
+    return false;
 }
 
-function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:Error?> {
-    // In this raw template, the `customerId` variable is interpolated in the literal.
-    return dbClient->query(`SELECT * FROM orders WHERE customerId = ${customerId}`);
+type MyCSVRawTemplate object {
+    *object:RawTemplate;
+    public (string[] & readonly) strings;
+    public [int, int, boolean] insertions;
+};
+
+public function main() {
+    int col1 = 5;
+    int col2 = 10;
+
+    // Any value is allowed as an interpolation when defining a value of the `object:RawTemplate` type 
+    // since it has `(any|error)[]` as the `insertions` type.
+    object:RawTemplate rawTemplate = `${col1}, fixed_string1,  ${col2}, ${col3()}, fixed_string3`;
+    io:println(rawTemplate.strings);
+    io:println(rawTemplate.insertions);
+
+    // With the custom `MyCSVRawTemplate ` raw template type, the compiler 
+    // expects two integers followed by a boolean value as interpolations.
+    MyCSVRawTemplate myCSVRawTemplate = `fixed_string4, ${col1}, ${col2}, fixed_string_5, ${col3()}`;
+    io:println(myCSVRawTemplate.strings);
+    io:println(myCSVRawTemplate.insertions);
 }
