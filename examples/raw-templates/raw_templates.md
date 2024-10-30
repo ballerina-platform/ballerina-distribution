@@ -4,7 +4,7 @@ Raw template expressions are backtick templates without a tag (such as `string` 
 
 If you want to control the type of the strings or the interpolations more precisely, you can define an object type that includes the `object:RawTemplate` type and override the relevant field(s) with narrower types. Then, the compiler will statically validate the values against the expected type(s).
 
-A common use case for raw templates is to create SQL queries.
+An important use case of custom raw templates is SQL parameterized queries.
 
 ::: code raw_templates.bal :::
 
