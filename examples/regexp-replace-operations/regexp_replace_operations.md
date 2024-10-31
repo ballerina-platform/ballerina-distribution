@@ -1,4 +1,4 @@
-# RegExp operations
+# RegExp replace operations
 
 The `RegExp` type supports a set of langlib functions to replace parts of strings that match specific patterns.
 
