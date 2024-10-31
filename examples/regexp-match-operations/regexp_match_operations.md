@@ -1,4 +1,4 @@
-# RegExp operations
+# RegExp match operations
 
 The `RegExp` type supports a set of langlib functions to match patterns in strings and enable operations such as finding, validating, grouping, and extracting data based on regular expressions.
 
