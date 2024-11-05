@@ -225,6 +225,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Rest arguments",
+        "url": "rest-arguments",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Function pointers",
         "url": "function-pointers",
         "verifyBuild": true,
