@@ -1091,8 +1091,8 @@
       {
         "name": "Raw templates",
         "url": "raw-templates",
-        "verifyBuild": false,
-        "verifyOutput": false,
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
@@ -1103,11 +1103,11 @@
         "isLearnByExample": true
       },
       {
-        "name": "XML templates",
+        "name": "xml templates",
         "url": "xml-templates",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
+        "verifybuild": true,
+        "verifyoutput": true,
+        "islearnbyexample": true
       }
     ]
   },
