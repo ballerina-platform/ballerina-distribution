@@ -1,8 +1,7 @@
 # Distinct object types
+For more explicit control over object type relations you can use `distinct` object types. Each distinct object type declaration has a unique type ID. When you include a distinct object type within another object type declaration, the new type's type ID set will include the type ID of the included type. When checking if a given object type `OSub` is a subtype of a distinct object type `OSuper` there is the additional requirement that `OSub` must contain all the type IDs of `OSuper`.
 
-Using the `distinct` keyword in the type definition creates distinct object types. This concept allows defining a type with nominal typing within a structured type system. This is useful when interacting with the external world through API interfaces like `GraphQL`. You may want to leverage nominal typing via this distinct typing feature of Ballerina.
-
-Conceptually, a distinct type including another distinct type results in multiple interface inheritance.
+This way you can achieve the same behavior as a nominal type system within the Ballerina's structured type system, which is useful for things such as GraphQL API interfaces.
 
 ::: code distinct_object_types.bal :::
 
