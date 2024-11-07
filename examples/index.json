@@ -132,6 +132,7 @@
     "column": 0,
     "category": "Language concepts",
     "samples": [
+
       {
         "name": "Binary operators",
         "url": "binary-operators",
@@ -1103,18 +1104,18 @@
         "isLearnByExample": true
       },
       {
-        "name": "xml templates",
+        "name": "XML templates",
         "url": "xml-templates",
-        "verifybuild": true,
-        "verifyoutput": true,
-        "islearnbyexample": true
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       },
       {
         "name": "Regex templates",
         "url": "regex-templates",
-        "verifybuild": true,
-        "verifyoutput": true,
-        "islearnbyexample": true
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1402,11 +1403,11 @@
         "isLearnByExample": true
       },
       {
-        "name": "Trap expression",
-        "url": "trap-expression",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
+          "name": "Trap expression",
+          "url": "trap-expression",
+          "verifyBuild": true,
+          "verifyOutput": true,
+          "isLearnByExample": true
       },
       {
         "name": "Type intersection for error types",
