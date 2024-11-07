@@ -1,19 +1,21 @@
 import ballerina/io;
 
 public function main() {
-    string name = "James";
-
-    // Concatenates `Hello, ` strings with the `name` value.
-    string s1 = string `Hello, ${name}`;
+    // Note first \n is treated as is.
+    string s1 = string `line one \n rest of line 1 ${"\n"} second line`;
     io:println(s1);
 
-    // Concatenates `Backtick:` strings with `.
-    string s2 = string `Backtick:${"`"}`;
+    // You can use interpolations to add ` and  $ characters.
+    string s2 = string `Backtick: ${"`"} Dollar: ${"$"}`;
     io:println(s2);
 
-    // If required, a single-line string template can be split into a multiline string template by breaking
-    // at an interpolation point or using string concatenation.
-    string s3 = string `A string-template-expr is evaluated by evaluating the expression in each interpolation in ${
-        ""}the order in which they occur.`;
+    // You can nest template expressions.
+    string s3 = string `outer ${string `inner ${5} inner rest`} rest`;
     io:println(s3);
+
+    // You can use an empty string interpolation to break a template expression
+    // across multiple lines
+    string s4 = string `prefix ${
+                ""}suffix`;
+    io:println(s4);
 }
