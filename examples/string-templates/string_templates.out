@@ -3,4 +3,4 @@ line one \n rest of line 1
  second line
 Backtick: ` Dollar: $
 outer inner 5 inner rest rest
-prefix suffix
+prefix middle suffix
