@@ -1,6 +1,0 @@
-$ bal run regex_template.bal
-false
-true
-true
-true
-false

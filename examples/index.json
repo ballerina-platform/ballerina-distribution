@@ -1109,13 +1109,6 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
-      },
-      {
-        "name": "Regex templates",
-        "url": "regex-templates",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
       }
     ]
   },
