@@ -1,6 +1,5 @@
 import ballerina/io;
 
-// DistinctPerson is a proper subtype of Person
 class Person {
     public string name;
 
@@ -9,6 +8,7 @@ class Person {
     }
 };
 
+// The `DistinctPerson` type is a proper subtype of the `Person` type.
 distinct class DistinctPerson {
     public string name;
 
@@ -17,9 +17,11 @@ distinct class DistinctPerson {
     }
 }
 
-// SomeWhatDistinctPerson is a subtype of DistinctPerson since inherit the same type ID via inclusion
+// The `SomeWhatDistinctPerson` type is a subtype of the `DistinctPerson` type
+// since it includes the `DistinctPerson` type's type IDs via inclusion.
 class SomeWhatDistinctPerson {
     *DistinctPerson;
+
     public string name;
 
     function init(string name) {
@@ -27,9 +29,10 @@ class SomeWhatDistinctPerson {
     }
 }
 
-// EvenMoreDistinctPerson is a proper subtype of DistinctPerson since it has a additional type ID
+// `EvenMoreDistinctPerson` is a proper subtype of `DistinctPerson` since it has an additional type ID.
 distinct class EvenMoreDistinctPerson {
     *DistinctPerson;
+
     public string name;
 
     function init(string name) {
@@ -38,16 +41,17 @@ distinct class EvenMoreDistinctPerson {
 }
 
 public function main() {
-    Person person = new ("person");
+    Person person = new ("John Smith");
     io:println(person is DistinctPerson);
-    DistinctPerson distinctPerson = new ("distinctPerson");
+
+    DistinctPerson distinctPerson = new ("Alice Johnson");
     io:println(distinctPerson is Person);
 
-    SomeWhatDistinctPerson someWhatDistinctPerson = new ("someWhatDistinctPerson");
+    SomeWhatDistinctPerson someWhatDistinctPerson = new ("Michael Brown");
     io:println(someWhatDistinctPerson is DistinctPerson);
     io:println(distinctPerson is SomeWhatDistinctPerson);
 
-    EvenMoreDistinctPerson evenMoreDistinctPerson = new ("evenMoreDistinctPerson");
+    EvenMoreDistinctPerson evenMoreDistinctPerson = new ("Sarah Wilson");
     io:println(evenMoreDistinctPerson is DistinctPerson);
     io:println(distinctPerson is EvenMoreDistinctPerson);
 }
