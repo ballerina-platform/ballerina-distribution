@@ -29,7 +29,8 @@ class SomeWhatDistinctPerson {
     }
 }
 
-// `EvenMoreDistinctPerson` is a proper subtype of `DistinctPerson` since it has an additional type ID.
+// The `EvenMoreDistinctPerson` type is a proper subtype of the `DistinctPerson` 
+// type since it has an additional type ID.
 distinct class EvenMoreDistinctPerson {
     *DistinctPerson;
 
