@@ -68,7 +68,7 @@ public class CentralTestUtils {
     static final String COMMON_VERSION = "1.0.0";
     static final String TEST_PREFIX = "test_";
     static final String ANY_PLATFORM = "any";
-    static final String JAVA_PLATFORM = "java17";
+    static final String JAVA_PLATFORM = "java21";
     static final String BALLERINA_ARTIFACT_TYPE = "bala";
     static final String OUTPUT_NOT_CONTAINS_EXP_MSG = "build output does not contain expected message:";
     static final String PULLED_FROM_CENTRAL_MSG = " pulled from central successfully";
