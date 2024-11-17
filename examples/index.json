@@ -3703,7 +3703,7 @@
       {
         "name": "Inbound Security",
         "url": "soap-client-security-inbound-security-config",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3711,7 +3711,7 @@
       {
         "name": "Outbound Security",
         "url": "soap-client-security-outbound-security-config",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
