@@ -20,6 +20,7 @@ public function main() {
                 2} and T_3 is ${1 + 2 + 3
                 }`;
     io:println(s3);
+
     // If there are no interpolations to break at a required point, you can introduce an interpolation with an empty
     // string.
     string s4 = string `prefix ${
