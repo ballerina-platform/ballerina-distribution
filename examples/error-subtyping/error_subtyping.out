@@ -1,2 +1,5 @@
 $ bal run error_subtyping.bal
-X
+true
+false
+true
+false

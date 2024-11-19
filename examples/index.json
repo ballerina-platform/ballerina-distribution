@@ -1211,8 +1211,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
+        "name": "RegExp operations overview",
+        "url": "regexp-operations-overview",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp replace operations",
+        "url": "regexp-replace-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp find operations",
+        "url": "regexp-find-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp match operations",
+        "url": "regexp-match-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1368,6 +1389,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+          "name": "Trap expression",
+          "url": "trap-expression",
+          "verifyBuild": true,
+          "verifyOutput": true,
+          "isLearnByExample": true
       },
       {
         "name": "Type intersection for error types",

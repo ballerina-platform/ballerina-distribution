@@ -1,3 +1,5 @@
 $ bal run
-{"ORDERID":1,"CUSTOMERID":1,"NOOFITEMS":20}
-{"ORDERID":2,"CUSTOMERID":1,"NOOFITEMS":15}
+["",", fixed_string1,  ",", ",", fixed_string3"]
+[5,10,false]
+["fixed_string4, ",", ",", fixed_string_5, ",""]
+[5,10,false]

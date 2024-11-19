@@ -1,33 +1,39 @@
 import ballerina/io;
 
-type IOError distinct error;
+type InputErrorDetail record {|
+    int|string value;
+|};
 
-type FileErrorDetail record {
-    string filename;
-};
+type NumericErrorDetail record {|
+    int|float value;
+|};
 
-// The `FileIOError` type is defined as an intersection type using the `&` notation.
-// It is the intersection of two error types: `IOError` and `error<FileErrorDetail>`.
-// An error value belongs to this type if and only if it belongs to both `IOError` 
-// and `error<FileErrorDetail>`.
-type FileIOError IOError & error<FileErrorDetail>;
+type InputError error<InputErrorDetail>;
+
+type NumericError error<NumericErrorDetail>;
+
+// `NumericInputError` has detail type, `record {| int value |}`.
+type NumericInputError InputError & NumericError;
+
+type DistinctInputError distinct error<InputErrorDetail>;
+
+type DistinctNumericError distinct error<NumericErrorDetail>;
+
+// `DistinctNumericInputError` has type IDs of both `DistinctInputError` and `DistinctNumericError`.
+type DistinctNumericInputError DistinctInputError & DistinctNumericError;
 
 public function main() {
-    // In order to create an error value that belongs to `FileIOError`, the `filename`
-    // detail field must be provided.
-    FileIOError fileIOError = error("file not found", filename = "test.txt");
+    NumericInputError e1 = error("Numeric input error", value = 5);
+    // `e1` belongs to `InputError` since its detail type is a subtype of `InputErrorDetail`.
+    io:println(e1 is InputError);
 
-    // `fileIOError` belongs to both `IOError` and `error<FileErrorDetail>`.
-    io:println(fileIOError is IOError);
-    io:println(fileIOError is error<FileErrorDetail>);
+    // `e1` doesn't belong to `DistinctInputError` since it doesn't have the type ID of `DistinctInputError`.
+    io:println(e1 is DistinctInputError);
 
-    // An `IOError` value will not belong to `FileIOError` if it doesn't belong to
-    // `error<FileErrorDetail>`.
-    IOError ioError = error("invalid input");
-    io:println(ioError is FileIOError);
+    DistinctNumericInputError e2 = error("Distinct numeric input error", value = 5);
+    // `e2` belongs to `InputError` since its detail type is a subtype of `InputErrorDetail`.
+    io:println(e2 is InputError);
 
-    // Similarly, an error value belonging to `error<FileErrorDetail>` will not belong 
-    // to `FileIOError` if it doesn't belong to `IOError`.
-    error<FileErrorDetail> fileError = error("cannot remove file", filename = "test.txt");
-    io:println(fileError is FileIOError);
+    // `e2` belongs to `DistinctInputError` since its type ID set includes the type id of `DistinctInputError`.
+    io:println(e2 is DistinctInputError);
 }
