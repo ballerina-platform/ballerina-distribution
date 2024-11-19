@@ -455,7 +455,7 @@
     "title": "Equality",
     "column": 0,
     "category": "Language concepts",
-    "samples": [ 
+    "samples": [
       {
         "name": "Expression equality",
         "url": "expression-equality",
@@ -1099,15 +1099,13 @@
       {
         "name": "Raw templates",
         "url": "raw-templates",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Backtick templates",
-        "url": "backtick-templates",
+        "name": "String templates",
+        "url": "string-templates",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
