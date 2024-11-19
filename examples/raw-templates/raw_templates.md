@@ -11,6 +11,7 @@ An important use case of custom raw templates is SQL parameterized queries.
 ::: out raw_templates.out :::
 
 ## Related links
-- [Backtick templates](https://ballerina.io/learn/by-example/backtick-templates/)
+- [String templates](https://ballerina.io/learn/by-example/string-templates/)
+- [RegExp type](https://ballerina.io/learn/by-example/regexp-type/)
 - [Object type inclusion](https://ballerina.io/learn/by-example/object-type-inclusion/)
 - [Database Access - Simple query](https://ballerina.io/learn/by-example/mysql-query-operation/)
