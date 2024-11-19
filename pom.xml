@@ -301,13 +301,13 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.2.54</ballerina.version>
+        <ballerina.version>1.2.55</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.54</docker.version>
-        <kubernetes.version>1.2.54</kubernetes.version>
-        <awslambda.version>1.2.54</awslambda.version>
-        <azurefunctions.version>1.2.54</azurefunctions.version>
+        <docker.version>1.2.55</docker.version>
+        <kubernetes.version>1.2.55</kubernetes.version>
+        <awslambda.version>1.2.55</awslambda.version>
+        <azurefunctions.version>1.2.55</azurefunctions.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>1.3.1</ballerina.command.version>
         <ballerina.jre.version>0.9.1</ballerina.jre.version>
