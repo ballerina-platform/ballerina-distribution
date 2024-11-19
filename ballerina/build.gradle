@@ -81,7 +81,7 @@ task unpackDevTools(type: Copy) {
         from zipTree(artifact.getFile())
         into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
     }
-}
+}g
 
 task downloadDocUi {
     def response = new JsonSlurper().parseText(new URL(docUiApi).text)
