@@ -1,4 +1,5 @@
 import ballerina/soap.soap12;
+import ballerina/crypto;
 
 public function main() returns error? {
     crypto:KeyStore keyStore = {
