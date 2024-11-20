@@ -1209,7 +1209,7 @@ task testExamples() {
 def addH2Dependency = { filePath ->
     // Add the H2 database dependency to Ballerina.toml file
     def tomlFile = new File(filePath)
-    tomlFile.append("\n\n[[platform.java17.dependency]]")
+    tomlFile.append("\n\n[[platform.java21.dependency]]")
     tomlFile.append("\nartifactId = \"h2\"")
     tomlFile.append("\nversion = \"2.2.224\"")
     tomlFile.append("\ngroupId = \"com.h2database\"")

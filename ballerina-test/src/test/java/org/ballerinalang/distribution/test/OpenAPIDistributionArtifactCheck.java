@@ -62,7 +62,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve("2.1.0")
-                .resolve("java17");
+                .resolve("java21");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
                 .resolve(DIST_NAME)
