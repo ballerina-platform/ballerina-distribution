@@ -225,6 +225,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Rest arguments",
+        "url": "rest-arguments",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Function pointers",
         "url": "function-pointers",
         "verifyBuild": true,
@@ -448,7 +455,7 @@
     "title": "Equality",
     "column": 0,
     "category": "Language concepts",
-    "samples": [ 
+    "samples": [
       {
         "name": "Expression equality",
         "url": "expression-equality",
@@ -1092,15 +1099,13 @@
       {
         "name": "Raw templates",
         "url": "raw-templates",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Backtick templates",
-        "url": "backtick-templates",
+        "name": "String templates",
+        "url": "string-templates",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1218,8 +1223,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
+        "name": "RegExp operations overview",
+        "url": "regexp-operations-overview",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp replace operations",
+        "url": "regexp-replace-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp find operations",
+        "url": "regexp-find-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp match operations",
+        "url": "regexp-match-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

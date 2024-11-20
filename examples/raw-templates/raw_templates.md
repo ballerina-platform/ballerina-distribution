@@ -1,22 +1,17 @@
 # Raw templates
 
-A raw template is a backtick template without a tag. Exposes result of phase 1 without further processing. Raw template is evaluated by evaluating each expression and creating an object containing.
+Raw template expressions are backtick templates without a tag (such as `string` or `xml`). This is a sequence of characters interleaved with interpolations within a pair of backticks (in the form `${expression}`). The result of evaluating such a raw template is an `object:RawTemplate` object that has two fields `(readonly & string[]) strings` and `(any|error)[] insertions`. The `strings` array will have string literals in the backtick string broken at interpolations and the `insertions` array will have the resultant values of evaluating each interpolation.
 
-- an `array` of the `strings` separated by insertions
-- an `array` of the results of expression evaluation and an `array` of `strings` separating
+If you want to control the type of the strings or the interpolations more precisely, you can define an object type that includes the `object:RawTemplate` type and override the relevant field(s) with narrower types. Then, the compiler will statically validate the values against the expected type(s).
 
->**Important use case:** SQL parameters.
-
->**Note:** The relevant database driver JAR should be defined in the `Ballerina.toml` file as a dependency. This sample is based on an H2 database and the H2 database driver JAR need to be added to `Ballerina.toml` file. This sample is written using H2 2.1.210 and it is recommended to use H2 JAR with versions higher than 2.1.210.
-
-For a sample configuration and more information on the underlying module, see the [`jdbc` module](https://lib.ballerina.io/ballerinax/java.jdbc/latest/).
+An important use case of custom raw templates is SQL parameterized queries.
 
 ::: code raw_templates.bal :::
 
-Add the relevant database driver JAR details to the `Ballerina.toml` file.
-
-::: code Ballerina.toml :::
-
-Build and run the project using the `bal run` command.
-
 ::: out raw_templates.out :::
+
+## Related links
+- [String templates](https://ballerina.io/learn/by-example/string-templates/)
+- [RegExp type](https://ballerina.io/learn/by-example/regexp-type/)
+- [Object type inclusion](https://ballerina.io/learn/by-example/object-type-inclusion/)
+- [Database Access - Simple query](https://ballerina.io/learn/by-example/mysql-query-operation/)

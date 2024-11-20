@@ -8,6 +8,10 @@ function printUsage() {
     echo "        version of the ballerina distribution"
     echo "    -p (--path)"
     echo "        path of the ballerina distributions"
+    echo "    -a (--arch)"
+    echo "        architecture of the ballerina distribution"
+    echo "        If not specified : x86"
+    echo "        arm : aarch64/arm64"
     echo "    -d (--dist)"
     echo "        ballerina distribution type either of the followings"
     echo "        If not specified both distributions will be built"
@@ -31,6 +35,11 @@ case ${key} in
     ;;
     -p|--path)
     DIST_PATH="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -a|--arch)
+    ARCH="$2"
     shift # past argument
     shift # past value
     ;;
@@ -62,8 +71,19 @@ if [ -z "$DISTRIBUTION" ]; then
     BUILD_ALL_DISTRIBUTIONS=true
 fi
 
+if [ -z "$ARCH" ]; then
+    BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-linux
+else
+    if [ "$ARCH" = "arm" ]; then
+        BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-linux-arm
+    else
+        echo "Please enter a valid architecture for the ballerina pack"
+        printUsage
+        exit 1
+    fi
+fi
+
 BALLERINA_DISTRIBUTION_LOCATION=${DIST_PATH}
-BALLERINA_PLATFORM=ballerina-${BALLERINA_VERSION}-linux
 BALLERINA_INSTALL_DIRECTORY=ballerina-${BALLERINA_VERSION}
 
 echo "Build started at" $(date +"%Y-%m-%d %H:%M:%S")
@@ -93,7 +113,11 @@ function createPackInstallationDirectory() {
 }
 
 function copyDebianDirectory() {
-    cp -R resources/DEBIAN target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN
+    if [ "$ARCH" = "arm" ]; then
+        cp -R resources/arm/DEBIAN target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN
+    else
+        cp -R resources/amd/DEBIAN target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN
+    fi
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postinst
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/postrm
     sed -i -e 's/__BALLERINA_VERSION__/'${BALLERINA_VERSION}'/g' target/${BALLERINA_INSTALL_DIRECTORY}/DEBIAN/control
@@ -107,8 +131,8 @@ function createBallerinaPlatform() {
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory
     copyDebianDirectory
-    mv target/${BALLERINA_INSTALL_DIRECTORY} target/ballerina-${BALLERINA_VERSION}-linux-x64
-    fakeroot dpkg-deb --build target/ballerina-${BALLERINA_VERSION}-linux-x64
+    mv target/${BALLERINA_INSTALL_DIRECTORY} target/${BALLERINA_PLATFORM}-x64
+    fakeroot dpkg-deb --build target/${BALLERINA_PLATFORM}-x64
 }
 
 deleteTargetDirectory
