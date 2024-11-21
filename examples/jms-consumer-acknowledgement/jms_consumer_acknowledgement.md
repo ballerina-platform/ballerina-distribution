@@ -11,7 +11,7 @@ Run the program by executing the following command.
 
 ::: out jms_consumer_acknowledgement.out :::
 
->**Tip:** Run the JMS message producer given in the [JMS message producer - Produce message](/learn/by-example/jms-producer-produce-message-send) example to produce a few sample messages to the queue.
+>**Tip:** Run the JMS message producer given in the [JMS message producer - Produce message](/learn/by-example/jms-producer-produce-message) example to produce a few sample messages to the queue.
 
 ## Related links
 - [`jms:MessageConsumer->acknowledge` function - API documentation](https://lib.ballerina.io/ballerinax/java.jms/latest#MessageConsumer-acknowledge)
