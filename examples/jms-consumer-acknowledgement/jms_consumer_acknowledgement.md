@@ -1,4 +1,4 @@
-# JMS message producer - Manual acknowledgment
+# JMS message consumer - Manual acknowledgment
 
 The `jms:MessageConsumer` allows manual acknowledgment for received messages. A `jms:MessageConsumer` can be initialized by using a `jms:Session` object. To configure manual acknowledgment mode, create a `jms:Session` object with the acknowledge mode set to `jms:CLIENT_ACKNOWLEDGE`.
 
