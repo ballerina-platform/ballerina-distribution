@@ -47,7 +47,7 @@ public isolated client class Client {
     remote isolated function getPaymentMethodsPaymentMethod(string payment_method, GetPaymentMethodsPaymentMethodHeaders headers, *GetPaymentMethodsPaymentMethodQueries queries) returns json|error {
         string resourcePath = string `/v1/payment_methods/${getEncodedUri(payment_method)}`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
-        map<string|string[]> httpHeaders = getMapForHeaders(headers);
+        map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
