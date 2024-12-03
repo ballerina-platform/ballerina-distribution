@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '10.22.1'
       - name: Clone ballerina-dev-tools
-        run: git clone -b flow_model https://github.com/ballerina-platform/ballerina-dev-tools.git
+        run: git clone https://github.com/ballerina-platform/ballerina-dev-tools.git
       - name: Build ballerina-dev-tools
         id: build-dev-tools
         env:
