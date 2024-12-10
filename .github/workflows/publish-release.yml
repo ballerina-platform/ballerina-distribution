@@ -103,6 +103,7 @@ jobs:
           load: true
           push: false
           platforms: linux/amd64,linux/arm64
+          provenance: false
           tags: ballerina/ballerina:release-test
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
