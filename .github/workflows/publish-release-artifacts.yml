@@ -43,6 +43,7 @@ jobs:
           echo "::set-output name=version::$VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
           echo "::set-output name=updateNumber::$UPDATE_NUMBER"
+          echo "::set-output name=longVersion::$LONG_VERSION"
 
       - name: Download artifacts
         run: |
@@ -141,19 +142,20 @@ jobs:
         with:
           context: ${{ steps.process-docker.outputs.dockerRepo }}/base/docker/
           push: true
-          tags: ballerina/ballerina:$GIT_TAG
+          tags: ballerina/ballerina:${{ steps.set-version.outputs.taggedVersion }}
           platforms: linux/amd64,linux/arm64
           build-args: |
-            BALLERINA_DIST=ballerina-$VERSION.zip
+            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.version }}.zip
+
       - name: Build and push dev container image
         id: docker_build_devcontainer
         uses: docker/build-push-action@v6
         with:
           context: ${{ steps.process-docker.outputs.dockerRepo }}/base/devcontainer/
           push: true
-          tags: ballerina/ballerina-devcontainer:$GIT_TAG
+          tags: ballerina/ballerina-devcontainer:${{ steps.set-version.outputs.taggedVersion }}
           build-args: |
-            BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb
+            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.longVersion }}-linux-x64.deb
 
       - name: Publish Artifacts
         run: |
