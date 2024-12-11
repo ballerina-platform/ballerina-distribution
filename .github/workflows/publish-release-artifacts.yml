@@ -117,23 +117,29 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Checkout Docker repo
-        uses: actions/checkout@v3
-        with:
-          repository: ballerina-platform/module-ballerina-docker
-          path: module-ballerina-docker
+      - name: Clone Docker Repo
+        id: process-docker
+        run: |
+          git clone --single-branch --branch master https://github.com/ballerina-platform/module-ballerina-docker
+          DOCKER_REPO='module-ballerina-docker'
+          echo "::set-output name=dockerRepo::$DOCKER_REPO"
 
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
+        run: |
+          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
+          cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+
       - name: Build and push the Ballerina Docker image
         id: docker_build
         uses: docker/build-push-action@v6
         with:
-          context: module-ballerina-docker/base/docker/
+          context: ${{ steps.process-docker.outputs.dockerRepo }}/base/docker/
           push: true
           tags: ballerina/ballerina:$GIT_TAG
           platforms: linux/amd64,linux/arm64
@@ -143,7 +149,7 @@ jobs:
         id: docker_build_devcontainer
         uses: docker/build-push-action@v6
         with:
-          context: module-ballerina-docker/base/devcontainer/
+          context: ${{ steps.process-docker.outputs.dockerRepo }}/base/devcontainer/
           push: true
           tags: ballerina/ballerina-devcontainer:$GIT_TAG
           build-args: |
