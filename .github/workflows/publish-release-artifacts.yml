@@ -117,40 +117,37 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Process docker
-        id: process-docker
-        run: |
-          git clone --single-branch --branch master https://github.com/ballerina-platform/module-ballerina-docker
-          DOCKER_REPO='module-ballerina-docker'
-          echo "::set-output name=dockerRepo::$DOCKER_REPO"
+      - name: Checkout Docker repo
+        uses: actions/checkout@v3
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
 
-      - name: Enable experimental functions
-        run: |
-          echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
-          sudo service docker restart
-          docker version
-
-      - name: Build and push docker image
-        run: |
-          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
-          cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
-
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
-          rm $DOCKER_REPO/base/docker/ballerina-$VERSION.zip
-          docker push ballerina/ballerina:$GIT_TAG
-          docker rmi ballerina/ballerina:$GIT_TAG
-          docker image prune -f
-
-      - name: Build and push dev container
-        run: |
-          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
-          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
-
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG $DOCKER_REPO/base/devcontainer
-          rm $DOCKER_REPO/base/devcontainer/ballerina-$LONG_VERSION-linux-x64.deb
-          docker push ballerina/ballerina-devcontainer:$GIT_TAG
-          docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
-          docker image prune -f
+      - name: Copy zip artifact
+        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push the Ballerina Docker image
+        id: docker_build
+        uses: docker/build-push-action@v6
+        with:
+          context: module-ballerina-docker/base/docker/
+          push: true
+          tags: ballerina/ballerina:$GIT_TAG
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            BALLERINA_DIST=ballerina-$VERSION.zip
+      - name: Build and push dev container image
+        id: docker_build_devcontainer
+        uses: docker/build-push-action@v6
+        with:
+          context: module-ballerina-docker/base/devcontainer/
+          push: true
+          tags: ballerina/ballerina-devcontainer:$GIT_TAG
+          build-args: |
+            BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb
 
       - name: Publish Artifacts
         run: |
