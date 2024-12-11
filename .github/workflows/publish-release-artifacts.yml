@@ -125,10 +125,11 @@ jobs:
           DOCKER_REPO='module-ballerina-docker'
           echo "::set-output name=dockerRepo::$DOCKER_REPO"
 
-      - name: Copy zip artifact
+      - name: Copy artifacts to Docker repo
         run: |
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
           cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
+          cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
