@@ -143,6 +143,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.lib:data.yaml-ballerina:${stdlibDataYamlVersion}"
         ballerinaStdLibs "io.ballerina.lib:data.jsondata-ballerina:${stdlibDataJsondataVersion}"
         ballerinaStdLibs "io.ballerina.lib:data.xmldata-ballerina:${stdlibDataXmldataVersion}"
+        ballerinaStdLibs "io.ballerina.lib:data.csv-ballerina:${stdlibDataCsvVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:constraint-ballerina:${stdlibConstraintVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:io-ballerina:${stdlibIoVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:jballerina.java.arrays-ballerina:${stdlibJavaArraysVersion}"
