@@ -102,7 +102,6 @@ jobs:
           context: module-ballerina-docker/base/docker/
           load: true
           push: false
-          platforms: linux/amd64,linux/arm64
           tags: ballerina/ballerina:release-test
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
