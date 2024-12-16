@@ -62,6 +62,9 @@ jobs:
           if [ "$updateNumber" -ge 5 ]; then
             wget "$baseUrl/ballerina-$LONG_VERSION-macos-arm-x64.pkg"
           fi
+          if [ "$updateNumber" -ge 11 ]; then
+            wget "$baseUrl/ballerina-$LONG_VERSION-linux-arm-x64.deb"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
@@ -90,6 +93,11 @@ jobs:
           echo "	\"windows-installer-size\":\"$winInstSize\"," >> $fileName
           echo "	\"linux-installer\":\"ballerina-$LONG_VERSION-linux-x64.deb\"," >> $fileName
           echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
+          if [ "$updateNumber" -ge 11 ]; then
+            linuxArmInstSize=`ls -lh ballerina-$LONG_VERSION-linux-arm-x64.deb | cut -d " " -f5 | sed 's/M/mb/g'`
+            echo "	\"linux-arm-installer\":\"ballerina-$LONG_VERSION-linux-arm-x64.deb\"," >> $fileName
+            echo "	\"linux-arm-installer-size\":\"$linuxArmInstSize\"," >> $fileName
+          fi
           echo "	\"macos-installer\":\"ballerina-$LONG_VERSION-macos-x64.pkg\"," >> $fileName
           echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
           if [ "$updateNumber" -ge 5 ]; then
