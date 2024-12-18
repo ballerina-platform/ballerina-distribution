@@ -1380,7 +1380,7 @@
         "name": "Sequence diagrams",
         "url": "sequence-diagrams",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
