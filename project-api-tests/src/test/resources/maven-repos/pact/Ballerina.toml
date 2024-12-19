@@ -2,6 +2,7 @@
 org = "bctestorg"
 name = "pact"
 version = "0.2.0"
+readme = "Package.md"
 
 [build-options]
 observabilityIncluded = true

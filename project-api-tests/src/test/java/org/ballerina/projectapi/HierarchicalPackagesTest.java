@@ -49,6 +49,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.nio.file.StandardOpenOption.APPEND;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_ARTIFACT_TYPE;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_HOME_DIR;
 import static org.ballerina.projectapi.CentralTestUtils.BALLERINA_TOML;
@@ -227,9 +228,8 @@ public class HierarchicalPackagesTest {
             // Add a module to the package
             addNewModule(importedPackageName, "doc.api", "mod.api");
             // Update version details in Ballerina.toml
-            updateBallerinaToml(importedPackageName, COMMON_VERSION, updatedVersion,
-                    "\"" + importedPackageName + ".mod.api\"",
-                    "\"" + importedPackageName + ".mod.api\", \"" + importedPackageName + ".doc.api\"");
+            updateBallerinaToml(importedPackageName, COMMON_VERSION, updatedVersion, "", "");
+            addExports(importedPackageName, new String[]{importedPackageName + ".doc.api"});
             // Build the bala for updated package
             buildPackageBala(tempWorkspaceDirectory, envVariables, importedPackageName, orgName, updatedVersion,
                     Collections.emptyList());
@@ -420,6 +420,18 @@ public class HierarchicalPackagesTest {
         }).collect(Collectors.toList());
         Files.write(filePath, replaced);
         lines.close();
+    }
+
+    private void addExports(String packageName, String[] moduleNames) throws IOException {
+        Path filePath = tempWorkspaceDirectory.resolve(packageName).resolve(BALLERINA_TOML);
+        List<String> exports = new ArrayList<>();
+        for (String mod : moduleNames) {
+            exports.add("\n");
+            exports.add("[[package.modules]]");
+            exports.add("name = \"" + mod + "\"");
+            exports.add("export = true");
+        }
+        Files.write(filePath, exports, APPEND);
     }
 
     private void updateImports(String packageName, String s, String fileName) throws IOException {
