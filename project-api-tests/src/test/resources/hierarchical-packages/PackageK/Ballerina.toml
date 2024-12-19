@@ -2,7 +2,6 @@
 org = "bctestorg"
 name = "PackageK"
 version = "0.1.0"
-readme = "Package.md"
 
 [build-options]
 observabilityIncluded = false
