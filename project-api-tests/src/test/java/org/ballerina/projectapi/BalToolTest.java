@@ -1135,6 +1135,8 @@ public class BalToolTest {
 
         // Update the value for the given key
         jsonObject.addProperty("ballerina_version", balVersion);
+        jsonObject.addProperty("platform", "java17");
+        jsonObject.remove("readme");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String formattedJson = gson.toJson(jsonObject);
         Files.writeString(packageJsonPath, formattedJson);
