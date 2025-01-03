@@ -2,3 +2,4 @@
 org = "bctestorg"
 name = "my_package"
 version = "1.0.0-snapshot"
+readme = "Package.md"
