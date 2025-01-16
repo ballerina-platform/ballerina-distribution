@@ -268,6 +268,14 @@ task copyOtherRepos(type: Copy) {
             }
         }
     }
+
+    /* Service Model Generator Artifacts */
+    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/service-model-generator/ls-libs") {
+            into "lib/tools/lang-server/lib/"
+        }
+    }
 }
 
 task buildDistRepo(type: JavaExec) {
