@@ -2,5 +2,4 @@
 org = "bctestorg"
 name = "PackageJ.test"
 version = "1.0.0"
-
-export=["PackageJ.test"]
+readme = "Package.md"

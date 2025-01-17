@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '10.22.1'
       - name: Clone ballerina-dev-tools
-        run: git clone -b flow_model https://github.com/ballerina-platform/ballerina-dev-tools.git
+        run: git clone https://github.com/ballerina-platform/ballerina-dev-tools.git
       - name: Build ballerina-dev-tools
         id: build-dev-tools
         env:
@@ -64,7 +64,7 @@ jobs:
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
           echo "::set-output name=longVersion::$LONG_VERSION"
           echo "::set-output name=langVersion::$LANG_VERSION"
-      - name: Pre release depenency version update
+      - name: Pre release dependency version update
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         run: |
