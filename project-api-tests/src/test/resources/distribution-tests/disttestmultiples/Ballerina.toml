@@ -2,3 +2,4 @@
 org = "bctestorg"
 name = "disttestmultiples"
 version = "1.1.1"
+readme = "Package.md"
