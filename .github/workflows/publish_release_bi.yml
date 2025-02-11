@@ -517,7 +517,7 @@ jobs:
                 "card": {
                   "header": {
                     "title": "Ballerina Distribution",
-                    "subtitle": "v${{ needs.publish-release.version-set.outputs.taggedVersion }}",
+                    "subtitle": "v${{ needs.publish-release.outputs.release-version }}",
                     "imageUrl": "https://lh6.googleusercontent.com/proxy/R9Rx8vYNd-_HZn58ckf5PNX7RMlC6P-B75fB7UQ_GFH5R0UwtfJ1gVNARBvH1us8LBuK4NVFsvMGnwZkm-H2_9ACwH_j0lQmExR1SRMNGlFcbrm_1O7foFpqqOiVzA",
                     "imageType": "CIRCLE"
                   },
@@ -536,7 +536,7 @@ jobs:
                                 "text": "Download",
                                 "onClick": {
                                   "openLink": {
-                                    "url": "https://github.com/${{ github.repository }}/releases/tag/v${{ needs.publish-release.version-set.outputs.taggedVersion }}"
+                                    "url": "${{ needs.publish-release.outputs.upload-asset-url }}"
                                   }
                                 }
                               }
