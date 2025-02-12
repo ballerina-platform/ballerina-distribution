@@ -536,7 +536,7 @@ jobs:
                                 "text": "Download",
                                 "onClick": {
                                   "openLink": {
-                                    "url": "${{ needs.publish-release.outputs.upload-asset-url }}"
+                                    "url": "https://github.com/${{ github.repository }}/releases/tag/v${{ needs.publish-release.outputs.release-version }}"
                                   }
                                 }
                               }
