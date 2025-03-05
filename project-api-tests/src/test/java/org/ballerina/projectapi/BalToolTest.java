@@ -1052,14 +1052,18 @@ public class BalToolTest {
         for (String version :
                 Arrays.asList(SPECIFIC_VERSION, PATCH_VERSION, INCOMPATIBLE_DIST_VERSION, LATEST_VERSION)) {
             Path packagePath = tempWorkspaceDirectory.resolve("v" + version).resolve(PACKAGE_NAME);
-            executePackCommand(DISTRIBUTION_FILE_NAME, packagePath, new LinkedList<>(), envVariables);
+            Process pack = executePackCommand(DISTRIBUTION_FILE_NAME, packagePath, new LinkedList<>(), envVariables);
+            String packErrors = getString(pack.getErrorStream());
+            if (!packErrors.isEmpty()) {
+                Assert.fail(OUTPUT_CONTAIN_ERRORS + packErrors);
+            }
             Optional<Path> balaPath = getBalaPath(packagePath, version);
             if (balaPath.isEmpty()) {
-                Assert.fail("Bala file " + balaPath + " not found for " + TOOL_ID + ":" + version);
+                Assert.fail("Bala file not found for " + TOOL_ID + ":" + version);
             }
             // This should make the tools incompatible with the current distribution for incompatible version tests,
-            // and compatible with the current distribution (>=U9) for other versions.
-            String balVersion = version.equals(INCOMPATIBLE_DIST_VERSION) ? "2201.99.0" : "2201.9.0";
+            // and compatible with the current distribution (>=U11) for other versions.
+            String balVersion = version.equals(INCOMPATIBLE_DIST_VERSION) ? "2201.99.0" : "2201.11.0";
             updateBallerinaVersionOfBala(balaPath.get(), balVersion);
             Process build = executePushCommand(DISTRIBUTION_FILE_NAME, packagePath, new LinkedList<>(), envVariables);
             String buildErrors = getString(build.getErrorStream());
@@ -1135,8 +1139,6 @@ public class BalToolTest {
 
         // Update the value for the given key
         jsonObject.addProperty("ballerina_version", balVersion);
-        jsonObject.addProperty("platform", "java17");
-        jsonObject.remove("readme");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String formattedJson = gson.toJson(jsonObject);
         Files.writeString(packageJsonPath, formattedJson);
