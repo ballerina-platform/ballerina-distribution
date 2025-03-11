@@ -76,4 +76,6 @@ jobs:
                   devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
                   githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
                   ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+                  BALLERINA_DEV_CENTRAL: false
+                  BALLERINA_STAGE_CENTRAL: false
               run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
