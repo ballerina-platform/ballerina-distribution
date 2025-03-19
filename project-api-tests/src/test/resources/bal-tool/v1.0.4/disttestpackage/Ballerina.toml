@@ -2,4 +2,3 @@
 org = "bctestorg"
 name = "disttestpackage"
 version = "1.0.4"
-readme = "Package.md"
