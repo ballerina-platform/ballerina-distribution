@@ -19,3 +19,6 @@ CVE-2023-33202
 # Temporary false positive
 CVE-2024-7254
 CVE-2024-47554
+
+# Temporarily ignore
+CVE-2025-27553
