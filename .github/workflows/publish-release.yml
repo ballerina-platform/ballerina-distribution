@@ -31,7 +31,7 @@ jobs:
       - name: Set version env variable
         id: version-set
         run: |
-          SHORT_VERSION=$((grep -w 'version' | cut -d= -f2 | cut -d- -f1) < gradle.properties)
+          SHORT_VERSION=$(grep -w "version" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)
           DIST_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
           LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
           CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
