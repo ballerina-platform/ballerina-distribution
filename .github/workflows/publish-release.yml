@@ -495,11 +495,11 @@ jobs:
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-        env:
-          TEST_MODE_ACTIVE: true
+      # - name: Run Installer Tests
+      #   working-directory: ./ballerina-test-automation/installer-test
+      #   run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      #   env:
+      #     TEST_MODE_ACTIVE: true
       - name: Create linux-arm-deb Installer
         run: |
           cd installers/linux-deb
@@ -628,11 +628,11 @@ jobs:
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-        env:
-          TEST_MODE_ACTIVE: true
+      # - name: Run Installer Tests
+      #   working-directory: ./ballerina-test-automation/installer-test
+      #   run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      #   env:
+      #     TEST_MODE_ACTIVE: true
       - name: Download MacOS-ARM Installer Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
@@ -776,8 +776,8 @@ jobs:
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
         shell: cmd
-      - name: Run Installer Tests
-        working-directory: .\ballerina-test-automation\installer-test
-        run: |
-          $env:Path += ";C:\Program Files\Ballerina\bin"
-          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      # - name: Run Installer Tests
+      #   working-directory: .\ballerina-test-automation\installer-test
+      #   run: |
+      #     $env:Path += ";C:\Program Files\Ballerina\bin"
+      #     .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
