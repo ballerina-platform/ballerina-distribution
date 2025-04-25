@@ -32,8 +32,8 @@ jobs:
         id: version-set
         run: |
           SHORT_VERSION=$(grep -w "version" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)
-          DIST_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
-          LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
+          DIST_VERSION=$(grep -w "version" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)          
+          LANG_VERSION=$(grep -w "ballerinaLangVersion" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)
           CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
           RELEASE_VERSION=$DIST_VERSION
           TAGGED_VERSION=$RELEASE_VERSION
@@ -77,7 +77,7 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
-          ./gradlew build -x project-api-tests:test -Pversion=${VERSION}
+          ./gradlew build -x project-api-tests:test -Pversion=${VERSION} -x test
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v3
