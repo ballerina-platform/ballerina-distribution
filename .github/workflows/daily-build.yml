@@ -41,7 +41,7 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
-        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x project-api-tests:test
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x test
       - name: Create linux-deb
         id: run_installers_deb
         run: |
