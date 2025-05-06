@@ -14,7 +14,7 @@ below is and where the actual text of the license can be found.
 
 Name                                                                                                Type           License             
 _________________________________________________________________________________________________________________________________________________
-ballerina-command-1.4.3.jar                                                                         jar            apache2             
+ballerina-command-1.5.0.jar                                                                         jar            apache2
 org.eclipse.lsp4j.jsonrpc-0.15.0.jar                                                                bundle         apache2             
 performance-analyzer-services-2201.9.7.jar                                                          jar            apache2
 partial-parser-2201.9.7.jar                                                                         jar            apache2
