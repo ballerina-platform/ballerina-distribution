@@ -18,3 +18,7 @@ CVE-2023-33202
 
 # Will be fixed with the next release: https://github.com/wso2-enterprise/internal-support-ballerina/issues/800
 CVE-2024-47554
+CVE-2025-30474
+CVE-2025-27553
+CVE-2025-24970
+CVE-2025-25193
