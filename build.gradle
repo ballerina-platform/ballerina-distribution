@@ -122,6 +122,7 @@ subprojects {
         ballerinaC2cLibs
         ballerinaC2cTooling
         ballerinaOpenAPILibs
+        ballerinaTools
         exten {
             transitive = false
         }
@@ -194,9 +195,6 @@ subprojects {
         /* Ballerina Persist Tool */
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
 
-        /* Ballerina GraphQL */
-        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlToolVersion}"
-
         /* Ballerina Protoc Tool */
         ballerinaStdLibs "io.ballerina:protoc-tools:${protocToolVersion}"
 
@@ -209,6 +207,9 @@ subprojects {
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:cloud-ballerina:${c2cVersion}"
         ballerinaC2cTooling "io.ballerina:cloud-tooling:${c2cVersion}"
+
+        /* Bal tools */
+        ballerinaTools "io.ballerina:graphql-tool:${graphqlToolVersion}"
 
     }
 }
