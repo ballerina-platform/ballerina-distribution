@@ -115,6 +115,17 @@ task unpackStdLibs() {
     }
 }
 
+task unpackBalTools() {
+    doLast {
+        configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task unpackOpenAPILibs() {
     doLast {
         configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -210,6 +221,14 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
+        }
+    }
+
+    /* Bal tools (e.g. openapi, graphql etc.) */
+    configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -1570,14 +1589,54 @@ task generateCache(dependsOn: ':cache-generator:build') {
     }
 }
 
+task generateBalToolsToml () {
+    def configBalTools = []
+    configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        configBalTools.add(artifact.name + "-zip")
+    }
+
+    def balToolsTomlString = ""
+    String balToolsTomlPath = "${buildDir}/target/extracted-distributions/" +
+            "jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/resources/bal-tools.toml"
+    def file = file(balToolsTomlPath)
+
+    sortedLibs.each { lib ->
+        if (configStdlibs.contains(lib)) {
+            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
+            String balaDir = artifactExtractedPath + "/bala"
+
+            new File("${balaDir}").listFiles().each { orgDirFile ->
+                String orgDir = orgDirFile.toString()
+                String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+                String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+
+                def packageJson = file("${balaPath}/tool/bal-tool.json")
+                def parsedPackageJson = new JsonSlurper().parseText(packageJson.text)
+                String tool_id = parsedPackageJson.tool_id.toString()
+                balToolsTomlString += "[[tool]]\n" +
+                        "id = \"" + tool_id + "\"\n" +
+                        "org = \"" + orgDir + "\"\n" +
+                        "name = \"" + moduleDir + "\"\n" +
+                        "version = \"" + versionDir + "\"\n" +
+                        "active = true\n\n"
+            }
+        }
+        file.writeText(balToolsTomlString)
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
+unpackBalTools.dependesOn unpackStdLibs
 unpackOpenAPILibs.dependsOn unpackStdLibs
 unpackC2cLibs.dependsOn unpackOpenAPILibs
 unpackC2cTooling.dependsOn unpackC2cLibs
 downloadBalCommand.dependsOn unpackC2cTooling
+
+/* Generate Ballerina Tools Toml */
+generateBalToolsToml.dependsOn unpackBalTools
 
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs

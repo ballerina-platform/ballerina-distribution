@@ -122,6 +122,7 @@ subprojects {
         ballerinaC2cLibs
         ballerinaC2cTooling
         ballerinaOpenAPILibs
+        ballerinaTools
         exten {
             transitive = false
         }
@@ -209,6 +210,8 @@ subprojects {
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:cloud-ballerina:${c2cVersion}"
         ballerinaC2cTooling "io.ballerina:cloud-tooling:${c2cVersion}"
+
+//        ballerinaTools "io.ballerina.tool:tool-openapi:${openapiToolVersion}"
 
     }
 }
