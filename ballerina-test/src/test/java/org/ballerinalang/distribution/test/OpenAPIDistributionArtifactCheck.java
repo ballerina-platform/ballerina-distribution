@@ -52,7 +52,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.3.0")
+                .resolve("2.3.1")
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +61,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.3.0")
+                .resolve("2.3.1")
                 .resolve("java21");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
@@ -83,7 +83,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("lib");
 
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-2.3.0.jar")));
+        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-2.3.1.jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "ballerina-to-openapi-"));
