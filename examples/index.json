@@ -4386,6 +4386,29 @@
     ]
   },
   {
+    "title": "Change data capture",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Listen to database",
+        "url": "cdc-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Group events by table",
+        "url": "cdc-advanced-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Avro",
     "column": 0,
     "category": "Common libraries",
