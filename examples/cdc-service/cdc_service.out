@@ -1,0 +1,2 @@
+$ bal run cdc_service.bal
+time=2025-05-27T22:17:45.632+05:30 level=INFO module="" message="Fraud detected! Transaction Id: 2, User Id: 11, Amount: $12000.0"
