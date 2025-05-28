@@ -195,8 +195,6 @@ subprojects {
         /* Ballerina Persist Tool */
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
 
-        /* Ballerina Protoc Tool */
-        ballerinaStdLibs "io.ballerina:protoc-tools:${protocToolVersion}"
 
         /* Ballerina OpenAPI */
         ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiToolVersion}"
@@ -210,6 +208,7 @@ subprojects {
 
         /* Bal tools */
         ballerinaTools "io.ballerina:graphql-tool:${graphqlToolVersion}"
+        ballerinaTools "io.ballerina:protoc-tool:${protocToolVersion}"
 
     }
 }
