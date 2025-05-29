@@ -1,0 +1,11 @@
+$ bal run cdc_advanced_service.bal
+time=2025-05-27T22:26:20.509+05:30 level=INFO module="" message="\'product_tot_rating\' cache added for Product Id: 1001."
+time=2025-05-27T22:26:20.520+05:30 level=INFO module="" message="\'product_reviews\' cache entry added for Product Id: 1001."
+time=2025-05-27T22:26:20.522+05:30 level=INFO module="" message="\'product_tot_rating\' cache added for Product Id: 1001."
+time=2025-05-27T22:26:20.523+05:30 level=INFO module="" message="\'product_reviews\' cache entry added for Product Id: 1001."
+time=2025-05-27T22:26:20.525+05:30 level=INFO module="" message="\'product_tot_rating\' cache added for Product Id: 1002."
+time=2025-05-27T22:26:20.526+05:30 level=INFO module="" message="\'product_reviews\' cache entry added for Product Id: 1002."
+time=2025-05-27T22:26:20.532+05:30 level=INFO module="" message="\'products\' cache entry created for Id: 1001"
+time=2025-05-27T22:26:20.534+05:30 level=INFO module="" message="\'products\' cache entry created for Id: 1002"
+time=2025-05-27T22:26:20.536+05:30 level=INFO module="" message="\'vendors\' cache entry created for Id: 1"
+time=2025-05-27T22:26:20.538+05:30 level=INFO module="" message="\'vendors\' cache entry created for Id: 2"
