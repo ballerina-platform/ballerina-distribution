@@ -1,4 +1,4 @@
-# Change Data Capture - Advanced Usage
+# Change Data Capture - Group Events by Table
 
 The `cdc:Service` connects to a MySQL database using the `mysql:CdcListener`, allowing you to handle change data capture (CDC) events as typed records. The listener detects database changes and calls the relevant remote method (`onRead`, `onCreate`, `onUpdate`, or `onDelete`) in your service, passing the event data.
 
@@ -7,6 +7,7 @@ You can attach multiple `cdc:Service` instances to a single `mysql:CdcListener`.
 ::: code cdc_advanced_service.bal :::
 
 ## Prerequisites
+
 - To set up the database, see the [Change Data Capture Ballerina By Example - Prerequisites and Test Data](https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/cdc-prerequisite).
 
 Run the program by executing the following command.
@@ -18,4 +19,4 @@ Run the program by executing the following command.
 ## Related links
 - [`mysql:CdcListener` - API documentation](https://lib.ballerina.io/ballerinax/mysql/latest#CdcListener)
 - [`cdc:Service` - API documentation](https://lib.ballerina.io/ballerinax/cdc/latest#Service)
-- [`cdc:Service` - Specification](https://github.com/ballerina-platform/module-ballerinax-cdc/blob/main/docs/spec/spec.md)
+- [`cdc:Service` - Specification](https://github.com/ballerina-platform/module-ballerinax-cdc/blob/main/docs/spec/spec.md#22-service)

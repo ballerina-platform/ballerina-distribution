@@ -63,7 +63,7 @@ service on mysqlListener {
 
     remote function onUpdate(ProductReviews before, ProductReviews after, string tableName) returns cdc:Error? {
         int ratingDiff = after.rating - before.rating;
-        log:printInfo(`'product_tot_rating' cache updated for Product Id: ${after.product_id}. Difference in rating: ${ratingDiff}`);
+        log:printInfo(`'product_tot_rating' cache updated for Product Id: ${after.product_id}.`);
     }
 
     remote function onDelete(ProductReviews before, string tableName) returns cdc:Error? {
