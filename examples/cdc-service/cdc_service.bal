@@ -23,14 +23,16 @@ service on financeDBListener {
 
     isolated remote function onRead(Transactions trx) returns cdc:Error? {
         if trx.amount > 10000.00 {
-            string fraudAlert = string `Fraud detected! Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`;
+            string fraudAlert = 
+                string `Fraud detected! Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`;
             log:printInfo(fraudAlert);
         }
     }
 
     isolated remote function onCreate(Transactions trx) returns cdc:Error? {
         if trx.amount > 10000.00 {
-            string fraudAlert = string `Fraud detected! Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`;
+            string fraudAlert = 
+                string `Fraud detected! Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`;
             log:printInfo(fraudAlert);
         }
     }

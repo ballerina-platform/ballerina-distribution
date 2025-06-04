@@ -33,8 +33,10 @@ public function main() returns sql:Error? {
                                     );`);
 
     // Adds the records to the `products` table.
-    _ = check mysqlClient->execute(`INSERT INTO store_db.products VALUES (1001, 'Samsung Galaxy S24', 999.99, 'Flagship phone with AI camera', 1);`);
-    _ = check mysqlClient->execute(`INSERT INTO store_db.products VALUES (1002, 'Apple iPhone 15 Pro', 1099.00, 'New titanium design', 2);`);
+    _ = check mysqlClient->execute(`INSERT INTO store_db.products VALUES 
+                                    (1001, 'Samsung Galaxy S24', 999.99, 'Flagship phone with AI camera', 1);`);
+    _ = check mysqlClient->execute(`INSERT INTO store_db.products VALUES 
+                                    (1002, 'Apple iPhone 15 Pro', 1099.00, 'New titanium design', 2);`);
 
     // Creates `product_reviews` table in the database.
     _ = check mysqlClient->execute(`CREATE TABLE store_db.product_reviews (
