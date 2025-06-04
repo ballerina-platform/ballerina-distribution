@@ -9,9 +9,9 @@ readonly class FixedTimeZone {
     // Include the `readonly` object type named `TypeZone` using object type inclusion.
    *TimeZone;
 
-   // The `final decimal` field named offset is read-only because the `decimal` basic type is
+   // The `decimal` field named offset is read-only because the `decimal` basic type is
    // inherently immutable. 
-   final decimal offset;
+   decimal offset;
 
    function init(decimal offset) {
       self.offset = offset;
