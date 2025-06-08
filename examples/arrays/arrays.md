@@ -4,6 +4,21 @@ An array can be used to hold a set of values of the same type. The array type ca
 
 The length of the array can be inferred from the context by defining the array as `T[*]`. The length of the array should be known in compile time.
 
+# Quick Comparison of Array Types in Ballerina
+
+| **Type**             | **Declaration Syntax** | **Example Syntax**                  | **Length Known at Compile Time** | **Resizable** |
+|----------------------|------------------------|-------------------------------------|----------------------------------|---------------|
+| Fixed-length array   | `T[n] <arrayName>`               | `int[3] nums = [1, 2, 3];`          | ✅ Yes                           | ❌ No         |
+| Variable-length      | `T[] <arrayName>`                | `int[] even = [2, 4];`           | ❌ No                            | ✅ Yes        |
+| Inferred-length      | `T[*] <arrayName>`            | `string[*] colors = ["red"];`       | ✅ Yes                           | ❌ No         |
+
+> 📌 **Note**:
+> - `T` represents any valid data type (e.g., `int`, `string`, `float`, etc.)
+> - `n` represents the  the exact number of elements the array must have. 
+> - Fixed-length and inferred-length arrays cannot change their size once initialized.  
+> - Variable-length arrays (also known as open arrays) allow dynamic resizing using methods like `.push()` and `.remove()`.
+
+
 ::: code arrays.bal :::
 
 ::: out arrays.out :::
