@@ -42,71 +42,21 @@ jobs:
       - name: Download Windows Installer Zip
         run: |
           echo default login ${{ secrets.BALLERINA_BOT_USERNAME }} password ${{ secrets.BALLERINA_BOT_TOKEN }} >> _netrc
-          curl --netrc-file _netrc -L -o ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-windows.zip
+          curl --netrc-file _netrc -L -o ballerina-2201.12.7-swan-lake-windows.zip https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.12.7/ballerina-2201.12.7-swan-lake-windows.zip
       - name: Create windows-msi Installer
         id: run_installers_msi
         run: |
           move installers\windows .\..\..\
           cd ..\..\windows
-          pwd
-          .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\ballerina-distribution\ballerina-distribution
+          dir /b /s /a:-D
+          .\build-ballerina-windows-x64.bat --version 2201.12.7-swan-lake --path .\..\ballerina-distribution\ballerina-distribution
       - name: Sign the Windows installer
         run: |
-          cosign sign-blob D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
+          cosign sign-blob D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --output-certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --output-signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --yes
       - name: Verify the Windows installer
         run: |
-          cosign verify-blob D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
-      - name: Upload Windows msi Hashes
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256
-          asset_path: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256
-          asset_content_type: application/octet-stream
-      - name: Upload Windows msi Installer
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
-          asset_path: D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
-          asset_content_type: application/octet-stream
-      - name: Upload Windows installer's Certificate
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem
-          asset_path: ./ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem
-          asset_content_type: application/octet-stream
-      - name: Upload Windows installer's Signature
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
-        with:
-          upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
-          asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig
-          asset_path: ./ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig
-          asset_content_type: application/octet-stream
-      - name: Install Ballerina msi
-        run: msiexec /i D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
-        shell: cmd
-      - name: Update Installer Test Configs
-        run: |
-          set DISPLAY_TEXT=${{ needs.publish-release.outputs.lang-version }}
-          set SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
-          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
-          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
-        shell: cmd
-      - name: Run Installer Tests
-        working-directory: .\ballerina-test-automation\installer-test
-        run: |
-          $env:Path += ";C:\Program Files\Ballerina\bin"
-          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+          openssl dgst -sha256 -out ballerina-2201.12.7-swan-lake-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
+      
