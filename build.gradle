@@ -182,7 +182,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
         ballerinaStdLibs "io.ballerina.lib:np-ballerina:${stdlibNpVersion}"
-        ballerinaStdLibs "io.ballerina.lib:ai-ballerina:${stdlibAiVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:ai-ballerina:${stdlibAiVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:yaml-ballerina:${stdlibYamlVersion}"
