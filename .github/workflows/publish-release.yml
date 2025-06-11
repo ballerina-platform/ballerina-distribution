@@ -52,13 +52,13 @@ jobs:
       - name: Sign the Windows installer
         continue-on-error: true
         run: |
-          cosign sign-blob D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --output-certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --output-signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --yes
+          cosign sign-blob C:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --output-certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --output-signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --yes
       - name: Verify the Windows installer
         run: |
-          cosign verify-blob D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob C:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-2201.12.7-swan-lake-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
+          openssl dgst -sha256 -out ballerina-2201.12.7-swan-lake-windows-x64.msi.sha256 C:\a\windows\target\msi\ballerina-*-windows-x64.msi
       - name: Upload Windows msi Hashes
         uses: actions/upload-release-asset@v1
         env:
@@ -75,7 +75,7 @@ jobs:
         with:
           upload_url: https://uploads.github.com/repos/ballerina-platform/ballerina-distribution/releases/224336749/assets{?name,label}
           asset_name: ballerina-2201.12.7-swan-lake-windows-x64.msi
-          asset_path: D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi
+          asset_path: C:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi
           asset_content_type: application/octet-stream
       - name: Upload Windows installer's Certificate
         uses: actions/upload-release-asset@v1
@@ -96,7 +96,7 @@ jobs:
           asset_path: ./ballerina-2201.12.7-swan-lake-windows-x64.msi.sig
           asset_content_type: application/octet-stream
       - name: Install Ballerina msi
-        run: msiexec /i D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi /quiet /qr
+        run: msiexec /i C:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi /quiet /qr
         shell: cmd
       - name: Update Installer Test Configs
         run: |
