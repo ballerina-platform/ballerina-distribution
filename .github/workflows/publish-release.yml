@@ -48,8 +48,8 @@ jobs:
         run: |
           move installers\windows .\..\..\
           cd ..\..\windows
-          Get-ChildItem -Recurse -File
           .\build-ballerina-windows-x64.bat --version 2201.12.7-swan-lake --path .\..\ballerina-distribution\ballerina-distribution
+          Get-ChildItem -Recurse -File
       - name: Sign the Windows installer
         run: |
           cosign sign-blob D:\a\windows\target\msi\ballerina-2201.12.7-swan-lake-windows-x64.msi --output-certificate ballerina-2201.12.7-swan-lake-windows-x64.msi.pem --output-signature ballerina-2201.12.7-swan-lake-windows-x64.msi.sig --yes
