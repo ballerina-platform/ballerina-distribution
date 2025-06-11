@@ -48,7 +48,7 @@ jobs:
         run: |
           move installers\windows .\..\..\
           cd ..\..\windows
-          dir /b /s /a:-D
+          Get-ChildItem -Recurse -File
           .\build-ballerina-windows-x64.bat --version 2201.12.7-swan-lake --path .\..\ballerina-distribution\ballerina-distribution
       - name: Sign the Windows installer
         run: |
