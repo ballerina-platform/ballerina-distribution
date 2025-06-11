@@ -722,6 +722,7 @@ jobs:
           cd ..\..\windows
           .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\ballerina-distribution\ballerina-distribution
       - name: Sign the Windows installer
+        continue-on-error: true
         run: |
           cosign sign-blob D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
       - name: Verify the Windows installer
