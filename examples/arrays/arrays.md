@@ -6,9 +6,9 @@ The length of the array can be inferred from the context by defining the array a
 
 # Quick Comparison of Array Types in Ballerina
 
-| **Type**             | **Declaration Syntax** | **Example Syntax**                  | **Length Known at Compile Time** | **Resizable** |
+| **Array Type**             | **Declaration Syntax** | **Example Syntax**                  | **Length Known at Compile Time** | **Resizable** |
 |----------------------|------------------------|-------------------------------------|----------------------------------|---------------|
-| Fixed-length array   | `T[n] <arrayName>;`               | `int[3] nums = [1, 2, 3];`          | Yes ✅                           | No ❌         |
+| Fixed-length   | `T[n] <arrayName>;`               | `int[3] nums = [1, 2, 3];`          | Yes ✅                           | No ❌         |
 | Variable-length      | `T[] <arrayName>;`                | `int[] even = [2, 4];`           | No ❌                            | Yes ✅        |
 | Inferred-length      | `T[*] <arrayName>;`            | `string[*] colors = ["red"];`       | Yes ✅                           | No ❌         |
 
