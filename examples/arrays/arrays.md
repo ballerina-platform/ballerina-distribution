@@ -8,9 +8,9 @@ The length of the array can be inferred from the context by defining the array a
 
 | **Type**             | **Declaration Syntax** | **Example Syntax**                  | **Length Known at Compile Time** | **Resizable** |
 |----------------------|------------------------|-------------------------------------|----------------------------------|---------------|
-| Fixed-length array   | `T[n] <arrayName>`               | `int[3] nums = [1, 2, 3];`          | ✅ Yes                           | ❌ No         |
-| Variable-length      | `T[] <arrayName>`                | `int[] even = [2, 4];`           | ❌ No                            | ✅ Yes        |
-| Inferred-length      | `T[*] <arrayName>`            | `string[*] colors = ["red"];`       | ✅ Yes                           | ❌ No         |
+| Fixed-length array   | `T[n] <arrayName>`               | `int[3] nums = [1, 2, 3];`          | Yes ✅                           | No ❌         |
+| Variable-length      | `T[] <arrayName>`                | `int[] even = [2, 4];`           | No ❌                            | Yes ✅        |
+| Inferred-length      | `T[*] <arrayName>`            | `string[*] colors = ["red"];`       | Yes ✅                           | No ❌         |
 
 > 📌 **Note**:
 > - `T` represents any valid data type (e.g., `int`, `string`, `float`, etc.)
