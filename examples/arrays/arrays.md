@@ -14,7 +14,7 @@ The length of the array can be inferred from the context by defining the array a
 
 > 📌 **Note**:
 > - `T` represents any valid data type (e.g., `int`, `string`, `float`, etc.)
-> - `n` represents the  the exact number of elements the array must have. 
+> - `n` represents the exact number of elements the array must have. 
 > - Fixed-length and inferred-length arrays cannot change their size once initialized.  
 > - Variable-length arrays (also known as open arrays) allow dynamic resizing using methods like `.push()` and `.remove()`.
 
