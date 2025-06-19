@@ -1627,7 +1627,7 @@ task generateBalToolsToml () {
                 String balaDir = artifactExtractedPath + "/bala"
 
                 new File("${balaDir}").listFiles().each { orgDirFile ->
-                    String orgDir = new File("${balaDir}").listFiles()[0].toString()
+                    String orgDir = orgDirFile.toString()
                     String moduleDir = new File("${orgDir}").listFiles()[0].toString()
                     String versionDir = new File("${moduleDir}").listFiles()[0].toString()
                     String balaPath = new File("${versionDir}").listFiles()[0].toString()
