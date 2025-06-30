@@ -1,6 +1,7 @@
 # JMS service - Consume messages
 
-The `jms:Service` connects to a given JMS provider via the `jms:Listener`, and allows receiving messages asynchronously. A `jms:Listener` is created by providing the connection configurations, session acknowledge mode, and relevant JMS destination. Use this to listen to messages sent to a particular JMS destination asynchronously.
+The `jms:Service` connects to a given JMS provider via the `jms:Listener`, and allows receiving messages asynchronously. A `jms:Listener` is initialized by providing the connection configurations. A `jms:Service` must be configured to subscribe to a JMS destination—either a queue or a topic—using the `jms:ServiceConfig` annotation. This enables the service to asynchronously listen for messages sent to the specified destination.
+
 
 ::: code jms_service_consume_message.bal :::
 
