@@ -8,9 +8,7 @@ listener jms:Listener jmsListener = check new (
 );
 
 @jms:ServiceConfig {
-   subscriptionConfig: {
-      queueName: "order-queue"
-   }
+   queueName: "order-queue"
 }
 service on jmsListener {
     remote function onMessage(jms:Message message) returns error? {
