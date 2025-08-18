@@ -26,7 +26,7 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
-    shortVersion = "${version}".split("-")[0]
+    shortVersion = "${version}".replaceAll("-SNAPSHOT", "")
 }
 
 configurations {
@@ -249,30 +249,12 @@ task copyOtherRepos(type: Copy) {
     }
 
     /* Language Server Extension Artifacts */
-    def generatorNames = [
-        "architecture-model-generator",
-        "graphql-model-generator",
-        "flow-model-generator",
-        "sequence-model-generator",
-        "trigger-model-generator"
-    ]
-    
     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip"
-        generatorNames.each { generatorName ->
-            from("${artifactExtractedPath}/${generatorName}/libs") {
-                into "bre/lib/"
-            }
-            from("${artifactExtractedPath}/${generatorName}/ls-libs") {
-                into "lib/tools/lang-server/lib/"
-            }
+        from("${artifactExtractedPath}/ls-extensions/bre-libs") {
+            into "bre/lib/"
         }
-    }
-
-    /* Service Model Generator Artifacts */
-    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/service-model-generator/ls-libs") {
+        from("${artifactExtractedPath}/ls-extensions/ls-libs") {
             into "lib/tools/lang-server/lib/"
         }
     }

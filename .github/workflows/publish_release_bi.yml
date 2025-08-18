@@ -129,6 +129,7 @@ jobs:
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
+          severity: 'CRITICAL,HIGH'
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.5.0
       - name: Set up Node.js
@@ -500,3 +501,121 @@ jobs:
 #        run: |
 #          $env:Path += ";C:\Program Files\Ballerina\bin"
 #          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+
+  send-notification:
+    name: Send Notification
+    runs-on: ubuntu-latest
+    needs: [publish-release, macos-installer-build, windows-installer-build]
+    steps:
+      - name: Send notification to Google Chat
+        run: |
+          body=$(cat << 'EOF'
+          {
+            "cardsV2": [
+              {
+                "cardId": "published-ballerina-distribution",
+                "card": {
+                  "header": {
+                    "title": "Ballerina Distribution",
+                    "subtitle": "v${{ needs.publish-release.outputs.release-version }}",
+                    "imageUrl": "https://lh6.googleusercontent.com/proxy/R9Rx8vYNd-_HZn58ckf5PNX7RMlC6P-B75fB7UQ_GFH5R0UwtfJ1gVNARBvH1us8LBuK4NVFsvMGnwZkm-H2_9ACwH_j0lQmExR1SRMNGlFcbrm_1O7foFpqqOiVzA",
+                    "imageType": "CIRCLE"
+                  },
+                  "sections": [
+                    {
+                      "widgets": [
+                        {
+                          "textParagraph": {
+                            "text": "Run \"Update Kola\" to update the distribution."
+                          }
+                        },
+                        {
+                          "buttonList": {
+                            "buttons": [
+                              {
+                                "text": "Download",
+                                "onClick": {
+                                  "openLink": {
+                                    "url": "https://github.com/${{ github.repository }}/releases/tag/v${{ needs.publish-release.outputs.release-version }}"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+          EOF
+          )
+          curl -X POST -H 'Content-Type: application/json' "https://chat.googleapis.com/v1/spaces/AAAApvQDm3o/messages?key=${{ secrets.EDITOR_CHAT_BOT_KEY }}&token=${{ secrets.EDITOR_CHAT_BOT_TOKEN }}" -d "$body"
+
+  send-failure-notification:
+    name: Send Failure Notification
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    needs: [publish-release, macos-installer-build, windows-installer-build]
+    steps:
+      - name: Send failure notification to Google Chat
+        run: |
+          body=$(cat << 'EOF'
+          {
+            "cardsV2": [
+              {
+                "cardId": "ballerina-dist-build-error",
+                "card": {
+                  "header": {
+                    "title": "Ballerina Distribution",
+                    "subtitle": "Release Failure",
+                    "imageUrl": "https://lh6.googleusercontent.com/proxy/R9Rx8vYNd-_HZn58ckf5PNX7RMlC6P-B75fB7UQ_GFH5R0UwtfJ1gVNARBvH1us8LBuK4NVFsvMGnwZkm-H2_9ACwH_j0lQmExR1SRMNGlFcbrm_1O7foFpqqOiVzA",
+                    "imageType": "CIRCLE"
+                  },
+                  "sections": [
+                    {
+                      "widgets": [
+                        {
+                          "decoratedText": {
+                            "text": "<font color=\"#FF0000\">Error: The build has failed</font>",
+                            "startIcon": {
+                              "materialIcon": {
+                                "name": "error",
+                                "fill": true,
+                                "weight": 500,
+                                "grade": 100
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "textParagraph": {
+                            "text": "Please view the workflow for further details."
+                          }
+                        },
+                        {
+                          "buttonList": {
+                            "buttons": [
+                              {
+                                "text": "View Workflow",
+                                "onClick": {
+                                  "openLink": {
+                                    "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+          EOF
+          )
+          curl -X POST -H 'Content-Type: application/json' "https://chat.googleapis.com/v1/spaces/AAAApvQDm3o/messages?key=${{ secrets.EDITOR_CHAT_BOT_KEY }}&token=${{ secrets.EDITOR_CHAT_BOT_TOKEN }}" -d "$body"
