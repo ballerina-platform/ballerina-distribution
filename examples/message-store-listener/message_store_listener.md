@@ -1,6 +1,6 @@
 # Message Store Listener
 
-The `messaging` library provides a message store listener which polls the store at a configurable interval, dispatches messages to an attached service, and manages retries and Dead-Letter failed messages.
+The `messaging` library provides a message store listener which polls the store at a configurable interval, dispatches messages to an attached service, and manages retries and a Dead-Letter store.
 
 ::: code message_store_listener.bal :::
 
