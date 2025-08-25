@@ -2,6 +2,8 @@
 
 The `messaging` library provides an object type to implement a message store, which can be used to store, retrieve and acknowledge messages. Developers can implement this type with custom message brokers or databases.
 
+::: code custom_message_store.bal :::
+
 Additionally it provides a in-memory message store implementation for quick testing and development.
 
 ::: code message_store.bal :::
