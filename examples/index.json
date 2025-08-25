@@ -4488,7 +4488,7 @@
       },
       {
         "name": "Message Store Listener",
-        "url": "messages-store-listener",
+        "url": "message-store-listener",
         "verifyBuild": true,
         "verifyOutput": false,
         "isLearnByExample": true
