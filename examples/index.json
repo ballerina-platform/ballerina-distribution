@@ -4474,6 +4474,28 @@
     ]
   },
   {
+    "title": "Messaging",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Message store",
+        "url": "message-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Message Store Listener",
+        "url": "messages-store-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Security",
     "column": 0,
     "category": "Common libraries",
