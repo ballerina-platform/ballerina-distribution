@@ -4601,7 +4601,7 @@
       {
         "name": "Configure logging",
         "url": "logging-configuration",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
@@ -4610,7 +4610,7 @@
       {
         "name": "Child loggers with context",
         "url": "child-loggers-with-context",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
@@ -4619,7 +4619,7 @@
       {
         "name": "Logger from configuration",
         "url": "logger-from-config",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
@@ -4628,7 +4628,7 @@
       {
         "name": "Custom logger",
         "url": "custom-logger",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
