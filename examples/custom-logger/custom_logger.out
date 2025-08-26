@@ -1,4 +1,4 @@
-bal run custom_logger.bal
+$ bal run custom_logger.bal
 
 time=2025-08-26T09:04:14.761+05:30 level=INFO module="" message="[Application: OrderService v2.1.0] Application logger initialized" feature="order_processing"
 time=2025-08-26T09:04:14.776+05:30 level=INFO module="" message="[Application: OrderService v2.1.0] Processing order" orderId="ORDER-12345" customerId="CUST-67890"
