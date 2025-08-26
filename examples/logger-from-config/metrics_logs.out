@@ -1,0 +1,4 @@
+time=2025-08-26T08:38:34.384+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
+time=2025-08-26T08:38:34.386+05:30 level=INFO module="" message="Performance metric recorded" metric="response_time" value=245.5 unit="ms" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
+time=2025-08-26T08:38:34.388+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
+time=2025-08-26T08:38:34.389+05:30 level=INFO module="" message="Performance metric recorded" metric="memory_usage" value=78.2 unit="percent" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"

@@ -4591,8 +4591,43 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error Logging",
+        "url": "error-logging",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": false
+      },
+      {
         "name": "Configure logging",
         "url": "logging-configuration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Child loggers with context",
+        "url": "child-loggers-with-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Logger from configuration",
+        "url": "logger-from-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Custom logger",
+        "url": "custom-logger",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",

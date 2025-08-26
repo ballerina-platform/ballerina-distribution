@@ -1,0 +1,10 @@
+[ballerina.log]
+level = "DEBUG"
+format = "json"
+
+[[ballerina.log.destinations]]
+path = "./logs/app.log"
+
+[ballerina.log.keyValues]
+env = "prod"
+nodeId = "server-001"
