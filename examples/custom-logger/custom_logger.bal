@@ -14,17 +14,6 @@ public isolated class ApplicationLogger {
         self.context = context.cloneReadOnly();
     }
 
-    public isolated function printDebug(string|log:PrintableRawTemplate msg, error? 'error = (),
-            error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
-        string processedMsg = msg is string ? msg : log:processTemplate(msg);
-        string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${processedMsg}`;
-        log:KeyValues newKeyValues = {...self.context};
-        foreach [string, log:Value] [k, v] in keyValues.entries() {
-            newKeyValues[k] = v;
-        }
-        log:printDebug(printableMsg, 'error, stackTrace, newKeyValues);
-    }
-
     public isolated function printInfo(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
         string processedMsg = msg is string ? msg : log:processTemplate(msg);
@@ -38,24 +27,17 @@ public isolated class ApplicationLogger {
 
     public isolated function printWarn(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
-        string processedMsg = msg is string ? msg : log:processTemplate(msg);
-        string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${processedMsg}`;
-        log:KeyValues newKeyValues = {...self.context};
-        foreach [string, log:Value] [k, v] in keyValues.entries() {
-            newKeyValues[k] = v;
-        }
-        log:printWarn(printableMsg, 'error, stackTrace, newKeyValues);
+        // Add similar implementation or a custom logic for warnings
     }
 
     public isolated function printError(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
-        string processedMsg = msg is string ? msg : log:processTemplate(msg);
-        string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${processedMsg}`;
-        log:KeyValues newKeyValues = {...self.context};
-        foreach [string, log:Value] [k, v] in keyValues.entries() {
-            newKeyValues[k] = v;
-        }
-        log:printError(printableMsg, 'error, stackTrace, newKeyValues);
+        // Add similar implementation or a custom logic for warnings
+    }
+
+    public isolated function printDebug(string|log:PrintableRawTemplate msg, error? 'error = (),
+            error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
+        // Add similar implementation or a custom logic for warnings
     }
 
     public isolated function withContext(*log:KeyValues keyValues) returns log:Logger|error {
