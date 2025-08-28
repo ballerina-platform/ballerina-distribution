@@ -1,4 +1,4 @@
-# Logger from Configuration
+# Logger from configuration
 
 This example demonstrates how to create specialized loggers with unique configurations. Each logger can have its own format, destinations, log level, and default context.
 

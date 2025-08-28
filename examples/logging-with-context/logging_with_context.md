@@ -1,4 +1,4 @@
-# Logging with Context
+# Logging with context
 
 This example demonstrates how to add contextual information to log messages using key-value pairs. This helps in debugging and monitoring by providing additional metadata with each log entry.
 

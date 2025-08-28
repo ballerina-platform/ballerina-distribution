@@ -1,4 +1,4 @@
-# Child Loggers with Context
+# Child loggers with context
 
 This example demonstrates how to create child loggers with specific additional context using the Ballerina logging module. Child loggers inherit context from their parent loggers, allowing for hierarchical logging with layered context.
 

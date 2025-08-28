@@ -1,4 +1,4 @@
-# Error Logging
+# Error logging
 
 This example demonstrates how to log errors with detailed information including error messages, causes, stack traces, and additional context in Ballerina.
 
