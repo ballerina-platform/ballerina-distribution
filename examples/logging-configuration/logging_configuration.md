@@ -1,4 +1,4 @@
-# Log Configuration
+# Log configuration
 
 This example demonstrates how to configure logging behavior using the `Config.toml` file. You can control the log level, format, output destinations, and add root context that appears in all log messages.
 

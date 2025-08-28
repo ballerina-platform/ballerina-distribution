@@ -1,4 +1,4 @@
-# Custom Logger Implementation
+# Custom logger
 
 This example demonstrates how to implement custom loggers that conform to the `Logger` type. Custom loggers can automatically include specific context and provide specialized logging behavior for different components.
 
