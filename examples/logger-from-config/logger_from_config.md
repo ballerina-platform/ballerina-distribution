@@ -4,7 +4,7 @@ This example demonstrates how to create specialized loggers with unique configur
 
 ::: code logger_from_config.bal :::
 
-> **Note:** All loggers created from the configuration automatically inherit the root logger default context.
+> **Note:** All loggers created from the configuration automatically inherit the default context of the root logger.
 
 ::: code Config.toml :::
 
