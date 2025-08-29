@@ -1,0 +1,16 @@
+$ bal run child_loggers_with_context.bal
+
+time=2025-08-26T08:26:58.477+05:30 level=INFO module="" message="Processing user request" userId="alice123" requestId="req-001"
+time=2025-08-26T08:26:58.486+05:30 level=INFO module="" message="User permissions validated successfully" userId="alice123" requestId="req-001"
+time=2025-08-26T08:26:58.487+05:30 level=INFO module="" message="User data retrieved" recordCount=5 userId="alice123" requestId="req-001"
+time=2025-08-26T08:26:58.489+05:30 level=INFO module="" message="Starting data transformation" userId="alice123" requestId="req-001" operation="dataTransformation"
+time=2025-08-26T08:26:58.490+05:30 level=WARN module="" message="Using fallback transformation method" reason="primary method unavailable" userId="alice123" requestId="req-001" operation="dataTransformation"
+time=2025-08-26T08:26:58.491+05:30 level=INFO module="" message="Data transformation completed" duration="250ms" userId="alice123" requestId="req-001" operation="dataTransformation"
+time=2025-08-26T08:26:58.493+05:30 level=INFO module="" message="Request processing completed successfully" userId="alice123" requestId="req-001"
+time=2025-08-26T08:26:58.494+05:30 level=INFO module="" message="Processing user request" userId="bob456" requestId="req-002"
+time=2025-08-26T08:26:58.495+05:30 level=INFO module="" message="User permissions validated successfully" userId="bob456" requestId="req-002"
+time=2025-08-26T08:26:58.495+05:30 level=INFO module="" message="User data retrieved" recordCount=5 userId="bob456" requestId="req-002"
+time=2025-08-26T08:26:58.496+05:30 level=INFO module="" message="Starting data transformation" userId="bob456" requestId="req-002" operation="dataTransformation"
+time=2025-08-26T08:26:58.497+05:30 level=WARN module="" message="Using fallback transformation method" reason="primary method unavailable" userId="bob456" requestId="req-002" operation="dataTransformation"
+time=2025-08-26T08:26:58.499+05:30 level=INFO module="" message="Data transformation completed" duration="250ms" userId="bob456" requestId="req-002" operation="dataTransformation"
+time=2025-08-26T08:26:58.500+05:30 level=INFO module="" message="Request processing completed successfully" userId="bob456" requestId="req-002"
