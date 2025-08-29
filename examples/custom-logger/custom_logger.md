@@ -1,6 +1,6 @@
 # Custom logger
 
-This example demonstrates how to implement custom loggers that conform to the `Logger` type. Custom loggers can automatically include specific context and provide specialized logging behavior for different components.
+This example demonstrates how to implement custom loggers that conform to the `log:Logger` type. Custom loggers can automatically include specific context and provide specialized logging behavior for different components.
 
 ::: code custom_logger.bal :::
 
