@@ -21,14 +21,9 @@ The log messages will be written to the specified file (`./logs/app.log`).
 
 ::: out logging_configuration.out :::
 
-> **Tip:** Each module can also be assigned its own log level. To assign a log level to a module, provide the following
-> entry in the `Config.toml` file:
->
-> ```toml
-> [[ballerina.log.modules]]
-> name = "[ORG_NAME]/[MODULE_NAME]"
-> level = "[LOG_LEVEL]"
-> ```
+> **Tip:** Each module can also be assigned its own log level. To assign a log level to a module, provide the following entry in the `Config.toml` file:
+
+::: code ModuleConfig.toml :::
 
 ## Related links
 - [`log` module - Specification](https://ballerina.io/spec/log/#3-configure-logging)
