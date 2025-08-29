@@ -61,8 +61,8 @@ function testFunc() {
 
     // Invoking the main function.
     main();
-    test:assertEquals(printDebug, "debug log");
-    test:assertEquals(printError, "error log with cause");
-    test:assertEquals(printInfo, "info log");
-    test:assertEquals(printWarn, "warn log");
+    test:assertEquals(printDebug, "This is a debug message");
+    test:assertEquals(printError, "This is an error message");
+    test:assertEquals(printInfo, "Application started successfully");
+    test:assertEquals(printWarn, "This is a warning message");
 }
