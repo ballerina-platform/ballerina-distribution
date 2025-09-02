@@ -54,12 +54,6 @@ jobs:
           cd installers/linux-rpm
           ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
           echo "Created linux-rpm successfully"
-      - name: Generate Hashes
-        run: |
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
-          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Archive Ballerina ZIP
         uses: actions/upload-artifact@v4
         with:
