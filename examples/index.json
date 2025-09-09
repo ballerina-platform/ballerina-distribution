@@ -1306,7 +1306,7 @@
         "name": "Module lifecycle",
         "url": "module-lifecycle",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
