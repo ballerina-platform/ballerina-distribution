@@ -1,0 +1,10 @@
+$ bal run message_store_listener.bal
+
+time=2025-08-25T12:28:32.268+05:30 level=INFO module="" message="message received" payload="Hello, World!"
+time=2025-08-25T12:28:42.241+05:30 level=INFO module="" message="message received" payload="error"
+time=2025-08-25T12:28:42.247+05:30 level=ERROR module=ballerina/messaging message="error occurred while processing message" error={"causes":[],"message":"Simulated processing error","detail":{},"stackTrace":[{"callableName":"onMessage","moduleName":"$anonType$_0","fileName":"message_store_listener.bal","lineNumber":25},{"callableName":"execute","moduleName":"ballerina.messaging.1.PollAndProcessMessages","fileName":"msg_listener.bal","lineNumber":201}]} msgId="01f08180-e965-11c0-ad70-3bc9eb7490bd"
+time=2025-08-25T12:28:44.268+05:30 level=INFO module="" message="message received" payload="error"
+time=2025-08-25T12:28:44.272+05:30 level=ERROR module=ballerina/messaging message="error processing message on retry" error={"causes":[],"message":"Simulated processing error","detail":{},"stackTrace":[{"callableName":"onMessage","moduleName":"$anonType$_0","fileName":"message_store_listener.bal","lineNumber":25},{"callableName":"execute","moduleName":"ballerina.messaging.1.PollAndProcessMessages","fileName":"msg_listener.bal","lineNumber":211}]} retryAttempt=1 msgId="01f08180-e965-11c0-ad70-3bc9eb7490bd"
+time=2025-08-25T12:28:46.278+05:30 level=INFO module="" message="message received" payload="error"
+time=2025-08-25T12:28:46.281+05:30 level=ERROR module=ballerina/messaging message="error processing message on retry" error={"causes":[],"message":"Simulated processing error","detail":{},"stackTrace":[{"callableName":"onMessage","moduleName":"$anonType$_0","fileName":"message_store_listener.bal","lineNumber":25},{"callableName":"execute","moduleName":"ballerina.messaging.1.PollAndProcessMessages","fileName":"msg_listener.bal","lineNumber":211}]} retryAttempt=2 msgId="01f08180-e965-11c0-ad70-3bc9eb7490bd"
+time=2025-08-25T12:28:46.286+05:30 level=DEBUG module=ballerina/messaging message="message stored in dead letter store after max retries" msgId="01f08180-e965-11c0-ad70-3bc9eb7490bd"
