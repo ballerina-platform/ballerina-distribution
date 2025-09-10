@@ -55,11 +55,36 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            String shortVersion = jBallerinaVersion.split("-")[jBallerinaVersion.split("-").length-1];
-            int minorVersion = Integer.parseInt(shortVersion.split("\\.")[1]);
-            String updateVersionText = minorVersion > 0 ? " Update " + minorVersion : "";
+            // Handle timestamp versions and pre-releases (e.g., 2201.13.0-20250825-150500-2c7270f2, 2201.13.0-m1)
+            String[] versionParts = jBallerinaVersion.split("-");
+            String mainVersion = versionParts[0];
+            String updateVersionText = "";
+            try {
+                int minorVersion = Integer.parseInt(mainVersion.split("\\.")[1]);
+                updateVersionText = minorVersion > 0 ? " Update " + minorVersion : "";
+            } catch (Exception e) {
+                // fallback: no update version
+            }
 
-            return "Ballerina " + versionDisplayText + " (Swan Lake" + updateVersionText + ")\nLanguage specification "
+            // If it's a pre-release (e.g., 2201.13.0-m1), append the pre-release label
+            String preReleaseLabel = "";
+            if (versionParts.length > 1) {
+                // If the part after the dash is not a timestamp (YYYYMMDD-HHMMSS-commit), treat as pre-release
+                if (versionParts[1].matches("m\\d+|alpha\\d*|beta\\d*|rc\\d*")) {
+                    preReleaseLabel = "-" + versionParts[1];
+                } else if (versionParts[1].matches("\\d{8}")) {
+                    // timestamp build, include the full version string
+                    mainVersion = jBallerinaVersion;
+                }
+            }
+
+            // If timestamp build, show full version string
+            String versionString = preReleaseLabel.isEmpty() ? mainVersion : mainVersion + preReleaseLabel;
+            if (mainVersion.equals(jBallerinaVersion)) {
+                versionString = jBallerinaVersion;
+            }
+
+            return "Ballerina " + versionString + " (Swan Lake" + updateVersionText + ")\nLanguage specification "
                     + specVersion + "\n" + toolText + " " + toolVersion + "\n";
         }
 
