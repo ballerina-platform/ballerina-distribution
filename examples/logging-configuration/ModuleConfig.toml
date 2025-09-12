@@ -1,0 +1,3 @@
+[[ballerina.log.modules]]
+name = "[ORG_NAME]/[MODULE_NAME]"
+level = "[LOG_LEVEL]"

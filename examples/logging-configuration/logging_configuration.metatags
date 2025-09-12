@@ -1,2 +1,2 @@
-description: BBE on how to configure Ballerina logging.
-keywords: ballerina, ballerina by examples, bbe, log, level, format
+description: BBE on how to configure logging behavior using Config.toml including log level, format, destinations, and root context.
+keywords: ballerina, ballerina by examples, bbe, log, configuration, config.toml, format, level

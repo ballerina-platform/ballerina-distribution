@@ -1,36 +1,5 @@
-$ bal run logging_configuration.bal
-time=2023-09-04T13:39:47.027+05:30 level=ERROR module="" message="error log"
-time=2023-09-04T13:39:47.037+05:30 level=INFO module="" message="info log"
-time=2023-09-04T13:39:47.038+05:30 level=WARN module="" message="warn log"
-# As shown in the output, only the `INFO` and higher level logs are logged by default.
-
-# The log level can be configured via a Ballerina configuration file.
-# To set the global log level to `DEBUG`, place the entry given below in the `Config.toml` file and run the sample.
-# ```
-# [ballerina.log]
-# level = "DEBUG"
-# ```
-time=2023-09-04T13:42:07.797+05:30 level=DEBUG module="" message="debug log"
-time=2023-09-04T13:42:07.807+05:30 level=ERROR module="" message="error log"
-time=2023-09-04T13:42:07.808+05:30 level=INFO module="" message="info log"
-time=2023-09-04T13:42:07.809+05:30 level=WARN module="" message="warn log"
-# As shown in the output, now the `DEBUG` and higher level logs are logged.
-
-# Each module can also be assigned its own log level. To assign a
-# log level to a module, provide the following entry in the `Config.toml` file:
-#
-# ```
-# [[ballerina.log.modules]]
-# name = "[ORG_NAME]/[MODULE_NAME]"
-# level = "[LOG_LEVEL]"
-# ```
-
-# By default, log messages are logged to the console in the LogFmt format.
-# To set the output format to JSON, place the entry given below in the `Config.toml` file and run the sample.
-# ```
-# [ballerina.log]
-# format = "json"
-# ```
-{"time":"2023-09-04T13:44:10.529+05:30", "level":"ERROR", "module":"", "message":"error log"}
-{"time":"2023-09-04T13:44:10.536+05:30", "level":"INFO", "module":"", "message":"info log"}
-{"time":"2023-09-04T13:44:10.536+05:30", "level":"WARN", "module":"", "message":"warn log"}
+{"time":"2025-08-25T18:13:34.598+05:30", "level":"DEBUG", "module":"", "message":"Debug message - application initialization", "env":"prod", "nodeId":"server-001"}
+{"time":"2025-08-25T18:13:34.615+05:30", "level":"INFO", "module":"", "message":"Application started", "version":"1.0.0", "env":"prod", "nodeId":"server-001"}
+{"time":"2025-08-25T18:13:34.617+05:30", "level":"WARN", "module":"", "message":"High memory usage detected", "memoryUsage":"85%", "env":"prod", "nodeId":"server-001"}
+{"time":"2025-08-25T18:13:34.618+05:30", "level":"ERROR", "module":"", "message":"Failed to connect to external service", "serviceName":"PaymentAPI", "timeout":"30s", "env":"prod", "nodeId":"server-001"}
+{"time":"2025-08-25T18:13:34.618+05:30", "level":"INFO", "module":"", "message":"User session created", "userId":"user123", "sessionId":"sess-456", "env":"prod", "nodeId":"server-001"}
