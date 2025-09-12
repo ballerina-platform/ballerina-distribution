@@ -206,6 +206,7 @@ subprojects {
         /* Bal tools */
         ballerinaTools "io.ballerina:graphql-tool:${graphqlToolVersion}"
         ballerinaTools "io.ballerina:protoc-tool:${protocToolVersion}"
+        ballerinaTools "io.ballerina:openapi-tool:${openapiToolVersion}"
 
     }
 }
