@@ -121,7 +121,6 @@ subprojects {
         ballerinaStdLibs
         ballerinaC2cLibs
         ballerinaC2cTooling
-        ballerinaOpenAPILibs
         ballerinaTools
         exten {
             transitive = false
@@ -197,10 +196,6 @@ subprojects {
         /* Ballerina Persist Tool */
         ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
 
-
-        /* Ballerina OpenAPI */
-        ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiToolVersion}"
-
         /* Ballerina AsyncAPI */
         ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiToolVersion}"
 
@@ -211,6 +206,7 @@ subprojects {
         /* Bal tools */
         ballerinaTools "io.ballerina:graphql-tool:${graphqlToolVersion}"
         ballerinaTools "io.ballerina:protoc-tool:${protocToolVersion}"
+        ballerinaTools "io.ballerina:openapi-tool:${openapiToolVersion}"
 
     }
 }
