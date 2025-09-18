@@ -1,0 +1,8 @@
+$ bal run child_loggers_with_context.bal
+
+time=2025-08-29T12:28:56.385+05:30 level=INFO module=tharmigan/log_test message="User permissions validated successfully" env="prod" nodeId="server-001" userId="alice123" requestId="req-001"
+time=2025-08-29T12:28:56.395+05:30 level=WARN module=tharmigan/log_test message="Using fallback transformation method" reason="primary method unavailable" env="prod" nodeId="server-001" userId="alice123" requestId="req-001" operation="dataTransformation"
+time=2025-08-29T12:28:56.397+05:30 level=INFO module=tharmigan/log_test message="Data transformation completed" duration="250ms" env="prod" nodeId="server-001" userId="alice123" requestId="req-001" operation="dataTransformation"
+time=2025-08-29T12:28:56.399+05:30 level=INFO module=tharmigan/log_test message="User permissions validated successfully" env="prod" nodeId="server-001" userId="bob456" requestId="req-002"
+time=2025-08-29T12:28:56.401+05:30 level=WARN module=tharmigan/log_test message="Using fallback transformation method" reason="primary method unavailable" env="prod" nodeId="server-001" userId="bob456" requestId="req-002" operation="dataTransformation"
+time=2025-08-29T12:28:56.402+05:30 level=INFO module=tharmigan/log_test message="Data transformation completed" duration="250ms" env="prod" nodeId="server-001" userId="bob456" requestId="req-002" operation="dataTransformation"
