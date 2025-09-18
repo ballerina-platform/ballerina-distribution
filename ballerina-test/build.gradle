@@ -54,7 +54,7 @@ task distributionTest {
         systemProperty "spec.version", "$specVersion"
         systemProperty "tool.version", "$ballerinaCommandVersion"
         systemProperty "code.name", "$project.codeName"
-        systemProperty "openapi.version", "$openapiModuleVersion".split("-")[0]
+        systemProperty "openapi.version", "$openapiModuleVersion"
 
         useTestNG() {
             suites 'src/test/resources/testng.xml'
