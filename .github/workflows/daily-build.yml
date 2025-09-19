@@ -14,11 +14,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
@@ -80,6 +80,16 @@ jobs:
         with:
           name: Linux Installer rpm
           path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+      - name: Archive Linux Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-linux.zip
+      - name: Archive Linux-ARM Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-ARM Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-linux-arm.zip
       - name: Archive MacOS Installer ZIP
         uses: actions/upload-artifact@v4
         with:
@@ -233,11 +243,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -256,11 +266,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Build with Gradle
         env:
           packageUser: ${{ github.actor }}
@@ -279,11 +289,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Setup Files
         run: |
           cd /etc/yum.repos.d/
@@ -308,6 +318,42 @@ jobs:
         env:
           TEST_MODE_ACTIVE: true
 
+  ubuntu-arm-installer-build:
+
+    needs: ubuntu-build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Download Linux-ARM Installer Zip
+        uses: actions/download-artifact@v4
+        with:
+          name: Linux-ARM Installer ZIP
+      - name: Create linux-arm deb
+        working-directory: installers/linux-deb
+        run: |
+          ./build-ballerina-linux-deb-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../ -a arm
+          echo "Created linux-arm-deb successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-arm-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-arm-x64.deb
+      - name: Archive Linux deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-ARM Installer deb
+          path: installers/linux-deb/target/ballerina-*-linux-arm-x64.deb
+      - name: Archive Linux deb Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux-ARM deb Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-arm-x64.deb.sha256
+
   macos-installer-build:
 
     needs: ubuntu-build
@@ -316,12 +362,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
-      - name: Download MacOS Intaller Zip
+          java-version: '21.0.3'
+      - name: Download MacOS Installer Zip
         uses: actions/download-artifact@v4
         with:
           name: MacOS Installer ZIP
@@ -366,11 +412,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Download MacOS-ARM Intaller Zip
         uses: actions/download-artifact@v4
         with:
@@ -403,11 +449,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
@@ -416,20 +462,19 @@ jobs:
       - name: Set up Wix toolkit
         run: echo "${WIX}bin" >> $GITHUB_PATH
         shell: bash
-      - name: Download Windows Intaller Zip
+      - name: Download Windows Installer Zip
         uses: actions/download-artifact@v4
         with:
           name: Windows Installer ZIP
       - name: Create windows-msi
         id: run_installers_msi
         run: |
-          move installers\windows .\
-          ren windows w
-          cd w
-          .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\
+          move installers\windows .\..\..\
+          cd ..\..\windows
+          .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\ballerina-distribution\ballerina-distribution
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-*-windows-x64.msi
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
       - name: Archive Windows msi Hashes
         uses: actions/upload-artifact@v4
         with:
@@ -439,9 +484,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Windows Installer msi
-          path: w\target\msi\ballerina-*-windows-x64.msi
+          path: D:\a\windows\target\msi\ballerina-*-windows-x64.msi
       - name: Install Ballerina msi
-        run: msiexec /i w\target\msi\ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi /quiet /qr
+        run: msiexec /i D:\a\windows\target\msi\ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi /quiet /qr
         shell: cmd
       - name: Update Installer Test Configs
         run: |

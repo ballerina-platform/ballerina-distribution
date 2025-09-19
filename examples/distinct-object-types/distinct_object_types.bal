@@ -1,22 +1,40 @@
 import ballerina/io;
 
-// The `Person` object type that contains a string field called `name`.
-type Person distinct object {
+class Person {
     public string name;
+
+    function init(string name) {
+        self.name = name;
+    }
 };
 
-// The `Engineer` and `Manager` classes are structurally the same but introducing the
-// `distinct` keyword distinguishes them by considering them as nominal types.
-distinct class Engineer {
-    *Person;
+// The `DistinctPerson` type is a proper subtype of the `Person` type.
+distinct class DistinctPerson {
+    public string name;
 
     function init(string name) {
         self.name = name;
     }
 }
 
-distinct class Manager {
-    *Person;
+// The `SomeWhatDistinctPerson` type is a subtype of the `DistinctPerson` type
+// since it includes the `DistinctPerson` type's type IDs via inclusion.
+class SomeWhatDistinctPerson {
+    *DistinctPerson;
+
+    public string name;
+
+    function init(string name) {
+        self.name = name;
+    }
+}
+
+// The `EvenMoreDistinctPerson` type is a proper subtype of the `DistinctPerson` 
+// type since it has an additional type ID.
+distinct class EvenMoreDistinctPerson {
+    *DistinctPerson;
+
+    public string name;
 
     function init(string name) {
         self.name = name;
@@ -24,7 +42,17 @@ distinct class Manager {
 }
 
 public function main() {
-    Person person = new Engineer("Alice");
-    // The `is` operator can be used to distinguish distinct subtypes.
-    io:println(person is Engineer ? "Engineer" : "Manager");
+    Person person = new ("John Smith");
+    io:println(person is DistinctPerson);
+
+    DistinctPerson distinctPerson = new ("Alice Johnson");
+    io:println(distinctPerson is Person);
+
+    SomeWhatDistinctPerson someWhatDistinctPerson = new ("Michael Brown");
+    io:println(someWhatDistinctPerson is DistinctPerson);
+    io:println(distinctPerson is SomeWhatDistinctPerson);
+
+    EvenMoreDistinctPerson evenMoreDistinctPerson = new ("Sarah Wilson");
+    io:println(evenMoreDistinctPerson is DistinctPerson);
+    io:println(distinctPerson is EvenMoreDistinctPerson);
 }

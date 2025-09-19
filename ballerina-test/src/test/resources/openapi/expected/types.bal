@@ -86,6 +86,9 @@ public type ConnectionConfig record {|
     http:ProxyConfig proxy?;
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
+    # Enables relaxed data binding on the client side. When enabled, `nil` values are treated as optional,
+    # and absent fields are handled as `nilable` types. Enabled by default.
+    boolean laxDataBinding = true;
 |};
 
 public type customer_customer_body record {

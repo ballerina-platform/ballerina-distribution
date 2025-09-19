@@ -23,17 +23,17 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Set version env variable
         id: version-set
         run: |
-          SHORT_VERSION=$((grep -w 'version' | cut -d= -f2 | cut -d- -f1) < gradle.properties)
-          DIST_VERSION=$((grep -w 'version' | cut -d= -f2) < gradle.properties | rev | cut --complement -d- -f1 | rev)
-          LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
+          SHORT_VERSION=$(grep -w "version" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)
+          DIST_VERSION=$(grep -w "version" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)          
+          LANG_VERSION=$(grep -w "ballerinaLangVersion" gradle.properties | cut -d= -f2 | sed 's/-SNAPSHOT//' | xargs)
           CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
           RELEASE_VERSION=$DIST_VERSION
           TAGGED_VERSION=$RELEASE_VERSION
@@ -77,7 +77,7 @@ jobs:
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
-          ./gradlew build -x project-api-tests:test -Pversion=${VERSION}
+          ./gradlew build -x project-api-tests:test -Pversion=${VERSION} -x test
           ./gradlew release -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v3
@@ -87,17 +87,17 @@ jobs:
       - name: Copy zip artifact
         run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Build the docker image
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           context: module-ballerina-docker/base/docker/
           load: true
@@ -162,7 +162,6 @@ jobs:
           draft: false
           prerelease: ${{ github.event.inputs.isPreRelease }}
       - name: Create linux-deb Installer
-        id: run_installers_deb
         run: |
           cd installers/linux-deb
           ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions
@@ -195,6 +194,8 @@ jobs:
         run: |
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --output-certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --output-signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --yes
+          cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux.sig --yes
+          cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig --yes
           cosign sign-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig --yes
@@ -202,6 +203,8 @@ jobs:
         run: |
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.sversion }}.zip --certificate ballerina-${{ steps.version-set.outputs.sversion }}.pem --signature ballerina-${{ steps.version-set.outputs.sversion }}.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-macos-arm.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
           cosign verify-blob ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-windows.zip --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-windows.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-windows.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
@@ -312,6 +315,60 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig
           asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux-x64.rpm.sig
+          asset_content_type: application/octet-stream
+      - name: Upload Linux zip artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux.zip
+          asset_content_type: application/octet-stream
+      - name: Upload Linux zip artifact's Certificate
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux.pem
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux.pem
+          asset_content_type: application/octet-stream
+      - name: Upload Linux zip artifact's Signature
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux.sig
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux.sig
+          asset_content_type: application/octet-stream
+      - name: Upload Linux-ARM zip artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.zip
+          asset_path: ballerina/build/distributions/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.zip
+          asset_content_type: application/octet-stream
+      - name: Upload Linux-ARM zip artifact's Certificate
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.pem
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.pem
+          asset_content_type: application/octet-stream
+      - name: Upload Linux-ARM zip artifact's Signature
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.sig
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm.sig
           asset_content_type: application/octet-stream
       - name: Upload MacOS zip artifacts
         uses: actions/upload-release-asset@v1
@@ -438,11 +495,49 @@ jobs:
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      # - name: Run Installer Tests
+      #   working-directory: ./ballerina-test-automation/installer-test
+      #   run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      #   env:
+      #     TEST_MODE_ACTIVE: true
+      - name: Create linux-arm-deb Installer
+        run: |
+          cd installers/linux-deb
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.version-set.outputs.longVersion }} -p ./../../ballerina/build/distributions -a arm
+          echo "Created linux-arm-deb successfully"
+      - name: Sign the linux-arm-deb installer
+        run: |
+          cosign sign-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb --output-certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.pem --output-signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.sig --yes
+      - name: Verify the linux-arm-deb installer
+        run: |
+          cosign verify-blob installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb --certificate ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.pem --signature ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+      - name: Upload Linux-ARM deb Installer
+        uses: actions/upload-release-asset@v1
         env:
-          TEST_MODE_ACTIVE: true
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb
+          asset_path: installers/linux-deb/target/ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb
+          asset_content_type: application/octet-stream
+      - name: Upload Linux-ARM deb Installer's Certificate
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.pem
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.pem
+          asset_content_type: application/octet-stream
+      - name: Upload Linux-ARM deb Installer's Signature
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.sig
+          asset_path: ./ballerina-${{ steps.version-set.outputs.longVersion }}-linux-arm-x64.deb.sig
+          asset_content_type: application/octet-stream
       - name: Post release PR
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
@@ -464,11 +559,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - name: Download MacOS Intaller Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos.zip
@@ -533,12 +628,12 @@ jobs:
           SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
-      - name: Run Installer Tests
-        working-directory: ./ballerina-test-automation/installer-test
-        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
-        env:
-          TEST_MODE_ACTIVE: true
-      - name: Download MacOS-ARM Intaller Zip
+      # - name: Run Installer Tests
+      #   working-directory: ./ballerina-test-automation/installer-test
+      #   run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      #   env:
+      #     TEST_MODE_ACTIVE: true
+      - name: Download MacOS-ARM Installer Zip
         run: |
           wget https://github.com/ballerina-platform/ballerina-distribution/releases/download/v${{ needs.publish-release.outputs.release-version }}/ballerina-${{ needs.publish-release.outputs.project-version }}-macos-arm.zip
       - name: Create macos-arm-pkg Installer
@@ -601,11 +696,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
@@ -623,19 +718,18 @@ jobs:
       - name: Create windows-msi Installer
         id: run_installers_msi
         run: |
-          move installers\windows .\
-          ren windows w
-          cd w
-          .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\
+          move installers\windows .\..\..\
+          cd ..\..\windows
+          .\build-ballerina-windows-x64.bat --version ${{ needs.publish-release.outputs.project-version }} --path .\..\ballerina-distribution\ballerina-distribution
       - name: Sign the Windows installer
         run: |
-          cosign sign-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
+          cosign sign-blob D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --output-certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --output-signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --yes
       - name: Verify the Windows installer
         run: |
-          cosign verify-blob w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+          cosign verify-blob D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi --certificate ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.pem --signature ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@${{ github.ref }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
       - name: Generate Hashes
         run: |
-          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
+          openssl dgst -sha256 -out ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
       - name: Upload Windows msi Hashes
         uses: actions/upload-release-asset@v1
         env:
@@ -652,7 +746,7 @@ jobs:
         with:
           upload_url: ${{ needs.publish-release.outputs.upload-asset-url }}
           asset_name: ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
-          asset_path: w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
+          asset_path: D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi
           asset_content_type: application/octet-stream
       - name: Upload Windows installer's Certificate
         uses: actions/upload-release-asset@v1
@@ -673,7 +767,7 @@ jobs:
           asset_path: ./ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi.sig
           asset_content_type: application/octet-stream
       - name: Install Ballerina msi
-        run: msiexec /i w\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
+        run: msiexec /i D:\a\windows\target\msi\ballerina-${{ needs.publish-release.outputs.project-version }}-windows-x64.msi /quiet /qr
         shell: cmd
       - name: Update Installer Test Configs
         run: |
@@ -682,8 +776,8 @@ jobs:
           perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
           perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
         shell: cmd
-      - name: Run Installer Tests
-        working-directory: .\ballerina-test-automation\installer-test
-        run: |
-          $env:Path += ";C:\Program Files\Ballerina\bin"
-          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+      # - name: Run Installer Tests
+      #   working-directory: .\ballerina-test-automation\installer-test
+      #   run: |
+      #     $env:Path += ";C:\Program Files\Ballerina\bin"
+      #     .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true

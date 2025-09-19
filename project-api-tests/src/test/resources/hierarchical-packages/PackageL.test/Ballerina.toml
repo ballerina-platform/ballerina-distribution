@@ -2,4 +2,8 @@
 org = "bctestorg"
 name = "PackageL.test"
 version = "1.0.0"
-export = ["PackageL.test.mod.api"]
+readme = "Package.md"
+
+[[package.modules]]
+name = "PackageL.test.mod.api"
+export = true

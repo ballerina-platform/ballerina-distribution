@@ -1,0 +1,3 @@
+$ bal run regexp_replace_operations.bal
+****-****-****-5432
+XML string with comments removed: <root><e1>value1</e1><e2>value2</e2>&gt;</root>

@@ -4,7 +4,7 @@ We can implement a custom conflict-handling policy to determine whether to repla
 
 ::: code advanced_conflict_handling.bal :::
 
-::: out advanced_conflict_handling :::
+::: out advanced_conflict_handling.out :::
 
 ## Related links
 - [On conflict clause](/learn/by-example/on-conflict-clause)

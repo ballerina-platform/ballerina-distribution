@@ -9,3 +9,4 @@ Ballerina allows you to call functions with named arguments, which do not have t
 ## Related links
 - [Functions](/learn/by-example/functions/)
 - [Included record parameters](/learn/by-example/included-record-parameters/)
+- [Rest arguments](/learn/by-example/rest-arguments/)

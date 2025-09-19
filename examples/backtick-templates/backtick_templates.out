@@ -1,4 +1,0 @@
-$ bal run backtick_templates.bal
-Hello, James
-Backtick:`
-A string-template-expr is evaluated by evaluating the expression in each interpolation in the order in which they occur.

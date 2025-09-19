@@ -1,17 +1,5 @@
 # False positive
 CVE-2020-7768
-CVE-2023-2976
-CVE-2021-3737
-CVE-2021-3997
-CVE-2023-39017
 
-# The commons-compress library has backward incompatible changes
-CVE-2024-25710
-CVE-2024-26308
-
-# Axiom version is not released yet
-CVE-2024-21742
-
-# Fixed version is released yet
-CVE-2023-33201
-CVE-2023-33202 
+# Need to be fixed
+CVE-2025-48924

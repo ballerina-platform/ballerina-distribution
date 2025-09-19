@@ -1,3 +1,10 @@
 $ bal run error_reporting.bal
-123
-error("not a digit")
+Validating Alice
+Validating Bob
+Message: Validation failed for a person
+Detail: {"person":{"name":"Bob","age":-1}}
+Stack trace: [callableName: validatePeople  fileName: error_reporting.bal lineNumber: 20,callableName: main  fileName: error_reporting.bal lineNumber: 42]
+Cause:
+Message: Age cannot be negative
+Detail: {"age":-1}
+Stack trace: [callableName: validatePerson  fileName: error_reporting.bal lineNumber: 30,callableName: validatePeople  fileName: error_reporting.bal lineNumber: 16,callableName: main  fileName: error_reporting.bal lineNumber: 42]

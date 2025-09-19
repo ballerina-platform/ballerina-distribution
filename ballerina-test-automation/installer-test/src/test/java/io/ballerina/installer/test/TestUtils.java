@@ -55,7 +55,7 @@ public class TestUtils {
                                           String versionDisplayText) {
         String toolText = TestUtils.isOldToolVersion(toolVersion) ? "Ballerina tool" : "Update Tool";
         if (jBallerinaVersion.contains(TestUtils.SWAN_LAKE_KEYWORD)) {
-            String shortVersion = jBallerinaVersion.split("-")[jBallerinaVersion.split("-").length-1];
+            String shortVersion = jBallerinaVersion.split("-")[jBallerinaVersion.split("-").length - 1];
             int minorVersion = Integer.parseInt(shortVersion.split("\\.")[1]);
             String updateVersionText = minorVersion > 0 ? " Update " + minorVersion : "";
 
@@ -151,7 +151,9 @@ public class TestUtils {
      */
     public static void testInstallation(Executor executor, String version, String specVersion, String toolVersion,
                                         String versionDisplayText) {
-        Assert.assertEquals(executor.executeCommand("-v", false, toolVersion),
+        String versionOutput = executor.executeCommand("-v", false, toolVersion);
+        String cleanedVersionOutput = versionOutput.replaceAll("(\\d+\\.\\d+\\.\\d+)-\\d{8}-\\d{6}-[a-fA-F0-9]+", "$1");
+        Assert.assertEquals(cleanedVersionOutput,
                 TestUtils.getVersionOutput(version, specVersion, toolVersion, versionDisplayText));
     }
 
@@ -282,8 +284,7 @@ public class TestUtils {
 
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader(bbeJsonFilePath.toString()))
-        {
+        try (FileReader reader = new FileReader(bbeJsonFilePath.toString())) {
             JSONArray bbeTestData = (JSONArray) jsonParser.parse(reader);
 
             bbeTestData.forEach(testGroup -> {

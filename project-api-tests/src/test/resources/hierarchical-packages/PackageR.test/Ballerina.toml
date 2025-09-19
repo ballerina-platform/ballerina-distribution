@@ -2,3 +2,4 @@
 org = "bctestorg"
 name = "PackageR.test"
 version = "1.0.0"
+readme = "Package.md"

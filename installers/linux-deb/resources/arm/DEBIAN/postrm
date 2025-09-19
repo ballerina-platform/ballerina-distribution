@@ -1,0 +1,3 @@
+sudo rm /usr/bin/bal
+sed -i.bak '/BALLERINA_HOME/d' /etc/profile.d/wso2.sh
+

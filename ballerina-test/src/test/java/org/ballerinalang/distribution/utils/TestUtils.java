@@ -52,6 +52,7 @@ public class TestUtils {
     public static final Path MAVEN_VERSION = Paths.get(System.getProperty("maven.version"));
     public static final Path SHORT_VERSION = Paths.get(System.getProperty("short.version"));
     public static final Path CODE_NAME = Paths.get(System.getProperty("code.name"));
+    public static final String OPENAPI_VERSION = System.getProperty("openapi.version");
     public static final Path DISTRIBUTIONS_DIR = Paths.get(System.getProperty("distributions.dir"));
     public static final Path TEST_DISTRIBUTION_PATH = TARGET_DIR.resolve("test-distribution");
     public static final Path EXAMPLES_DIR = Paths.get(System.getProperty("examples.dir"));

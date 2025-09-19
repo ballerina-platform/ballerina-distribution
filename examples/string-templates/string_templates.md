@@ -1,0 +1,3 @@
+# String templates
+
+A string template is a template expression that can be used to create a string literal. It consists of the `string` tag and a sequence of characters interleaved with interpolations (in the form `${expression}`). Each interpolation must be a subtype of `boolean|int|float|decimal|string`. Every character not a part of the interpolation is interpreted as is to form a sequence of string literals broken at interpolations. This means if you want to add any escape characters you must add them as interpolations (for example `${"\n"}`). Every interpolation is converted to a string using the `toString` lang lib function and concatenated with the other string literals to form a single string literal.

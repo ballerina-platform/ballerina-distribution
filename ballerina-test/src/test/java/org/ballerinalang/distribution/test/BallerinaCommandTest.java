@@ -103,7 +103,7 @@ public class BallerinaCommandTest {
         actualOutput = TestUtils.executeCommand(path + " dist pull slp7");
         Assert.assertTrue(actualOutput.contains("Fetching the 'slp7' distribution from the remote server..."));
         Assert.assertTrue(actualOutput.contains("Fetching the dependencies for 'slp7' from the remote server..."));
-        Assert.assertTrue(actualOutput.contains("Downloading jdk-17.0.7+7-jre"));
+        Assert.assertTrue(actualOutput.contains("Downloading jdk-21.0.5+11-jre"));
         Assert.assertTrue(actualOutput.contains("'slp7' successfully set as the active distribution"));
         TestUtils.testInstallation(path, "swan-lake-preview7", "v2020-09-22", TOOL_VERSION, "Preview 7");
 

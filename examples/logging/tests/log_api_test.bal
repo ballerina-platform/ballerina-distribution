@@ -1,10 +1,10 @@
 import ballerina/test;
 import ballerina/log;
 
-string printDebug = "";
-string printError = "";
-string printInfo = "";
-string printWarn = "";
+log:PrintableRawTemplate|string printDebug = "";
+log:PrintableRawTemplate|string printError = "";
+log:PrintableRawTemplate|string printInfo = "";
+log:PrintableRawTemplate|string printWarn = "";
 
 // This is the mock function, which will replace the real function.
 
@@ -14,7 +14,7 @@ string printWarn = "";
 }
 test:MockFunction mock_printDebug = new();
 
-public function mockPrintDebug(string msg, error? err = (),
+public function mockPrintDebug(string|log:PrintableRawTemplate msg, error? err = (),
 error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printDebug = msg;
 }
@@ -25,7 +25,7 @@ error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
 }
 test:MockFunction mock_printError = new();
 
-public function mockPrintError(string msg, error? err = (),
+public function mockPrintError(string|log:PrintableRawTemplate msg, error? err = (),
 error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printError = msg;
 }
@@ -36,7 +36,7 @@ error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
 }
 test:MockFunction mock_printInfo = new();
 
-public function mockPrintInfo(string msg, error? err = (),
+public function mockPrintInfo(string|log:PrintableRawTemplate msg, error? err = (),
 error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printInfo = msg;
 }
@@ -47,7 +47,7 @@ error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
 }
 test:MockFunction mock_printWarn = new();
 
-public function mockPrintWarn(string msg, error? err = (),
+public function mockPrintWarn(string|log:PrintableRawTemplate msg, error? err = (),
 error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
     printWarn = msg;
 }
@@ -61,8 +61,8 @@ function testFunc() {
 
     // Invoking the main function.
     main();
-    test:assertEquals(printDebug, "debug log");
-    test:assertEquals(printError, "error log with cause");
-    test:assertEquals(printInfo, "info log");
-    test:assertEquals(printWarn, "warn log");
+    test:assertEquals(printDebug, "This is a debug message");
+    test:assertEquals(printError, "This is an error message");
+    test:assertEquals(printInfo, "Application started successfully");
+    test:assertEquals(printWarn, "This is a warning message");
 }

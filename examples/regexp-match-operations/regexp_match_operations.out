@@ -1,0 +1,17 @@
+$ bal run regexp_match_operations.bal
+Product Code: ELEC-1234, Valid: true
+Product Type: ELEC
+Unique ID: 1234
+Product Code: FURN-5678, Valid: true
+Product Type: FURN
+Unique ID: 5678
+Product Code: CLOT-1111, Valid: true
+Product Type: CLOT
+Unique ID: 1111
+Product Code: FOOD-3333, Valid: true
+Product Type: FOOD
+Unique ID: 3333
+Product Code: BAR-123, Valid: false
+Matched product: CLOT-1234
+Production hour: 16
+Production minutes: 15

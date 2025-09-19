@@ -1,8 +1,6 @@
 # Panics
 
-Ballerina distinguishes normal errors from abnormal errors. Normal errors are handled by returning error values. Abnormal errors are handled using the panic statement. Abnormal errors should typically result in immediate program termination.
-
-E.g., A programming bug or out of memory. A panic has an associated error value.
+Ballerina distinguishes normal errors from abnormal errors. Normal errors are handled by returning error values. This signals to the caller that they must handle the error. In contrast, abnormal errors such as division by 0 and out-of-memory are typically unrecoverable errors and we need to terminate the execution of the program. This is achieved by a panic statement with an expression that results in an error value such as the error constructor. At runtime, evaluating a panic statement first creates the error value by evaluating the expression and then starts stack unwinding, unless it encounters a `trap` expression. 
 
 ::: code panics.bal :::
 

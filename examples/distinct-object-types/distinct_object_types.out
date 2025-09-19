@@ -1,2 +1,7 @@
 $ bal distinct_object_types.bal
-Engineer
+false
+true
+true
+true
+true
+false

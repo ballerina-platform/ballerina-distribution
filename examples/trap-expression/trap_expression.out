@@ -1,0 +1,7 @@
+$ bal run trap_expression.bal
+Error: error("{ballerina}DivisionByZero",message=" / by zero")
+Error: error("deep down in the code")
+error: deep down in the code
+	at trap_expression:alwaysPanic(trap_expression.bal:10)
+	   trap_expression:hereBeDragons(trap_expression.bal:5)
+	   trap_expression:main(trap_expression.bal:25)

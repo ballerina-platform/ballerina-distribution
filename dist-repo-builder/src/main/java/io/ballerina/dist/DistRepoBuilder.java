@@ -135,7 +135,7 @@ public class DistRepoBuilder {
             valid = false;
         }
         // Check if module jar exists
-        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java17")
+        Path jar = repo.resolve("cache").resolve(orgName).resolve(moduleName).resolve(version).resolve("java21")
                 .resolve(getJarName(orgName, moduleName, version));
         if (!Files.exists(jar)) {
             System.out.println("Jar missing for package :" + orgName + "/" + moduleName);
@@ -150,7 +150,8 @@ public class DistRepoBuilder {
         Files.walkFileTree(repo, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-                if (pathMatcher.matches(path)) {
+                if (pathMatcher.matches(path)
+                        && Files.notExists(path.getParent().resolve("tool/bal-tool.json"))) {
                     balas.add(path.getParent());
                 }
                 return FileVisitResult.CONTINUE;

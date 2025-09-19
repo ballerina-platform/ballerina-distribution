@@ -9,3 +9,4 @@ Ballerina allows specifying default values for function parameters. You can use 
 ## Related links
 - [Rest Parameters](/learn/by-example/rest-parameters/)
 - [Provide function arguments by name](/learn/by-example/provide-function-arguments-by-name/)
+- [Rest arguments](/learn/by-example/rest-arguments/)

@@ -26,13 +26,14 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
-    shortVersion = "${version}".split("-")[0]
+    shortVersion = "${version}".replaceAll("-SNAPSHOT", "")
 }
 
 configurations {
     jBallerinaDistribution
     ballerinaDistribution
     ballerinaLinuxDistribution
+    ballerinaLinuxArmDistribution
     ballerinaMacDistribution
     ballerinaMacArmDistribution
     ballerinaWindowsDistribution
@@ -47,6 +48,7 @@ dependencies {
 def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
 def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaLangVersion}.zip")
 def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaLangVersion}.zip")
+def ballerinaLinuxArmDistributionZip = file("$project.buildDir/distributions/ballerina-linux-arm-${ballerinaLangVersion}.zip")
 def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaLangVersion}.zip")
 def ballerinaMacArmDistributionZip = file("$project.buildDir/distributions/ballerina-macos-arm-${ballerinaLangVersion}.zip")
 def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaLangVersion}.zip")
@@ -56,6 +58,7 @@ task unpackBallerinaJre(type: Download) {
     def jreBaseURL = "https://github.com/ballerina-platform/ballerina-custom-jre/releases/download/${ballerinaJreVersion}"
     src([
             "${jreBaseURL}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip",
+            "${jreBaseURL}/ballerina-jre-linux-arm-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip",
             "${jreBaseURL}/ballerina-jre-win-64-${ballerinaJreVersion}.zip"
@@ -112,9 +115,9 @@ task unpackStdLibs() {
     }
 }
 
-task unpackOpenAPILibs() {
+task unpackBalTools() {
     doLast {
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
@@ -145,6 +148,17 @@ task unpackC2cTooling() {
     }
 }
 
+task unpackOpenapiModule() {
+    doLast {
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
 task downloadBalCommand(type: Download) {
     group = "unpack_dependencies"
     def commandBaseURL = "https://github.com/ballerina-platform/ballerina-update-tool/releases/download/v${ballerinaCommandVersion}"
@@ -165,6 +179,12 @@ task extractJreForLinux(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-linux")
+}
+
+task extractJreForLinuxArm(type: Copy) {
+    group = "extract_jre"
+    from zipTree { "${jreLocation}/ballerina-jre-linux-arm-64-${ballerinaJreVersion}.zip" }
+    into("${buildDir}/target/extracted-jre-linux-arm")
 }
 
 task extractJreForMac(type: Copy) {
@@ -206,17 +226,11 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
-    /* OpenAPI Libraries */
-    configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    /* Bal tools (e.g. openapi, graphql etc.) */
+    configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/lslibs") {
-            into "lib/tools/lang-server/lib/"
         }
     }
 
@@ -239,46 +253,24 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
-    /* Architecture Model Generator Artifacts */
-    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    /* OpenAPI Module */
+    configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/architecture-model-generator/libs") {
-            into "bre/lib/"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
         }
-        from("${artifactExtractedPath}/architecture-model-generator/ls-libs") {
-            into "lib/tools/lang-server/lib/"
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
         }
     }
 
-    /* GraphQL Model Generator Artifacts */
+    /* Language Server Extension Artifacts */
     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/graphql-model-generator/libs") {
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip"
+        from("${artifactExtractedPath}/ls-extensions/bre-libs") {
             into "bre/lib/"
         }
-        from("${artifactExtractedPath}/graphql-model-generator/ls-libs") {
-            into "lib/tools/lang-server/lib/"
-        }
-    }
-
-    /* Flow Model Generator Artifacts */
-    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/flow-model-generator/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/flow-model-generator/ls-libs") {
-            into "lib/tools/lang-server/lib/"
-        }
-    }
-
-    /* Sequence Model Generator Artifacts */
-    configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/sequence-model-generator/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/sequence-model-generator/ls-libs") {
+        from("${artifactExtractedPath}/ls-extensions/ls-libs") {
             into "lib/tools/lang-server/lib/"
         }
     }
@@ -536,6 +528,95 @@ task packageDistLinux(type: Zip) {
     outputs.file ballerinaLinuxDistributionZip
 }
 
+task packageDistLinuxArm(type: Zip) {
+    group = "package_distribution"
+    description = 'Ballerina Linux-ARM Distribution Assembly'
+    ext {
+        baseName = "${distributionName}-${version}"
+        parentDir = "${baseName}-${codeName}-linux-arm"
+    }
+    archiveFileName = "${parentDir}.zip"
+    entryCompression = ZipEntryCompression.DEFLATED
+
+    into("${parentDir}/dependencies") {
+        from "build/target/extracted-jre-linux-arm"
+        fileMode = 0755
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
+        from "${project.rootDir}/examples/"
+        fileMode = 0755
+    }
+    // Code2Cloud Extension Examples
+    into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
+        from "build/target/extracted-distributions/c2c-examples-zip"
+        exclude "index.js"
+    }
+
+    /* Tools artifacts */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+        exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
+        exclude "/bin/bal.bat"
+        exclude "/bin/version.txt"
+        exclude "/LICENSE"
+    }
+    into("${parentDir}") {
+        from "../resources/tools"
+        exclude "distributions/ballerina-version"
+        exclude "distributions/installer-version"
+        exclude "**/scripts/**"
+    }
+
+    /* Files */
+    into("${parentDir}/distributions/ballerina-${shortVersion}") {
+        from "LICENSE"
+    }
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
+        from "lib/version.txt"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [version: version])
+    }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/ballerina-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [version: shortVersion])
+    }
+    into("${parentDir}/distributions") {
+        from "../resources/tools/distributions/installer-version"
+        fileMode = 0644
+        filter(ReplaceTokens, tokens: [uuid: installerVersion])
+    }
+    into("${parentDir}/bin") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
+        fileMode = 775
+        filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
+    }
+    into("${parentDir}/lib") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
+        fileMode = 0775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
+        fileMode = 775
+    }
+    into("${parentDir}/scripts") {
+        from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
+        fileMode = 775
+    }
+
+    /* Dependencies */
+    into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
+        from configurations.exten
+    }
+
+    doLast {
+        println 'Ballerina Linux-ARM Distribution Packaged'
+    }
+
+    outputs.file ballerinaLinuxArmDistributionZip
+}
+
 task packageDistMac(type: Zip) {
     group = "package_distribution"
     description = 'Ballerina MacOS Distribution Assembly'
@@ -791,6 +872,7 @@ artifacts {
     jBallerinaDistribution file: jBallerinaDistributionZip, builtBy: packageDist
     ballerinaDistribution file: ballerinaDistributionZip, builtBy: packageDistZip
     ballerinaLinuxDistribution file: ballerinaLinuxDistributionZip, builtBy: packageDistLinux
+    ballerinaLinuxArmDistribution file: ballerinaLinuxArmDistributionZip, builtBy: packageDistLinuxArm
     ballerinaMacDistribution file: ballerinaMacDistributionZip, builtBy: packageDistMac
     ballerinaMacArmDistribution file: ballerinaMacArmDistributionZip, builtBy: packageDistMacArm
     ballerinaWindowsDistribution file: ballerinaWindowsDistributionZip, builtBy: packageDistWindows
@@ -1110,7 +1192,7 @@ task testExamples() {
 def addH2Dependency = { filePath ->
     // Add the H2 database dependency to Ballerina.toml file
     def tomlFile = new File(filePath)
-    tomlFile.append("\n\n[[platform.java17.dependency]]")
+    tomlFile.append("\n\n[[platform.java21.dependency]]")
     tomlFile.append("\nartifactId = \"h2\"")
     tomlFile.append("\nversion = \"2.2.224\"")
     tomlFile.append("\ngroupId = \"com.h2database\"")
@@ -1355,11 +1437,6 @@ task testDevToolsIntegration() {
 
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
-        download.run {
-            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
-            dest "${project.rootDir}/ballerina/build/target/"
-        }
-
         copy {
             from "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
             into "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib"
@@ -1445,8 +1522,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* OpenApi Libraries */
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* C2C Libraries */
+        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1472,8 +1549,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* C2C Libraries */
-        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* OpenAPI Module */
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1504,24 +1581,97 @@ task generateCache(dependsOn: ':cache-generator:build') {
     }
 }
 
+task generateBalToolsToml () {
+    doFirst {
+        download.run {
+            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
+            dest "${project.rootDir}/ballerina/build/target/"
+        }
+    }
+    doLast {
+        def configBalTools = []
+        configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            configBalTools.add(artifact.name + "-zip")
+        }
+
+        def stdlibJson = file("${project.rootDir}/ballerina/build/target/extensions.json")
+        def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
+        def maxLevel = 0
+        parsedJson.standard_library.each { module ->
+            def moduleLevel = module.level
+            if (moduleLevel > maxLevel) {
+                maxLevel = moduleLevel
+            }
+        }
+        def sortedLibs = []
+        for (currentLevel in 1..maxLevel) {
+            parsedJson.standard_library.each { module ->
+                if (module.level == currentLevel) {
+                    def libName = module.name.toString() + "-zip"
+                    sortedLibs.add(libName)
+                }
+            }
+        }
+
+        def balToolsTomlString = ""
+        String balToolsTomlPath = "${buildDir}/target/extracted-distributions/" +
+                "jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/resources/bal-tools.toml"
+        def file = new File(balToolsTomlPath)
+
+        configBalTools.each { lib ->
+            if (sortedLibs.contains(lib)) {
+                def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
+                String balaDir = artifactExtractedPath + "/bala"
+
+                new File("${balaDir}").listFiles().each { orgDirFile ->
+                    String orgDir = orgDirFile.toString()
+                    String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+                    String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+                    String balaPath = new File("${versionDir}").listFiles()[0].toString()
+
+                    def toolJson = new File("${balaPath}/tool/bal-tool.json")
+                    def parsedToolJson = new JsonSlurper().parseText(toolJson.text)
+
+                    def packageJson = new File("${balaPath}/package.json")
+                    def parsedPackageJson = new JsonSlurper().parseText(packageJson.text)
+
+                    balToolsTomlString += "[[tool]]\n" +
+                            "id = \"" + parsedToolJson.tool_id.toString() + "\"\n" +
+                            "org = \"" + parsedPackageJson.organization.toString() + "\"\n" +
+                            "name = \"" + parsedPackageJson.name.toString() + "\"\n" +
+                            "version = \"" + parsedPackageJson.version.toString() + "\"\n" +
+                            "active = true\n\n"
+                }
+            }
+        }
+        file.write(balToolsTomlString)
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
-unpackOpenAPILibs.dependsOn unpackStdLibs
-unpackC2cLibs.dependsOn unpackOpenAPILibs
+unpackBalTools.dependsOn unpackStdLibs
+generateBalToolsToml.dependsOn unpackBalTools // Generate bal-tools.toml
+unpackC2cLibs.dependsOn generateBalToolsToml
 unpackC2cTooling.dependsOn unpackC2cLibs
-downloadBalCommand.dependsOn unpackC2cTooling
+unpackOpenapiModule.dependsOn unpackC2cTooling
+downloadBalCommand.dependsOn unpackOpenapiModule
+
 
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs
 generateCache.dependsOn unpackC2cTooling
+generateCache.dependsOn unpackOpenapiModule
 generateCache.dependsOn copyDevToolsDocUi
+generateCache.dependsOn generateBalToolsToml
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
 extractJreForMac.dependsOn extractJreForLinux
-extractJreForMacArm.dependsOn extractJreForMac
+extractJreForLinuxArm.dependsOn extractJreForMac
+extractJreForMacArm.dependsOn extractJreForLinuxArm
 extractJreForWindows.dependsOn extractJreForMacArm
 
 copyOtherRepos.dependsOn extractJreForWindows
@@ -1540,7 +1690,8 @@ packageDist.dependsOn generateCache
 packageDistZip.dependsOn packageDist
 packageDistLinux.dependsOn packageDistZip
 packageDistLinux.dependsOn unzipDistForTests
-packageDistMac.dependsOn packageDistLinux
+packageDistLinuxArm.dependsOn packageDistLinux
+packageDistMac.dependsOn packageDistLinuxArm
 packageDistMacArm.dependsOn packageDistMac
 packageDistWindows.dependsOn packageDistMacArm
 unzipDistForTests.dependsOn packageDistZip

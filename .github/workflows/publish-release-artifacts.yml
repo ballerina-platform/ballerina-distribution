@@ -18,17 +18,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '21.0.3'
 
       - name: Set version env variable
         id: set-version
         run: |
           RELEASE_VERSION=${{ github.event.inputs.release_version }}
-          VERSION=$(cut -d- -f1 <<< $RELEASE_VERSION)
+          if [[ "$RELEASE_VERSION" == *-SNAPSHOT ]]; then
+            VERSION="${RELEASE_VERSION%-SNAPSHOT}"
+          else
+            VERSION="$RELEASE_VERSION"
+          fi
           CODE_NAME="swan-lake"
           TAGGED_VERSION=$RELEASE_VERSION
           LONG_VERSION=$VERSION-$CODE_NAME
@@ -43,6 +47,7 @@ jobs:
           echo "::set-output name=version::$VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
           echo "::set-output name=updateNumber::$UPDATE_NUMBER"
+          echo "::set-output name=longVersion::$LONG_VERSION"
 
       - name: Download artifacts
         run: |
@@ -60,6 +65,9 @@ jobs:
           wget "$baseUrl/ballerina-$LONG_VERSION-macos-x64.pkg"
           if [ "$updateNumber" -ge 5 ]; then
             wget "$baseUrl/ballerina-$LONG_VERSION-macos-arm-x64.pkg"
+          fi
+          if [ "$updateNumber" -ge 11 ]; then
+            wget "$baseUrl/ballerina-$LONG_VERSION-linux-arm-x64.deb"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
@@ -89,6 +97,11 @@ jobs:
           echo "	\"windows-installer-size\":\"$winInstSize\"," >> $fileName
           echo "	\"linux-installer\":\"ballerina-$LONG_VERSION-linux-x64.deb\"," >> $fileName
           echo "	\"linux-installer-size\":\"$linuxInstSize\"," >> $fileName
+          if [ "$updateNumber" -ge 11 ]; then
+            linuxArmInstSize=`ls -lh ballerina-$LONG_VERSION-linux-arm-x64.deb | cut -d " " -f5 | sed 's/M/mb/g'`
+            echo "	\"linux-arm-installer\":\"ballerina-$LONG_VERSION-linux-arm-x64.deb\"," >> $fileName
+            echo "	\"linux-arm-installer-size\":\"$linuxArmInstSize\"," >> $fileName
+          fi
           echo "	\"macos-installer\":\"ballerina-$LONG_VERSION-macos-x64.pkg\"," >> $fileName
           echo "	\"macos-installer-size\":\"$macInstSize\"," >> $fileName
           if [ "$updateNumber" -ge 5 ]; then
@@ -117,40 +130,45 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Process docker
+      - name: Clone Docker Repo
         id: process-docker
         run: |
           git clone --single-branch --branch master https://github.com/ballerina-platform/module-ballerina-docker
           DOCKER_REPO='module-ballerina-docker'
           echo "::set-output name=dockerRepo::$DOCKER_REPO"
 
-      - name: Enable experimental functions
-        run: |
-          echo $'{\n    "experimental": true\n}' | sudo tee /etc/docker/daemon.json
-          sudo service docker restart
-          docker version
-
-      - name: Build and push docker image
+      - name: Copy artifacts to Docker repo
         run: |
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
           cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
-
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
-          rm $DOCKER_REPO/base/docker/ballerina-$VERSION.zip
-          docker push ballerina/ballerina:$GIT_TAG
-          docker rmi ballerina/ballerina:$GIT_TAG
-          docker image prune -f
-
-      - name: Build and push dev container
-        run: |
-          DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
           cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
 
-          docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$LONG_VERSION-linux-x64.deb -t ballerina/ballerina-devcontainer:$GIT_TAG $DOCKER_REPO/base/devcontainer
-          rm $DOCKER_REPO/base/devcontainer/ballerina-$LONG_VERSION-linux-x64.deb
-          docker push ballerina/ballerina-devcontainer:$GIT_TAG
-          docker rmi ballerina/ballerina-devcontainer:$GIT_TAG
-          docker image prune -f
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push the Ballerina Docker image
+        id: docker_build
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ steps.process-docker.outputs.dockerRepo }}/base/docker/
+          push: true
+          tags: ballerina/ballerina:${{ steps.set-version.outputs.taggedVersion }}
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.version }}.zip
+
+      - name: Build and push dev container image
+        id: docker_build_devcontainer
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ steps.process-docker.outputs.dockerRepo }}/base/devcontainer/
+          push: true
+          tags: ballerina/ballerina-devcontainer:${{ steps.set-version.outputs.taggedVersion }}
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.longVersion }}-linux-x64.deb
 
       - name: Publish Artifacts
         run: |

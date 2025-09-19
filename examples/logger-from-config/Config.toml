@@ -1,0 +1,3 @@
+[ballerina.log.keyValues]
+env = "prod"
+nodeId = "server-001"

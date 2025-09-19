@@ -1,4 +1,0 @@
-$ bal run regexp_operations.bal
-["bob@example.net","alice@example.com","charlie@example.org","david@example.xyz","invalid#@example.n%t"]
-["bob","alice","charlie","david"]
-["example.net","example.com","example.org","example.xyz"]
