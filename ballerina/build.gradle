@@ -262,9 +262,6 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/cache") {
             into "repo/cache"
         }
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib"
-        }
     }
 
     /* Language Server Extension Artifacts */
