@@ -152,7 +152,7 @@ public class TestUtils {
     public static void testInstallation(Executor executor, String version, String specVersion, String toolVersion,
                                         String versionDisplayText) {
         String versionOutput = executor.executeCommand("-v", false, toolVersion);
-        String cleanedVersionOutput = versionOutput.replaceAll("(\d+\.\d+\.\d+)-\d{8}-\d{6}-[a-fA-F0-9]+", "$1");
+        String cleanedVersionOutput = versionOutput.replaceAll("(\\d+\\.\\d+\\.\\d+)-\\d{8}-\\d{6}-[a-fA-F0-9]+", "$1");
         Assert.assertEquals(cleanedVersionOutput,
                 TestUtils.getVersionOutput(version, specVersion, toolVersion, versionDisplayText));
     }
