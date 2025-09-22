@@ -194,9 +194,6 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:edi-ballerina:${stdlibEdiVersion}"
 
-        /* Ballerina Persist Tool */
-        ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
-
         /* OpenAPI Module */
         openapiModule "io.ballerina:module-ballerina-openapi:${openapiModuleVersion}"
 
@@ -209,5 +206,6 @@ subprojects {
         ballerinaTools "io.ballerina:protoc-tool:${protocToolVersion}"
         ballerinaTools "io.ballerina:openapi-tool:${openapiToolVersion}"
         ballerinaTools "io.ballerina:asyncapi-tool:${asyncapiToolVersion}"
+        ballerinaTools "io.ballerina:persist-tool:${persistToolVersion}"
     }
 }
