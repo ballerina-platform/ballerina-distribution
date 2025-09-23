@@ -1,0 +1,6 @@
+$ bal run direct_llm_calls.bal -- subject=programming 
+Why do programmers prefer dark mode?
+
+Because light attracts bugs!
+Setup: Why do programmers prefer dark mode?
+Punchline: Because light attracts bugs!
