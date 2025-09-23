@@ -5180,5 +5180,36 @@
         "isLearnByExample": false
       }
     ]
+  },
+  {
+    "title": "Direct LLM calls",
+    "column": 0,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Direct LLM calls",
+        "url": "direct-llm-calls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with history",
+        "url": "direct-llm-calls-with-history",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with multimodal input",
+        "url": "direct-llm-calls-with-multimodal-input",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disablePlayground": true
+      }
+    ]
   }
 ]
