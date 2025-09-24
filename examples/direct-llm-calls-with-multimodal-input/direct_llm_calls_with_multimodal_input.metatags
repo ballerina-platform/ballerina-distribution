@@ -1,2 +1,2 @@
 description: This BBE demonstrates how to do direct LLM calls with multimodal input.
-keywords: ballerina, ballerina by example, BBE, ai, llm, multimodal
+keywords: ballerina, ballerina by example, BBE, ai, llm, multimodal, model-provider
