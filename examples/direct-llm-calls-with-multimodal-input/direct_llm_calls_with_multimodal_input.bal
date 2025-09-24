@@ -7,9 +7,10 @@ configurable anthropic:ANTHROPIC_MODEL_NAMES modelType = ?;
 configurable string apiKey = ?;
 
 // Create a model provider to interact with the Anthropic API.
-// The `temperature` parameter is optional, and defaults to 0.7 if not specified.
+// The `temperature` controls the randomness of the output. 
+// This argument is optional and defaults to 0.7 if not specified.
 final ai:ModelProvider model =
-    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0);
+    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0.3);
 
 // The type representing the expected response from the model.
 // The generated JSON schema will also include the documentation.

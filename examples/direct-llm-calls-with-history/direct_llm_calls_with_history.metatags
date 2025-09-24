@@ -1,2 +1,2 @@
 description: This BBE demonstrates how to do direct LLM calls, maintaining the chat history.
-keywords: ballerina, ballerina by example, BBE, ai, llm, history
+keywords: ballerina, ballerina by example, BBE, ai, llm, history, model-provider
