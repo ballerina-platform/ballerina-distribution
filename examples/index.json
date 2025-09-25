@@ -5225,5 +5225,20 @@
         "disablePlayground": true
       }
     ]
+  },
+  {
+    "title": "Model context protocol (MCP)",
+    "column": 2,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP service",
+        "url": "mcp-service"
+      },
+      {
+        "name": "MCP advanced service",
+        "url": "mcp-service-advanced"
+      }
+    ]
   }
 ]
