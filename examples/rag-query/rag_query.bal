@@ -40,12 +40,12 @@ public function main() returns error? {
     string answer = check modelProvider->generate(`Answer the query based on the 
 	    following context:
 
-        Context: ${context}
+	    Context: ${context}
 
-        Query: ${appealQuery}
+	    Query: ${appealQuery}
 
-        Base the answer only on the above context. If the answer is not
-        contained within the context, respond with "I don't know".`);
+	    Base the answer only on the above context. If the answer is not
+	    contained within the context, respond with "I don't know".`);
     io:println("Query: ", appealQuery);
     io:println("Answer: ", answer);
 
