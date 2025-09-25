@@ -5202,5 +5202,28 @@
         "disablePlayground": true
       }
     ]
+  },
+  {
+    "title": "Retrieval-augmented generation (RAG)",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Data ingestion",
+        "url": "rag-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "Retrieval-augmented generation",
+        "url": "rag-query",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      }
+    ]
   }
 ]
