@@ -5228,7 +5228,7 @@
   },
   {
     "title": "Model context protocol (MCP)",
-    "column": 2,
+    "column": 1,
     "category": "Generative AI",
     "samples": [
       {
@@ -5243,7 +5243,7 @@
   },
   {
     "title": "AI Agents",
-    "column": 3,
+    "column": 2,
     "category": "Generative AI",
     "samples": [
       {
@@ -5268,6 +5268,21 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Natural expressions",
+    "column": 3,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Natural expressions",
+        "url": "natural-expressions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
         "disablePlayground": true
       }
     ]
