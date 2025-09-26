@@ -5182,7 +5182,7 @@
         "url": "direct-llm-calls",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
       },
       {
@@ -5190,7 +5190,7 @@
         "url": "direct-llm-calls-with-history",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
       },
       {
@@ -5198,7 +5198,7 @@
         "url": "direct-llm-calls-with-multimodal-input",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Requires LLM/Copilot keys",
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
       }
     ]
@@ -5221,7 +5221,7 @@
         "url": "rag-query",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Requires keys",
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
       }
     ]
@@ -5238,6 +5238,37 @@
       {
         "name": "MCP advanced service",
         "url": "mcp-service-advanced"
+      }
+    ]
+  },
+  {
+    "title": "AI Agents",
+    "column": 3,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with local tools",
+        "url": "ai-agent-local-tools",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with MCP integration",
+        "url": "ai-agent-mcp-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with external endpoint integration",
+        "url": "ai-agent-external-endpoint-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
       }
     ]
   }
