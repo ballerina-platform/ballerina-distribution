@@ -1,0 +1,22 @@
+$ bal run ai_agent_local_tools.bal
+User (or 'exit' to quit): What do I have on my plate today?
+Agent: You have the following task on your plate today:
+
+- **Buy groceries** (Due on September 26, 2025, at 5:44 AM UTC)
+
+Let me know if you need help with anything else!
+User (or 'exit' to quit): What about the rest of the week?
+Agent: Currently, you only have one task for the week:
+
+- **Buy groceries** (Due today, September 26, 2025, at 5:44 AM UTC)
+
+If you have any other tasks to add or if you need help planning your week, just let me know!
+User (or 'exit' to quit): I have to pay my WiFi bill by tomorrow and meet Jane for tea at 4pm on the 28th.
+Agent: Your tasks have been successfully added! Here’s your updated to-do list for the week:
+
+1. **Buy groceries** (Due today, September 26, 2025, at 5:44 AM UTC)
+2. **Pay WiFi bill** (Due tomorrow, September 27, 2025)
+3. **Meet Jane for tea** (Scheduled for September 28, 2025, at 4:00 PM UTC)
+
+Let me know if you need any further assistance!
+User (or 'exit' to quit): exit

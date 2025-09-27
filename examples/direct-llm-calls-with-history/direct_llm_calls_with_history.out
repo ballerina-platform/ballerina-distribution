@@ -1,0 +1,12 @@
+$ bal run direct_llm_calls_with_history.bal -- subject=programming
+Why do programmers prefer dark mode?
+
+Because light attracts bugs!
+Sure! The joke plays on two concepts:
+
+1. **Dark Mode vs. Light Mode**: Many programmers prefer using "dark mode" in their coding environments because it's easier on the eyes, especially during long coding sessions. Dark mode features a dark background with lighter text, while light mode has a light background with darker text.
+
+2. **Bugs**: In programming, a "bug" refers to an error or flaw in the code that can cause it to behave unexpectedly. In a more literal sense, bugs (like insects) are often attracted to light sources.
+
+So the humor comes from the double meaning of "bugs." The joke suggests that if programmers use light mode (which is bright), they might attract actual bugs, just like real insects are drawn to light. Therefore, by using dark mode, they’re avoiding both programming errors and actual bugs!
+
