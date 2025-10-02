@@ -4,6 +4,8 @@ Ballerina enables developers to easily create intelligent AI agents powered by l
 
 This example demonstrates how to create an AI agent that can access weather information by integrating with a Model Context Protocol (MCP) service, by simply defining an MCP toolkit.
 
+> Note: You can use this agent with the [MCP service example](/learn/by-example/mcp-service/).
+
 > Note: This example uses the default model provider implementation. Log in to the Ballerina Copilot, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your keys to the `Config.toml` file. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).

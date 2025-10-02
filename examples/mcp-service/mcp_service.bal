@@ -40,14 +40,7 @@ service mcp:Service /mcp on mcpListener {
     # + city - City name (e.g., "New York", "Tokyo")
     # + return - Current weather data for the specified city
     remote function getCurrentWeather(string city) returns Weather|error {
-        Weather mockWeather = {
-            condition: "Sunny",
-            humidity: check random:createIntInRange(30, 70),
-            location: city,
-            pressure: check random:createIntInRange(1000, 1025),
-            temperature: <decimal> check random:createIntInRange(15, 30),
-            timestamp: time:utcToString(time:utcNow())
-        };
+        Weather mockWeather = check getMockWeather(city);
         log:printInfo(string `Weather data retrieved for ${
                         city}: ${mockWeather.condition}, ${mockWeather.temperature}°C`);
         return mockWeather;
@@ -67,6 +60,15 @@ service mcp:Service /mcp on mcpListener {
         return mockForecast;
     }
 }
+
+function getMockWeather(string city) returns Weather|error => {
+    condition: "Sunny",
+    humidity: check random:createIntInRange(30, 70),
+    location: city,
+    pressure: check random:createIntInRange(1000, 1025),
+    temperature: <decimal> check random:createIntInRange(15, 30),
+    timestamp: time:utcToString(time:utcNow())
+};
 
 function getMockForecastItems(int days) returns ForecastItem[]|error {
     string[] conditions = ["Sunny", "Cloudy", "Rainy", "Windy", "Stormy", "Snowy"];
