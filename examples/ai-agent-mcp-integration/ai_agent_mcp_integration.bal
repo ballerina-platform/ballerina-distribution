@@ -5,9 +5,9 @@ import ballerina/io;
 // This allows using all the tools registered with the MCP service.
 // Alternatively, specific tools can be used by specifying them as the second 
 // argument (e.g., `check new ("http://localhost:9090/mcp", ["getCurrentWeather"])`).
-ai:McpToolKit weatherMcpConn = check new ("http://localhost:9090/mcp");
+final ai:McpToolKit weatherMcpConn = check new ("http://localhost:9090/mcp");
 
-ai:Agent weatherAgent = check new (
+final ai:Agent weatherAgent = check new (
     systemPrompt = {
         role: "Weather-aware AI Assistant",
         instructions: string `You are a smart AI assistant that can assist 
