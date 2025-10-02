@@ -5209,7 +5209,7 @@
     "category": "Generative AI",
     "samples": [
       {
-        "name": "Data ingestion",
+        "name": "RAG ingestion",
         "url": "rag-ingestion",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -5217,7 +5217,7 @@
         "disablePlayground": true
       },
       {
-        "name": "Retrieval-augmented generation",
+        "name": "RAG query",
         "url": "rag-query",
         "verifyBuild": true,
         "verifyOutput": false,

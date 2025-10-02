@@ -1,4 +1,4 @@
-# Retrieval-augmented generation (RAG)
+# Retrieval-augmented generation (RAG) query
 
 Retrieval-augmented generation (RAG) is a technique that enhances capabilities of large language models by combining them with external knowledge sources to provide more accurate and contextually-relevant responses.
 
