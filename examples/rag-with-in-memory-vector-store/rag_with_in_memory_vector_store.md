@@ -2,11 +2,11 @@
 
 Ballerina has high-level, provider-agnostic APIs to ingest data for retrieval-augmented generation (RAG) workflows. These include abstractions such as `ai:DataLoader`, `ai:VectorStore`, `ai:EmbeddingProvider`, and `ai:KnowledgeBase`.
 
-These abstractions enable you to load documents, convert them into semantically meaningful vector representations using embedding models, and index them into a vector database. Then at generation/querying, you can query semantically similar content from vector databases and use retrieved context in the request to the LLM to generate more accurate responses. The knowledge base orchestrates this process.
+These abstractions enable you to load documents, convert them into semantically meaningful vector representations using embedding models, and index them into a vector database. Then at generation/querying, you can query semantically similar content from vector databases and use retrieved context in the request to the LLM to generate more accurate responses. The knowledge base (`ai: KnowledgeBase`) orchestrates this process.
 
 This example demonstrates implementing RAG workflow using an in-memory vector store.
 
-> Note: This example uses the default embedding provider implementation and Pinecone. Log in to the Ballerina Copilot, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your keys to the `Config.toml` file. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract Pinecone configuration. Alternatively, you can try out the in-memory vector store (`ai:InMemoryVectorStore`).
+> Note: This example uses the default embedding provider and model provider implementations. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation.
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 
