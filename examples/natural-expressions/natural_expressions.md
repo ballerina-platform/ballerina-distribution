@@ -4,7 +4,7 @@ Natural expressions provide a language-level abstraction for integrating with la
 
 Natural expressions use the `ai:ModelProvider` type as a unified interface for working with different LLM providers such as [ballerinax/ai.openai](https://central.ballerina.io/ballerinax/ai.openai/latest), [ballerinax/ai.anthropic](https://central.ballerina.io/ballerinax/ai.anthropic/latest), and others. The expression automatically generates a JSON schema from the expected return type, sends the prompt to the LLM, and binds the response to the specified type.
 
-> Note: This example uses the default model provider implementation. Log in to the Ballerina Copilot, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your keys to the `Config.toml` file. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
+> Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 
 > Note: This feature is supported on Swan Lake Update 13 - Milestone 3 (2201.13.0-m3) or newer versions. This is currently an experimental feature and requires the `--experimental` flag to be used with `bal` commands.
 
