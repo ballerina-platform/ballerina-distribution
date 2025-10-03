@@ -5024,6 +5024,14 @@
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
+      },
+      {
+        "name": "Chat agents",
+        "url": "chat-agents",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
       }
     ]
   },
