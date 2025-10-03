@@ -1,4 +1,4 @@
-$ bal run rag_query.bal
+$ bal run rag_query_with_external_vector_store.bal
 Query: What is the process for appealing a rejected leave request?
 Answer: I don't know.
 
