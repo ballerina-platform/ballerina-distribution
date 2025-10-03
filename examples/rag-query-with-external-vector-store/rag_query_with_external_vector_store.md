@@ -14,9 +14,9 @@ This example demonstrates how to query a knowledge base to retrieve relevant doc
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 
-::: code rag_query.bal :::
+::: code rag_query_with_external_vector_store.bal :::
 
-::: out rag_query.out :::
+::: out rag_query_with_external_vector_store.out :::
 
 ## Related links
 
