@@ -10,13 +10,13 @@ This example demonstrates how to query a knowledge base to retrieve relevant doc
 
 > Note: You can follow the [RAG ingestion](/learn/by-example/rag-ingestion/) example to ingest data first.
 
-> Note: This example uses the default model provider implementation and Pinecone. Log in to the Ballerina Copilot, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your keys to the `Config.toml` file. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract Pinecone configuration. Alternatively, you can try out the in-memory vector store (`ai:InMemoryVectorStore`).
+> Note: This example uses the default model provider and embedding provider implementations and Pinecone. To generate the configuration for the model and embedding providers, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract Pinecone configuration. Alternatively, you can try out the in-memory vector store (`ai:InMemoryVectorStore`).
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 
-::: code rag_query.bal :::
+::: code rag_query_with_external_vector_store.bal :::
 
-::: out rag_query.out :::
+::: out rag_query_with_external_vector_store.out :::
 
 ## Related links
 
