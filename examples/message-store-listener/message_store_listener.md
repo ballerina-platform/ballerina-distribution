@@ -1,12 +1,8 @@
 # Message Store Listener
 
-The `messaging` library provides a message store listener which polls the store at a configurable interval, dispatches messages to an attached service, and manages retries and a Dead-Letter store.
+This example demonstrates how to use message store listeners for automated message processing. The `StoreListener` provides a polling-based mechanism to automatically retrieve and process messages from a message store, with built-in support for retries and dead letter handling.
 
 ::: code message_store_listener.bal :::
-
-Enable debug logs to see detailed information about message processing and error handling.
-
-::: code Config.toml :::
 
 ::: out message_store_listener.out :::
 
