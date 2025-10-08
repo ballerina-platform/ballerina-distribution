@@ -126,17 +126,6 @@ task unpackBalTools() {
     }
 }
 
-task unpackOpenAPILibs() {
-    doLast {
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            copy {
-                from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
-            }
-        }
-    }
-}
-
 task unpackC2cLibs() {
     doLast {
         configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
@@ -151,6 +140,17 @@ task unpackC2cLibs() {
 task unpackC2cTooling() {
     doLast {
         configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
+task unpackOpenapiModule() {
+    doLast {
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
@@ -234,20 +234,6 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
-    /* OpenAPI Libraries */
-    configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
-        from("${artifactExtractedPath}/bala") {
-            into "repo/bala"
-        }
-        from("${artifactExtractedPath}/lslibs") {
-            into "lib/tools/lang-server/lib/"
-        }
-    }
-
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
@@ -264,6 +250,17 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
+        }
+    }
+
+    /* OpenAPI Module */
+    configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
+        }
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
         }
     }
 
@@ -1525,8 +1522,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* OpenApi Libraries */
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* C2C Libraries */
+        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1552,8 +1549,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* C2C Libraries */
-        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* OpenAPI Module */
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1657,15 +1654,16 @@ unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
 unpackBalTools.dependsOn unpackStdLibs
 generateBalToolsToml.dependsOn unpackBalTools // Generate bal-tools.toml
-unpackOpenAPILibs.dependsOn generateBalToolsToml
-unpackC2cLibs.dependsOn unpackOpenAPILibs
+unpackC2cLibs.dependsOn generateBalToolsToml
 unpackC2cTooling.dependsOn unpackC2cLibs
-downloadBalCommand.dependsOn unpackC2cTooling
+unpackOpenapiModule.dependsOn unpackC2cTooling
+downloadBalCommand.dependsOn unpackOpenapiModule
 
 
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs
 generateCache.dependsOn unpackC2cTooling
+generateCache.dependsOn unpackOpenapiModule
 generateCache.dependsOn copyDevToolsDocUi
 generateCache.dependsOn generateBalToolsToml
 

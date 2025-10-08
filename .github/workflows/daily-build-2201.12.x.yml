@@ -1,4 +1,4 @@
-name: Daily build (2201.11.x)
+name: Daily build (2201.12.x)
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -168,7 +168,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/docker/
           push: true
-          tags: ballerina/ballerina:nightly-2201.11.x
+          tags: ballerina/ballerina:nightly-2201.12.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Image digest
@@ -198,7 +198,7 @@ jobs:
         with:
           context: module-ballerina-docker/base/devcontainer/
           push: true
-          tags: ballerina/ballerina-devcontainer:nightly-2201.11.x
+          tags: ballerina/ballerina-devcontainer:nightly-2201.12.x
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
       - name: Notify failure
@@ -212,7 +212,7 @@ jobs:
             \"event_type\": \"notify-build-failure\",
             \"client_payload\": {
               \"repoName\": \"ballerina-distribution\",
-              \"branch\": \"2201.11.x\"
+              \"branch\": \"2201.12.x\"
             }
           }"
     outputs:
@@ -228,7 +228,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -253,7 +253,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -277,7 +277,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -316,7 +316,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Download MacOS Intaller Zip
         uses: actions/download-artifact@v4
         with:
@@ -400,7 +400,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
@@ -464,7 +464,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 2201.11.x
+          ref: 2201.12.x
       - name: Invoke Connector Ballerina Version Bump
         run: |
           ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
