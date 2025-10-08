@@ -1,5 +1,5 @@
 import ballerina/messaging;
-import ballerina/io;
+import ballerina/log;
 
 // Using the in-memory message store implementation
 final messaging:Store store = new messaging:InMemoryMessageStore();
@@ -11,7 +11,7 @@ public function main() returns error? {
     // Retrieve the message
     messaging:Message? msg = check store->retrieve();
     if msg is messaging:Message {
-        io:println("Retrieved message: ", msg.payload, " with id: ", msg.id);
+        log:printInfo("Message retrieved", payload = msg.payload, id = msg.id);
         
         // Acknowledge the message with success will remove the message from
         // the store
@@ -21,6 +21,6 @@ public function main() returns error? {
     // Try to retrieve the message again
     msg = check store->retrieve();
     if msg is () {
-        io:println("No messages in the store");
+        log:printInfo("No messages in the store");
     }
 }

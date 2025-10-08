@@ -1,4 +1,0 @@
-$ bal run message_store.bal
-
-Retrieved message: Hello, World with id: 01f0817a-e2d3-1a60-ab12-de6783132335
-No messages in the store

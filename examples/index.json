@@ -4479,8 +4479,16 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "Message store",
-        "url": "message-store",
+        "name": "Message store type",
+        "url": "message-store-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "In-memory message store",
+        "url": "in-memory-message-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": false,
