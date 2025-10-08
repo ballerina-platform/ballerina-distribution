@@ -1,6 +1,6 @@
 # Sensitive data logging
 
-This example demonstrates how to mask sensitive data in log messages using the `@log:Sensitive` annotation. The Ballerina log module provides built-in capabilities to protect personally identifiable information (PII) and other sensitive data from being exposed in logs. By default, sensitive data masking is disabled and must be enabled in the configuration file.
+This example demonstrates how to mask sensitive data in log messages using the `@log:Sensitive` annotation. The Ballerina log module provides built-in capabilities to protect personally identifiable information (PII) and other sensitive data from being exposed in logs. By default, sensitive data masking is disabled and **must be enabled** in the configuration file.
 
 ::: code Config.toml :::
 
