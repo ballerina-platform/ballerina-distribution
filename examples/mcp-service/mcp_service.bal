@@ -17,8 +17,8 @@ type ForecastItem record {|
     int high;
     int low;
     string condition;
-    int precipitation_chance;
-    int wind_speed;
+    int precipitationChance;
+    int windSpeed;
 |};
 
 type WeatherForecast record {|
@@ -78,7 +78,7 @@ function getMockForecastItems(int days) returns ForecastItem[]|error {
             date: time:utcToString(time:utcAddSeconds(time:utcNow(), i * 86400)),
             high: check random:createIntInRange(20, 30),
             low: check random:createIntInRange(10, 20),
-            precipitation_chance: check random:createIntInRange(10, 50),
-            wind_speed: check random:createIntInRange(5, 20)
+            precipitationChance: check random:createIntInRange(10, 50),
+            windSpeed: check random:createIntInRange(5, 20)
         };
 }

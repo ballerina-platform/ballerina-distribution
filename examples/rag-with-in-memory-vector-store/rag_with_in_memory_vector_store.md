@@ -1,4 +1,4 @@
-# Retrieval-augmented generation (RAG) ingestion
+# Retrieval-augmented generation (RAG) with an in-memory vector store
 
 Ballerina has high-level, provider-agnostic APIs to ingest data for retrieval-augmented generation (RAG) workflows. These include abstractions such as `ai:DataLoader`, `ai:VectorStore`, `ai:EmbeddingProvider`, and `ai:KnowledgeBase`.
 
