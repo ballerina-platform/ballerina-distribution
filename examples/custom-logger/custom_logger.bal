@@ -16,8 +16,8 @@ public isolated class ApplicationLogger {
 
     public isolated function printInfo(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
-        string processedMsg = msg is string ? msg : log:processTemplate(msg);
-        string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${processedMsg}`;
+        string evaluatedMsg = msg is string ? msg : log:evaluateTemplate(msg);
+        string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${evaluatedMsg}`;
         log:KeyValues newKeyValues = {...self.context};
         foreach [string, log:Value] [k, v] in keyValues.entries() {
             newKeyValues[k] = v;
