@@ -5060,7 +5060,7 @@
       {
         "name": "Natural expressions",
         "url": "natural-expressions",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys",
         "disablePlayground": true
