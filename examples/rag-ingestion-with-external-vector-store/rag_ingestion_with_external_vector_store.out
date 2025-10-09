@@ -1,0 +1,2 @@
+$ bal run rag_ingestion_with_external_vector_store.bal
+Ingestion successful
