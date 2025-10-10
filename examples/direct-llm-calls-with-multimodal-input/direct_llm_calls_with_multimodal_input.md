@@ -6,6 +6,8 @@ If multimodal input is supported by an LLM, the model provider implementation fo
 
 This example demonstrates how to make direct calls to LLMs using the model provider, with multimodal input. 
 
+> Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
+
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 
 ::: code direct_llm_calls_with_multimodal_input.bal :::

@@ -1,16 +1,8 @@
 import ballerina/ai;
 import ballerina/io;
-import ballerinax/ai.anthropic;
 
-// Use `configurable` variables for the model name and API key.
-configurable anthropic:ANTHROPIC_MODEL_NAMES modelType = ?;
-configurable string apiKey = ?;
-
-// Create a model provider to interact with the Anthropic API.
-// The `temperature` controls the randomness of the output. 
-// This argument is optional and defaults to 0.7 if not specified.
-final ai:ModelProvider model =
-    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0.3);
+// Use the default model provider (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 // The type representing the expected response from the model.
 // The generated JSON schema will also include the documentation.
