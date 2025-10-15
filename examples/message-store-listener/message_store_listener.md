@@ -4,7 +4,7 @@ This example demonstrates how to use message store listeners for automated messa
 
 ::: code message_store_listener.bal :::
 
-> **Tip:** Enable debug logs to see interal logs related to message flow
+> **Tip:** Enable debug logs to see internal logs related to message flow
 
 ::: code Config.toml :::
 
