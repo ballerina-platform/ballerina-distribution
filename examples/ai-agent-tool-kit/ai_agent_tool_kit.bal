@@ -18,37 +18,9 @@ public isolated class TaskManagerToolkit {
     private final map<Task> tasks = {};
 
     // The `getTools` method describes the tools provided by this tool kit.
-    public isolated function getTools() returns ai:ToolConfig[] => [
-        // The JSON schema for the `addTask` tool.
-        {
-            name: "addTask",
-            description: "Add a new task to the to-do list",
-            parameters: {
-                'type: "object",
-                properties: {
-                    description: {'type: "string", description: "Description of the task"},
-                    dueBy: {
-                        'type: "object",
-                        description: "Due date for the task",
-                        properties: {
-                            year: {'type: "integer"},
-                            month: {'type: "integer"},
-                            day: {'type: "integer"}
-                        },
-                        required: ["year", "month", "day"]
-                    }
-                },
-                required: ["description"]
-            },
-            // Refer to the method that is this tool.
-            caller: self.addTask
-        },
-        {
-            name: "listTasks",
-            description: "List all current tasks",
-            caller: self.listTasks
-        }
-    ];
+    public isolated function getTools() returns ai:ToolConfig[] => 
+        // The `ai:getToolConfigs` function generates the tool configurations for the specified tools.
+        ai:getToolConfigs([self.addTask, self.listTasks]);
     
     // Tool to add a new task.
     @ai:AgentTool
