@@ -1,0 +1,2 @@
+$ bal run direct_llm_calls_with_multimodal_input.bal 
+{"description":"The word 'Ballerina' written in black text, with the letter 'l' stylized to look like a ballet dancer","confidence":0.98,"categories":["text","logo","typography"]}

@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to implement the messaging:Store type to create a custom message store in Ballerina.
+keywords: ballerina, ballerina by example, bbe, messaging, store, custom, implementation, type

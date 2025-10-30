@@ -1,0 +1,6 @@
+$ bal run rag_query_with_external_vector_store.bal
+Query: What is the process for appealing a rejected leave request?
+Answer: I don't know.
+
+Query: How many annual leave days can a full-time employee carry forward to the next year?
+Answer: A full-time employee can carry forward up to 5 unused annual leave days to the next year.

@@ -150,7 +150,8 @@ public class DistRepoBuilder {
         Files.walkFileTree(repo, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-                if (pathMatcher.matches(path)) {
+                if (pathMatcher.matches(path)
+                        && Files.notExists(path.getParent().resolve("tool/bal-tool.json"))) {
                     balas.add(path.getParent());
                 }
                 return FileVisitResult.CONTINUE;

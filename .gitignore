@@ -41,3 +41,10 @@ gradle-app.setting
 .project
 .settings
 .vscode
+
+# Temporarily ignore
+CVE-2025-27553
+CVE-2025-30474
+
+# Config.toml files that may be used with examples
+examples/**/Config.toml

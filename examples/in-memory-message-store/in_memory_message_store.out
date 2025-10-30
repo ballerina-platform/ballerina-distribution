@@ -1,0 +1,4 @@
+$ bal run in_memory_message_store.bal
+
+time=2025-10-08T08:59:48.453+05:30 level=INFO module="" message="Message retrieved" payload="Hello, World" id="01f0a3f7-0aaf-15e0-a29f-2cdcb73f2889"
+time=2025-10-08T08:59:48.483+05:30 level=INFO module="" message="No messages in the store"

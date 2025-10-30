@@ -26,7 +26,7 @@ description = 'Ballerina - Tools'
 ext {
     jreLocation = "downloads/ballerina-jre-artifacts-zip/"
     distributionName = "ballerina"
-    shortVersion = "${version}".split("-")[0]
+    shortVersion = "${version}".replaceAll("-SNAPSHOT", "")
 }
 
 configurations {
@@ -115,9 +115,9 @@ task unpackStdLibs() {
     }
 }
 
-task unpackOpenAPILibs() {
+task unpackBalTools() {
     doLast {
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
@@ -140,6 +140,17 @@ task unpackC2cLibs() {
 task unpackC2cTooling() {
     doLast {
         configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            copy {
+                from project.zipTree(artifact.getFile())
+                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+            }
+        }
+    }
+}
+
+task unpackOpenapiModule() {
+    doLast {
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
                 into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
@@ -215,17 +226,11 @@ task copyOtherRepos(type: Copy) {
         }
     }
 
-    /* OpenAPI Libraries */
-    configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+    /* Bal tools (e.g. openapi, graphql etc.) */
+    configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
-        from("${artifactExtractedPath}/libs") {
-            into "bre/lib/"
-        }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
-        }
-        from("${artifactExtractedPath}/lslibs") {
-            into "lib/tools/lang-server/lib/"
         }
     }
 
@@ -245,6 +250,17 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
+        }
+    }
+
+    /* OpenAPI Module */
+    configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        from("${artifactExtractedPath}/bala") {
+            into "repo/bala"
+        }
+        from("${artifactExtractedPath}/cache") {
+            into "repo/cache"
         }
     }
 
@@ -944,22 +960,22 @@ task testExamples() {
     ext.buildBBE = { bbe ->
 
         def exitVal
-        def additionalBuildParams = ""
+        def additionalParams = bbe.url == "natural-expressions" ? "--experimental" : ""
         println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalBuildParams}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test'
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalBuildParams}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal test"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
@@ -1421,11 +1437,6 @@ task testDevToolsIntegration() {
 
 task generateCache(dependsOn: ':cache-generator:build') {
     doFirst {
-        download.run {
-            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
-            dest "${project.rootDir}/ballerina/build/target/"
-        }
-
         copy {
             from "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
             into "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib"
@@ -1511,8 +1522,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* OpenApi Libraries */
-        configurations.ballerinaOpenAPILibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* C2C Libraries */
+        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1538,8 +1549,8 @@ task generateCache(dependsOn: ':cache-generator:build') {
             }
         }
 
-        /* C2C Libraries */
-        configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+        /* OpenAPI Module */
+        configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
@@ -1570,19 +1581,91 @@ task generateCache(dependsOn: ':cache-generator:build') {
     }
 }
 
+task generateBalToolsToml () {
+    doFirst {
+        download.run {
+            src "https://raw.githubusercontent.com/ballerina-platform/ballerina-release/${balstdlibBranch}/dependabot/resources/extensions.json"
+            dest "${project.rootDir}/ballerina/build/target/"
+        }
+    }
+    doLast {
+        def configBalTools = []
+        configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            configBalTools.add(artifact.name + "-zip")
+        }
+
+        def stdlibJson = file("${project.rootDir}/ballerina/build/target/extensions.json")
+        def parsedJson = new JsonSlurper().parseText(stdlibJson.text)
+        def maxLevel = 0
+        parsedJson.standard_library.each { module ->
+            def moduleLevel = module.level
+            if (moduleLevel > maxLevel) {
+                maxLevel = moduleLevel
+            }
+        }
+        def sortedLibs = []
+        for (currentLevel in 1..maxLevel) {
+            parsedJson.standard_library.each { module ->
+                if (module.level == currentLevel) {
+                    def libName = module.name.toString() + "-zip"
+                    sortedLibs.add(libName)
+                }
+            }
+        }
+
+        def balToolsTomlString = ""
+        String balToolsTomlPath = "${buildDir}/target/extracted-distributions/" +
+                "jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/resources/bal-tools.toml"
+        def file = new File(balToolsTomlPath)
+
+        configBalTools.each { lib ->
+            if (sortedLibs.contains(lib)) {
+                def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
+                String balaDir = artifactExtractedPath + "/bala"
+
+                new File("${balaDir}").listFiles().each { orgDirFile ->
+                    String orgDir = orgDirFile.toString()
+                    String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+                    String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+                    String balaPath = new File("${versionDir}").listFiles()[0].toString()
+
+                    def toolJson = new File("${balaPath}/tool/bal-tool.json")
+                    def parsedToolJson = new JsonSlurper().parseText(toolJson.text)
+
+                    def packageJson = new File("${balaPath}/package.json")
+                    def parsedPackageJson = new JsonSlurper().parseText(packageJson.text)
+
+                    balToolsTomlString += "[[tool]]\n" +
+                            "id = \"" + parsedToolJson.tool_id.toString() + "\"\n" +
+                            "org = \"" + parsedPackageJson.organization.toString() + "\"\n" +
+                            "name = \"" + parsedPackageJson.name.toString() + "\"\n" +
+                            "version = \"" + parsedPackageJson.version.toString() + "\"\n" +
+                            "active = true\n\n"
+                }
+            }
+        }
+        file.write(balToolsTomlString)
+    }
+}
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
 unpackStdLibs.dependsOn unpackDevTools
-unpackOpenAPILibs.dependsOn unpackStdLibs
-unpackC2cLibs.dependsOn unpackOpenAPILibs
+unpackBalTools.dependsOn unpackStdLibs
+generateBalToolsToml.dependsOn unpackBalTools // Generate bal-tools.toml
+unpackC2cLibs.dependsOn generateBalToolsToml
 unpackC2cTooling.dependsOn unpackC2cLibs
-downloadBalCommand.dependsOn unpackC2cTooling
+unpackOpenapiModule.dependsOn unpackC2cTooling
+downloadBalCommand.dependsOn unpackOpenapiModule
+
 
 /* Cache Generation */
 generateCache.dependsOn unpackStdLibs
 generateCache.dependsOn unpackC2cTooling
+generateCache.dependsOn unpackOpenapiModule
 generateCache.dependsOn copyDevToolsDocUi
+generateCache.dependsOn generateBalToolsToml
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand

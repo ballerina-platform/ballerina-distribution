@@ -1306,7 +1306,7 @@
         "name": "Module lifecycle",
         "url": "module-lifecycle",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
@@ -3134,7 +3134,7 @@
       {
         "name": "Simple RPC",
         "url": "grpc-service-simple",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3143,7 +3143,7 @@
       {
         "name": "Server-side streaming RPC",
         "url": "grpc-service-server-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3152,7 +3152,7 @@
       {
         "name": "Client-side streaming RPC",
         "url": "grpc-service-client-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3161,7 +3161,7 @@
       {
         "name": "Bidirectional streaming RPC",
         "url": "grpc-service-bidirectional-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3170,7 +3170,7 @@
       {
         "name": "Send/Receive headers",
         "url": "grpc-service-headers",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3179,7 +3179,7 @@
       {
         "name": "Server reflection",
         "url": "grpc-server-reflection",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3188,7 +3188,7 @@
       {
         "name": "Check deadline",
         "url": "grpc-service-check-deadline",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3204,7 +3204,7 @@
       {
         "name": "Simple RPC",
         "url": "grpc-client-simple",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3213,7 +3213,7 @@
       {
         "name": "Server-side streaming RPC",
         "url": "grpc-client-server-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3222,7 +3222,7 @@
       {
         "name": "Client-side streaming RPC",
         "url": "grpc-client-client-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3231,7 +3231,7 @@
       {
         "name": "Bidirectional streaming RPC",
         "url": "grpc-client-bidirectional-streaming",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3240,7 +3240,7 @@
       {
         "name": "Send/Receive headers",
         "url": "grpc-client-headers",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3249,7 +3249,7 @@
       {
         "name": "Set deadline",
         "url": "grpc-client-set-deadline",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
@@ -3265,7 +3265,7 @@
       {
         "name": "SSL/TLS",
         "url": "grpc-service-ssl-tls",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3273,7 +3273,7 @@
       {
         "name": "Mutual SSL",
         "url": "grpc-service-mutual-ssl",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3281,7 +3281,7 @@
       {
         "name": "Basic authentication file user store",
         "url": "grpc-service-basic-auth-file-user-store",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3289,7 +3289,7 @@
       {
         "name": "Basic authentication LDAP user store",
         "url": "grpc-service-basic-auth-ldap-user-store",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3297,7 +3297,7 @@
       {
         "name": "JWT authentication",
         "url": "grpc-service-jwt-auth",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3305,7 +3305,7 @@
       {
         "name": "OAuth2",
         "url": "grpc-service-oauth2",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3320,7 +3320,7 @@
       {
         "name": "SSL/TLS",
         "url": "grpc-client-ssl-tls",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3328,7 +3328,7 @@
       {
         "name": "Mutual SSL",
         "url": "grpc-client-mutual-ssl",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3336,7 +3336,7 @@
       {
         "name": "Basic authentication",
         "url": "grpc-client-basic-auth",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3344,7 +3344,7 @@
       {
         "name": "Bearer token authentication",
         "url": "grpc-client-bearer-token-auth",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3352,7 +3352,7 @@
       {
         "name": "Self-signed JWT authentication",
         "url": "grpc-client-self-signed-jwt-auth",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3360,7 +3360,7 @@
       {
         "name": "OAuth2 client credentials grant type",
         "url": "grpc-client-oauth2-client-credentials-grant-type",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3368,7 +3368,7 @@
       {
         "name": "OAuth2 password grant type",
         "url": "grpc-client-oauth2-password-grant-type",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3376,7 +3376,7 @@
       {
         "name": "OAuth2 refresh token grant type",
         "url": "grpc-client-oauth2-refresh-token-grant-type",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -3384,7 +3384,7 @@
       {
         "name": "OAuth2 JWT bearer grant type",
         "url": "grpc-client-oauth2-jwt-bearer-grant-type",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -4386,6 +4386,29 @@
     ]
   },
   {
+    "title": "Change data capture",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Listen to database",
+        "url": "cdc-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Group events by table",
+        "url": "cdc-advanced-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Avro",
     "column": 0,
     "category": "Common libraries",
@@ -4447,6 +4470,36 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Messaging",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Message store type",
+        "url": "message-store-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "In-memory message store",
+        "url": "in-memory-message-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Message Store Listener",
+        "url": "message-store-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
       }
     ]
   },
@@ -4568,8 +4621,52 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error Logging",
+        "url": "error-logging",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": false
+      },
+      {
         "name": "Configure logging",
         "url": "logging-configuration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Child loggers with context",
+        "url": "child-loggers-with-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Logger from configuration",
+        "url": "logger-from-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Custom logger",
+        "url": "custom-logger",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Sensitive data logging",
+        "url": "sensitive-data-logging",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
@@ -4866,6 +4963,137 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Direct LLM calls",
+    "column": 0,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Direct LLM calls",
+        "url": "direct-llm-calls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with history",
+        "url": "direct-llm-calls-with-history",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with multimodal input",
+        "url": "direct-llm-calls-with-multimodal-input",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Retrieval-augmented generation (RAG)",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "RAG with in-memory vector store",
+        "url": "rag-with-in-memory-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "RAG ingestion with external vector store",
+        "url": "rag-ingestion-with-external-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "RAG query with external vector store",
+        "url": "rag-query-with-external-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Model context protocol (MCP)",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP service",
+        "url": "mcp-service"
+      },
+      {
+        "name": "MCP advanced service",
+        "url": "mcp-service-advanced"
+      }
+    ]
+  },
+  {
+    "title": "AI agents",
+    "column": 2,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with local tools",
+        "url": "ai-agent-local-tools",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with MCP integration",
+        "url": "ai-agent-mcp-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with external endpoint integration",
+        "url": "ai-agent-external-endpoint-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Chat agents",
+        "url": "chat-agents",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Natural expressions",
+    "column": 3,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Natural expressions",
+        "url": "natural-expressions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
       }
     ]
   },

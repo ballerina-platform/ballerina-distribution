@@ -28,7 +28,11 @@ jobs:
         id: set-version
         run: |
           RELEASE_VERSION=${{ github.event.inputs.release_version }}
-          VERSION=$(cut -d- -f1 <<< $RELEASE_VERSION)
+          if [[ "$RELEASE_VERSION" == *-SNAPSHOT ]]; then
+            VERSION="${RELEASE_VERSION%-SNAPSHOT}"
+          else
+            VERSION="$RELEASE_VERSION"
+          fi
           CODE_NAME="swan-lake"
           TAGGED_VERSION=$RELEASE_VERSION
           LONG_VERSION=$VERSION-$CODE_NAME
