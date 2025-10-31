@@ -11,10 +11,10 @@ public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             key: {
-                certFile: "../resource/path/to/public.crt",
-                keyFile: "../resource/path/to/private.key"
+                certFile: "../resource/path/to/client-public.crt",
+                keyFile: "../resource/path/to/client-private.key"
             },
-            cert: "../resource/path/to/public.crt"
+            cert: "../resource/path/to/server-public.crt"
         }
     );
     Album[] payload = check albumClient->/albums;
