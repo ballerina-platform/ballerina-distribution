@@ -73,46 +73,28 @@ jobs:
       
       # Delete existing nightly release if it exists
       - name: Delete existing nightly release
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            try {
-              const release = await github.rest.repos.getReleaseByTag({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag: 'nightly'
-              });
-              
-              await github.rest.repos.deleteRelease({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                release_id: release.data.id
-              });
-              
-              console.log('Deleted existing nightly release');
-            } catch (error) {
-              if (error.status === 404) {
-                console.log('No existing nightly release found');
-              } else {
-                throw error;
-              }
-            }
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: 'nightly'
+            });
             
-            try {
-              await github.rest.git.deleteRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: 'tags/nightly'
-              });
-              console.log('Deleted existing nightly tag');
-            } catch (error) {
-              if (error.status === 404) {
-                console.log('No existing nightly tag found');
-              } else {
-                throw error;
-              }
-            }
+            await github.rest.repos.deleteRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id
+            });
+            
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'tags/nightly'
+            });
       
       # Create nightly release and upload artifacts
       - name: Create nightly release
