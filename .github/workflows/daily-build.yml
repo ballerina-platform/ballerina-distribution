@@ -70,6 +70,64 @@ jobs:
         with:
           name: Ballerina Short Name ZIP
           path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      
+      # Delete existing nightly release if it exists
+      - name: Delete existing nightly release
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              const release = await github.rest.repos.getReleaseByTag({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag: 'nightly'
+              });
+              
+              await github.rest.repos.deleteRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                release_id: release.data.id
+              });
+              
+              console.log('Deleted existing nightly release');
+            } catch (error) {
+              if (error.status === 404) {
+                console.log('No existing nightly release found');
+              } else {
+                throw error;
+              }
+            }
+            
+            try {
+              await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'tags/nightly'
+              });
+              console.log('Deleted existing nightly tag');
+            } catch (error) {
+              if (error.status === 404) {
+                console.log('No existing nightly tag found');
+              } else {
+                throw error;
+              }
+            }
+      
+      # Create nightly release and upload artifacts
+      - name: Create nightly release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: nightly
+          name: Nightly Build - ${{ steps.version.outputs.version }}
+          body: |
+            Automated nightly build for ${{ steps.version.outputs.version }}
+            Ballerina Version: ${{ steps.project-version.outputs.version }}
+          prerelease: true
+          files: ballerina/build/distributions/ballerina-*-swan-lake.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Archive Linux deb
         uses: actions/upload-artifact@v4
         with:
