@@ -121,7 +121,8 @@ subprojects {
         ballerinaStdLibs
         ballerinaC2cLibs
         ballerinaC2cTooling
-        ballerinaOpenAPILibs
+        ballerinaTools
+        openapiModule
         exten {
             transitive = false
         }
@@ -181,7 +182,9 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websubhub-ballerina:${stdlibWebsubhubVersion}"
-        ballerinaStdLibs "io.ballerina.lib:np-ballerina:${stdlibNpVersion}"
+        ballerinaStdLibs "io.ballerina.lib:ai.np-ballerina:${stdlibAiNpVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:ai-ballerina:${stdlibAiVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:mcp-ballerina:${stdlibMcpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:yaml-ballerina:${stdlibYamlVersion}"
@@ -191,24 +194,18 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:edi-ballerina:${stdlibEdiVersion}"
 
-        /* Ballerina Persist Tool */
-        ballerinaStdLibs "io.ballerina:persist-tools:${persistToolVersion}"
-
-        /* Ballerina GraphQL */
-        ballerinaStdLibs "io.ballerina:graphql-tools:${graphqlToolVersion}"
-
-        /* Ballerina Protoc Tool */
-        ballerinaStdLibs "io.ballerina:protoc-tools:${protocToolVersion}"
-
-        /* Ballerina OpenAPI */
-        ballerinaOpenAPILibs "io.ballerina:module-ballerina-openapi:${openapiToolVersion}"
-
-        /* Ballerina AsyncAPI */
-        ballerinaStdLibs "io.ballerina:module-ballerina-asyncapi:${asyncapiToolVersion}"
+        /* OpenAPI Module */
+        openapiModule "io.ballerina:module-ballerina-openapi:${openapiModuleVersion}"
 
         /* Code to cloud extensions */
         ballerinaC2cLibs "io.ballerina:cloud-ballerina:${c2cVersion}"
         ballerinaC2cTooling "io.ballerina:cloud-tooling:${c2cVersion}"
 
+        /* Bal tools */
+        ballerinaTools "io.ballerina:graphql-tool:${graphqlToolVersion}"
+        ballerinaTools "io.ballerina:protoc-tool:${protocToolVersion}"
+        ballerinaTools "io.ballerina:openapi-tool:${openapiToolVersion}"
+        ballerinaTools "io.ballerina:asyncapi-tool:${asyncapiToolVersion}"
+        ballerinaTools "io.ballerina:persist-tool:${persistToolVersion}"
     }
 }

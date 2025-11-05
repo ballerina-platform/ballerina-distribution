@@ -1,0 +1,12 @@
+$ bal run --experimental natural_expressions.bal
+Name: Yala National Park
+City: Yala
+Highlight: Home to the highest density of leopards in the world, Yala offers thrilling wildlife safaris.
+
+Name: Wilpattu National Park
+City: Wilpattu
+Highlight: Famous for its natural lakes and diverse wildlife, including elephants and sloth bears.
+
+Name: Udawalawe National Park
+City: Udawalawe
+Highlight: Known for its large herds of elephants, Udawalawe is a sanctuary for these magnificent creatures.

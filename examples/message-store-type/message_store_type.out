@@ -1,0 +1,11 @@
+$ bal run message_store_type.bal
+
+time=2025-10-08T08:54:37.054+05:30 level=INFO module="" message="Message stored" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"
+time=2025-10-08T08:54:37.065+05:30 level=INFO module="" message="Retrieved message" payload="Hello, World!" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"
+time=2025-10-08T08:54:37.066+05:30 level=INFO module="" message="Message acknowledged" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"
+time=2025-10-08T08:54:37.068+05:30 level=INFO module="" message="Message stored" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"
+time=2025-10-08T08:54:37.069+05:30 level=INFO module="" message="Retrieved message for negative ack" payload="Test message" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"
+time=2025-10-08T08:54:37.070+05:30 level=INFO module="" message="Message negative acknowledged" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"
+time=2025-10-08T08:54:37.071+05:30 level=INFO module="" message="Message available again after negative ack" payload="Test message" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"
+time=2025-10-08T08:54:37.071+05:30 level=INFO module="" message="Message acknowledged" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"
+
