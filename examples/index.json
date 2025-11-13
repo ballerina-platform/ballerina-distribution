@@ -5079,6 +5079,14 @@
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true
+      },
+      {
+        "name": "Agent with tool kits",
+        "url": "ai-agent-tool-kit",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
       }
     ]
   },

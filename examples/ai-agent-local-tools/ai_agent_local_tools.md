@@ -15,6 +15,7 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 ## Related links
 - [The Agent with MCP integration example](/learn/by-example/ai-agent-mcp-integration)
 - [The Agent with external endpoint integration example](/learn/by-example/ai-agent-external-endpoint-integration)
+- [The Agent with tool kits example](/learn/by-example/ai-agent-tool-kit)
 - [The `ballerinax/ai.anthropic` module](https://central.ballerina.io/ballerinax/ai.anthropic/latest)
 - [The `ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest)
 - [The `ballerinax/ai.openai` module](https://central.ballerina.io/ballerinax/ai.openai/latest)
