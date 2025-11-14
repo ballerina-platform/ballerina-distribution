@@ -1,5 +1,7 @@
 # False positive
 CVE-2020-7768
+CVE-2025-48985
 
 # Need to be fixed
 CVE-2025-48924
+CVE-2021-0341
