@@ -9,13 +9,13 @@ type Album readonly & record {|
 listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
-            certFile: "../resource/path/to/public.crt",
-            keyFile: "../resource/path/to/private.key"
+            certFile: "../resource/path/to/server-public.crt",
+            keyFile: "../resource/path/to/server-private.key"
         },
         // Enables mutual SSL.
         mutualSsl: {
             verifyClient: http:REQUIRE,
-            cert: "../resource/path/to/public.crt"
+            cert: "../resource/path/to/client-public.crt"
         }
     }
 );
