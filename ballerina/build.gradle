@@ -967,15 +967,15 @@ task testExamples() {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalParams}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "--sticky --offline ${additionalParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "--sticky --offline ${additionalParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalParams}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build --sticky --offline ${additionalParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal test --sticky --offline ${additionalParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
