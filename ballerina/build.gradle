@@ -961,6 +961,9 @@ task testExamples() {
 
         def exitVal
         def additionalParams = bbe.url == "natural-expressions" ? "--experimental" : ""
+        if (!bbe.needCentral) {
+            additionalParams += " --sticky --offline"
+        }
         println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
