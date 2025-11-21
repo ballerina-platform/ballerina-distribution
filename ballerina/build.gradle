@@ -961,21 +961,24 @@ task testExamples() {
 
         def exitVal
         def additionalParams = bbe.url == "natural-expressions" ? "--experimental" : ""
+        if (!bbe.needCentral) {
+            additionalParams += " --sticky --offline"
+        }
         println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "--sticky --offline ${additionalParams}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "--sticky --offline ${additionalParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalParams}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
             }
         } else {
             exitVal = exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal build --sticky --offline ${additionalParams}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal test --sticky --offline ${additionalParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalParams}"
+                commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalParams}"
             }
         }
         if (exitVal.getExitValue() == 1) {
