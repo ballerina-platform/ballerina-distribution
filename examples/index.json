@@ -4873,7 +4873,7 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Group events by table",
@@ -4882,7 +4882,7 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       }
     ]
   },
@@ -5555,7 +5555,7 @@
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys",
         "disablePlayground": true,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "RAG query with external vector store",
@@ -5564,7 +5564,7 @@
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
-        "needCentral": false
+        "needCentral": true
       }
     ]
   },
