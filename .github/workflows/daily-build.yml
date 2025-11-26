@@ -106,7 +106,9 @@ jobs:
             Automated nightly build for ${{ steps.version.outputs.version }}
             Ballerina Version: ${{ steps.project-version.outputs.version }}
           prerelease: true
-          files: ballerina/build/distributions/ballerina-*-swan-lake.zip
+          files: |
+            ballerina/build/distributions/ballerina-*-swan-lake.zip
+            installers/linux-deb/target/ballerina-*-linux-x64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
