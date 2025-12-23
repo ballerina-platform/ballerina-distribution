@@ -1,0 +1,10 @@
+$ ls -lh logs/app*
+-rw-r--r-- 1 user staff 456B Dec 23 14:15 logs/app.log
+-rw-r--r-- 1 user staff 678B Dec 23 14:15 logs/app-20251223-225602.log
+
+$ head -5 logs/app.log
+time=2025-12-23T14:15:00.167+05:30 level=INFO module="" message="Application started" version="1.0.0"
+time=2025-12-23T14:15:00.189+05:30 level=INFO module="" message="Processing request" requestId="req1" endpoint="/api/users" responseTime=126
+time=2025-12-23T14:15:00.201+05:30 level=INFO module="" message="Processing request" requestId="req2" endpoint="/api/users" responseTime=127
+time=2025-12-23T14:15:00.213+05:30 level=INFO module="" message="Processing request" requestId="req3" endpoint="/api/users" responseTime=128
+time=2025-12-23T14:15:00.225+05:30 level=INFO module="" message="Processing request" requestId="req4" endpoint="/api/users" responseTime=129
