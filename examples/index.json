@@ -4672,6 +4672,15 @@
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Log file rotation",
+        "url": "log-file-rotation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output and file creation",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
