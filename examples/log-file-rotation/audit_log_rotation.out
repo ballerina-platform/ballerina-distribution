@@ -1,12 +1,16 @@
 $ ls -lh logs/audit*
--rw-r--r-- 1 user staff 560B Dec 24 00:23 logs/audit-20251224-002334.log
--rw-r--r-- 1 user staff 560B Dec 24 00:23 logs/audit-20251224-002335.log
--rw-r--r-- 1 user staff 560B Dec 24 00:23 logs/audit.log
+-rw-r--r--@ 1 user  staff   560B Dec 24 12:31 logs/audit-20251224-123151.log
+-rw-r--r--@ 1 user  staff   560B Dec 24 12:31 logs/audit-20251224-123152.log
+-rw-r--r--@ 1 user  staff   560B Dec 24 12:31 logs/audit.log
 
-$ head -2 logs/audit-20251224-002334.log
-{"time":"2025-12-24T00:23:34.123+05:30","level":"INFO","module":"","message":"User authentication event","action":"login","timestamp":"2025-12-23T10:30:00Z","ipAddress":"192.168.1.101","userId":"user1","sessionId":"session-1","component":"audit","compliance":"enabled"}
-{"time":"2025-12-24T00:23:34.234+05:30","level":"INFO","module":"","message":"User authentication event","action":"login","timestamp":"2025-12-23T10:30:00Z","ipAddress":"192.168.1.102","userId":"user2","sessionId":"session-2","component":"audit","compliance":"enabled"}
+$ head -2 logs/audit-20251224-123151.log
+{"time":"2025-12-24T12:31:49.930+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.101", "userId":"user1", "sessionId":"session-1", "component":"audit", "compliance":"enabled"}
+{"time":"2025-12-24T12:31:49.932+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.102", "userId":"user2", "sessionId":"session-2", "component":"audit", "compliance":"enabled"}
+
+$ head -2 logs/audit-20251224-123152.log
+{"time":"2025-12-24T12:31:51.136+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.103", "userId":"user3", "sessionId":"session-3", "component":"audit", "compliance":"enabled"}
+{"time":"2025-12-24T12:31:51.140+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.104", "userId":"user4", "sessionId":"session-4", "component":"audit", "compliance":"enabled"}
 
 $ head -2 logs/audit.log
-{"time":"2025-12-24T00:23:36.456+05:30","level":"INFO","module":"","message":"User authentication event","action":"login","timestamp":"2025-12-23T10:30:00Z","ipAddress":"192.168.1.105","userId":"user5","sessionId":"session-5","component":"audit","compliance":"enabled"}
-{"time":"2025-12-24T00:23:36.567+05:30","level":"INFO","module":"","message":"User authentication event","action":"login","timestamp":"2025-12-23T10:30:00Z","ipAddress":"192.168.1.106","userId":"user6","sessionId":"session-6","component":"audit","compliance":"enabled"}
+{"time":"2025-12-24T12:31:52.346+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.105", "userId":"user5", "sessionId":"session-5", "component":"audit", "compliance":"enabled"}
+{"time":"2025-12-24T12:31:52.350+05:30", "level":"INFO", "module":"", "message":"User authentication event", "action":"login", "timestamp":"2025-12-23T10:30:00Z", "ipAddress":"192.168.1.106", "userId":"user6", "sessionId":"session-6", "component":"audit", "compliance":"enabled"}
