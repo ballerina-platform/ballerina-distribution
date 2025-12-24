@@ -1,0 +1,12 @@
+[ballerina.log]
+level = "INFO"
+format = "logfmt"
+
+# Configure root logger with TIME_BASED rotation
+# Logs will rotate based on file age
+[[ballerina.log.destinations]]
+path = "./logs/app.log"
+[ballerina.log.destinations.rotation]
+policy = "TIME_BASED"
+maxAge = 5  # 5 seconds for demo (use 86400 = 24 hours in production)
+maxBackupFiles = 5
