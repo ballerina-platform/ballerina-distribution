@@ -42,8 +42,8 @@ function demonstrateSizeBasedRotation() returns error? {
     log:Logger auditLogger = check log:fromConfig(auditConfig);
 
     // Generate logs to trigger size-based rotation (512 bytes threshold)
-    // Each JSON log entry is approximately 250-300 bytes
-    // With 512 byte threshold, each file holds about 2 entries before rotating
+    // Each JSON log entry is approximately 280 bytes (varies slightly by environment)
+    // With a 512-byte size limit, files will slightly exceed the threshold (≈560B) and hold about 2 entries each before rotating
     foreach int i in 1...6 {
         auditLogger.printInfo("User authentication event",
             action = "login",
