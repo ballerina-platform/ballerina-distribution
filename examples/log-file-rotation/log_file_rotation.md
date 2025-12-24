@@ -44,8 +44,8 @@ When a log file rotates, it's renamed with a timestamp suffix and a new file is 
 ```
 logs/
   app.log                            (current log file)
-  app.log.2025-12-23T14-30-15       (rotated backup)
-  app.log.2025-12-23T13-45-30       (older backup)
+  app-20251223-225602.log            (rotated backup)
+  app-20251223-223015.log            (older backup)
 ```
 
 Older backups beyond `maxBackupFiles` are automatically deleted.
