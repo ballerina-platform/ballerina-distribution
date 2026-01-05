@@ -1,4 +1,3 @@
-$ cat logs/metrics.log
 time=2026-01-05T21:22:17.179+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
 time=2026-01-05T21:22:17.183+05:30 level=INFO module="" message="Performance metric recorded" metric="response_time" value=245.5 unit="ms" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
 time=2026-01-05T21:22:17.185+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"
