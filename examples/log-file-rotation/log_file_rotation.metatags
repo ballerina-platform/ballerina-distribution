@@ -1,2 +1,2 @@
-description: BBE on how to configure log file rotation in Ballerina with SIZE_BASED and TIME_BASED rotation policies.
+description: BBE on how to configure log file rotation in Ballerina.
 keywords: ballerina, ballerina by examples, bbe, log, rotation, file rotation, log management, size based, time based
