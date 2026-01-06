@@ -1,9 +1,9 @@
 $ ls -la logs/
 total 16
-drwxr-xr-x@ 4 danesh  staff   128 Jan  5 21:20 .
-drwxr-xr-x@ 9 danesh  staff   288 Jan  5 21:20 ..
--rw-r--r--@ 1 danesh  staff  2325 Jan  5 21:20 app-20260105-212048.log
--rw-r--r--@ 1 danesh  staff   248 Jan  5 21:20 app.log
+drwxr-xr-x@ 4 wso2  staff   128 Jan  5 21:20 .
+drwxr-xr-x@ 9 wso2  staff   288 Jan  5 21:20 ..
+-rw-r--r--@ 1 wso2  staff  2325 Jan  5 21:20 app-20260105-212048.log
+-rw-r--r--@ 1 wso2  staff   248 Jan  5 21:20 app.log
 
 $ cat logs/app-*.log
 time=2026-01-05T21:20:42.771+05:30 level=INFO module="" message="Starting log rotation demonstration"
