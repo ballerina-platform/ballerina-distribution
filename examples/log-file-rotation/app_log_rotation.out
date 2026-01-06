@@ -1,0 +1,25 @@
+$ ls -la logs/
+total 16
+drwxr-xr-x@ 4 wso2  staff   128 Jan  5 21:20 .
+drwxr-xr-x@ 9 wso2  staff   288 Jan  5 21:20 ..
+-rw-r--r--@ 1 wso2  staff  2325 Jan  5 21:20 app-20260105-212048.log
+-rw-r--r--@ 1 wso2  staff   248 Jan  5 21:20 app.log
+
+$ cat logs/app-*.log
+time=2026-01-05T21:20:42.771+05:30 level=INFO module="" message="Starting log rotation demonstration"
+time=2026-01-05T21:20:42.801+05:30 level=INFO module="" message="Application started" version="1.0.0"
+time=2026-01-05T21:20:42.804+05:30 level=INFO module="" message="Processing request" requestId="req1" endpoint="/api/users" responseTime=126
+time=2026-01-05T21:20:42.806+05:30 level=INFO module="" message="Processing request" requestId="req2" endpoint="/api/users" responseTime=127
+time=2026-01-05T21:20:42.808+05:30 level=INFO module="" message="Processing request" requestId="req3" endpoint="/api/users" responseTime=128
+time=2026-01-05T21:20:42.810+05:30 level=INFO module="" message="Processing request" requestId="req4" endpoint="/api/users" responseTime=129
+time=2026-01-05T21:20:42.811+05:30 level=INFO module="" message="Processing request" requestId="req5" endpoint="/api/users" responseTime=130
+time=2026-01-05T21:20:44.815+05:30 level=INFO module="" message="Processing request" requestId="req6" endpoint="/api/users" responseTime=131
+time=2026-01-05T21:20:44.816+05:30 level=INFO module="" message="Processing request" requestId="req7" endpoint="/api/users" responseTime=132
+time=2026-01-05T21:20:44.818+05:30 level=INFO module="" message="Processing request" requestId="req8" endpoint="/api/users" responseTime=133
+time=2026-01-05T21:20:44.819+05:30 level=INFO module="" message="Processing request" requestId="req9" endpoint="/api/users" responseTime=134
+time=2026-01-05T21:20:44.820+05:30 level=INFO module="" message="Processing request" requestId="req10" endpoint="/api/users" responseTime=135
+time=2026-01-05T21:20:46.823+05:30 level=INFO module="" message="Processing request" requestId="req11" endpoint="/api/users" responseTime=136
+time=2026-01-05T21:20:46.824+05:30 level=INFO module="" message="Processing request" requestId="req12" endpoint="/api/users" responseTime=137
+time=2026-01-05T21:20:46.825+05:30 level=INFO module="" message="Processing request" requestId="req13" endpoint="/api/users" responseTime=138
+time=2026-01-05T21:20:46.826+05:30 level=INFO module="" message="Processing request" requestId="req14" endpoint="/api/users" responseTime=139
+time=2026-01-05T21:20:46.827+05:30 level=INFO module="" message="Processing request" requestId="req15" endpoint="/api/users" responseTime=140
