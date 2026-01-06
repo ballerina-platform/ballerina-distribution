@@ -45,5 +45,5 @@ Rotation policies support these configuration parameters:
 > **Note:** This example uses a small threshold (5 seconds) to make rotation observable during demonstration. In production, use realistic values such as `maxAge = 86400` (24 hours).
 
 ## Related links
-- [`log` module - Specification](https://ballerina.io/spec/log/)
+- [`log` module - Specification](https://ballerina.io/spec/log/#35-configure-log-rotation)
 - [`log` module - API documentation](https://lib.ballerina.io/ballerina/log/latest/)
