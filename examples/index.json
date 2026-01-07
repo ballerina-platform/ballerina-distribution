@@ -4970,7 +4970,7 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "In-memory message store",
@@ -4979,7 +4979,7 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Message Store Listener",
@@ -4987,7 +4987,7 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       }
     ]
   },
@@ -5134,6 +5134,16 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Log file rotation",
+        "url": "log-file-rotation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output and file creation",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
