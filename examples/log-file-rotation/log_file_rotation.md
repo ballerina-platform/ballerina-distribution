@@ -18,7 +18,7 @@ Run the example to see rotation in action:
 
 When a log file rotates, it's renamed with a timestamp suffix and a new file is created:
 
-```
+```bash
 logs/
   app.log                            (current log file)
   app-20251223-225602.log            (rotated backup)
