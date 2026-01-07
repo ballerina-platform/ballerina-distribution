@@ -5035,11 +5035,17 @@
     "samples": [
       {
         "name": "MCP service",
-        "url": "mcp-service"
+        "url": "mcp-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       },
       {
         "name": "MCP advanced service",
-        "url": "mcp-service-advanced"
+        "url": "mcp-service-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },
