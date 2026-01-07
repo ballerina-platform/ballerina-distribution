@@ -5576,12 +5576,16 @@
       {
         "name": "MCP service",
         "url": "mcp-service",
-        "needCentral": false
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       },
       {
         "name": "MCP advanced service",
         "url": "mcp-service-advanced",
-        "needCentral": false
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },
