@@ -4970,7 +4970,7 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "In-memory message store",
@@ -4979,7 +4979,7 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Message Store Listener",
@@ -4987,7 +4987,7 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "isLearnByExample": true,
-        "needCentral": false
+        "needCentral": true
       }
     ]
   },
