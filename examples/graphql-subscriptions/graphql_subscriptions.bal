@@ -2,6 +2,12 @@ import ballerina/graphql;
 import ballerina/lang.runtime;
 import ballerina/random;
 
+@graphql:ServiceConfig {
+    graphiql: {
+        enabled: true
+    }
+}
+
 service /graphql on new graphql:Listener(9090) {
 
     private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
