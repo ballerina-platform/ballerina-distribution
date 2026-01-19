@@ -7,7 +7,6 @@ import ballerina/random;
         enabled: true
     }
 }
-
 service /graphql on new graphql:Listener(9090) {
 
     private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
