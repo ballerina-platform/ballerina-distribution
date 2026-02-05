@@ -1,8 +1,18 @@
 [package]
 org = "bctestorg"
 name = "pact"
-version = "0.2.0"
+version = "0.1.0"
 readme = "Package.md"
 
 [build-options]
 observabilityIncluded = true
+
+# [[dependency]]
+# org="bctestorg"
+# name="pkg1"
+# version="0.1.0"
+
+# [[dependency]]
+# org="bctestorg"
+# name="pkg2"
+# version="1.0.0"
