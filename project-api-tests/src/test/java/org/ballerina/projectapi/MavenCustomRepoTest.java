@@ -60,8 +60,6 @@ public class MavenCustomRepoTest {
     @BeforeClass()
     public void setUp() throws IOException, InterruptedException {
         TestUtils.setupDistributions();
-        // Best-effort: remove any existing artifacts for all test packages before running tests.
-        // Don't fail setup if deletion fails — tests should proceed.
         try {
             deleteArtifacts(org, "pkg1");
             deleteArtifacts(org, "pkg2");
@@ -79,8 +77,6 @@ public class MavenCustomRepoTest {
 
         createSettingToml(actualHomeDirectory);
         System.setProperty("user.home", actualHomeDirectory.getParent().toString());
-        // Ensure the external `bal` process uses the test home directory and test mode.
-        // This sets BALLERINA_HOME_DIR and TEST_MODE_ACTIVE for subprocesses (see TestUtils.addEnvVariables).
         envVariables = TestUtils.addEnvVariables(getEnvVariables(), actualHomeDirectory);
 
         // Copy test resources to temp workspace directory
@@ -282,7 +278,6 @@ public class MavenCustomRepoTest {
    @Test(description = "Build package with soft locking mode" , dependsOnMethods = "testCase2_publishAdditionalVersionsForDeps", groups = "testCase2")
     public void testCase2_1_softLockingMode_resolvesLatestCompatible() throws IOException, InterruptedException {
     List<String> args = new ArrayList<>();
-    // pass lowercase values to match CLI expectations (avoids stderr warnings)
 
        File dependencyPathBefore = this.tempWorkspaceDirectory.resolve("myproject1").resolve("Dependencies.toml").toFile();
        if(dependencyPathBefore.exists() && dependencyPathBefore.delete()){
@@ -665,7 +660,6 @@ public class MavenCustomRepoTest {
         String buildErrors = getString(build.getErrorStream());
         Assert.assertTrue(buildErrors.contains("incompatible with the version locked in Dependencies.toml"),
                 "Incompatible version error message not found in the build errors. Actual stderr: " + buildErrors);
-        // Restore original Ballerina.toml version only if we successfully read one earlier.
         if (!existingVersion.isEmpty()) {
             updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", existingVersion);
         }

@@ -115,32 +115,19 @@ public class MavenCustomRepoTestUtils {
 
     /**
      * Delete artifacts from GitHub.
-     *
-     * @param org         organization name
-     * @param packagename package name
+     * @param org           organization name
+     * @param packagename   package name
      */
     static void deleteArtifacts(String org, String packagename) throws IOException {
         OkHttpClient client = new OkHttpClient();
-        // GitHub packages API requires the owner/org that hosts the package (the GitHub account)
-        // and the package type (maven). The package name for maven packages is typically
-        // groupId.artifactId (here: <org>.<packagename>), e.g. bctestorg.pkg1
-        String githubOwner = "Ranvin36"; // the GitHub user/org that owns the packages
-        String packageType = "maven";
-        String packageName = org + "." + packagename;
-
         Request request = new Request.Builder()
-                .url("https://api.github.com/users/" + githubOwner + "/packages/" + packageType + "/" + packageName)
+                .url("https://api.github.com/orgs/ballerina-platform/packages/maven/" + org + "." + packagename)
                 .header("Accept", "application/vnd.github+json")
                 .header("Authorization", "Bearer " + getGithubToken())
                 .header("X-GitHub-Api-Version", "2022-11-28")
                 .delete()
                 .build();
-        Response response = client.newCall(request).execute();
-        // 204 No Content indicates success. Treat 404 (not found) as a non-fatal case.
-        if (!response.isSuccessful() && response.code() != 404) {
-            throw new IOException("Failed to delete package " + packageName + ": " + response.code() + " " + response.message());
-        }
-        response.close();
+        client.newCall(request).execute();
     }
 
     /**
