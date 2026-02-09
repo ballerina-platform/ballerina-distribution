@@ -681,7 +681,6 @@ public class MavenCustomRepoTest {
         Path projectDir = this.tempWorkspaceDirectory.resolve("myproject1");
         MavenCustomRepoTestUtils.pasteStaticMainBalWithPkg1AndPkg2(projectDir);
         Files.deleteIfExists(projectDir.resolve("Dependencies.toml"));
-        pasteStaticMainBalWithAllPkgs(projectDir);
 
         List<String> args = new ArrayList<>();
         args.add("--locking-mode=hard");
