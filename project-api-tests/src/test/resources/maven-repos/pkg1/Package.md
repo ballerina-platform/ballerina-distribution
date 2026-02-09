@@ -1,1 +1,2 @@
-jsjj
+Package documentation for pkg1.
+

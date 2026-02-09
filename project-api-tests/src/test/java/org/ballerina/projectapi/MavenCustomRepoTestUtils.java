@@ -19,7 +19,6 @@ package org.ballerina.projectapi;
 import io.ballerina.toml.api.Toml;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import org.testng.Assert;
 
 import java.io.BufferedReader;
@@ -30,13 +29,21 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.ballerina.projectapi.TestUtils.*;
+import static org.ballerina.projectapi.TestUtils.DISTRIBUTION_FILE_NAME;
+import static org.ballerina.projectapi.TestUtils.OUTPUT_CONTAIN_ERRORS;
+import static org.ballerina.projectapi.TestUtils.executePackCommand;
+import static org.ballerina.projectapi.TestUtils.executePushCommand;
 
 
 /**
@@ -140,14 +147,15 @@ public class MavenCustomRepoTestUtils {
      * @throws IOException if an I/O error occurs when starting the process
      * @throws InterruptedException if the current thread is interrupted while waiting for the process
      */
-    static Process packTrigger(String packageName, Path sourceDirectory, Map<String, String> envVariable) throws IOException, InterruptedException {
+    static Process packTrigger(String packageName, Path sourceDirectory, Map<String, String> envVariable)
+            throws IOException, InterruptedException {
         Process process = executePackCommand(DISTRIBUTION_FILE_NAME,
                 sourceDirectory.resolve(packageName), new ArrayList<>(),
                 envVariable);
 
         String buildErrors = getString(process.getErrorStream());
         if (!buildErrors.isEmpty()) {
-//            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
+            Assert.fail(OUTPUT_CONTAIN_ERRORS + buildErrors);
         }
         return process;
     }
@@ -162,7 +170,8 @@ public class MavenCustomRepoTestUtils {
      * @throws IOException if an I/O error occurs when starting the process
      * @throws InterruptedException if the current thread is interrupted while waiting for the process
      */
-    static Process pushTrigger(String packageName, Path sourceDirectory, Map<String, String> envVariable) throws IOException, InterruptedException {
+    static Process pushTrigger(String packageName, Path sourceDirectory, Map<String, String> envVariable)
+            throws IOException, InterruptedException {
         List<String> args = new ArrayList<>();
         args.add("--repository=" + MavenCustomRepoTest.GITHUB_REPO_ID);
 
@@ -187,15 +196,40 @@ public class MavenCustomRepoTestUtils {
      */
     static void editVersionBallerinaToml(Path sourceDirectory, String version) throws IOException {
         Path ballerinaTomlPath = sourceDirectory.resolve("Ballerina.toml");
-        List<String> lines = Files.readAllLines(ballerinaTomlPath);
+        String toml = Files.readString(ballerinaTomlPath);
 
-        // Replace the version line inside [package] table
-        List<String> updatedLines = lines.stream()
-                .map(line -> line.trim().startsWith("version =") ? "version = \"" + version + "\"" : line)
-                .collect(Collectors.toList());
+        int pkgStart = toml.indexOf("[package]");
+        if (pkgStart == -1) {
+            // No [package] block - append one
+            String appended = toml + System.lineSeparator() + "[package]" + System.lineSeparator()
+                    + "version = \"" + version + "\"";
+            Files.writeString(ballerinaTomlPath, appended, StandardOpenOption.TRUNCATE_EXISTING);
+            return;
+        }
 
-        // Write back
-        Files.write(ballerinaTomlPath, updatedLines);
+        int nextHeader = toml.indexOf("\n[", pkgStart + 1);
+        int blockEnd = nextHeader == -1 ? toml.length() : nextHeader;
+        String block = toml.substring(pkgStart, blockEnd);
+
+        Pattern versionLine = Pattern.compile("(?m)^(\\s*)version\\s*=.*$");
+        Matcher vm = versionLine.matcher(block);
+        String newBlock;
+        if (vm.find()) {
+            // replace existing version line, preserve indentation
+            newBlock = vm.replaceFirst("$1version = \"" + version + "\"");
+        } else {
+            // insert version after header line
+            int headerEnd = block.indexOf('\n');
+            if (headerEnd == -1) {
+                newBlock = block + System.lineSeparator() + "version = \"" + version + "\"";
+            } else {
+                newBlock = block.substring(0, headerEnd + 1) + "version = \"" + version + "\"" +
+                        (headerEnd + 1 < block.length() ? "\n" + block.substring(headerEnd + 1) : "");
+            }
+        }
+
+        String updated = toml.substring(0, pkgStart) + newBlock + toml.substring(blockEnd);
+        Files.writeString(ballerinaTomlPath, updated, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
     /**
@@ -211,8 +245,9 @@ public class MavenCustomRepoTestUtils {
      * @param version the version string to set (e.g. "1.1.0")
      * @return true if the file was modified, false if the package name was not found
      * @throws IOException if reading or writing the file fails
-     */
-    static boolean updateVersionForPackage(Path sourceDirectory, String packageName, String version) throws IOException {
+     **/
+    static boolean updateVersionForPackage(Path sourceDirectory, String packageName, String version)
+            throws IOException {
         Path ballerinaTomlPath = sourceDirectory.resolve("Ballerina.toml");
         List<String> lines = Files.readAllLines(ballerinaTomlPath);
 
@@ -253,7 +288,8 @@ public class MavenCustomRepoTestUtils {
      * @return Optional version string
      * @throws IOException when reading the toml fails
      */
-    static Optional<String> getPackageVersionFromDependencies(Path dependencyTomlPath, String packageName) throws IOException {
+    static Optional<String> getPackageVersionFromDependencies(Path dependencyTomlPath, String packageName)
+            throws IOException {
         Toml toml = Toml.read(dependencyTomlPath);
         List<Toml> packages = toml.getTables("package");
         return packages.stream()
@@ -265,7 +301,7 @@ public class MavenCustomRepoTestUtils {
     }
 
     /**
-     * Add or update a [[dependency]] in Ballerina.toml for the given org and package, then update the source (imports/calls) so the package is included at compile time.
+     * Add or update a [[dependency]] in Ballerina.toml for the given org and package, then update the source.
      *
      * @param projectDir the project directory containing Ballerina.toml
      * @param org the organization/group id of the dependency (e.g., "bctestorg")
@@ -274,18 +310,42 @@ public class MavenCustomRepoTestUtils {
      * @param repository the repository id to use for the dependency (e.g., "github1")
      * @throws IOException if reading or writing the Ballerina.toml fails
      */
-    public static void ensureLegacyDependency(Path projectDir, String org, String name, String version, String repository) throws IOException {
+    public static void ensureLegacyDependency(Path projectDir, String org, String name, String version,
+                                              String repository) throws IOException {
         Path ballerinaTomlPath = projectDir.resolve("Ballerina.toml");
         if (!Files.exists(ballerinaTomlPath)) {
             throw new IOException("Missing Ballerina.toml in project: " + projectDir);
         }
         String toml = Files.readString(ballerinaTomlPath);
-        String desiredDepBlock = "\n[[dependency]]\norg=\"" + org + "\"\nname=\"" + name + "\"\nversion=\"" + version + "\"\nrepository=\"" + repository + "\"\n";
-        Pattern depPattern = Pattern.compile("(?s)\\[\\[dependency\\]\\].*?org\\s*=\\s*\"" + Pattern.quote(org) + "\".*?name\\s*=\\s*\"" + Pattern.quote(name) + "\".*?(?:version\\s*=\\s*\"[^\"]*\".*?|)", Pattern.CASE_INSENSITIVE);
+        String desiredDepBlock = "\n[[dependency]]\norg=\"" + org + "\"\nname=\"" + name + "\"\nversion=\"" + version +
+                "\"\nrepository=\"" + repository + "\"\n";
+
+        // Find an existing [[dependency]] block for the given org+name
+        Pattern depPattern = Pattern.compile("(?is)\\[\\[dependency\\]\\].*?org\\s*=\\s*\"" +
+                Pattern.quote(org) + "\".*?name\\s*=\\s*\"" + Pattern.quote(name) + "\"" +
+                ".*?(?=\\z|\\[\\[dependency\\]\\])");
         Matcher matcher = depPattern.matcher(toml);
         if (matcher.find()) {
-              return;
+            String existingBlock = matcher.group(0);
+            // Try to extract version if present
+            Pattern verPat = Pattern.compile("version\\s*=\\s*\"([^\"]*)\"", Pattern.CASE_INSENSITIVE);
+            Matcher vm = verPat.matcher(existingBlock);
+            if (vm.find()) {
+                String existingVersion = vm.group(1);
+                if (existingVersion.equals(version)) {
+                    // already the desired version
+                    // Ensure source-level usage and return
+                    if ("pkg1".equals(name) || "pkg2".equals(name) || "pkg3".equals(name)) {
+                        pasteStaticMainBalWithAllPkgs(projectDir);
+                    }
+                    return;
+                }
+            }
+            // Version differs or missing -> replace the whole dependency block with the desired block
+            String updatedToml = toml.substring(0, matcher.start()) + desiredDepBlock + toml.substring(matcher.end());
+            Files.writeString(ballerinaTomlPath, updatedToml);
         } else {
+            // No existing dependency block -> append
             Files.writeString(ballerinaTomlPath, toml + desiredDepBlock);
         }
 
@@ -331,8 +391,8 @@ public class MavenCustomRepoTestUtils {
 
 
     /**
-     * Writes a single deterministic `main.bal` that uses pkg2, pkg1 and pkg3. The method is idempotent: it returns early if
-     * the file already contains the imports and calls.
+     * Writes a single deterministic `main.bal` that uses pkg2, pkg1 and pkg3. The method is idempotent:
+     *  it returns early if the file already contains the imports and calls.
      *
      * @param projectDir the project directory where main.bal should be written
      * @throws IOException if an I/O error occurs while creating or writing the file
