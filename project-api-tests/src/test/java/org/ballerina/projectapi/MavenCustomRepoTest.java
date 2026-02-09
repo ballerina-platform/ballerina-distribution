@@ -447,8 +447,7 @@ public class MavenCustomRepoTest {
 
     }
 
-   @Test(description = "Build package with locked mode", dependsOnMethods = "testCase2_publishAdditionalVersionsForDeps"
-           , groups = "testCase2")
+   @Test(description = "Build package with locked mode", dependsOnMethods = {"testCase2_publishAdditionalVersionsForDeps", "testCase2_3_hardLockingMode_enforcesExact"}, groups = "testCase2")
    public void testCase2_4_lockedMode_usesLockedVersions() throws IOException, InterruptedException {
     List<String> args = new ArrayList<>();
     args.add("--locking-mode=locked");
