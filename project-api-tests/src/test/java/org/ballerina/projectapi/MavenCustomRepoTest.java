@@ -765,7 +765,8 @@ public class MavenCustomRepoTest {
 
         // Update Ballerina.toml to an incompatible version first, then run the build and assert failure
         try {
-            updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", "2.0.0");
+            Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", "2.0.0"),
+                    "pkg2 not found in Ballerina.toml");
             List<String> args = new ArrayList<>();
             Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
                     this.tempWorkspaceDirectory.resolve("myproject1"), args, this.envVariables);
@@ -774,7 +775,8 @@ public class MavenCustomRepoTest {
                     "Incompatible version error message not found in the build errors. Actual stderr: " + buildErrors);
         } finally {
             if (!existingVersion.isEmpty()) {
-                updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", existingVersion);
+                Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", existingVersion),
+                        "pkg2 not found when restoring version in Ballerina.toml");
             }
          }
         }
