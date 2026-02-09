@@ -58,7 +58,6 @@ import static org.ballerina.projectapi.TestUtils.executePackCommand;
 import static org.ballerina.projectapi.TestUtils.executePullCommand;
 import static org.ballerina.projectapi.TestUtils.executePushCommand;
 
-// Run all methods in this class on a single thread to avoid parallel execution
 public class MavenCustomRepoTest {
 
     private static final String org = "bctestorg";
@@ -250,8 +249,10 @@ public class MavenCustomRepoTest {
     public void beforeGroupTestCase2() throws IOException {
          Path projectDir = this.tempWorkspaceDirectory.resolve("myproject1");
          try {
-             updateVersionForPackage(projectDir, "pkg1", "0.1.0");
-             updateVersionForPackage(projectDir, "pkg2", "1.0.0");
+             Assert.assertTrue(updateVersionForPackage(projectDir, "pkg1", "0.1.0"),
+                     "pkg1 not found in Ballerina.toml");
+             Assert.assertTrue(updateVersionForPackage(projectDir, "pkg2", "1.0.0"),
+                     "pkg2 not found in Ballerina.toml");
          } catch (IOException e) {
             Assert.fail("Error updating package versions in Ballerina.toml before Test Case 2. " + e.getMessage());
          }
@@ -536,8 +537,10 @@ public class MavenCustomRepoTest {
         }
 
         Path ballerinaTOML = this.tempWorkspaceDirectory.resolve("myproject1");
-        updateVersionForPackage(ballerinaTOML, "pkg1", "1.0.0");
-        updateVersionForPackage(ballerinaTOML, "pkg2", "1.0.0");
+        Assert.assertTrue(updateVersionForPackage(ballerinaTOML, "pkg1", "1.0.0"),
+                "pkg1 not found in Ballerina.toml");
+        Assert.assertTrue(updateVersionForPackage(ballerinaTOML, "pkg2", "1.0.0"),
+                "pkg2 not found in Ballerina.toml");
         List<String> args = new ArrayList<>();
         args.add("--locking-mode=hard");
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
@@ -722,8 +725,8 @@ public class MavenCustomRepoTest {
             dependsOnMethods = "testCase2_publishAdditionalVersionsForDeps")
     public void testCase5_addVersionInBallerinaToml_buildSucceeds() throws IOException, InterruptedException {
         // Update the package version in Ballerina.toml first, then build to pick up the change.
-        updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"),
-                "pkg2", "1.1.0");
+        Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"),
+                "pkg2", "1.1.0"), "pkg2 not found in Ballerina.toml");
         List<String> args = new ArrayList<>();
         Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME, this.tempWorkspaceDirectory.resolve("myproject1"),
                 args, this.envVariables);

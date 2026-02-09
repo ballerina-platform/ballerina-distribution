@@ -277,7 +277,7 @@ public class MavenCustomRepoTestUtils {
                 return true;
             }
         }
-        return false; // package name not found
+        return false;
     }
 
     /**
@@ -357,7 +357,7 @@ public class MavenCustomRepoTestUtils {
 
     /**
      * Writes a deterministic `main.bal` that imports pkg2 and pkg1 and calls pkg2:main() then pkg1:main().
-     * The method is idempotent: it returns early if the file already contains the imports and calls.
+     * it returns early if the file already contains the imports and calls.
      *
      * @param projectDir the project directory where main.bal should be written
      * @throws IOException if an I/O error occurs while creating or writing the file
@@ -391,7 +391,7 @@ public class MavenCustomRepoTestUtils {
 
 
     /**
-     * Writes a single deterministic `main.bal` that uses pkg2, pkg1 and pkg3. The method is idempotent:
+     * Writes a single deterministic `main.bal` that uses pkg2, pkg1 and pkg3.
      *  it returns early if the file already contains the imports and calls.
      *
      * @param projectDir the project directory where main.bal should be written
