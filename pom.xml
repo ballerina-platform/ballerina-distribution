@@ -107,7 +107,7 @@
         <repository>
             <id>wso2.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1802/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1803/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -117,7 +117,7 @@
         <repository>
             <id>wso2.docker.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1408/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1409/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -127,7 +127,7 @@
         <repository>
             <id>wso2.kubernetes.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1348/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1349/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -137,7 +137,7 @@
         <repository>
             <id>wso2.awslambda.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1246/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1247/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -147,7 +147,7 @@
         <repository>
             <id>wso2.azurefunctions.stage</id>
             <name>WSO2 Stage Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1104/</url>
+            <url>https://maven.wso2.org/nexus/content/repositories/orgballerinaxazurefunctions-1105/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
