@@ -206,8 +206,9 @@ public class MavenCustomRepoTest {
              String pushOutput = getString(push.getInputStream());
              String normalizedPushOutput = pushOutput.replace("\\", "/").replace("\r\n", "\n").replace("\r", "\n");
              String collapsedPush = normalizedPushOutput.replaceAll("\\s+", " ");
-             Assert.assertTrue(collapsedPush.contains("Successfully pushed target/bala/" + org + "-" + pkg + "-any-" + ver + ".bala to '" + GITHUB_REPO_ID + "' repository."),
-                     "Expected push success message. Actual output: " + pushOutput);
+             Assert.assertTrue(collapsedPush.contains("Successfully pushed target/bala/" + org + "-" + pkg + "-any-" +
+                             ver + ".bala to '" + GITHUB_REPO_ID + "' repository."), "Expected push success " +
+                     "message. Actual output: " + pushOutput);
          }
      }
 
@@ -447,7 +448,8 @@ public class MavenCustomRepoTest {
 
     }
 
-   @Test(description = "Build package with locked mode", dependsOnMethods = {"testCase2_publishAdditionalVersionsForDeps", "testCase2_3_hardLockingMode_enforcesExact"}, groups = "testCase2")
+   @Test(description = "Build package with locked mode", dependsOnMethods = {"testCase2_publishAdditionalVersions" +
+           "ForDeps", "testCase2_3_hardLockingMode_enforcesExact"}, groups = "testCase2")
    public void testCase2_4_lockedMode_usesLockedVersions() throws IOException, InterruptedException {
     List<String> args = new ArrayList<>();
     args.add("--locking-mode=locked");
@@ -764,7 +766,8 @@ public class MavenCustomRepoTest {
 
         // Update Ballerina.toml to an incompatible version first, then run the build and assert failure
         try {
-            Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", "2.0.0"),
+            Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"),
+                            "pkg2", "2.0.0"),
                     "pkg2 not found in Ballerina.toml");
             List<String> args = new ArrayList<>();
             Process build = executeBuildCommand(DISTRIBUTION_FILE_NAME,
@@ -774,7 +777,8 @@ public class MavenCustomRepoTest {
                     "Incompatible version error message not found in the build errors. Actual stderr: " + buildErrors);
         } finally {
             if (!existingVersion.isEmpty()) {
-                Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"), "pkg2", existingVersion),
+                Assert.assertTrue(updateVersionForPackage(this.tempWorkspaceDirectory.resolve("myproject1"),
+                                "pkg2", existingVersion),
                         "pkg2 not found when restoring version in Ballerina.toml");
             }
          }
