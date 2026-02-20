@@ -1,6 +1,6 @@
 [package]
 org = "bctestorg"
-name = "pact"
+name = "pkg1"
 version = "0.1.0"
 readme = "Package.md"
 
