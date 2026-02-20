@@ -1,0 +1,8 @@
+$ bal run ai_agent_mcp_integration.bal
+User (or 'exit' to quit): Should I go for a walk in Colombo today?
+Agent: The current weather in Colombo is sunny with a temperature of 27°C and humidity at 80%. It seems like a great day for a walk! Enjoy your time outdoors!
+User (or 'exit' to quit): What about tomorrow?
+Agent: Tomorrow in Colombo, the weather is expected to be cloudy with a high of 30°C and a low of 26°C. There's a 65% chance of precipitation, and wind speeds will be around 17 km/h. 
+
+While it may not be as sunny as today, you could still go for a walk, but keep an eye on the clouds and the potential for light rain. Enjoy!
+User (or 'exit' to quit): exit

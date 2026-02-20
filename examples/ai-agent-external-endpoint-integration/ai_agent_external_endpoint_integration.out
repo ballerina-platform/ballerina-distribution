@@ -1,0 +1,27 @@
+$ bal run ai_agent_external_endpoint_integration.bal
+User (or 'exit' to quit): Do I have any meetings today?
+Agent: You have one meeting scheduled for today:
+
+- **Event:** Sync up on the monthly meet up
+- **Time:** 3:30 PM to 4:30 PM (Asia/Colombo timezone)
+
+If you need any further assistance regarding this meeting, just let me know!
+User (or 'exit' to quit): Can you check my mail to see if I've missed any meeting requests?
+Agent: You have an unread email regarding a meeting request:
+
+- **From:** Emma (<email-address>)
+- **Subject:** Catch up
+- **Message:** Emma wants to discuss Ballerina's Gen AI app building capabilities with you. She is available at 4 PM today (September 27th) or on Monday (September 29th) at 10 AM.
+
+Would you like to respond to Emma and confirm a time?
+User (or 'exit' to quit): Yes, please schedule the meeting. The time is okay with me, but can you check my calendar to see if I have any appointments already?
+Agent: You have a meeting scheduled today from 3:30 PM to 4:30 PM. Since Emma's proposed time for the meeting is at 4 PM today, it would overlap with your existing appointment.
+
+Would you prefer to schedule the meeting with Emma for Monday, September 29th at 10 AM instead?
+User (or 'exit' to quit): Yes, please
+Agent: The meeting with Emma has been successfully scheduled for Monday, September 29th from 10:00 AM to 11:00 AM. 
+
+You can view the event [here](<event-link>).
+
+If there's anything else you need, feel free to ask!
+User (or 'exit' to quit): exit

@@ -1,0 +1,17 @@
+$ bal run ai_agent_tool_kit.bal
+User (or 'exit' to quit): Hello
+Agent: Hello! How can I assist you today? Do you need help with your to-do list or planning your schedule?
+User (or 'exit' to quit): I have to pay my WiFi bill today and meet Jane for tea at 4pm on the 28th.
+Agent: I've added your tasks to the to-do list:
+
+1. Pay WiFi bill (due today)
+2. Meet Jane for tea at 4 PM on the 28th of October 2025
+
+Would you like to do anything else, such as check your current tasks or add more?
+User (or 'exit' to quit): What do I have on my plate today?
+Agent: Today, you have the following task:
+
+1. **Pay WiFi bill** (due today)
+
+Would you like to mark it as completed or do anything else?
+User (or 'exit' to quit): exit

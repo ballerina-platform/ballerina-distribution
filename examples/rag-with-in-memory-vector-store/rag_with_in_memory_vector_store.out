@@ -1,0 +1,5 @@
+$ bal run rag_with_in_memory_vector_store.bal
+Ingestion successful
+
+Query: How many annual leave days can a full-time employee carry forward to the next year?
+Answer: A full-time employee can carry forward up to 5 unused annual leave days to the next year.
