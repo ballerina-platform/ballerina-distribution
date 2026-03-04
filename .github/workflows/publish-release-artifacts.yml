@@ -26,25 +26,29 @@ jobs:
 
       - name: Set version env variable
         id: set-version
+        env:
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
         run: |
-          RELEASE_VERSION=${{ github.event.inputs.release_version }}
           if [[ "$RELEASE_VERSION" == *-SNAPSHOT ]]; then
             VERSION="${RELEASE_VERSION%-SNAPSHOT}"
           else
             VERSION="$RELEASE_VERSION"
           fi
+          DIST_VERSION="${VERSION%%-*}"
           CODE_NAME="swan-lake"
           TAGGED_VERSION=$RELEASE_VERSION
-          LONG_VERSION=$VERSION-$CODE_NAME
+          LONG_VERSION=$DIST_VERSION-$CODE_NAME
 
-          UPDATE_NUMBER=$(cut -d'.' -f2 <<< $VERSION)
+          UPDATE_NUMBER=$(cut -d'.' -f2 <<< $DIST_VERSION)
           DISPLAY_VERSION="$VERSION (Swan Lake Update $UPDATE_NUMBER)"
 
           echo VERSION=$VERSION >> $GITHUB_ENV
+          echo DIST_VERSION=$DIST_VERSION >> $GITHUB_ENV
           echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
           echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
           echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
           echo "::set-output name=version::$VERSION"
+          echo "::set-output name=distVersion::$DIST_VERSION"
           echo "::set-output name=taggedVersion::$TAGGED_VERSION"
           echo "::set-output name=updateNumber::$UPDATE_NUMBER"
           echo "::set-output name=longVersion::$LONG_VERSION"
@@ -53,12 +57,13 @@ jobs:
         run: |
           baseUrl="https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$GIT_TAG"
           updateNumber=${{ steps.set-version.outputs.updateNumber }}
+          distVersion=${{ steps.set-version.outputs.distVersion }}
           rm -rf $VERSION
           mkdir $VERSION
           cd $VERSION
 
           wget "$baseUrl/ballerina-$LONG_VERSION.zip"
-          wget "$baseUrl/ballerina-$VERSION.zip"
+          wget "$baseUrl/ballerina-$distVersion.zip"
           wget "$baseUrl/ballerina-$LONG_VERSION-windows-x64.msi"
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.deb"
           wget "$baseUrl/ballerina-$LONG_VERSION-linux-x64.rpm"
@@ -140,7 +145,7 @@ jobs:
       - name: Copy artifacts to Docker repo
         run: |
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
-          cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
+          cp $VERSION/ballerina-${{ steps.set-version.outputs.distVersion }}.zip $DOCKER_REPO/base/docker/
           cp $VERSION/ballerina-$LONG_VERSION-linux-x64.deb $DOCKER_REPO/base/devcontainer/
 
       - name: Set up QEMU
@@ -158,7 +163,7 @@ jobs:
           tags: ballerina/ballerina:${{ steps.set-version.outputs.taggedVersion }}
           platforms: linux/amd64,linux/arm64
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.version }}.zip
+            BALLERINA_DIST=ballerina-${{ steps.set-version.outputs.distVersion }}.zip
 
       - name: Build and push dev container image
         id: docker_build_devcontainer
