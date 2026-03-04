@@ -47,9 +47,9 @@ jobs:
           echo LONG_VERSION=$LONG_VERSION >> $GITHUB_ENV
           echo DISPLAY_VERSION=$DISPLAY_VERSION >> $GITHUB_ENV
           echo GIT_TAG=$TAGGED_VERSION >> $GITHUB_ENV
-          echo "::set-output name=version::$VERSION"
-          echo "::set-output name=distVersion::$DIST_VERSION"
-          echo "::set-output name=taggedVersion::$TAGGED_VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "distVersion=$DIST_VERSION" >> "$GITHUB_OUTPUT"
+          echo "taggedVersion=$TAGGED_VERSION" >> "$GITHUB_OUTPUT"
           echo "::set-output name=updateNumber::$UPDATE_NUMBER"
           echo "::set-output name=longVersion::$LONG_VERSION"
 
