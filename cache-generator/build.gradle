@@ -52,11 +52,11 @@ dependencies {
     implementation "com.google.code.findbugs:jsr305"
     testImplementation "org.testng:testng"
 
-    balTools ("org.ballerinalang:jballerina-tools:${ballerinaLangVersion}") {
+    balTools ("org.ballerinalang:jballerina-tools:${publishedLangVersion}") {
         transitive = false
     }
 }
-def bDistribution = file("$project.buildDir/extracted-distribution/jballerina-tools-${ballerinaLangVersion}")
+def bDistribution = file("$project.buildDir/extracted-distribution/jballerina-tools-${publishedLangVersion}")
 
 shadowJar {
     configurations = [project.configurations.runtimeClasspath]
@@ -80,4 +80,3 @@ compileJava {
         classpath = files()
     }
 }
-
