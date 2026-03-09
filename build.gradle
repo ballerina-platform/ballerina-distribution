@@ -90,6 +90,14 @@ subprojects {
         }
     }
 
+    def packageRepoOwner = project.findProperty('packageRepoOwner') ?: System.getenv('packageRepoOwner') ?: 'ballerina-platform'
+    def packageRepos = [
+            "https://maven.pkg.github.com/${packageRepoOwner}/ballerina-lang",
+            "https://maven.pkg.github.com/${packageRepoOwner}/ballerina-dev-tools",
+            "https://maven.pkg.github.com/ballerina-platform/ballerina-lang",
+            "https://maven.pkg.github.com/ballerina-platform/ballerina-dev-tools"
+    ]
+
     repositories {
         /* local maven repository */
         mavenLocal()
@@ -99,12 +107,14 @@ subprojects {
         maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
         /* WSO2 internal Repository */
         maven { url "https://maven.wso2.org/nexus/content/groups/wso2-public/" }
-        /* Github Package Repository */
-        maven {
-            url 'https://maven.pkg.github.com/ballerina-platform/*'
-            credentials {
-                username System.getenv('packageUser')
-                password System.getenv('packagePAT')
+        /* GitHub Package repositories (fork first, then public fallback) */
+        packageRepos.each { repoUrl ->
+            maven {
+                url repoUrl
+                credentials {
+                    username System.getenv('packageUser')
+                    password System.getenv('packagePAT')
+                }
             }
         }
 
