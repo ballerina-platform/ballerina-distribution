@@ -15,23 +15,19 @@ on:
 permissions:
   id-token: write
   contents: write
-  packages: read
 
 jobs:
   publish-release:
-    name: Publish Release Pack
+    name: Publish Release
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21.0.3'
-
       - name: Set version env variable
         id: version-set
         run: |
