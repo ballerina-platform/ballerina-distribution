@@ -15,7 +15,7 @@ Invoke the service by executing the following cURL command in a new terminal.
 
 ::: out http_trace_logs.client.out :::
 
-Additionally, the following configurations can be added to the `Config.toml` file for advanced use cases such as specifying the file path to save the trace logs to a file and the hostname and port of a socket service to publish the trace logs.
+Additionally, the `Config.toml` file supports further configurations for advanced use cases, such as configuring the `hostname` and `port` of a socket service to publish the trace logs and writing trace logs to a file using the `file` configuration, which allows specifying the log file location and rotation settings.
 
 ::: code Config.toml :::
 
