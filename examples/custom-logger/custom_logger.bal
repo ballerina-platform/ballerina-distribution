@@ -1,5 +1,12 @@
 import ballerina/log;
 
+final map<int> & readonly logLevelWeight = {
+    ERROR: 1000,
+    WARN: 900,
+    INFO: 800,
+    DEBUG: 700
+};
+
 // Custom logger implementation that implements the Logger type
 public isolated class ApplicationLogger {
     *log:Logger;
@@ -7,15 +14,20 @@ public isolated class ApplicationLogger {
     private final string applicationName;
     private final string version;
     private final readonly & log:KeyValues context;
+    private log:Level currentLevel;
 
     public isolated function init(string applicationName, string version, log:KeyValues context = {}) {
         self.applicationName = applicationName;
         self.version = version;
+        self.currentLevel = log:INFO;
         self.context = context.cloneReadOnly();
     }
 
     public isolated function printInfo(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
+        if logLevelWeight[self.getLevel()] > logLevelWeight[log:INFO] {
+            return;
+        }
         string evaluatedMsg = msg is string ? msg : log:evaluateTemplate(msg);
         string printableMsg = string `[Application: ${self.applicationName} v${self.version}] ${evaluatedMsg}`;
         log:KeyValues newKeyValues = {...self.context};
@@ -46,6 +58,18 @@ public isolated class ApplicationLogger {
             newContext[k] = v;
         }
         return new ApplicationLogger(self.applicationName, self.version, newContext);
+    }
+
+    public isolated function getLevel() returns log:Level {
+        lock {
+            return self.currentLevel;
+        }
+    }
+
+    public isolated function setLevel(log:Level level) returns error? {
+        lock {
+            self.currentLevel = level;
+        }
     }
 }
 
