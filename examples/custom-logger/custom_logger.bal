@@ -15,10 +15,12 @@ public isolated class ApplicationLogger {
     private final string version;
     private final readonly & log:KeyValues context;
     private log:Level currentLevel;
+    private final ApplicationLogger? parent;
 
-    public isolated function init(string applicationName, string version, log:KeyValues context = {}) {
+    public isolated function init(string applicationName, string version, log:KeyValues context = {}, ApplicationLogger? parent = ()) {
         self.applicationName = applicationName;
         self.version = version;
+        self.parent = parent;
         self.currentLevel = log:INFO;
         self.context = context.cloneReadOnly();
     }
@@ -57,16 +59,23 @@ public isolated class ApplicationLogger {
         foreach [string, log:Value] [k, v] in keyValues.entries() {
             newContext[k] = v;
         }
-        return new ApplicationLogger(self.applicationName, self.version, newContext);
+        return new ApplicationLogger(self.applicationName, self.version, newContext, self);
     }
 
     public isolated function getLevel() returns log:Level {
+        ApplicationLogger? p = self.parent;
+        if p is ApplicationLogger {
+            return p.getLevel();
+        }
         lock {
             return self.currentLevel;
         }
     }
 
     public isolated function setLevel(log:Level level) returns error? {
+        if self.parent is ApplicationLogger {
+            return error("unsupported operation: cannot set level on a child logger");
+        }
         lock {
             self.currentLevel = level;
         }
