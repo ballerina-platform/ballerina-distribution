@@ -17,7 +17,8 @@ public isolated class ApplicationLogger {
     private log:Level currentLevel;
     private final ApplicationLogger? parent;
 
-    public isolated function init(string applicationName, string version, log:KeyValues context = {}, ApplicationLogger? parent = ()) {
+    public isolated function init(string applicationName, string version, log:KeyValues context = {},
+        ApplicationLogger? parent = ()) {
         self.applicationName = applicationName;
         self.version = version;
         self.parent = parent;
