@@ -1,11 +1,11 @@
-name: Build BBE On Demand with Java 25
+name: Run BBE On Java 25
 
 on:
   workflow_dispatch:
 
 jobs:
   bbe-tests:
-    name: Run BBE Tests (Java 25)
+    name: Run BBE on Java 25
     if: github.repository_owner == 'ballerina-platform'
     runs-on: ubuntu-latest
     concurrency:
@@ -14,6 +14,21 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Build Ballerina pack
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :project-api-tests:test
 
       - name: Set up JDK 25
         uses: actions/setup-java@v4
@@ -28,4 +43,6 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
           ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
-        run: ./gradlew clean :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue -x :project-api-tests:test
+        run: |
+          java -version
+          ./gradlew :ballerina:testExamples --stacktrace --scan --console=plain --no-daemon --continue -x :project-api-tests:test
