@@ -1,4 +1,4 @@
-name: Run BBE On Java 25
+name: Run BBE On Demand
 
 on:
   workflow_dispatch:
@@ -7,10 +7,18 @@ on:
         description: 'Branch to run BBE tests against'
         required: true
         default: 'master'
+      javaVersion:
+        description: 'Java version to run BBE tests on'
+        required: true
+        default: '25'
+        type: choice
+        options:
+          - '21'
+          - '25'
 
 jobs:
   bbe-tests:
-    name: Run BBE on Java 25
+    name: Run BBE on Java ${{ github.event.inputs.javaVersion }}
     if: github.repository_owner == 'ballerina-platform'
     runs-on: ubuntu-latest
     concurrency:
@@ -37,11 +45,11 @@ jobs:
           ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x :ballerina:testExamples -x :project-api-tests:test
 
-      - name: Set up JDK 25
+      - name: Set up JDK ${{ github.event.inputs.javaVersion }} for BBE tests
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '25'
+          java-version: ${{ github.event.inputs.javaVersion }}
 
       - name: Run BBE tests
         env:
