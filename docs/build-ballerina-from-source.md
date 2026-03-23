@@ -2,9 +2,9 @@
 
 ## Overview
 
-[Building the complete Ballerina distribution](#building-the-complete-ballerina-distribution) provides you access to all the main features of Ballerina such as the runtime, corresponding tools, standard library modules etc.
+[Building the complete Ballerina distribution](#building-the-complete-ballerina-distribution) gives you access to all main features of Ballerina, including the runtime, tools, standard library modules, and more.
 
->**Info:** However, if you need just a plain Ballerina language build with only the basic language features and the JBallerina Java (Java Introp) API in it, you can [build only the Ballerina Runtime with the tools](#building-only-the-ballerina-runtime-with-the-tools)
+>**Info:** However, if you need just a plain Ballerina language build with only the basic language features and the JBallerina Java (Java Interop) API in it, you can [build only the Ballerina Runtime with the tools](#building-only-the-ballerina-runtime-with-the-tools)
 
 
 ## Set up the prerequisites
@@ -109,7 +109,7 @@ Therefore, follow the steps below to write a simple program using the Ballerina 
     Hello, World with IO!
     ```
 
-## Build only the Ballerina runtime with the tools
+## Build Only the Ballerina Runtime with Tools
 
 Follow the steps below to build just the Ballerina runtime with the corresponding tools.
 
