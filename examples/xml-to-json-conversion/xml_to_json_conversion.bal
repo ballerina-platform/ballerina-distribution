@@ -1,5 +1,19 @@
+import ballerina/data.xmldata;
 import ballerina/io;
-import ballerina/xmldata;
+
+// Defines a record type to represent the XML structure.
+type Address record {
+    string street;
+    string city;
+};
+
+type Store record {
+    string name;
+    Address address;
+    string[] codes;
+    @xmldata:Attribute
+    string id;
+};
 
 public function main() returns error? {
     // Creates an XML value.
@@ -12,8 +26,9 @@ public function main() returns error? {
                           <codes>4</codes>
                           <codes>8</codes>
                         </Store>`;
-    // Converts the XML to JSON value using a default `attributePrefix` (i.e., the `@` character)
-    // and the default `preserveNamespaces` (i.e., `true`).
-    json jsonValue = check xmldata:toJson(xmlValue);
+    // Converts the XML value to a record type.
+    Store store = check xmldata:parseAsType(xmlValue);
+    // Converts the record value to a JSON value.
+    json jsonValue = store.toJson();
     io:println(jsonValue);
 }
