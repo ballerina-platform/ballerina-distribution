@@ -1,5 +1,5 @@
+import ballerina/data.xmldata;
 import ballerina/io;
-import ballerina/xmldata;
 
 // Defines a record type with annotations.
 @xmldata:Namespace {
@@ -10,13 +10,11 @@ type Invoice record {
     int id;
     Item[] purchased_item;
     @xmldata:Attribute
-    string 'xmlns?;
-    @xmldata:Attribute
     string status?;
 };
 
 @xmldata:Namespace {
-    uri: "http://example2.com"
+    uri: "example.com"
 }
 type Item record {
     string itemCode;
@@ -38,6 +36,6 @@ public function main() returns error? {
                     </ns:Invoice>`;
 
     // Converts an XML representation to its `record` representation.
-    Invoice output = check xmldata:fromXml(data);
+    Invoice output = check xmldata:parseAsType(data);
     io:println(output);
 }
