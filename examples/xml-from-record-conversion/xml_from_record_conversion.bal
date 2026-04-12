@@ -1,5 +1,5 @@
+import ballerina/data.xmldata;
 import ballerina/io;
-import ballerina/xmldata;
 
 // Defines a record type with annotations.
 @xmldata:Namespace {
