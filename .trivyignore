@@ -1,6 +1,8 @@
 # False positive
 CVE-2020-7768
 CVE-2025-48985
+GHSA-w5hq-g745-h8pq
 
 # Need to be fixed
 CVE-2025-48924
+CVE-2026-5588
