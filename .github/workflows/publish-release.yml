@@ -78,7 +78,7 @@ jobs:
           ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -x project-api-tests:test -Pversion=${VERSION}
-          ./gradlew release -x project-api-tests:test -Prelease.useAutomaticVersion=true
+          ./gradlew release -x project-api-tests:test -Prelease.useAutomaticVersion=true -x test
       - name: Checkout docker repo
         uses: actions/checkout@v3
         with:
