@@ -105,6 +105,11 @@ jobs:
           tags: ballerina/ballerina:release-test
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
+      - name: Free disk space before Trivy scan
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          sudo docker image prune -af --filter "label!=ballerina/ballerina:release-test" || true
+          df -h
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
