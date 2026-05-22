@@ -37,6 +37,7 @@ import static org.ballerinalang.distribution.utils.TestUtils.TEST_DISTRIBUTION_P
  */
 public class OpenAPIDistributionArtifactCheck {
     private static final String DIST_NAME = "ballerina-" + SHORT_VERSION;
+    private static final String OPENAPI_VERSION = System.getProperty("openapi.tool.version");
 
     @BeforeClass
     public void setupDistributions() throws IOException {
@@ -52,7 +53,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.3.3")
+                .resolve(OPENAPI_VERSION)
                 .resolve("bir");
 
         Path jarPath = TEST_DISTRIBUTION_PATH
@@ -61,7 +62,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("cache")
                 .resolve("ballerina")
                 .resolve("openapi")
-                .resolve("2.3.3")
+                .resolve(OPENAPI_VERSION)
                 .resolve("java21");
 
         Path breLibPath = TEST_DISTRIBUTION_PATH
@@ -83,7 +84,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("lib");
 
         Assert.assertTrue(Files.exists(birPath));
-        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-2.3.3.jar")));
+        Assert.assertTrue(Files.exists(jarPath.resolve("ballerina-openapi-" + OPENAPI_VERSION + ".jar")));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-cli-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "openapi-validator-"));
         Assert.assertNotNull(TestUtils.findFileOrDirectory(breLibPath, "ballerina-to-openapi-"));
