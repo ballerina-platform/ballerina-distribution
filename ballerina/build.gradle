@@ -18,8 +18,51 @@
 import groovy.json.JsonSlurper
 import org.apache.tools.ant.filters.ReplaceTokens
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.process.ExecOperations
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+import org.gradle.jvm.toolchain.JavaToolchainService
+import javax.inject.Inject
 
 import static groovy.io.FileType.FILES
+
+abstract class BallerinaExecHelper {
+    @Inject abstract ExecOperations getExecOperations()
+}
+
+abstract class PatchBallerinaScriptsTask extends DefaultTask {
+    @Inject abstract JavaToolchainService getJavaToolchainService()
+
+    @TaskAction
+    void patch() {
+        def launcher = javaToolchainService.launcherFor { spec ->
+            spec.languageVersion.set(JavaLanguageVersion.of(25))
+        }.get()
+        def java25Home = launcher.executablePath.asFile.parentFile.parentFile.absolutePath
+
+        def binDirs = [
+            project.layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.ballerinaLangVersion}/bin").get().asFile,
+            new File("${project.rootDir}/target/ballerina-runtime/bin")
+        ]
+        binDirs.each { binDir ->
+            if (binDir.exists()) {
+                binDir.eachFile { file ->
+                    file.setExecutable(true)
+                    if (!file.name.endsWith('.bat') && !file.name.endsWith('.cmd')) {
+                        def original = file.text
+                        def lines = original.split('\n').toList()
+                        lines = lines.findAll { !it.contains('--sun-misc-unsafe-memory-access=allow') }
+                        def shebangIdx = lines.findIndexOf { it.startsWith('#!') }
+                        if (shebangIdx >= 0) {
+                            lines.add(shebangIdx + 1, "export JAVA_HOME='${java25Home}'")
+                        }
+                        def patched = lines.join('\n') + '\n'
+                        if (patched != original) { file.text = patched }
+                    }
+                }
+            }
+        }
+    }
+}
 
 description = 'Ballerina - Tools'
 
@@ -45,13 +88,13 @@ dependencies {
     implementation project(':cache-generator')
 }
 
-def jBallerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${shortVersion}.zip")
-def ballerinaDistributionZip = file("$project.buildDir/distributions/ballerina-${ballerinaLangVersion}.zip")
-def ballerinaLinuxDistributionZip = file("$project.buildDir/distributions/ballerina-linux-${ballerinaLangVersion}.zip")
-def ballerinaLinuxArmDistributionZip = file("$project.buildDir/distributions/ballerina-linux-arm-${ballerinaLangVersion}.zip")
-def ballerinaMacDistributionZip = file("$project.buildDir/distributions/ballerina-macos-${ballerinaLangVersion}.zip")
-def ballerinaMacArmDistributionZip = file("$project.buildDir/distributions/ballerina-macos-arm-${ballerinaLangVersion}.zip")
-def ballerinaWindowsDistributionZip = file("$project.buildDir/distributions/ballerina-windows-${ballerinaLangVersion}.zip")
+def jBallerinaDistributionZip = layout.buildDirectory.file("distributions/ballerina-${shortVersion}.zip").get().asFile
+def ballerinaDistributionZip = layout.buildDirectory.file("distributions/ballerina-${ballerinaLangVersion}.zip").get().asFile
+def ballerinaLinuxDistributionZip = layout.buildDirectory.file("distributions/ballerina-linux-${ballerinaLangVersion}.zip").get().asFile
+def ballerinaLinuxArmDistributionZip = layout.buildDirectory.file("distributions/ballerina-linux-arm-${ballerinaLangVersion}.zip").get().asFile
+def ballerinaMacDistributionZip = layout.buildDirectory.file("distributions/ballerina-macos-${ballerinaLangVersion}.zip").get().asFile
+def ballerinaMacArmDistributionZip = layout.buildDirectory.file("distributions/ballerina-macos-arm-${ballerinaLangVersion}.zip").get().asFile
+def ballerinaWindowsDistributionZip = layout.buildDirectory.file("distributions/ballerina-windows-${ballerinaLangVersion}.zip").get().asFile
 
 task unpackBallerinaJre(type: Download) {
     group = "unpack_dependencies"
@@ -71,7 +114,7 @@ task unpackJballerinaTools(type: Copy) {
     group = "unpack_dependencies"
     configurations.jbalTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
     }
 }
 
@@ -79,7 +122,7 @@ task unpackDevTools(type: Copy) {
     group = "unpack_dependencies"
     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
     }
 }
 
@@ -87,7 +130,7 @@ task downloadDocUi {
     def response = new JsonSlurper().parseText(new URL(docUiApi).text)
     def zipFileUrl = response.fileURL
     def zipInputStream = new URL(zipFileUrl).openStream()
-    def outputFile = new File("${buildDir}/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
+    def outputFile = layout.buildDirectory.file("target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip").get().asFile
     doLast {
         outputFile.parentFile.mkdirs()
         outputFile.withOutputStream { outputStream ->
@@ -100,7 +143,7 @@ task unpackAwsLambdaBala(type: Copy) {
     group = "unpack_dependencies"
     configurations.awsLambdaBala.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         from zipTree(artifact.getFile())
-        into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+        into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
     }
 }
 
@@ -109,7 +152,7 @@ task unpackStdLibs() {
         configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+                into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
             }
         }
     }
@@ -120,7 +163,7 @@ task unpackBalTools() {
         configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+                into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
             }
         }
     }
@@ -131,7 +174,7 @@ task unpackC2cLibs() {
         configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+                into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
             }
         }
     }
@@ -142,7 +185,7 @@ task unpackC2cTooling() {
         configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+                into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
             }
         }
     }
@@ -153,7 +196,7 @@ task unpackOpenapiModule() {
         configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
             copy {
                 from project.zipTree(artifact.getFile())
-                into new File("${buildDir}/target/extracted-distributions", artifact.name + "-zip")
+                into layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
             }
         }
     }
@@ -166,43 +209,43 @@ task downloadBalCommand(type: Download) {
             "${commandBaseURL}/ballerina-command-${ballerinaCommandVersion}.zip"
     ])
     onlyIfModified true
-    dest "${buildDir}/target/"
+    dest layout.buildDirectory.dir("target").get().asFile
 }
 
 task unpackBalCommand(type: Copy) {
     group = "unpack_dependencies"
-    from zipTree { "${buildDir}/target/ballerina-command-${ballerinaCommandVersion}.zip" }
-    into new File("${buildDir}/target/")
+    from zipTree { layout.buildDirectory.file("target/ballerina-command-${ballerinaCommandVersion}.zip").get().asFile }
+    into layout.buildDirectory.dir("target").get().asFile
 }
 
 task extractJreForLinux(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-linux-64-${ballerinaJreVersion}.zip" }
-    into("${buildDir}/target/extracted-jre-linux")
+    into(layout.buildDirectory.dir("target/extracted-jre-linux").get().asFile)
 }
 
 task extractJreForLinuxArm(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-linux-arm-64-${ballerinaJreVersion}.zip" }
-    into("${buildDir}/target/extracted-jre-linux-arm")
+    into(layout.buildDirectory.dir("target/extracted-jre-linux-arm").get().asFile)
 }
 
 task extractJreForMac(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-macos-64-${ballerinaJreVersion}.zip" }
-    into("${buildDir}/target/extracted-jre-macos")
+    into(layout.buildDirectory.dir("target/extracted-jre-macos").get().asFile)
 }
 
 task extractJreForMacArm(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-macos-arm-64-${ballerinaJreVersion}.zip" }
-    into("${buildDir}/target/extracted-jre-macos-arm")
+    into(layout.buildDirectory.dir("target/extracted-jre-macos-arm").get().asFile)
 }
 
 task extractJreForWindows(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-win-64-${ballerinaJreVersion}.zip" }
-    into("${buildDir}/target/extracted-jre-windows")
+    into(layout.buildDirectory.dir("target/extracted-jre-windows").get().asFile)
 }
 
 task deleteTemporaryFiles(type: Delete) {
@@ -217,7 +260,7 @@ task copyOtherRepos(type: Copy) {
 
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
@@ -228,7 +271,7 @@ task copyOtherRepos(type: Copy) {
 
     /* Bal tools (e.g. openapi, graphql etc.) */
     configurations.ballerinaTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -236,7 +279,7 @@ task copyOtherRepos(type: Copy) {
 
     /* C2C Libraries */
     configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/libs") {
             into "bre/lib/"
         }
@@ -247,7 +290,7 @@ task copyOtherRepos(type: Copy) {
 
     /* C2C Tooling */
     configurations.ballerinaC2cTooling.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}") {
             into "lib/tools/lang-server/lib/"
         }
@@ -255,7 +298,7 @@ task copyOtherRepos(type: Copy) {
 
     /* OpenAPI Module */
     configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
@@ -266,7 +309,7 @@ task copyOtherRepos(type: Copy) {
 
     /* Language Server Extension Artifacts */
     configurations.devTools.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        def artifactExtractedPath = "${buildDir}/target/extracted-distributions/${artifact.name}-zip"
+        def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/${artifact.name}-zip").get().asFile
         from("${artifactExtractedPath}/ls-extensions/bre-libs") {
             into "bre/lib/"
         }
@@ -278,34 +321,32 @@ task copyOtherRepos(type: Copy) {
 
 task buildDistRepo(type: JavaExec) {
     classpath = project.configurations.repoBuilder
-    main = 'io.ballerina.dist.DistRepoBuilder'
-    args "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+    mainClass = 'io.ballerina.dist.DistRepoBuilder'
+    args layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}").get().asFile.toString()
 }
 
 task copyDevToolsCoverageReport(type: Copy) {
-    from "$project.buildDir/target/extracted-distributions/ballerina-dev-tools-zip/tests/testerina-report-tools-${devToolsVersion}.zip"
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage"
+    from layout.buildDirectory.file("target/extracted-distributions/ballerina-dev-tools-zip/tests/testerina-report-tools-${devToolsVersion}.zip").get().asFile
+    into layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/coverage").get().asFile
     rename("testerina-report-tools-${devToolsVersion}.zip", "report.zip")
 }
 
 task copyDevToolsDocUi(type: Copy) {
-    from zipTree("$project.buildDir/target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip")
-    into "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui"
+    from zipTree(layout.buildDirectory.file("target/extracted-distributions/doc-ui-zip/ballerina-doc-ui.zip").get().asFile)
+    into layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/lib/tools/doc-ui").get().asFile
 }
 
 task filterApiDocs(type: Delete) {
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.__internal"
-    delete "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.annotations"
+    delete layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.__internal").get().asFile
+    delete layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs/ballerina/lang.annotations").get().asFile
 }
 
 task combineDocs(type: Exec) {
-    workingDir "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs"
+    workingDir layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/docs").get().asFile
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        commandLine 'cmd', '/c', "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaLangVersion}/bin/bal.bat", "doc", "--combine"
+        commandLine 'cmd', '/c', layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin").get().asFile.toString() + "/bal.bat", "doc", "--combine"
     } else {
-        commandLine "$project.buildDir/target/extracted-distributions/jballerina-tools-zip/" +
-                "jballerina-tools-${ballerinaLangVersion}/bin/bal", "doc", "--combine"
+        commandLine layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bin").get().asFile.toString() + "/bal", "doc", "--combine"
     }
 }
 
@@ -328,7 +369,7 @@ task packageDist(type: Zip) {
     }
     into("${parentDir}/examples") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     // Code2Cloud Extension Examples
     into("${parentDir}/examples") {
@@ -339,7 +380,7 @@ task packageDist(type: Zip) {
     /* Files */
     into("${parentDir}/lib/") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     /* Dependencies */
@@ -370,7 +411,7 @@ task packageDistZip(type: Zip) {
 
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -400,32 +441,32 @@ task packageDistZip(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
-        fileMode = 0775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
-        fileMode = 0775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
     /* Dependencies */
     into("${parentDir}/distributions/ballerina-${shortVersion}/bre/lib") {
@@ -451,11 +492,11 @@ task packageDistLinux(type: Zip) {
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -485,35 +526,35 @@ task packageDistLinux(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
 
     /* Dependencies */
@@ -540,11 +581,11 @@ task packageDistLinuxArm(type: Zip) {
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-linux-arm"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     // Code2Cloud Extension Examples
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples") {
@@ -574,35 +615,35 @@ task packageDistLinuxArm(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
 
     /* Dependencies */
@@ -629,11 +670,11 @@ task packageDistMac(type: Zip) {
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
 
     // Code2Cloud Extension Examples
@@ -658,36 +699,36 @@ task packageDistMac(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}" +
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
 
     /* Dependencies */
@@ -714,11 +755,11 @@ task packageDistMacArm(type: Zip) {
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-macos-arm"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
 
     // Code2Cloud Extension Examples
@@ -743,36 +784,36 @@ task packageDistMacArm(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}" +
                 "/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/bal_completion.bash"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
     into("${parentDir}/scripts") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/scripts/_bal"
-        fileMode = 775
+        filePermissions { unix(0775) }
     }
 
     /* Dependencies */
@@ -799,11 +840,11 @@ task packageDistWindows(type: Zip) {
 
     into("${parentDir}/dependencies") {
         from "build/target/extracted-jre-windows"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/examples/") {
         from "${project.rootDir}/examples/"
-        fileMode = 0755
+        filePermissions { unix(0755) }
     }
 
     // Code2Cloud Extension Examples
@@ -828,27 +869,27 @@ task packageDistWindows(type: Zip) {
     }
     into("${parentDir}/distributions/ballerina-${shortVersion}/bin") {
         from "lib/version.txt"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: version])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/ballerina-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [version: shortVersion])
     }
     into("${parentDir}/distributions") {
         from "../resources/tools/distributions/installer-version"
-        fileMode = 0644
+        filePermissions { unix(0644) }
         filter(ReplaceTokens, tokens: [uuid: installerVersion])
     }
     into("${parentDir}/bin") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/bin/bal.bat"
-        fileMode = 775
+        filePermissions { unix(0775) }
         filter(ReplaceTokens, tokens: [ballerinaCommandVersion: ballerinaCommandVersion])
     }
     into("${parentDir}/lib") {
         from "build/target/ballerina-command-${ballerinaCommandVersion}/lib/ballerina-command-${ballerinaCommandVersion}.jar"
-        fileMode = 0775
+        filePermissions { unix(0775) }
     }
 
     /* Dependencies */
@@ -881,6 +922,7 @@ artifacts {
 task testExamples() {
     def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
     def bbeList = []
+    def execHelper = project.objects.newInstance(BallerinaExecHelper)
 
     PatternSet patternSet = new PatternSet()
     patternSet.exclude("**/.ballerina/**")
@@ -917,13 +959,13 @@ task testExamples() {
     ext.prepareProject = { bbe ->
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
-            exec {
+            execHelper.execOperations.exec {
                 workingDir "${distPath}/${bbe}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
             }
 
         } else {
-            exec {
+            execHelper.execOperations.exec {
                 workingDir "${distPath}/${bbe}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal init test"
             }
@@ -941,13 +983,13 @@ task testExamples() {
                     def grpcCommand =  "grpc --input ${it.name} --output ."
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                         //TODO: Need to verify with windows
-                        exec {
+                        execHelper.execOperations.exec {
                             workingDir "${distPath}/${bbe}"
                             commandLine 'cmd', '/c', "${distPath}/bin/bal.bat ${grpcCommand}"
                         }
 
                     } else {
-                        exec {
+                        execHelper.execOperations.exec {
                             workingDir "${distPath}/${bbe}"
                             commandLine 'sh', '-c', "${distPath}/bin/bal ${grpcCommand}"
                         }
@@ -964,14 +1006,14 @@ task testExamples() {
         println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
-            exitVal = exec {
+            exitVal = execHelper.execOperations.exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalParams}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
             }
         } else {
-            exitVal = exec {
+            exitVal = execHelper.execOperations.exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalParams}"
@@ -1049,14 +1091,14 @@ task testExamples() {
             def scriptPath = "${project.rootDir}/ballerina/lib"
             def exitVal
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exitVal = exec {
+                exitVal = execHelper.execOperations.exec {
                     def windowsPath = scriptPath.replace('/', '\\')
                     workingDir "$windowsPath"
                     commandLine "$windowsPath\\run.bat", "${directoryPath}", "${distPath}/bin/bal.bat", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
                     ignoreExitValue true
                 }
             } else {
-                exitVal = exec {
+                exitVal = execHelper.execOperations.exec {
                     workingDir "$scriptPath"
                     commandLine "bash", "run.sh", "${directoryPath}", "${distPath}/bin/./bal", "${balName}", "${curlCommandsFilePath}", "${portFilePath}", "${additionalBuildParams}"
                     ignoreExitValue true
@@ -1089,7 +1131,7 @@ task testExamples() {
             new ByteArrayOutputStream().withStream { os ->
                 println "Output Verification '${bbe.url}'"
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
+                    execHelper.execOperations.exec {
                         workingDir "${directoryPath}"
                         commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', "${balName}.bal ", ${additionalBuildParams}
                         ignoreExitValue true
@@ -1097,7 +1139,7 @@ task testExamples() {
                         errorOutput = errOut
                     }
                 } else {
-                    exec {
+                    execHelper.execOperations.exec {
                         workingDir "${directoryPath}"
                         commandLine 'sh', '-c', "${distPath}/bin/bal run ${balName}.bal ${additionalBuildParams}"
                         ignoreExitValue true
@@ -1192,11 +1234,13 @@ task testExamples() {
 def addH2Dependency = { filePath ->
     // Add the H2 database dependency to Ballerina.toml file
     def tomlFile = new File(filePath)
-    tomlFile.append("\n\n[[platform.java21.dependency]]")
+    tomlFile.append("\n\n[[platform.java25.dependency]]")
     tomlFile.append("\nartifactId = \"h2\"")
     tomlFile.append("\nversion = \"2.2.224\"")
     tomlFile.append("\ngroupId = \"com.h2database\"")
 }
+
+def stdlibsExecHelper = project.objects.newInstance(BallerinaExecHelper)
 
 def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVersionDifference ->
     def exitVal
@@ -1215,7 +1259,7 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
         if (!isStageTest) {
             def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
             if (!tomlFile.exists()) {
-                exec {
+                stdlibsExecHelper.execOperations.exec {
                     workingDir "${distPath}/${stdlibTest}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
                 }
@@ -1224,18 +1268,18 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
             }
         } else {
-            exec {
+            stdlibsExecHelper.execOperations.exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat clean"
             }
         }
         if (testMinorVersionDifference) {
-            exec {
+            stdlibsExecHelper.execOperations.exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'cmd', '/c', "rm Dependencies.toml"
             }
         }
-        exitVal = exec {
+        exitVal = stdlibsExecHelper.execOperations.exec {
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
             commandLine 'cmd', '/c', "${distPath}/bin/bal.bat test ${additionalBuildParams}"
@@ -1244,7 +1288,7 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
         if (!isStageTest) {
             def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
             if (!tomlFile.exists()) {
-                exec {
+                stdlibsExecHelper.execOperations.exec {
                     workingDir "${distPath}/${stdlibTest}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal init test"
                 }
@@ -1253,18 +1297,18 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
             }
         } else {
-            exec {
+            stdlibsExecHelper.execOperations.exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal clean"
             }
         }
         if (testMinorVersionDifference) {
-            exec {
+            stdlibsExecHelper.execOperations.exec {
                 workingDir "${distPath}/${stdlibTest}"
                 commandLine 'sh', '-c', "rm Dependencies.toml"
             }
         }
-        exitVal = exec {
+        exitVal = stdlibsExecHelper.execOperations.exec {
             environment "BALLERINA_STAGE_CENTRAL", "$isStageTest"
             ignoreExitValue true
             workingDir "${distPath}/${stdlibTest}"
@@ -1371,6 +1415,7 @@ task testStdlibsWithStaging() {
 task testDevToolsIntegration() {
     def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
     def devtoolsProjectList = []
+    def devToolsExecHelper = project.objects.newInstance(BallerinaExecHelper)
 
     PatternSet patternSet = new PatternSet()
     patternSet.exclude("**/.ballerina/**")
@@ -1414,22 +1459,22 @@ task testDevToolsIntegration() {
                 def additionalBuildParams = ""
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
-                        workingDir "${buildDir}/${devtoolsProject}"
+                    devToolsExecHelper.execOperations.exec {
+                        workingDir layout.buildDirectory.dir(devtoolsProject).get().asFile
                         commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
                     }
-                    exec {
-                        workingDir "${buildDir}/${devtoolsProject}"
+                    devToolsExecHelper.execOperations.exec {
+                        workingDir layout.buildDirectory.dir(devtoolsProject).get().asFile
                         commandLine 'cmd', '/c',
                                 "${distPath}/bin/bal.bat test ${additionalBuildParams}"
                     }
                 } else {
-                    exec {
+                    devToolsExecHelper.execOperations.exec {
                         workingDir "${distPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
                                 "${distPath}/bin/bal init test"
                     }
-                    exec {
+                    devToolsExecHelper.execOperations.exec {
                         workingDir "${distPath}/${devtoolsProject}"
                         commandLine 'sh', '-c',
                                 "${distPath}/bin/bal test ${additionalBuildParams}"
@@ -1442,10 +1487,11 @@ task testDevToolsIntegration() {
 }
 
 task generateCache(dependsOn: ':cache-generator:build') {
+    def cacheExecHelper = project.objects.newInstance(BallerinaExecHelper)
     doFirst {
         copy {
             from "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
-            into "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib"
+            into layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib").get().asFile
         }
     }
 
@@ -1478,9 +1524,10 @@ task generateCache(dependsOn: ':cache-generator:build') {
             configStdlibs.add(artifact.name + "-zip")
         }
 
+        def buildDirPath = layout.buildDirectory.get().asFile.toString()
         sortedLibs.each { lib ->
             if (configStdlibs.contains(lib)) {
-                def versionList = [file(file("${buildDir}/target/extracted-distributions/" + lib +
+                def versionList = [file(file("${buildDirPath}/target/extracted-distributions/" + lib +
                         "/bala").listFiles()[0].toString() + "/" + lib.split("-")[0]).listFiles()[0].name]
                 dependencyMap["${lib}"] = versionList
             }
@@ -1488,7 +1535,7 @@ task generateCache(dependsOn: ':cache-generator:build') {
 
         sortedLibs.each { lib ->
             if (configStdlibs.contains(lib)) {
-                def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
+                def artifactExtractedPath = "${buildDirPath}/target/extracted-distributions/" + lib
                 String balaDir = artifactExtractedPath + "/bala"
 
                 new File("${balaDir}").listFiles().each { orgDirFile ->
@@ -1496,17 +1543,17 @@ task generateCache(dependsOn: ':cache-generator:build') {
                     String moduleDir = new File("${orgDir}").listFiles()[0].toString()
                     String versionDir = new File("${moduleDir}").listFiles()[0].toString()
                     String balaPath = new File("${versionDir}").listFiles()[0].toString()
-                    String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                    String jbalPath = "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                        exec {
-                            workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        cacheExecHelper.execOperations.exec {
+                            workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                             commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
                             ignoreExitValue true
                         }
                     } else {
-                        exec {
-                            workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        cacheExecHelper.execOperations.exec {
+                            workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                             commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                             ignoreExitValue true
                         }
@@ -1530,25 +1577,25 @@ task generateCache(dependsOn: ':cache-generator:build') {
 
         /* C2C Libraries */
         configurations.ballerinaC2cLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            def artifactExtractedPath = "${buildDirPath}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
             String orgDir = new File("${balaDir}").listFiles()[0].toString()
             String moduleDir = new File("${orgDir}").listFiles()[0].toString()
             String versionDir = new File("${moduleDir}").listFiles()[0].toString()
             String balaPath = new File("${versionDir}").listFiles()[0].toString()
-            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+            String jbalPath = "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exec {
-                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                cacheExecHelper.execOperations.exec {
+                    workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
                     ignoreExitValue true
                 }
             }
             else {
-                exec {
-                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                cacheExecHelper.execOperations.exec {
+                    workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                     ignoreExitValue true
                 }
@@ -1557,31 +1604,31 @@ task generateCache(dependsOn: ':cache-generator:build') {
 
         /* OpenAPI Module */
         configurations.openapiModule.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-            def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+            def artifactExtractedPath = "${buildDirPath}/target/extracted-distributions/" + artifact.name + "-zip"
             String balaDir = artifactExtractedPath + "/bala"
 
             String orgDir = new File("${balaDir}").listFiles()[0].toString()
             String moduleDir = new File("${orgDir}").listFiles()[0].toString()
             String versionDir = new File("${moduleDir}").listFiles()[0].toString()
             String balaPath = new File("${versionDir}").listFiles()[0].toString()
-            String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+            String jbalPath = "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                exec {
-                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                cacheExecHelper.execOperations.exec {
+                    workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
                     ignoreExitValue true
                 }
             }
             else {
-                exec {
-                    workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                cacheExecHelper.execOperations.exec {
+                    workingDir "${buildDirPath}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                     ignoreExitValue true
                 }
             }
         }
-        delete "$buildDir/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar"
+        delete layout.buildDirectory.file("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/bre/lib/cache-generator-${project.version}.jar").get().asFile
         delete "${project.rootDir}/cache-generator/build/libs/cache-generator-${project.version}.jar"
         delete "${project.rootDir}/module_list.json"
     }
@@ -1620,13 +1667,13 @@ task generateBalToolsToml () {
         }
 
         def balToolsTomlString = ""
-        String balToolsTomlPath = "${buildDir}/target/extracted-distributions/" +
-                "jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/resources/bal-tools.toml"
+        String balToolsTomlPath = layout.buildDirectory.dir("target/extracted-distributions/" +
+                "jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}/resources").get().asFile.toString() + "/bal-tools.toml"
         def file = new File(balToolsTomlPath)
 
         configBalTools.each { lib ->
             if (sortedLibs.contains(lib)) {
-                def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + lib
+                def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + lib).get().asFile.toString()
                 String balaDir = artifactExtractedPath + "/bala"
 
                 new File("${balaDir}").listFiles().each { orgDirFile ->
@@ -1653,6 +1700,13 @@ task generateBalToolsToml () {
         file.write(balToolsTomlString)
     }
 }
+
+task patchBallerinaScripts(type: PatchBallerinaScriptsTask) {
+    dependsOn 'unpackJballerinaTools'
+}
+
+build.dependsOn patchBallerinaScripts
+test.dependsOn patchBallerinaScripts
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre

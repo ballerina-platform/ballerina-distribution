@@ -15,8 +15,15 @@
  *
  */
 
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+    }
+}
+
 plugins {
-    id "com.gradle.enterprise" version "3.13.2"
+    id "com.gradle.develocity" version "3.19.2"
 }
 
 rootProject.name = 'ballerina-distribution'
@@ -33,12 +40,12 @@ project(':ballerina').projectDir = "$rootDir/ballerina" as File
 project(':ballerina-distribution-test').projectDir = "$rootDir/ballerina-test" as File
 project(':dist-repo-builder').projectDir = "$rootDir/dist-repo-builder" as File
 project(':cache-generator').projectDir = "$rootDir/cache-generator" as File
-project(':config').projectDir = "$rootDir config" as File
+project(':config').projectDir = "$rootDir/config" as File
 
-gradleEnterprise {
+develocity {
     buildScan {
-        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-        termsOfServiceAgree = 'yes'
+        termsOfUseUrl = 'https://gradle.com/terms-of-service'
+        termsOfUseAgree = 'yes'
     }
 }
 include 'language-server-simulator'
