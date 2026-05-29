@@ -1,14 +1,16 @@
 # XML access
 
-It is possible to access elements in XML.
+It is possible to access both elements and attributes in XML. 
+The `x[i]` syntax retrieves the i-th item in the XML sequence. 
+The `x.id` syntax accesses a required attribute, while `x?.id` 
+accesses an optional attribute. The `lang.xml` langlib provides 
+the other operations.
 
 - `x[i]` gives the `i`-th item (empty sequence if none).
 
 - `x.id` accesses the required attribute named `id`: the result is an error if there is no such attribute or if `x` is not a singleton.
 
 - `x?.id` accesses an optional attribute named `id`: the result is `()` if there is no such attribute. 
-
-The `lang.xml` langlib provides the other operations.
 
 ::: code xml_access.bal :::
 
