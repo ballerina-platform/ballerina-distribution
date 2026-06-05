@@ -26,3 +26,6 @@ CVE-2025-30474
 CVE-2025-48734
 CVE-2025-55163
 CVE-2025-48924
+
+# False positive - Ballerina package.json descriptors are not Node.js packages
+CVE-2026-41907 
