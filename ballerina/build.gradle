@@ -31,6 +31,8 @@ abstract class BallerinaExecHelper {
 
 abstract class PatchBallerinaScriptsTask extends DefaultTask {
     @Inject abstract JavaToolchainService getJavaToolchainService()
+    @Input abstract Property<String> getJballerinaToolsBinPath()
+    @Input abstract Property<String> getBallerinaRuntimeBinPath()
 
     @TaskAction
     void patch() {
@@ -39,20 +41,16 @@ abstract class PatchBallerinaScriptsTask extends DefaultTask {
         }.get()
         def java25Home = launcher.executablePath.asFile.parentFile.parentFile.absolutePath
 
-        def binDirs = [
-            project.layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.ballerinaLangVersion}/bin").get().asFile,
-            new File("${project.rootDir}/target/ballerina-runtime/bin")
-        ]
-        binDirs.each { binDir ->
+        [new File(jballerinaToolsBinPath.get()), new File(ballerinaRuntimeBinPath.get())].each { binDir ->
             if (binDir.exists()) {
                 binDir.eachFile { file ->
                     file.setExecutable(true)
                     if (!file.name.endsWith('.bat') && !file.name.endsWith('.cmd')) {
                         def original = file.text
                         def lines = original.split('\n').toList()
-                        lines = lines.findAll { !it.contains('--sun-misc-unsafe-memory-access=allow') }
+                        lines = lines.collect { it.replace('--sun-misc-unsafe-memory-access=allow', '').trim() }.findAll { !it.isEmpty() }
                         def shebangIdx = lines.findIndexOf { it.startsWith('#!') }
-                        if (shebangIdx >= 0) {
+                        if (shebangIdx >= 0 && !lines.any { it.startsWith('export JAVA_HOME=') }) {
                             lines.add(shebangIdx + 1, "export JAVA_HOME='${java25Home}'")
                         }
                         def patched = lines.join('\n') + '\n'
@@ -1703,6 +1701,9 @@ task generateBalToolsToml () {
 
 task patchBallerinaScripts(type: PatchBallerinaScriptsTask) {
     dependsOn 'unpackJballerinaTools'
+    outputs.upToDateWhen { !tasks.named('unpackJballerinaTools').get().didWork }
+    jballerinaToolsBinPath = layout.buildDirectory.dir("jballerina-tools-${project.ballerinaLangVersion}/bin").get().asFile.absolutePath
+    ballerinaRuntimeBinPath = "${rootProject.projectDir.absolutePath}/target/ballerina-runtime/bin"
 }
 
 build.dependsOn patchBallerinaScripts
