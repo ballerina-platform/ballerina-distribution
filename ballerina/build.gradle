@@ -1004,17 +1004,25 @@ task testExamples() {
         println "Building example '${bbe.url}'"
         if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             //TODO: Need to verify with windows
-            exitVal = execHelper.execOperations.exec {
+            execHelper.execOperations.exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
                 commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'build', "${additionalParams}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
             }
-        } else {
             exitVal = execHelper.execOperations.exec {
                 ignoreExitValue true
                 workingDir "${distPath}/${bbe.url}"
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'test', "${additionalParams}"
+            }
+        } else {
+            execHelper.execOperations.exec {
+                ignoreExitValue true
+                workingDir "${distPath}/${bbe.url}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal build ${additionalParams}"
+            }
+            exitVal = execHelper.execOperations.exec {
+                ignoreExitValue true
+                workingDir "${distPath}/${bbe.url}"
                 commandLine 'sh', '-c', "${distPath}/bin/bal test ${additionalParams}"
             }
         }
@@ -1131,7 +1139,7 @@ task testExamples() {
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                     execHelper.execOperations.exec {
                         workingDir "${directoryPath}"
-                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', "${balName}.bal ", ${additionalBuildParams}
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat", 'run', "${balName}.bal", ${additionalBuildParams}
                         ignoreExitValue true
                         standardOutput = os
                         errorOutput = errOut
