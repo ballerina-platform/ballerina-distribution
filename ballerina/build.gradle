@@ -361,6 +361,7 @@ task packageDist(type: Zip) {
     into("${parentDir}") {
         from "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
     into("${parentDir}") {
         from "LICENSE"
@@ -424,7 +425,7 @@ task packageDistZip(type: Zip) {
         exclude "distributions/installer-version"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
-
+        filePermissions { unix(0755) }
     }
     into("${parentDir}") {
         from "../resources/tools"
@@ -510,6 +511,7 @@ task packageDistLinux(type: Zip) {
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
     into("${parentDir}") {
         from "../resources/tools"
@@ -599,6 +601,7 @@ task packageDistLinuxArm(type: Zip) {
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
     into("${parentDir}") {
         from "../resources/tools"
@@ -689,6 +692,7 @@ task packageDistMac(type: Zip) {
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
 
     /* Files */
@@ -774,6 +778,7 @@ task packageDistMacArm(type: Zip) {
         exclude "/bin/bal.bat"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
 
     /* Files */
@@ -859,6 +864,7 @@ task packageDistWindows(type: Zip) {
         exclude "/bin/bal"
         exclude "/bin/version.txt"
         exclude "/LICENSE"
+        filePermissions { unix(0755) }
     }
 
     /* Files */
@@ -1710,12 +1716,13 @@ task generateBalToolsToml () {
 task patchBallerinaScripts(type: PatchBallerinaScriptsTask) {
     dependsOn 'unpackJballerinaTools'
     outputs.upToDateWhen { !tasks.named('unpackJballerinaTools').get().didWork }
-    jballerinaToolsBinPath = layout.buildDirectory.dir("jballerina-tools-${project.ballerinaLangVersion}/bin").get().asFile.absolutePath
+    jballerinaToolsBinPath = layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${project.ballerinaLangVersion}/bin").get().asFile.absolutePath
     ballerinaRuntimeBinPath = "${rootProject.projectDir.absolutePath}/target/ballerina-runtime/bin"
 }
 
 build.dependsOn patchBallerinaScripts
 test.dependsOn patchBallerinaScripts
+buildDistRepo.dependsOn patchBallerinaScripts
 
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
