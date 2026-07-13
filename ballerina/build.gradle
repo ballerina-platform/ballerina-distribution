@@ -1723,6 +1723,12 @@ build.dependsOn patchBallerinaScripts
 test.dependsOn patchBallerinaScripts
 buildDistRepo.dependsOn patchBallerinaScripts
 
+// Gradle 9 no longer auto-wires `assemble` to build artifacts of bareword-declared
+// configurations (jBallerinaDistribution, ballerinaDistribution, etc. above), unlike
+// Gradle 8.2.1 used on master. Wire it explicitly so `assemble`/`build -x check` still
+// produce the distribution zips.
+assemble.dependsOn packageDistWindows
+
 /* Unpack Dependencies */
 unpackJballerinaTools.dependsOn unpackBallerinaJre
 unpackDevTools.dependsOn unpackJballerinaTools
