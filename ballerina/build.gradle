@@ -300,9 +300,8 @@ task copyOtherRepos(type: Copy) {
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
         }
-        from("${artifactExtractedPath}/cache") {
-            into "repo/cache"
-        }
+        // The module zip ships a prebuilt cache targeting java21; copying it prevents
+        // generateCache from regenerating a java25 cache, so it is regenerated instead.
     }
 
     /* Language Server Extension Artifacts */
