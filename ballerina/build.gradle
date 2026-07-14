@@ -19,8 +19,6 @@ import groovy.json.JsonSlurper
 import org.apache.tools.ant.filters.ReplaceTokens
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.process.ExecOperations
-import org.gradle.jvm.toolchain.JavaLanguageVersion
-import org.gradle.jvm.toolchain.JavaToolchainService
 import javax.inject.Inject
 
 import static groovy.io.FileType.FILES
@@ -30,17 +28,11 @@ abstract class BallerinaExecHelper {
 }
 
 abstract class PatchBallerinaScriptsTask extends DefaultTask {
-    @Inject abstract JavaToolchainService getJavaToolchainService()
     @Input abstract Property<String> getJballerinaToolsBinPath()
     @Input abstract Property<String> getBallerinaRuntimeBinPath()
 
     @TaskAction
     void patch() {
-        def launcher = javaToolchainService.launcherFor { spec ->
-            spec.languageVersion.set(JavaLanguageVersion.of(25))
-        }.get()
-        def java25Home = launcher.executablePath.asFile.parentFile.parentFile.absolutePath
-
         [new File(jballerinaToolsBinPath.get()), new File(ballerinaRuntimeBinPath.get())].each { binDir ->
             if (binDir.exists()) {
                 binDir.eachFile { file ->
@@ -49,10 +41,6 @@ abstract class PatchBallerinaScriptsTask extends DefaultTask {
                         def original = file.text
                         def lines = original.split('\n').toList()
                         lines = lines.collect { it.replace('--sun-misc-unsafe-memory-access=allow', '').trim() }.findAll { !it.isEmpty() }
-                        def shebangIdx = lines.findIndexOf { it.startsWith('#!') }
-                        if (shebangIdx >= 0 && !lines.any { it.startsWith('export JAVA_HOME=') }) {
-                            lines.add(shebangIdx + 1, "export JAVA_HOME='${java25Home}'")
-                        }
                         def patched = lines.join('\n') + '\n'
                         if (patched != original) { file.text = patched }
                     }
