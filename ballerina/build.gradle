@@ -40,7 +40,16 @@ abstract class PatchBallerinaScriptsTask extends DefaultTask {
                     if (!file.name.endsWith('.bat') && !file.name.endsWith('.cmd')) {
                         def original = file.text
                         def lines = original.split('\n').toList()
-                        lines = lines.collect { it.replace('--sun-misc-unsafe-memory-access=allow', '').trim() }.findAll { !it.isEmpty() }
+                        // bal run/test executes the compiled program in a separate child JVM
+                        // (spawned in Java code), which does not inherit this script's own JVM
+                        // args or JAVA_OPTS. JAVA_TOOL_OPTIONS is the one channel the JVM itself
+                        // reads automatically in every process it launches, so it is the only way
+                        // to suppress Java 25's JEP 500 sun.misc.Unsafe/JNI native-access warnings
+                        // for the actual executed program, not just the compiler's own JVM.
+                        def shebangIdx = lines.findIndexOf { it.startsWith('#!') }
+                        if (shebangIdx >= 0 && !lines.any { it.contains('--sun-misc-unsafe-memory-access=allow') && it.contains('--enable-native-access=ALL-UNNAMED') }) {
+                            lines.add(shebangIdx + 1, 'export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS --sun-misc-unsafe-memory-access=allow --enable-native-access=ALL-UNNAMED"')
+                        }
                         def patched = lines.join('\n') + '\n'
                         if (patched != original) { file.text = patched }
                     }
@@ -1165,7 +1174,7 @@ task testExamples() {
             lines.each {
                 str = it.trim()
                 if (str != "Compiling source" && str != "${balName}.bal" && str != "Running executable" && str != ""
-                        && str != "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8" && !str.startsWith('HINT')) {
+                        && !str.startsWith('Picked up JAVA_TOOL_OPTIONS:') && !str.startsWith('HINT')) {
                     bbeOutput.add(str)
                 }
             }
