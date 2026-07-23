@@ -52,7 +52,7 @@ import static org.ballerina.projectapi.TestUtils.executePackCommand;
  * Tests to verify that {@code bal pack}, {@code bal build} and {@code bal test} recover from a
  * version conflict across workspace dependencies by retrying the build in soft locking mode.
  */
-public class WorkSpaceResolutionRetryTest {
+public class WorkspaceResolutionRetryTest {
 
     private static final String RESOURCE_DIR = "workspace-resolution-retry";
     private static final String DEPENDENCIES_TEMPLATE_TOML = "Dependencies-template.toml";
