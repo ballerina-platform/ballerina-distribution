@@ -73,6 +73,39 @@
             </snapshots>
         </repository>
         <repository>
+            <id>wso2-nexus3-releases</id>
+            <name>Nexus3 Releases Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>wso2-nexus3-public</id>
+            <name>Nexus3 Public Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>wso2-nexus3-snapshots</id>
+            <name>Nexus3 Snapshots Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>wso2.releases</id>
             <name>WSO2 Releases Repository</name>
             <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
