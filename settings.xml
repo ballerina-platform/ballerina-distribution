@@ -44,5 +44,20 @@
       <username>${env.packageUser}</username>
       <password>${env.packagePAT}</password>
     </server>
+    <server>
+      <id>wso2-nexus3-releases</id>
+      <username>${env.nexus3User}</username>
+      <password>${env.nexus3Password}</password>
+    </server>
+    <server>
+      <id>wso2-nexus3-public</id>
+      <username>${env.nexus3User}</username>
+      <password>${env.nexus3Password}</password>
+    </server>
+    <server>
+      <id>wso2-nexus3-snapshots</id>
+      <username>${env.nexus3User}</username>
+      <password>${env.nexus3Password}</password>
+    </server>
   </servers>
 </settings>
