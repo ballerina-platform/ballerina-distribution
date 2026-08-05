@@ -50,8 +50,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
           packageUser: ${{ secrets.BALLERINA_BOT_USERNAME }}
           packagePAT: ${{ secrets.BALLERINA_BOT_TOKEN }}
-          nexus3User: ${{ secrets.NEXUS_USERNAME }}
-          nexus3Password: ${{ secrets.NEXUS_PASSWORD }}
+          nexus3User: ${{ secrets.NEXUS3_USERNAME }}
+          nexus3Password: ${{ secrets.NEXUS3_PASSWORD }}
           devCentralToken: ${{ secrets.BALLERINA_DEV_CENTRAL_ACCESS_TOKEN }}
           RELEASE_TAG: "v${{ steps.version-set.outputs.taggedVersion }}"
       - name: Create release
