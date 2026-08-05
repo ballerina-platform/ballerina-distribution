@@ -20,6 +20,6 @@ jobs:
         env:
           packagePAT: ${{ secrets.READ_PACKAGE_PAT }}
           packageUser: ${{ secrets.PUBLISH_USER }}
-          nexus3User: ${{ secrets.NEXUS_USERNAME }}
-          nexus3Password: ${{ secrets.NEXUS_PASSWORD }}
+          nexus3User: ${{ secrets.NEXUS3_USERNAME }}
+          nexus3Password: ${{ secrets.NEXUS3_PASSWORD }}
         run: mvn -s settings.xml clean install -B -V
