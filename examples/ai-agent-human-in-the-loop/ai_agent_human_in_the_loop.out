@@ -1,0 +1,12 @@
+$ bal run ai_agent_human_in_the_loop.bal
+User (or 'exit' to quit): Transfer $200 from ACC-1001 to ACC-1002.
+Approval needed for 'transfer' with {"fromAccount":"ACC-1001","toAccount":"ACC-1002","amount":200}
+Approve? (yes/no): yes
+Agent: Done. I've transferred $200 from ACC-1001 to ACC-1002.
+User (or 'exit' to quit): What's the balance of account ACC-1001 now?
+Agent: Account ACC-1001 (Alice) now has a balance of 800.
+User (or 'exit' to quit): Transfer another $500 from ACC-1001 to ACC-1002.
+Approval needed for 'transfer' with {"fromAccount":"ACC-1001","toAccount":"ACC-1002","amount":500}
+Approve? (yes/no): no
+Agent: I wasn't able to make that transfer because it wasn't authorized by the reviewer. Account ACC-1001 is unchanged at 800.
+User (or 'exit' to quit): exit
