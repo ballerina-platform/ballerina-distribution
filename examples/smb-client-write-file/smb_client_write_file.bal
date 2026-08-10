@@ -31,4 +31,7 @@ public function main() returns error? {
     // write the other content types.
     DailySummary summary = {date: "2026-08-10", processed: 42};
     check fileClient->putJson("/reports/summary.json", summary);
+
+    // Releases the connection to the share.
+    check fileClient->close();
 }
