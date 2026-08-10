@@ -4799,8 +4799,8 @@
         "needCentral": true
       },
       {
-        "name": "Send file",
-        "url": "smb-service-send-file",
+        "name": "Caller object",
+        "url": "smb-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -4815,8 +4815,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "smb-client-receive-file",
+        "name": "Write file",
+        "url": "smb-client-write-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -4824,8 +4824,8 @@
         "needCentral": true
       },
       {
-        "name": "Send file",
-        "url": "smb-client-send-file",
+        "name": "Read file",
+        "url": "smb-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

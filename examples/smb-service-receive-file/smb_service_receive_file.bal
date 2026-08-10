@@ -1,9 +1,8 @@
-import ballerina/io;
+import ballerina/log;
 import ballerina/smb;
 
 // Creates the listener with the connection parameters, the share to watch, and
-// the polling interval in seconds. The listener only picks up the files whose
-// names match the given pattern.
+// the polling interval in seconds.
 listener smb:Listener fileListener = check new ({
     host: "smb.example.com",
     share: "reports",
@@ -14,34 +13,42 @@ listener smb:Listener fileListener = check new ({
             domain: "WORKGROUP"
         }
     },
-    pollingInterval: 10,
-    fileNamePattern: "(.*).txt"
+    pollingInterval: 10
 });
+
+// The type the JSON content of each file is bound to.
+type SalesReport record {|
+    string storeId;
+    string saleDate;
+    decimal total;
+|};
 
 // One or many services can listen to the SMB listener. Each service watches the
 // directory given in `path`, which is relative to the share.
 @smb:ServiceConfig {
-    path: "/home/in"
+    path: "/sales/new"
 }
-service "logCollector" on fileListener {
+service "salesProcessor" on fileListener {
 
-    // The listener picks the handler by file extension and binds the content to
-    // the first parameter, so the handler never reads the file itself.
-    // `onFileText` receives `.txt`, `.log`, and `.md` files as a string.
-    // The file is moved to `/home/processed` once the handler returns.
+    // The listener picks the handler by file extension and binds the file
+    // content to the first parameter, so the handler never reads the file
+    // itself. `onFileJson` handles every `.json` file, and the content is bound
+    // to `SalesReport`. The other handlers are `onFileText`, `onFileXml`,
+    // `onFileCsv`, and `onFile` for any remaining extension.
+    // The file is moved to `/sales/processed` once the handler returns.
     @smb:FunctionConfig {
         afterProcess: {
-            moveTo: "/home/processed"
+            moveTo: "/sales/processed"
         }
     }
-    remote function onFileText(string content, smb:FileInfo fileInfo) returns error? {
-        // Writes the received content to a file in the local file system.
-        check io:fileWriteString(string `./local/${fileInfo.name}`, content);
+    remote function onFileJson(SalesReport report, smb:FileInfo fileInfo) returns error? {
+        log:printInfo("Processed a sales report", file = fileInfo.name,
+                storeId = report.storeId, total = report.total);
     }
 
     // `onError` is called when a file cannot be read, cannot be bound to the
     // handler parameter, or the handler itself fails.
     remote function onError(error err) returns error? {
-        io:println("Failed to process the file: ", err.message());
+        log:printError("Failed to process the file", err);
     }
 }
