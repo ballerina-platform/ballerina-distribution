@@ -4962,6 +4962,58 @@
     ]
   },
   {
+    "title": "XLSX data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Parse Excel file to records",
+        "url": "xlsx-to-records",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the xlsx module from Ballerina Central",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Write records to Excel file",
+        "url": "records-to-xlsx",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the xlsx module from Ballerina Central",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Work with Excel tables",
+        "url": "xlsx-tables",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the xlsx module from Ballerina Central",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Excel workbooks in memory",
+        "url": "xlsx-workbook-in-memory",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the xlsx module from Ballerina Central",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Parse Excel with custom configurations",
+        "url": "xlsx-user-configurations",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the xlsx module from Ballerina Central",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",

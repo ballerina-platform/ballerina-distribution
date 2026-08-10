@@ -1,0 +1,2 @@
+$ bal run xlsx_user_configurations.bal
+[{"name":"Alice","salary":4500.5},{"name":"Bob","salary":3800.0}]
