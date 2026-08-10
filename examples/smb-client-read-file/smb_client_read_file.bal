@@ -32,4 +32,7 @@ public function main() returns error? {
     // `getXml`, `getCsv`, and `getBytes` read the other content types.
     DailySummary daily = check fileClient->getJson("/reports/summary.json");
     io:println(daily.processed);
+
+    // Releases the connection to the share.
+    check fileClient->close();
 }
