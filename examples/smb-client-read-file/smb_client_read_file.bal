@@ -1,6 +1,11 @@
 import ballerina/io;
 import ballerina/smb;
 
+type DailySummary record {|
+    string date;
+    int processed;
+|};
+
 public function main() returns error? {
     // Creates the client with the connection parameters: the host, the share to
     // work on, and the required credentials. An error is returned in a failure.
@@ -17,11 +22,14 @@ public function main() returns error? {
         }
     });
 
-    // Reads the local file that is sent to the share.
-    byte[] content = check io:fileReadBytes("./local/logFile.txt");
+    // Reads the file as a string. An error is returned when the file is missing
+    // or cannot be read.
+    string summary = check fileClient->getText("/reports/summary.txt");
+    io:println(summary);
 
-    // Writes the content to the given location, replacing the file when it
-    // already exists. Every path is relative to the configured share. Pass
-    // `smb:APPEND` as the last argument to add to the existing content instead.
-    check fileClient->putBytes("/server/logFile.txt", content);
+    // Reads JSON straight into a record. The client binds the content to the
+    // type expected at the call site, so no conversion step is needed.
+    // `getXml`, `getCsv`, and `getBytes` read the other content types.
+    DailySummary daily = check fileClient->getJson("/reports/summary.json");
+    io:println(daily.processed);
 }
