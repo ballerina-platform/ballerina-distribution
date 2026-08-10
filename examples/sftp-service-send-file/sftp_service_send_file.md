@@ -1,6 +1,6 @@
 # SFTP service - Send file
 
-The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. Once connected, service starts receiving events every time a file is deleted or added to the server. To take action for these events `ftp:Caller` is used. The `ftp:Caller` can be specified as a parameter of `onFileChange` remote method. The `ftp:Caller` allows interacting with the server via `get`, `append`, `delete`, etc remote methods. Use this to listen to file changes occurring in a remote file system and take action for those changes.
+The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. The directory each service watches is given by the `@ftp:ServiceConfig` annotation. Once connected, the listener polls that directory and dispatches every file it finds to the service. To write back to the server while handling a file, an `ftp:Caller` is declared as a parameter of the handler. The `ftp:Caller` is the connection the listener already holds, and it writes with `putText`, `putJson`, `putXml`, `putCsv`, and `putBytes`, and also deletes and renames files. Use this to produce a result on the remote file system for each file that arrives.
 
 ::: code sftp_service_send_file.bal :::
 
@@ -11,7 +11,7 @@ Run the program by executing the following command. Each newly added file in the
 
 ::: out sftp_service_send_file.out :::
 
->**Tip:** Run the SFTP client given in the [SFTP client - Send file](/learn/by-example/sftp-client-send-file) example to put a file in the SFTP server.
+>**Tip:** Place a `.txt` file in `/home/in` on the SFTP server to trigger the service. The [SFTP client - Send file](/learn/by-example/sftp-client-send-file) example writes to `/server`, so point it at `/home/in` to use it here.
 
 ## Related links
 - [`ftp:Caller` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Caller)

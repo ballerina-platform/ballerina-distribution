@@ -1,6 +1,6 @@
 # SFTP client - Send file
 
-The `ftp:Client` connects to a given SFTP server, and then sends and receives files as byte streams. A `ftp:Client` with SFTP protocol is created by giving the protocol, host-name, required credentials and the private key. Once connected, `put` method is used to write files as byte streams to the SFTP server. Use this to transfer files from a local file system to a remote file system.
+The `ftp:Client` connects to a given SFTP server, and then reads and writes files on it. A `ftp:Client` with SFTP protocol is created by giving the protocol, host-name, required credentials and the private key. Once connected, `putText`, `putJson`, `putXml`, `putCsv`, and `putBytes` write a value of the matching type to the SFTP server, so the content does not have to be serialized first. Use this to transfer files from a local file system to a remote file system.
 
 ::: code sftp_client_send_file.bal :::
 
@@ -12,5 +12,5 @@ Run the program by executing the following command. The newly-added file will ap
 ::: out sftp_client_send_file.out :::
 
 ## Related links
-- [`ftp:Client->put` method  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Client#put)
+- [`ftp:Client->putText` method - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Client#putText)
 - [SFTP client - Specification](/spec/ftp/#322-secure-client)

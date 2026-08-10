@@ -2,8 +2,7 @@ import ballerina/ftp;
 import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The listener listens to the files
-// with the given file name pattern located in the specified path.
+// configuration.
 listener ftp:Listener fileListener = check new ({
     host: "ftp.example.com",
     auth: {
@@ -11,22 +10,25 @@ listener ftp:Listener fileListener = check new ({
             username: "user1",
             password: "pass456"
         }
-    },
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
+    }
 });
 
-// One or many services can listen to the FTP listener for the periodically-polled
-// file related events.
+// One or many services can listen to the FTP listener. Each service watches the
+// directory given in `path`, and only the files whose names match
+// `fileNamePattern`.
+@ftp:ServiceConfig {
+    path: "/home/in",
+    fileNamePattern: "(.*).txt"
+}
 service on fileListener {
 
-    // When a file event is successfully received, the `onFileChange` method is called.
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            // The `ftp:Caller` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.pathDecoded, fileStream);
-            check fileStream.close();
-        }
+    // Declaring an `ftp:Caller` parameter hands the handler the connection the
+    // listener already holds, so it can write to the server while processing a
+    // file. The `ftp:Caller` writes with `putText`, `putJson`, `putXml`,
+    // `putCsv`, and `putBytes`, and also deletes and renames files.
+    remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+        // Appends the content of a local file to the file that arrived.
+        string footer = check io:fileReadString("./local/appendFile.txt");
+        check caller->putText(fileInfo.path, footer, ftp:APPEND);
     }
 }
