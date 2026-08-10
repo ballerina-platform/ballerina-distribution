@@ -23,11 +23,11 @@ public function main() returns error? {
         }
     });
 
-    // Add a new file to the given file location. In error cases,
-    // an error is returned. The local file is provided as a stream of
-    // `io:Block` in which 1024 is the block size.
-    stream<io:Block, io:Error?> fileStream
-        = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    check fileClient->put("/server/logFile.txt", fileStream);
-    check fileStream.close();
+    // Reads the local file that is sent to the server.
+    string content = check io:fileReadString("./local/logFile.txt");
+
+    // Writes the content to the given file location. In error cases, an error
+    // is returned. `putBytes`, `putJson`, `putXml`, and `putCsv` write the
+    // other content types, and each takes an `ftp:APPEND` option.
+    check fileClient->putText("/server/logFile.txt", content);
 }
