@@ -1,0 +1,3 @@
+$ bal run xlsx_workbook_in_memory.bal
+["Inventory"]
+10

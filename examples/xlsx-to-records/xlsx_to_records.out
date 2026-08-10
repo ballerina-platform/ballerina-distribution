@@ -1,0 +1,2 @@
+$ bal run xlsx_to_records.bal
+[{"name":"Alice","team":"Engineering","salary":4500.0},{"name":"Bob","team":"Sales","salary":3800.0}]

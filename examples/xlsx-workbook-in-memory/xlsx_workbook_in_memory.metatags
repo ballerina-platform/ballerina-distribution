@@ -1,0 +1,2 @@
+description: This BBE demonstrates building an Excel workbook in memory, serializing it to bytes, and editing a workbook loaded from bytes.
+keywords: ballerina, ballerina by example, bbe, xlsx, excel, workbook, byte array, toBytes, fromBytes, in-memory
