@@ -73,6 +73,39 @@
             </snapshots>
         </repository>
         <repository>
+            <id>wso2-nexus3-releases</id>
+            <name>Nexus3 Releases Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>wso2-nexus3-public</id>
+            <name>Nexus3 Public Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>wso2-nexus3-snapshots</id>
+            <name>Nexus3 Snapshots Repository</name>
+            <url>https://maven3-upgrade.wso2.org/nexus/repository/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>wso2.releases</id>
             <name>WSO2 Releases Repository</name>
             <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
@@ -301,13 +334,13 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <ballerina.version>1.2.67</ballerina.version>
+        <ballerina.version>1.2.68</ballerina.version>
         <ballerina.jre.artifacts.version>2.0.1</ballerina.jre.artifacts.version>
         <project.scm.id>ballerina-scm-server</project.scm.id>
-        <docker.version>1.2.67</docker.version>
-        <kubernetes.version>1.2.67</kubernetes.version>
-        <awslambda.version>1.2.67</awslambda.version>
-        <azurefunctions.version>1.2.67</azurefunctions.version>
+        <docker.version>1.2.68</docker.version>
+        <kubernetes.version>1.2.68</kubernetes.version>
+        <awslambda.version>1.2.68</awslambda.version>
+        <azurefunctions.version>1.2.68</azurefunctions.version>
         <picocli.version>4.0.1</picocli.version>
         <ballerina.command.version>1.3.1</ballerina.command.version>
         <ballerina.jre.version>0.9.1</ballerina.jre.version>

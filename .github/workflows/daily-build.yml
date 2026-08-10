@@ -31,6 +31,8 @@ jobs:
         env:
           packageUser: ${{ github.actor }}
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          nexus3User: ${{ secrets.NEXUS3_USERNAME }}
+          nexus3Password: ${{ secrets.NEXUS3_PASSWORD }}
           TEST_MODE_ACTIVE: true
       - name: Create linux-deb
         id: run_installers_deb
