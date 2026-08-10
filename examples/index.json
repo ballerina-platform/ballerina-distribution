@@ -4692,8 +4692,8 @@
         "needCentral": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-service-send-file",
+        "name": "Caller object",
+        "url": "ftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4746,8 +4746,8 @@
         "needCentral": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-service-send-file",
+        "name": "Caller object",
+        "url": "sftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
