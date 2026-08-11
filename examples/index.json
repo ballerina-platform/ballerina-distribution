@@ -4785,6 +4785,56 @@
     ]
   },
   {
+    "title": "SMB Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "smb-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Caller object",
+        "url": "smb-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "SMB client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Write file",
+        "url": "smb-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read file",
+        "url": "smb-client-read-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "Database access",
     "column": 3,
     "category": "Network libraries",
