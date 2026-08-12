@@ -28,13 +28,13 @@ listener ftp:Listener fileListener = new ({
 }
 service on fileListener {
 
-    // The listener selects the handler by file extension and binds the file
-    // content to the first parameter, so the handler never reads the file
-    // itself. `onFileText` receives the file as a string, while `onFileJson`,
-    // `onFileXml`, and `onFileCsv` bind the other content types, and `onFile`
-    // handles any remaining extension.
-    remote function onFileText(string content, ftp:FileInfo fileInfo) returns error? {
-        // Write the content to a file.
-        check io:fileWriteString(string `./local/${fileInfo.name}`, content);
+    // Declaring an `ftp:Caller` parameter hands the handler the connection the
+    // listener already holds, so it can write to the server while processing a
+    // file. The `ftp:Caller` writes with `putText`, `putJson`, `putXml`,
+    // `putCsv`, and `putBytes`, and also deletes and renames files.
+    remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+        // Appends the content of a local file to the file that arrived.
+        string footer = check io:fileReadString("./local/appendFile.txt");
+        check caller->putText(fileInfo.path, footer, ftp:APPEND);
     }
 }

@@ -15,12 +15,12 @@ public function main() returns error? {
         }
     });
 
-    // Reads a file from an FTP server for a given file path. In error cases,
-    // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
+    // Reads the file as a string. In error cases, an error is returned.
+    // `getBytes`, `getJson`, `getXml`, and `getCsv` read the other content
+    // types, and `getJson`, `getXml`, and `getCsv` bind the content to the type
+    // expected at the call site.
+    string content = check fileClient->getText("/server/logFile.txt");
 
     // Write the content to a file.
-    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
-    // Closes the file stream to finish the `get` operation.
-    check fileStream.close();
+    check io:fileWriteString("./local/newLogFile.txt", content);
 }
