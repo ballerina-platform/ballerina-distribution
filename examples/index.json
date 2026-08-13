@@ -4962,6 +4962,45 @@
     ]
   },
   {
+    "title": "XLSX data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Parse Excel file to records",
+        "url": "xlsx-to-records",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Write records to Excel file",
+        "url": "records-to-xlsx",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Work with Excel tables",
+        "url": "xlsx-tables",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Parse Excel file to records - advanced",
+        "url": "xlsx-to-records-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
