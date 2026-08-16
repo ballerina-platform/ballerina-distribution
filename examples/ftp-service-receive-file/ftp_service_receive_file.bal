@@ -28,6 +28,17 @@ service "shipmentNoteArchiver" on fileListener {
     // itself. `onFileText` receives the file as a string, while `onFileJson`,
     // `onFileXml`, and `onFileCsv` bind the other content types, and `onFile`
     // handles any remaining extension.
+    // The file is moved once the handler returns, so the handler is left with
+    // no file management to do. `afterProcess` and `afterError` also accept
+    // `ftp:DELETE` to remove the file instead of moving it.
+    @ftp:FunctionConfig {
+        afterProcess: {
+            moveTo: "/home/processed"
+        },
+        afterError: {
+            moveTo: "/home/failed"
+        }
+    }
     remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
         // Archives the note on the local file system.
         check io:fileWriteString(string `./archive/${fileInfo.name}`, note);
