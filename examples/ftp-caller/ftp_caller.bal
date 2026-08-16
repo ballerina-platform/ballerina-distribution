@@ -1,5 +1,5 @@
 import ballerina/ftp;
-import ballerina/log;
+import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration.
@@ -26,17 +26,25 @@ service "shipmentNoteAcknowledger" on fileListener {
     // listener already holds, so it can write to the server while processing a
     // file. The `ftp:Caller` writes with `putText`, `putJson`, `putXml`,
     // `putCsv`, and `putBytes`, and also deletes and renames files.
+    // The listener dispatches every file it finds on each poll, so the handled
+    // file is moved away to stop it from being picked up again.
+    @ftp:FunctionConfig {
+        afterProcess: {
+            moveTo: "/home/processed"
+        }
+    }
     remote function onFileText(string note, ftp:FileInfo fileInfo,
             ftp:Caller caller) returns error? {
         // Stamps the note as received by appending to it on the server.
+        // `pathDecoded` is the path on the server; `path` is the full URI.
         string receipt = string `${"\n"}Received ${fileInfo.name} (${fileInfo.size} bytes)`;
-        check caller->putText(fileInfo.path, receipt, ftp:APPEND);
-        log:printInfo("Acknowledged a shipment note", file = fileInfo.name);
+        check caller->putText(fileInfo.pathDecoded, receipt, ftp:APPEND);
+        io:println(string `Acknowledged ${fileInfo.name}`);
     }
 
     // `onError` is called when a file cannot be read, cannot be bound to the
     // handler parameter, or the handler itself fails.
     remote function onError(error err) returns error? {
-        log:printError("Failed to acknowledge the shipment note", err);
+        io:println("Failed to acknowledge the shipment note: ", err.message());
     }
 }

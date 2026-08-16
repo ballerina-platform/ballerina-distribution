@@ -8,7 +8,7 @@ The `ftp:Client` connects to a given SFTP server, and then reads and writes file
 - Start an [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
 - Run the SFTP client given in the [SFTP client - Write file](/learn/by-example/sftp-client-write-file) example to put a file in the SFTP server.
 
-Run the program by executing the following command. The newly-added file will appear in the local directory.
+Run the program by executing the following command. The content is printed, and the newly-added file will appear in the local directory.
 
 ::: out sftp_client_read_file.out :::
 

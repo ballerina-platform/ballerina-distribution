@@ -21,6 +21,8 @@ public function main() returns error? {
     // expected at the call site.
     string content = check fileClient->getText("/server/logFile.txt");
 
+    io:println(content);
+
     // Write the content to a file.
     check io:fileWriteString("./local/newLogFile.txt", content);
 }
