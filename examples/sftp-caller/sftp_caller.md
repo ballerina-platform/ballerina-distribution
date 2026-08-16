@@ -5,13 +5,13 @@ The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. The di
 ::: code sftp_caller.bal :::
 
 ## Prerequisites
-- Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
+- Start an [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
 
-Run the program by executing the following command. The content of the appending file is added to each new file that arrives in the watched directory.
+Run the program by executing the following command. A receipt line is appended to each new shipment note in the watched directory.
 
 ::: out sftp_caller.out :::
 
->**Tip:** Place a `.txt` file in `/home/in` on the SFTP server to trigger the service. The [SFTP client - Send file](/learn/by-example/sftp-client-send-file) example writes to `/server`, so point it at `/home/in` to use it here.
+>**Tip:** Place a `.txt` file in `/home/in` on the SFTP server to trigger the service.
 
 ## Related links
 - [`ftp:Caller` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Caller)

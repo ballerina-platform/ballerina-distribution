@@ -4216,7 +4216,7 @@
     ]
   },
   {
-    "title": "FTP Service",
+    "title": "FTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4266,7 +4266,7 @@
     ]
   },
   {
-    "title": "SFTP Service",
+    "title": "SFTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4316,7 +4316,7 @@
     ]
   },
   {
-    "title": "SMB Service",
+    "title": "SMB service",
     "column": 3,
     "category": "Network libraries",
     "samples": [

@@ -1,9 +1,10 @@
 import ballerina/ftp;
 import ballerina/io;
+import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration.
-listener ftp:Listener fileListener = new ({
+listener ftp:Listener fileListener = check new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {
@@ -26,15 +27,23 @@ listener ftp:Listener fileListener = new ({
     path: "/home/in",
     fileNamePattern: "(.*).txt"
 }
-service on fileListener {
+service "shipmentNoteArchiver" on fileListener {
 
     // The listener selects the handler by file extension and binds the file
     // content to the first parameter, so the handler never reads the file
     // itself. `onFileText` receives the file as a string, while `onFileJson`,
     // `onFileXml`, and `onFileCsv` bind the other content types, and `onFile`
     // handles any remaining extension.
-    remote function onFileText(string content, ftp:FileInfo fileInfo) returns error? {
-        // Write the content to a file.
-        check io:fileWriteString(string `./local/${fileInfo.name}`, content);
+    remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
+        // Archives the note on the local file system.
+        check io:fileWriteString(string `./archive/${fileInfo.name}`, note);
+        log:printInfo("Archived a shipment note", file = fileInfo.name,
+                size = fileInfo.size);
+    }
+
+    // `onError` is called when a file cannot be read, cannot be bound to the
+    // handler parameter, or the handler itself fails.
+    remote function onError(error err) returns error? {
+        log:printError("Failed to archive the shipment note", err);
     }
 }

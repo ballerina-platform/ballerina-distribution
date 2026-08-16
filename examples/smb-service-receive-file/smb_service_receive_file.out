@@ -1,1 +1,2 @@
 $ bal run smb_service_receive_file.bal
+time=2026-08-16T10:15:03.842+05:30 level=INFO module="" message="Processed a sales report" file="store-14.json" storeId="14" total=1820.50

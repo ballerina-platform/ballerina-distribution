@@ -5,7 +5,7 @@ The `ftp:Client` connects to a given SFTP server, and then reads and writes file
 ::: code sftp_client_send_file.bal :::
 
 ## Prerequisites
-- Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
+- Start an [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
 
 Run the program by executing the following command. The newly-added file will appear in the SFTP server.
 
