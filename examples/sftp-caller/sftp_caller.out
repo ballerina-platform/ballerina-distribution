@@ -1,2 +1,2 @@
 $ bal run sftp_caller.bal
-time=2026-08-16T10:15:03.842+05:30 level=INFO module="" message="Acknowledged a shipment note" file="shipment-1042.txt"
+Acknowledged shipment-1042.txt

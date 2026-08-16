@@ -1,6 +1,5 @@
 import ballerina/ftp;
 import ballerina/io;
-import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration.
@@ -48,13 +47,12 @@ service "shipmentNoteArchiver" on fileListener {
     remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
         // Archives the note on the local file system.
         check io:fileWriteString(string `./archive/${fileInfo.name}`, note);
-        log:printInfo("Archived a shipment note", file = fileInfo.name,
-                size = fileInfo.size);
+        io:println(string `Archived ${fileInfo.name} (${fileInfo.size} bytes)`);
     }
 
     // `onError` is called when a file cannot be read, cannot be bound to the
     // handler parameter, or the handler itself fails.
     remote function onError(error err) returns error? {
-        log:printError("Failed to archive the shipment note", err);
+        io:println("Failed to archive the shipment note: ", err.message());
     }
 }
