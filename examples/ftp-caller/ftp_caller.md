@@ -5,14 +5,14 @@ The `ftp:Service` connects to a given FTP server via the `ftp:Listener`. The dir
 ::: code ftp_caller.bal :::
 
 ## Prerequisites
-- Start a [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
+- Start an [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
 
-Run the program by executing the following command. The content of the appending file is added to each new file that arrives in the watched directory.
+Run the program by executing the following command. A receipt line is appended to each new shipment note in the watched directory.
 
 ::: out ftp_caller.out :::
 
->**Tip:** Place a `.txt` file in `/home/in` on the FTP server to trigger the service. The [FTP client - Send file](/learn/by-example/ftp-client-send-file) example writes to `/server`, so point it at `/home/in` to use it here.
+>**Tip:** Place a `.txt` file in `/home/in` on the FTP server to trigger the service.
 
 ## Related links
-- [`ftp:Caller` client object  - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Caller)
+- [`ftp:Caller` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Caller)
 - [`ftp:Caller` functions - Specification](/spec/ftp/#52-functions)

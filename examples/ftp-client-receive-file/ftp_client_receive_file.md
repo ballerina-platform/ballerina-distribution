@@ -5,7 +5,7 @@ The `ftp:Client` connects to a given FTP server, and then reads and writes files
 ::: code ftp_client_receive_file.bal :::
 
 ## Prerequisites
-- Start a [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
+- Start an [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance.
 - Run the FTP client given in the [FTP client - Send file](/learn/by-example/ftp-client-send-file) example to put a file in the FTP server.
 
 Run the program by executing the following command. The newly-added file will appear in the local directory.

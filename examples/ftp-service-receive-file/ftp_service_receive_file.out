@@ -1,1 +1,2 @@
-$ bal run ftp_service_read.bal
+$ bal run ftp_service_receive_file.bal
+time=2026-08-16T10:15:03.842+05:30 level=INFO module="" message="Archived a shipment note" file="shipment-1042.txt" size=248
