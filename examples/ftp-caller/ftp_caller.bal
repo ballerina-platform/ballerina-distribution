@@ -27,10 +27,14 @@ service "shipmentNoteAcknowledger" on fileListener {
     // file. The `ftp:Caller` writes with `putText`, `putJson`, `putXml`,
     // `putCsv`, and `putBytes`, and also deletes and renames files.
     // The listener dispatches every file it finds on each poll, so the handled
-    // file is moved away to stop it from being picked up again.
+    // file is moved away to stop it from being picked up again, whether the
+    // handler succeeded or failed.
     @ftp:FunctionConfig {
         afterProcess: {
             moveTo: "/home/processed"
+        },
+        afterError: {
+            moveTo: "/home/failed"
         }
     }
     remote function onFileText(string note, ftp:FileInfo fileInfo,
