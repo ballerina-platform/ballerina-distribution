@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerina/xlsx;
 
+// Represents the salary details of an employee.
 type Employee record {|
     // This annotation is used to map the `Employee Name` column header
     // in the sheet to the `name` field of the record.

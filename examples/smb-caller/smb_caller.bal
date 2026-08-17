@@ -1,3 +1,4 @@
+import ballerina/io;
 import ballerina/smb;
 
 // Creates the listener with the connection parameters, the share to watch, and
@@ -38,5 +39,12 @@ service "salesAcknowledger" on fileListener {
 
         // Writes an acknowledgement back to the share.
         check caller->putText(string `/sales/ack/${fileInfo.name}.txt`, receipt);
+        io:println(string `Acknowledged ${fileInfo.name}`);
+    }
+
+    // `onError` is called when a file cannot be read, cannot be bound to the
+    // handler parameter, or the handler itself fails.
+    remote function onError(error err) returns error? {
+        io:println("Failed to acknowledge the sales report: ", err.message());
     }
 }

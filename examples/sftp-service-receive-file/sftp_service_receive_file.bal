@@ -3,7 +3,7 @@ import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration.
-listener ftp:Listener fileListener = new ({
+listener ftp:Listener fileListener = check new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {
@@ -26,15 +26,33 @@ listener ftp:Listener fileListener = new ({
     path: "/home/in",
     fileNamePattern: "(.*).txt"
 }
-service on fileListener {
+service "shipmentNoteArchiver" on fileListener {
 
     // The listener selects the handler by file extension and binds the file
     // content to the first parameter, so the handler never reads the file
     // itself. `onFileText` receives the file as a string, while `onFileJson`,
     // `onFileXml`, and `onFileCsv` bind the other content types, and `onFile`
     // handles any remaining extension.
-    remote function onFileText(string content, ftp:FileInfo fileInfo) returns error? {
-        // Write the content to a file.
-        check io:fileWriteString(string `./local/${fileInfo.name}`, content);
+    // The file is moved once the handler returns, so the handler is left with
+    // no file management to do. `afterProcess` and `afterError` also accept
+    // `ftp:DELETE` to remove the file instead of moving it.
+    @ftp:FunctionConfig {
+        afterProcess: {
+            moveTo: "/home/processed"
+        },
+        afterError: {
+            moveTo: "/home/failed"
+        }
+    }
+    remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
+        // Archives the note on the local file system.
+        check io:fileWriteString(string `./archive/${fileInfo.name}`, note);
+        io:println(string `Archived ${fileInfo.name} (${fileInfo.size} bytes)`);
+    }
+
+    // `onError` is called when a file cannot be read, cannot be bound to the
+    // handler parameter, or the handler itself fails.
+    remote function onError(error err) returns error? {
+        io:println("Failed to archive the shipment note: ", err.message());
     }
 }

@@ -1,4 +1,4 @@
-import ballerina/log;
+import ballerina/io;
 import ballerina/smb;
 
 // Creates the listener with the connection parameters, the share to watch, and
@@ -42,13 +42,12 @@ service "salesProcessor" on fileListener {
         }
     }
     remote function onFileJson(SalesReport report, smb:FileInfo fileInfo) returns error? {
-        log:printInfo("Processed a sales report", file = fileInfo.name,
-                storeId = report.storeId, total = report.total);
+        io:println(string `Processed ${fileInfo.name}: store ${report.storeId} reported ${report.total}`);
     }
 
     // `onError` is called when a file cannot be read, cannot be bound to the
     // handler parameter, or the handler itself fails.
     remote function onError(error err) returns error? {
-        log:printError("Failed to process the file", err);
+        io:println("Failed to process the sales report: ", err.message());
     }
 }
