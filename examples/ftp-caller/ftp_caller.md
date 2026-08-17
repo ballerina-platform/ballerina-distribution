@@ -5,7 +5,7 @@ The `ftp:Service` connects to a given FTP server via the `ftp:Listener`. The dir
 ::: code ftp_caller.bal :::
 
 ## Prerequisites
-- Start an [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance containing the `/home/in` and `/home/processed` directories.
+- Start an [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance containing the `/home/in`, `/home/processed`, and `/home/failed` directories.
 
 Run the program by executing the following command. A receipt line is appended to each new shipment note in the watched directory, and the note is then moved to `/home/processed`.
 

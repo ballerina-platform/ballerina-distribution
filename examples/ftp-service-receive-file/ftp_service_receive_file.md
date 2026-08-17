@@ -6,6 +6,7 @@ The `ftp:Service` connects to a given FTP server via the `ftp:Listener`. An `ftp
 
 ## Prerequisites
 - Start an [FTP server](https://hub.docker.com/r/stilliard/pure-ftpd/) instance containing the `/home/in`, `/home/processed`, and `/home/failed` directories.
+- Create an `archive` directory in the directory you run the program from.
 
 Run the program by executing the following command. Each new shipment note in the watched directory is archived on the local file system and then moved to `/home/processed`.
 
