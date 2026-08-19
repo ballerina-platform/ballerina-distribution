@@ -1,0 +1,2 @@
+description: This BBE demonstrates archiving a directory into a ZIP file with the Ballerina `zip` library.
+keywords: ballerina, ballerina by example, bbe, zip, archive, compress, compression level

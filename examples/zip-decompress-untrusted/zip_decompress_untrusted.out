@@ -1,0 +1,2 @@
+$ bal run zip_decompress_untrusted.bal
+Refused: the archive holds more than the 2 entries allowed

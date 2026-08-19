@@ -1,0 +1,2 @@
+description: This BBE demonstrates listing the entries of a ZIP archive without extracting it.
+keywords: ballerina, ballerina by example, bbe, zip, archive, listEntries, entry metadata
