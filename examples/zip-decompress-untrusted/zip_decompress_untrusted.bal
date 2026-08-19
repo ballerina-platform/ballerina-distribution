@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/zip;
 
-public function main() returns error? {
+public function main() {
     // Cap what the extraction is allowed to cost, so an archive built to
     // exhaust the disk is stopped rather than unpacked. An absent limit is no
     // limit.
@@ -21,8 +21,9 @@ public function main() returns error? {
         io:println("Refused: ", result.message());
     } else if result is zip:UnsafePathError {
         io:println("Refused: an entry writes outside the target directory");
+    } else if result is zip:Error {
+        io:println("Refused: ", result.message());
     } else {
-        check result;
         io:println("Unpacked reports.zip");
     }
 }

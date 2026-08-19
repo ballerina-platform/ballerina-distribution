@@ -8,8 +8,8 @@ public function main() returns error? {
     // content.
     zip:Entry[] entries = check zip:listEntries("reports.zip");
     foreach zip:Entry entry in entries {
-        io:println(entry.name, ": ", entry.uncompressedSize, " -> ",
-                entry.compressedSize, " bytes (", entry.method, ")");
+        io:print(string `${entry.name}: ${entry.uncompressedSize} -> `);
+        io:println(string `${entry.compressedSize} bytes (${entry.method})`);
     }
 
     // Unpack every entry into the target directory, which is created when it is
