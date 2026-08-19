@@ -6,4 +6,9 @@ For more information on the underlying module, see the [`zip` module](https://li
 
 ::: code zip_decompress_untrusted.bal :::
 
+## Prerequisites
+- Run the [Create a ZIP archive](/learn/by-example/zip-compress) example to put `reports.zip` in the current directory. It holds three entries, which is one more than the limits below allow.
+
+Run the program by executing the following command. The extraction is refused, and the error type says why.
+
 ::: out zip_decompress_untrusted.out :::

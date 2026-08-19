@@ -5415,15 +5415,7 @@
         "url": "zip-compress",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      },
-      {
-        "name": "List archive entries",
-        "url": "zip-list-entries",
-        "verifyBuild": true,
-        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": true
@@ -5433,6 +5425,7 @@
         "url": "zip-decompress",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": true
@@ -5442,6 +5435,7 @@
         "url": "zip-decompress-untrusted",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": true

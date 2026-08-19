@@ -1,4 +1,0 @@
-$ bal run zip_list_entries.bal
-reports/: 0 -> 0 bytes (STORE)
-reports/notes.txt: 92 -> 79 bytes (DEFLATE)
-reports/region-totals.csv: 60 -> 57 bytes (DEFLATE)

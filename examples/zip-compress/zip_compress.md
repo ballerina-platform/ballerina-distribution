@@ -6,4 +6,9 @@ For more information on the underlying module, see the [`zip` module](https://li
 
 ::: code zip_compress.bal :::
 
+## Prerequisites
+- Place the files to archive in a `resources/reports` directory. This example ships one holding `region-totals.csv` and `notes.txt`.
+
+Run the program by executing the following command. The `reports.zip` archive appears in the current directory.
+
 ::: out zip_compress.out :::

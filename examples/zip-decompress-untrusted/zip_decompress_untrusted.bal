@@ -1,15 +1,7 @@
-import ballerina/file;
 import ballerina/io;
 import ballerina/zip;
 
 public function main() returns error? {
-    // Stands in for an archive that arrived from outside the system.
-    check file:createDir("uploads");
-    check io:fileWriteString("uploads/q1.csv", "region,total\nEMEA,4820\n");
-    check io:fileWriteString("uploads/q2.csv", "region,total\nEMEA,5310\n");
-    check io:fileWriteString("uploads/q3.csv", "region,total\nEMEA,3915\n");
-    check zip:compress("uploads", "uploaded.zip", {overwrite: true});
-
     // Cap what the extraction is allowed to cost, so an archive built to
     // exhaust the disk is stopped rather than unpacked. An absent limit is no
     // limit.
@@ -20,7 +12,7 @@ public function main() returns error? {
             maxCompressionRatio: 100
         }
     };
-    zip:Error? result = zip:decompress("uploaded.zip", "unpacked", options);
+    zip:Error? result = zip:decompress("reports.zip", "unpacked", options);
 
     // The error type tells a hostile archive from a broken one. An entry whose
     // name would write outside the target directory is refused in the same way,
@@ -31,6 +23,6 @@ public function main() returns error? {
         io:println("Refused: an entry writes outside the target directory");
     } else {
         check result;
-        io:println("Unpacked uploaded.zip");
+        io:println("Unpacked reports.zip");
     }
 }

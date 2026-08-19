@@ -1,12 +1,16 @@
-import ballerina/file;
 import ballerina/io;
 import ballerina/zip;
 
 public function main() returns error? {
-    check file:createDir("reports");
-    check io:fileWriteString("reports/notes.txt",
-            "The regional totals are provisional until the audit closes.");
-    check zip:compress("reports", "reports.zip", {overwrite: true});
+    // Read what the archive holds without unpacking it. The entries come back
+    // in the order they are stored, directories included, each carrying the
+    // sizes, the compression method, the modified time, and the CRC-32 of the
+    // content.
+    zip:Entry[] entries = check zip:listEntries("reports.zip");
+    foreach zip:Entry entry in entries {
+        io:println(entry.name, ": ", entry.uncompressedSize, " -> ",
+                entry.compressedSize, " bytes (", entry.method, ")");
+    }
 
     // Unpack every entry into the target directory, which is created when it is
     // missing. `fileWriteMode` decides what becomes of a file already sitting
@@ -15,6 +19,7 @@ public function main() returns error? {
     zip:DecompressOptions options = {fileWriteMode: zip:REPLACE};
     check zip:decompress("reports.zip", "restored", options);
 
+    // Read one of the unpacked files.
     string notes = check io:fileReadString("restored/reports/notes.txt");
     io:println(notes);
 }
