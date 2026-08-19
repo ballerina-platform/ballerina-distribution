@@ -1,2 +1,2 @@
-description: This example demonstrates receiving file/directory changes that occur in a remote FTP server and using an ftp:Caller to read the contents of the newly added files.
-keywords: ballerina, ballerina by example, bbe, FTP, remote file, listener
+description: This example demonstrates receiving files that arrive on a remote FTP server and binding the text content to the service handler.
+keywords: ballerina, ballerina by example, bbe, FTP, remote file, listener, data binding

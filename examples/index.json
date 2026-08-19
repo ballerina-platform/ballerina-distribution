@@ -4216,7 +4216,7 @@
     ]
   },
   {
-    "title": "FTP Service",
+    "title": "FTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4230,8 +4230,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-service-send-file",
+        "name": "Caller object",
+        "url": "ftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4246,8 +4246,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "ftp-client-receive-file",
+        "name": "Write file",
+        "url": "ftp-client-write-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4255,8 +4255,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-client-send-file",
+        "name": "Read file",
+        "url": "ftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4266,7 +4266,7 @@
     ]
   },
   {
-    "title": "SFTP Service",
+    "title": "SFTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4280,8 +4280,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-service-send-file",
+        "name": "Caller object",
+        "url": "sftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4296,8 +4296,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "sftp-client-receive-file",
+        "name": "Write file",
+        "url": "sftp-client-write-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4305,13 +4305,63 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-client-send-file",
+        "name": "Read file",
+        "url": "sftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SMB service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "smb-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Caller object",
+        "url": "smb-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "SMB client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Write file",
+        "url": "smb-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read file",
+        "url": "smb-client-read-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
       }
     ]
   },
@@ -4832,6 +4882,43 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Zip",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Create a ZIP archive",
+        "url": "zip-compress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Extract a ZIP archive",
+        "url": "zip-decompress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Unpack an untrusted archive",
+        "url": "zip-decompress-untrusted",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
       }
     ]
   },

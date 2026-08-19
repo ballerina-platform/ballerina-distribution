@@ -26,16 +26,15 @@ listener ftp:Listener fileListener = check new ({
     path: "/home/in",
     fileNamePattern: "(.*).txt"
 }
-service "shipmentNoteArchiver" on fileListener {
+service "shipmentNoteAcknowledger" on fileListener {
 
-    // The listener selects the handler by file extension and binds the file
-    // content to the first parameter, so the handler never reads the file
-    // itself. `onFileText` receives the file as a string, while `onFileJson`,
-    // `onFileXml`, and `onFileCsv` bind the other content types, and `onFile`
-    // handles any remaining extension.
-    // The file is moved once the handler returns, so the handler is left with
-    // no file management to do. `afterProcess` and `afterError` also accept
-    // `ftp:DELETE` to remove the file instead of moving it.
+    // Declaring an `ftp:Caller` parameter hands the handler the connection the
+    // listener already holds, so it can write to the server while processing a
+    // file. The `ftp:Caller` writes with `putText`, `putJson`, `putXml`,
+    // `putCsv`, and `putBytes`, and also deletes and renames files.
+    // The listener dispatches every file it finds on each poll, so the handled
+    // file is moved away to stop it from being picked up again, whether the
+    // handler succeeded or failed.
     @ftp:FunctionConfig {
         afterProcess: {
             moveTo: "/home/processed"
@@ -44,15 +43,18 @@ service "shipmentNoteArchiver" on fileListener {
             moveTo: "/home/failed"
         }
     }
-    remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
-        // Archives the note on the local file system.
-        check io:fileWriteString(string `./archive/${fileInfo.name}`, note);
-        io:println(string `Archived ${fileInfo.name} (${fileInfo.size} bytes)`);
+    remote function onFileText(string note, ftp:FileInfo fileInfo,
+            ftp:Caller caller) returns error? {
+        // Stamps the note as received by appending to it on the server.
+        // `pathDecoded` is the path on the server; `path` is the full URI.
+        string receipt = string `${"\n"}Received ${fileInfo.name} (${fileInfo.size} bytes)`;
+        check caller->putText(fileInfo.pathDecoded, receipt, ftp:APPEND);
+        io:println(string `Acknowledged ${fileInfo.name}`);
     }
 
     // `onError` is called when a file cannot be read, cannot be bound to the
     // handler parameter, or the handler itself fails.
     remote function onError(error err) returns error? {
-        io:println("Failed to archive the shipment note: ", err.message());
+        io:println("Failed to acknowledge the shipment note: ", err.message());
     }
 }
