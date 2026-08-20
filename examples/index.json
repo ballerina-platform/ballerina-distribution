@@ -5262,6 +5262,22 @@
         "disableVerificationReason": "Includes generated code",
         "isLearnByExample": false,
         "needCentral": false
+      },
+      {
+        "name": "Read EDI envelope headers",
+        "url": "edi-envelope-headers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Parse an EDI interchange",
+        "url": "edi-interchange-parsing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": false,
+        "needCentral": false
       }
     ]
   },

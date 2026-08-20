@@ -1,0 +1,2 @@
+description: This BBE demonstrates parsing a full EDI interchange into its envelope hierarchy with fail-safe transaction bodies, using the Ballerina `edi` library.
+keywords: ballerina, ballerina by example, bbe, edi, edifact, interchange, envelope, transaction, fail-safe

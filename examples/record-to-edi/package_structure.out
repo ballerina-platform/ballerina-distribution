@@ -10,4 +10,4 @@
     │       └── tests
     │           └── lib_test.bal
     └── resources
-        └── simple_order_schema.json
+        └── schema.json

@@ -1,0 +1,4 @@
+$ bal run edi_interchange_parsing.bal
+Interchange from SUPERMART
+  message 0001: order PO20001, 2 items
+  message 0002: quarantined
