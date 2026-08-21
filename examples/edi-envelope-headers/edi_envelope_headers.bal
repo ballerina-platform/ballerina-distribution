@@ -24,9 +24,11 @@ public function main() returns error? {
     // The EDIFACT counterpart reads UNB, and UNH when one follows. A UNA service string
     // advice is honoured when present, including partner-specific delimiters.
     edi:EdifactHeaders edifact = check edi:edifactHeadersFromEdiString(edifactOrder);
-    io:println(string `EDIFACT: ${edifact.unb.sender.id} -> ${edifact.unb.recipient.id}, reference ${edifact.unb.controlRef}`);
+    io:println(string `EDIFACT: ${edifact.unb.sender.id} -> ${edifact.unb.recipient.id}, ` +
+        string `reference ${edifact.unb.controlRef}`);
     edi:EdifactUNH? unh = edifact.unh;
     if unh is edi:EdifactUNH {
-        io:println(string `         message ${unh.messageIdentifier.messageType} ${unh.messageIdentifier.version}${unh.messageIdentifier.release}`);
+        edi:EdifactMessageIdentifier id = unh.messageIdentifier;
+        io:println(string `         message ${id.messageType} ${id.version}${id.release}`);
     }
 }

@@ -23,8 +23,18 @@ public function main() returns error? {
             {Reference: {REFERENCE: {Reference_code_qualifier: "CT", Reference_identifier: "CONTRACT-77"}}}
         ],
         group_2: [
-            {Name_and_address: {PARTY_FUNCTION_CODE_QUALIFIER: "BY", PARTY_IDENTIFICATION_DETAILS: {Party_identifier: "SUPERMART"}}},
-            {Name_and_address: {PARTY_FUNCTION_CODE_QUALIFIER: "SU", PARTY_IDENTIFICATION_DETAILS: {Party_identifier: "SUPPLIER456"}}}
+            {
+                Name_and_address: {
+                    PARTY_FUNCTION_CODE_QUALIFIER: "BY",
+                    PARTY_IDENTIFICATION_DETAILS: {Party_identifier: "SUPERMART"}
+                }
+            },
+            {
+                Name_and_address: {
+                    PARTY_FUNCTION_CODE_QUALIFIER: "SU",
+                    PARTY_IDENTIFICATION_DETAILS: {Party_identifier: "SUPPLIER456"}
+                }
+            }
         ],
         // `UNS` separates the header section from the detail section and is mandatory.
         Section_control: {section_identification: "S"}

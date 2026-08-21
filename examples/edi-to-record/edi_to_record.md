@@ -10,6 +10,6 @@ Envelope segments are skipped, so `fromEdiString` accepts a bare message as well
 
 Run the program using the command below.
 
-::: out output.out :::
+::: out edi_to_record.out :::
 
 When a trading partner deviates from the published specification — an extra element, a different code list, a segment the standard marks optional but the partner always sends — convert that specification into a Ballerina EDI schema, edit the schema, and generate a module from it with the `bal edi` tool instead of using the prebuilt package. See [Changing the specification for a trading partner](https://ballerina.io/learn/edi-tool/#changing-the-specification-for-a-trading-partner) for the steps.

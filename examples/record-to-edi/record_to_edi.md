@@ -8,6 +8,6 @@ The same prebuilt package used in the EDI to record conversion example serialize
 
 Run the program using the command below.
 
-::: out output.out :::
+::: out record_to_edi.out :::
 
 The output is the same message that the EDI to record conversion example reads back, so the two examples form a round trip.
