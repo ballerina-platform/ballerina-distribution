@@ -1,0 +1,8 @@
+$ bal run ai_agent_conditional_approval.bal
+User (or 'exit' to quit): Transfer $50 from ACC-1001 to ACC-1002.
+Agent: Done. I've transferred $50 from ACC-1001 to ACC-1002; it was below the review threshold, so no approval was needed.
+User (or 'exit' to quit): Now transfer $800 from ACC-1001 to ACC-1002.
+Approval needed for 'transfer' with {"fromAccount":"ACC-1001","toAccount":"ACC-1002","amount":800}
+Approve? (yes/no): yes
+Agent: Approved and done. I've transferred $800 from ACC-1001 to ACC-1002.
+User (or 'exit' to quit): exit
