@@ -52,9 +52,9 @@ task centralTests {
     dependsOn configurations.ballerinaWindowsDistribution
     test {
         systemProperty "distributions.dir", "$buildDir/../../ballerina/build/distributions"
-        systemProperty "target.dir", "$buildDir"
+        systemProperty "target.dir", layout.buildDirectory.get().asFile.toString()
         systemProperty "maven.version", "$version"
-        systemProperty "examples.dir", "$buildDir/../../examples"
+        systemProperty "examples.dir", layout.buildDirectory.get().asFile.toString() + "/../../examples"
         systemProperty "line.check.extensions", ".java, .bal"
         systemProperty "short.version", "$version".split("-")[0]
         systemProperty "server.zip", "$buildDir/../../ballerina/build/distributions/ballerina-${System.getProperty("short.version")}.zip"

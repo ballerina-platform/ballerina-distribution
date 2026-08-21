@@ -56,7 +56,7 @@ dependencies {
         transitive = false
     }
 }
-def bDistribution = file("$project.buildDir/extracted-distribution/jballerina-tools-${ballerinaLangVersion}")
+def bDistribution = layout.buildDirectory.dir("extracted-distribution/jballerina-tools-${ballerinaLangVersion}").get().asFile
 
 shadowJar {
     configurations = [project.configurations.runtimeClasspath]
