@@ -1,7 +1,5 @@
-$ bal run
-Order Id: ORDER_1201
-Item: A-250, Quantity: 12
-Item: A-45, Quantity: 100
-Item: D-10, Quantity: 58
-Item: K-80, Quantity: 250
-Item: T-46, Quantity: 28
+$ bal run edi_to_record.bal
+Order Id: PO20001
+Reference: CONTRACT-77
+Party BY: SUPERMART
+Party SU: SUPPLIER456

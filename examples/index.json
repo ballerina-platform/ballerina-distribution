@@ -5248,20 +5248,18 @@
       {
         "name": "EDI to record conversion",
         "url": "edi-to-record",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes generated code",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Record to EDI conversion",
         "url": "record-to-edi",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes generated code",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Read EDI envelope headers",
@@ -5277,7 +5275,7 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       }
     ]
   },
