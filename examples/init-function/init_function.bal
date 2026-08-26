@@ -14,7 +14,7 @@ function init() returns error? {
     
     if value > 3 {
         // The initialization will fail with this error message.
-        return error("Value should less than 3");
+        return error("Value should be less than  or equal 3");
     }
 }
 
