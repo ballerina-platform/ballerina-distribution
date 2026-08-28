@@ -20,3 +20,5 @@ GHSA-mhm7-754m-9p8w
 
 # netty-transport-native-epoll / netty-transport-native-kqueue - needs dependency upgrade to 4.1.135.Final/4.2.15.Final+
 CVE-2026-45536
+CVE-2026-59903
+CVE-2026-49844
