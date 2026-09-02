@@ -208,5 +208,6 @@ subprojects {
         ballerinaTools "io.ballerina:openapi-tool:${openapiToolVersion}"
         ballerinaTools "io.ballerina:asyncapi-tool:${asyncapiToolVersion}"
         ballerinaTools "io.ballerina:persist-tool:${persistToolVersion}"
+        ballerinaTools "io.ballerina:mcp-tool:${mcpToolVersion}"
     }
 }
