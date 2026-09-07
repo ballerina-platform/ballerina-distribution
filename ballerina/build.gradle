@@ -1216,9 +1216,12 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
     println "Testing standard library ${stdlibTest}"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         if (!isStageTest) {
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
+            def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                exec {
+                    workingDir "${distPath}/${stdlibTest}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
+                }
             }
             if (stdlibTest == 'transaction') {
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
@@ -1242,9 +1245,12 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
         }
     } else {
         if (!isStageTest) {
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                exec {
+                    workingDir "${distPath}/${stdlibTest}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+                }
             }
             if (stdlibTest == 'transaction') {
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
@@ -1575,6 +1581,35 @@ task generateCache(dependsOn: ':cache-generator:build') {
                     workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                     commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                     ignoreExitValue true
+                }
+            }
+        }
+
+        /* Observability (otel) Module - not listed in extensions.json, so cache it explicitly */
+        configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+            if (artifact.name == "otel-extension-ballerina") {
+                def artifactExtractedPath = "${buildDir}/target/extracted-distributions/" + artifact.name + "-zip"
+                String balaDir = artifactExtractedPath + "/bala"
+
+                String orgDir = new File("${balaDir}").listFiles()[0].toString()
+                String moduleDir = new File("${orgDir}").listFiles()[0].toString()
+                String versionDir = new File("${moduleDir}").listFiles()[0].toString()
+                String balaPath = new File("${versionDir}").listFiles()[0].toString()
+                String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
+                        ignoreExitValue true
+                    }
+                }
+                else {
+                    exec {
+                        workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
+                        commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
+                        ignoreExitValue true
+                    }
                 }
             }
         }

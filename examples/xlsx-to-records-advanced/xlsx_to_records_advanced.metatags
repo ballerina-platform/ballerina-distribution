@@ -1,0 +1,2 @@
+description: This BBE demonstrates parsing Excel sheets with custom configurations such as header name mapping and row limits.
+keywords: ballerina, ballerina by example, bbe, xlsx, excel, parse options, Name annotation, header mapping, caseInsensitiveHeaders, rowCount

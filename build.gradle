@@ -178,6 +178,7 @@ subprojects {
 
         ballerinaStdLibs "org.ballerinalang:transaction-ballerina:${stdlibTransactionVersion}"
         ballerinaStdLibs "io.ballerina:observe-ballerina:${observeInternalVersion}"
+        ballerinaStdLibs "org.ballerinalang:otel-extension-ballerina:${otelVersion}"
 
         ballerinaStdLibs "io.ballerina.stdlib:websocket-ballerina:${stdlibWebsocketVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:websub-ballerina:${stdlibWebsubVersion}"

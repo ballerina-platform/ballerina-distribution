@@ -1,0 +1,5 @@
+$ bal run edi_envelope_headers.bal
+X12: SUPERMART -> SUPPLIER456, control number 000000001
+     group PO, version 004010
+EDIFACT: SUPERMART -> SUPPLIER456, reference REF2
+         message ORDERS D03A

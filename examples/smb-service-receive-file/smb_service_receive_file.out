@@ -1,0 +1,2 @@
+$ bal run smb_service_receive_file.bal
+Processed store-14.json: store 14 reported 1820.50

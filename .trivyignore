@@ -1,7 +1,24 @@
 # False positive
 CVE-2020-7768
 CVE-2025-48985
+CVE-2026-41907
 
 # Need to be fixed
 CVE-2025-48924
-CVE-2021-0341
+CVE-2026-56740
+CVE-2026-56741
+
+# jackson-core / jackson-databind - needs dependency upgrade to 2.18.8+/2.21.4+
+GHSA-r7wm-3cxj-wff9
+CVE-2026-54512
+CVE-2026-54513
+CVE-2026-54514
+CVE-2026-54515
+CVE-2026-59888
+CVE-2026-59889
+GHSA-mhm7-754m-9p8w
+
+# netty-transport-native-epoll / netty-transport-native-kqueue - needs dependency upgrade to 4.1.135.Final/4.2.15.Final+
+CVE-2026-45536
+CVE-2026-59903
+CVE-2026-49844
