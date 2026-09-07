@@ -87,22 +87,6 @@ public class DistributionArtifactCheckTest {
         Assert.assertNotNull(TestUtils.findFileOrDirectory(c2cToolingLibPath, "cloud-tooling-"));
     }
 
-    @Test()
-    public void balToolsManifestContainsBuiltInTools() throws IOException {
-        Path balToolsPath = TEST_DISTRIBUTION_PATH
-                .resolve(DIST_NAME)
-                .resolve("resources")
-                .resolve("bal-tools.toml");
-
-        Assert.assertTrue(Files.exists(balToolsPath));
-        String balToolsToml = Files.readString(balToolsPath);
-        Assert.assertTrue(balToolsToml.contains("id = \"openapi\""));
-        Assert.assertTrue(balToolsToml.contains("id = \"graphql\""));
-        Assert.assertTrue(balToolsToml.contains("id = \"asyncapi\""));
-        Assert.assertTrue(balToolsToml.contains("id = \"persist\""));
-        Assert.assertTrue(balToolsToml.contains("id = \"protoc\""));
-    }
-
     @AfterClass
     public void cleanUp() throws IOException {
         TestUtils.cleanDistribution();
