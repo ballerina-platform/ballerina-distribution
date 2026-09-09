@@ -4,10 +4,10 @@ name = "my_package"
 version = "1.0.0"
 readme = "Package.md"
 
-[platform.java21]
+[platform.java25]
 graalvmCompatible=true
 
-[[platform.java21.dependency]]
+[[platform.java25.dependency]]
 groupId = "org.slf4j"
 artifactId = "slf4j-api"
 version = "1.7.30"

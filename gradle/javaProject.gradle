@@ -66,18 +66,16 @@ dependencies {
     checkstyle "com.puppycrawl.tools:checkstyle:${puppycrawlCheckstyleVersion}"
 }
 
-sourceCompatibility = JavaVersion.VERSION_21
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 jacoco {
-    toolVersion = "0.8.10"
+    toolVersion = "0.8.13"
 }
 
 test {
-    systemProperty "ballerina.home", "$buildDir"
+    systemProperty "ballerina.home", layout.buildDirectory.get().asFile.toString()
     systemProperty "org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog"
     testLogging {
         showStackTraces = true
@@ -87,7 +85,7 @@ test {
     }
     jacoco {
         enabled = true
-        destinationFile = file("$buildDir/coverage-reports/jacoco.exec")
+        destinationFile = layout.buildDirectory.file("coverage-reports/jacoco.exec").get().asFile
         includeNoLocationClasses = true
         excludes = ['jdk.internal.*']
     }
@@ -106,13 +104,13 @@ spotbugsMain {
     ignoreFailures = true
     effort = "max"
     reportLevel = "low"
-    reportsDir = file("$project.buildDir/reports/spotbugs")
+    reportsDir = layout.buildDirectory.dir("reports/spotbugs").get().asFile
     def excludeFile = file("spotbugs-exclude.xml")
     if (excludeFile.exists()) {
         it.excludeFilter = excludeFile
     }
     reports {
-        text.enabled = false
+        text.required = false
     }
 }
 
