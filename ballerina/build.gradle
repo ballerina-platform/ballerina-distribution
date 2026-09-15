@@ -1213,9 +1213,12 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
     println "Testing standard library ${stdlibTest}"
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         if (!isStageTest) {
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
+            def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                exec {
+                    workingDir "${distPath}/${stdlibTest}"
+                    commandLine 'cmd', '/c', "${distPath}/bin/bal.bat init test"
+                }
             }
             if (stdlibTest == 'transaction') {
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")
@@ -1239,9 +1242,12 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
         }
     } else {
         if (!isStageTest) {
-            exec {
-                workingDir "${distPath}/${stdlibTest}"
-                commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+            def tomlFile = new File("${distPath}/${stdlibTest}/Ballerina.toml")
+            if (!tomlFile.exists()) {
+                exec {
+                    workingDir "${distPath}/${stdlibTest}"
+                    commandLine 'sh', '-c', "${distPath}/bin/bal init test"
+                }
             }
             if (stdlibTest == 'transaction') {
                 addH2Dependency("${distPath}/${stdlibTest}/Ballerina.toml")

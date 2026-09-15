@@ -1,8 +1,20 @@
 [ballerina.http.traceLogAdvancedConfig]
 # Enable printing trace logs on the Console. The default value is `false`.
 console = true
-# Specify the file path to save the trace logs. This is optional.
-path = "testTraceLog.txt"
 # Specify the hostname and port of a socket service to publish the trace logs. These are optional.
 host = "localhost"
-port = 8080 
+port = 8080
+
+[ballerina.http.traceLogAdvancedConfig.file]
+# Specify the file path to store trace logs.
+path = "http-trace.log"
+
+[ballerina.http.traceLogAdvancedConfig.file.rotation]
+# Specify the rotation policy. Options are `BOTH`, `SIZE_BASED`, or `TIME_BASED`.
+policy = "BOTH"
+# Specify the maximum file size in bytes for log rotation.
+maxFileSize = 52428800
+# Specify the maximum age of log files in seconds for log rotation.
+maxAge = 86400
+# Specify the maximum number of backup log files to keep for log rotation.
+maxBackupFiles = 30

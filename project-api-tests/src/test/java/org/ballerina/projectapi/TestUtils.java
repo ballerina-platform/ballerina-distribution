@@ -63,7 +63,13 @@ public class TestUtils {
     public static Process executeCommand(String command, String distributionName, Path sourceDirectory,
             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         args.add(0, command);
-        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve("bal").toString());
+        // Use platform-specific bal executable: on Windows use bal.bat, otherwise use bal
+        String osName = System.getProperty("os.name");
+        String balExecutable = "bal";
+        if (osName != null && osName.toLowerCase().contains("win")) {
+            balExecutable = "bal.bat";
+        }
+        args.add(0, TEST_DISTRIBUTION_PATH.resolve(distributionName).resolve("bin").resolve(balExecutable).toString());
 
         OUT.println("Executing: " + StringUtils.join(args, ' '));
 
@@ -116,6 +122,11 @@ public class TestUtils {
     public static Process executeHelpCommand(String distributionName, Path sourceDirectory,
              List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
         return executeCommand("help", distributionName, sourceDirectory, args, envProperties);
+    }
+
+    public static Process executeCleanCommand(String distributionName, Path sourceDirectory,
+             List<String> args, Map<String, String> envProperties) throws IOException, InterruptedException {
+        return executeCommand("clean", distributionName, sourceDirectory, args, envProperties);
     }
 
     public static Process executeNewCommand(String distributionName, Path sourceDirectory,

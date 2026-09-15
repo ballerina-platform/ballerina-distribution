@@ -5,5 +5,17 @@ console = true
 format = "flat"
 # List of attributes to include in the access logs. This field is optional.
 attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
-# Specify the file path to save the access logs. This is optional.  
-path = "testAccessLog.txt"
+
+[ballerina.http.accessLogConfig.file]
+# Specify the file path to store access logs.
+path = "http-access.log"
+
+[ballerina.http.accessLogConfig.file.rotation]
+# Specify the rotation policy. Options are `BOTH`, `SIZE_BASED`, or `TIME_BASED`.
+policy = "BOTH"
+# Specify the maximum file size in bytes for log rotation.
+maxFileSize = 52428800
+# Specify the maximum age of log files in seconds for log rotation.
+maxAge = 86400
+# Specify the maximum number of backup log files to keep for log rotation.
+maxBackupFiles = 30

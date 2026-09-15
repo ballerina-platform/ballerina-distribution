@@ -1,0 +1,2 @@
+$ bal run sftp_caller.bal
+Acknowledged shipment-1042.txt

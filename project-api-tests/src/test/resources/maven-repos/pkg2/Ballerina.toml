@@ -1,0 +1,10 @@
+[package]
+org = "bctestorg"
+name = "pkg2"
+version = "1.0.0"
+readme = "Package.md"
+
+
+[build-options]
+observabilityIncluded = true
+

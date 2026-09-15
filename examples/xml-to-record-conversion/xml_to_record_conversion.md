@@ -1,8 +1,8 @@
 # XML to Record conversion
 
-The `xmldata` library provides an API to perform the conversion from XML to `Ballerina record/map<anydata>`.
+The `data.xmldata` library provides an API to perform the conversion from XML to a Ballerina record.
 
-For more information on the underlying module, see the [`xmldata` module](https://lib.ballerina.io/ballerina/xmldata/latest/).
+For more information on the underlying module, see the [`data.xmldata` module](https://lib.ballerina.io/ballerina/data.xmldata/latest/).
 
 ::: code xml_to_record_conversion.bal :::
 

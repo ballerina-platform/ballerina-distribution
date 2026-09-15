@@ -15,10 +15,10 @@ Follow the steps below to create a Cosmos DB and a queue to make use of those se
 5. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
 6. Enter `db1` as the Database ID, `c1` as the collection ID, and click **Ok**.
     >**Note:** If you want to change these values, change them in the code as well.
-6. Go to the **Keys** tab of the Cosmos DB page.
-7. Copy the value of the `PRIMARY CONNECTION STRING`.
-8. Click the **Configuration** tab on the function app page.
-9. Select **New Application Setting**, and paste the data you copied above as the value. 
+7. Go to the **Keys** tab of the Cosmos DB page.
+8. Copy the value of the `PRIMARY CONNECTION STRING`.
+9. Click the **Configuration** tab on the function app page.
+10. Select **New Application Setting**, and paste the data you copied above as the value. 
     >**Tip:** For the key, use the value of the `connectionStringSetting` key and save.
 
     Example application settings are as follows.

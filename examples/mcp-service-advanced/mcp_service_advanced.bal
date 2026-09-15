@@ -71,7 +71,8 @@ service mcp:AdvancedService /mcp on mcpListener {
         ]
     };
 
-    isolated remote function onCallTool(mcp:CallToolParams params) returns mcp:CallToolResult|mcp:ServerError {
+    isolated remote function onCallTool(mcp:CallToolParams params, mcp:Session? session) 
+            returns mcp:CallToolResult|mcp:ServerError {
         string name = params.name;
         do {
             if name == "getCurrentWeather" {

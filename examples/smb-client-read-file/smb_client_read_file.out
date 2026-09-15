@@ -1,0 +1,3 @@
+$ bal run smb_client_read_file.bal
+All systems nominal
+42

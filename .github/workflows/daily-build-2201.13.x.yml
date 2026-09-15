@@ -1,0 +1,481 @@
+name: Daily build (2201.13.x)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 2 * * *'    # 07:30 in LK time (GMT+5:30)
+
+jobs:
+  ubuntu-build:
+
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          ref: 2201.13.x
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Get daily docker version
+        id: version
+        run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
+      - name: Get project version
+        id: project-version
+        run: |
+          SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
+          DIST_VERSION=$((grep -w "version" | cut -d= -f2 | xargs) < gradle.properties)
+          LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
+          CODE_NAME=$((grep -w 'codeName' | cut -d= -f2) < gradle.properties)
+          RELEASE_VERSION=$DIST_VERSION-$CODE_NAME
+          echo "::set-output name=version::$RELEASE_VERSION"
+          echo "::set-output name=sversion::$SHORT_VERSION"
+          echo "::set-output name=langversion::$LANG_VERSION"
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          TEST_MODE_ACTIVE: true
+        run: ./gradlew clean build --stacktrace --scan --console=plain --no-daemon --continue -x project-api-tests:test
+      - name: Create linux-deb
+        id: run_installers_deb
+        run: |
+          cd installers/linux-deb
+          ./build-ballerina-linux-deb-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          echo "Created linux-deb successfully"
+      - name: Create linux-rpm
+        id: run_installers_rpm
+        run: |
+          cd installers/linux-rpm
+          ./build-ballerina-linux-rpm-x64.sh -v ${{ steps.project-version.outputs.version }} -p ./../../ballerina/build/distributions
+          echo "Created linux-rpm successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256 installers/linux-deb/target/ballerina-*-linux-x64.deb
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256 installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.version }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.version }}.zip
+          openssl dgst -sha256 -out ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256 ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      - name: Archive Ballerina ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ballerina ZIP
+          path: ballerina/build/distributions/ballerina-*-swan-lake.zip
+      - name: Archive Ballerina Short Name ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ballerina Short Name ZIP
+          path: ballerina/build/distributions/ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      - name: Archive Linux deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux Installer deb
+          path: installers/linux-deb/target/ballerina-*-linux-x64.deb
+      - name: Archive Linux rpm
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux Installer rpm
+          path: installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
+      - name: Archive MacOS Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-macos.zip
+      - name: Archive MacOS-ARM Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS-ARM Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-macos-arm.zip
+      - name: Archive Windows Installer ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows Installer ZIP
+          path: ballerina/build/distributions/ballerina-*-windows.zip
+      - name: Archive Linux deb Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux deb Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb.sha256
+      - name: Archive Linux rpm Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux rpm Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}-linux-x64.rpm.sha256
+      - name: Archive Ballerina Zip Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ballerina Zip Hashes
+          path: ballerina-${{ steps.project-version.outputs.version }}.zip.sha256
+      - name: Archive Ballerina Short Name Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ballerina Short Name Hashes
+          path: ballerina-${{ steps.project-version.outputs.sversion }}.zip.sha256
+      - name: Install Ballerina DEB
+        run: sudo dpkg -i installers/linux-deb/target/ballerina-*-linux-x64.deb
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ steps.project-version.outputs.langversion }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+      - name: Checkout docker repo
+        uses: actions/checkout@v3
+        with:
+          repository: ballerina-platform/module-ballerina-docker
+          path: module-ballerina-docker
+      - name: Copy zip artifact
+        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build the docker image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          load: true
+          push: false
+          tags: ballerina/ballerina:nightly-test
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/docker/
+          push: true
+          tags: ballerina/ballerina:nightly-2201.13.x
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Copy deb artifact
+        run: cp installers/linux-deb/target/ballerina-*-linux-x64.deb module-ballerina-docker/base/devcontainer/
+      - name: Build the dev container docker image
+        id: docker_build_devcontainer
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/devcontainer/
+          load: true
+          push: false
+          tags: ballerina/ballerina-devcontainer:nightly-test
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+      - name: Run Trivy vulnerability scanner for dev container docker image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
+          skip-dirs: 'ballerina/runtime/examples'
+          format: 'table'
+          exit-code: '1'
+          timeout: "10m0s"
+      - name: Build and push dev container image
+        uses: docker/build-push-action@v2
+        with:
+          context: module-ballerina-docker/base/devcontainer/
+          push: true
+          tags: ballerina/ballerina-devcontainer:nightly-2201.13.x
+          build-args: |
+            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+      - name: Notify failure
+        if: ${{ failure() }}
+        run: |
+          curl -X POST \
+          'https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches' \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: Bearer ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"notify-build-failure\",
+            \"client_payload\": {
+              \"repoName\": \"ballerina-distribution\",
+              \"branch\": \"2201.13.x\"
+            }
+          }"
+    outputs:
+      project-version: ${{ steps.project-version.outputs.version }}
+      lang-version: ${{ steps.project-version.outputs.langversion }}
+
+  project-api-tests:
+
+    runs-on: ubuntu-latest
+    if: false
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          prodCentralToken: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          TEST_MODE_ACTIVE: true
+        run: ./gradlew :project-api-tests:test --stacktrace --scan --console=plain --no-daemon --continue
+
+  windows-build:
+
+    runs-on: windows-latest
+    if: github.repository_owner == 'ballerina-platform'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Build with Gradle
+        env:
+          packageUser: ${{ github.actor }}
+          packagePAT: ${{ secrets.GITHUB_TOKEN }}
+          devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
+          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          TEST_MODE_ACTIVE: true
+        run: ./gradlew.bat clean build --stacktrace --scan --console=plain --no-daemon -x test
+
+  ubuntu-rpm-installer-test:
+    needs: ubuntu-build
+    runs-on: ubuntu-latest
+    container: centos:latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Setup Files
+        run: |
+          cd /etc/yum.repos.d/
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+      - name: Download Ballerina rpm Installer
+        uses: actions/download-artifact@v4
+        with:
+          name: Linux Installer rpm
+      - name: Install Ballerina RPM
+        run: |
+          rpm -ivh ballerina-*-linux-x64.rpm
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          sed -i -e "s/swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          sed -i -e "s/swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+
+  macos-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Download MacOS Intaller Zip
+        uses: actions/download-artifact@v4
+        with:
+          name: MacOS Installer ZIP
+      - name: Create macos-pkg
+        id: run_installers_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../
+          echo "Created macos-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-x64.pkg
+      - name: Archive MacOS pkg Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS pkg Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-x64.pkg.sha256
+      - name: Archive MacOS pkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS Installer pkg
+          path: installers/mac/target/pkg/ballerina-*-macos-x64.pkg
+      - name: Install Ballerina PKG
+        run: sudo installer -pkg installers/mac/target/pkg/ballerina-*-macos-x64.pkg -target /
+      - name: Update Installer Test Configs
+        run: |
+          DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          SWAN_LAKE_LATEST_VERSION="swan-lake-"+$DISPLAY_TEXT
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=$DISPLAY_TEXT/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=$SWAN_LAKE_LATEST_VERSION/" ballerina-test-automation/gradle.properties
+      - name: Run Installer Tests
+        working-directory: ./ballerina-test-automation/installer-test
+        run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+
+  macos-arm-installer-build:
+
+    needs: ubuntu-build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - name: Download MacOS-ARM Intaller Zip
+        uses: actions/download-artifact@v4
+        with:
+          name: MacOS-ARM Installer ZIP
+      - name: Create macos-arm-pkg
+        id: run_installers_arm_pkg
+        run: |
+          cd installers/mac
+          ./build-ballerina-macos-x64.sh -v ${{ needs.ubuntu-build.outputs.project-version }} -p ./../../ -a arm
+          echo "Created macos-arm-pkg successfully"
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256 installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg
+      - name: Archive MacOS-ARM pkg Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS-ARM pkg Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-macos-arm-x64.pkg.sha256
+      - name: Archive MacOS-ARM pkg
+        uses: actions/upload-artifact@v4
+        with:
+          name: MacOS Installer ARM pkg
+          path: installers/mac/target/pkg/ballerina-*-macos-arm-x64.pkg
+
+  windows-installer-build:
+
+    needs: ubuntu-build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '21.0.3'
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - name: Install GUID Generator
+        run: dotnet tool install -g dotnet-guid --version 0.5.2
+      - name: Set up Wix toolkit
+        run: echo "${WIX}bin" >> $GITHUB_PATH
+        shell: bash
+      - name: Download Windows Intaller Zip
+        uses: actions/download-artifact@v4
+        with:
+          name: Windows Installer ZIP
+      - name: Create windows-msi
+        id: run_installers_msi
+        run: |
+          move installers\windows .\..\..\
+          cd ..\..\windows
+          .\build-ballerina-windows-x64.bat --version ${{ needs.ubuntu-build.outputs.project-version }} --path .\..\ballerina-distribution\ballerina-distribution
+      - name: Generate Hashes
+        run: |
+          openssl dgst -sha256 -out ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256 D:\a\windows\target\msi\ballerina-*-windows-x64.msi
+      - name: Archive Windows msi Hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows msi Hashes
+          path: ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi.sha256
+      - name: Archive Windows msi
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows Installer msi
+          path: D:\a\windows\target\msi\ballerina-*-windows-x64.msi
+      - name: Install Ballerina msi
+        run: msiexec /i D:\a\windows\target\msi\ballerina-${{ needs.ubuntu-build.outputs.project-version }}-windows-x64.msi /quiet /qr
+        shell: cmd
+      - name: Update Installer Test Configs
+        run: |
+          set DISPLAY_TEXT=${{ needs.ubuntu-build.outputs.lang-version }}
+          set SWAN_LAKE_LATEST_VERSION=swan-lake-%DISPLAY_TEXT%
+          perl -pi -e "s/^\s*swan-lake-latest-version-display-text=.*/swan-lake-latest-version-display-text=%DISPLAY_TEXT%/" ballerina-test-automation/gradle.properties
+          perl -pi -e "s/^\s*swan-lake-latest-version=.*/swan-lake-latest-version=%SWAN_LAKE_LATEST_VERSION%/" ballerina-test-automation/gradle.properties
+        shell: cmd
+      - name: Run Installer Tests
+        working-directory: .\ballerina-test-automation\installer-test
+        run: |
+          $env:Path += ";C:\Program Files\Ballerina\bin"
+          .\..\gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
+        env:
+          TEST_MODE_ACTIVE: true
+
+  trigger-notifications:
+
+    needs: [ubuntu-build, macos-installer-build, windows-installer-build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: 2201.13.x
+      - name: Invoke Connector Ballerina Version Bump
+        run: |
+          ballerinaVersion=$((grep -w 'ballerinaLangVersion' | cut -d= -f2) < gradle.properties)
+          echo "Triggering connectors dependency bumps..." && \
+          curl -X POST \
+          https://api.github.com/repos/ballerina-platform/ballerina-release/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: token ${{ secrets.BALLERINA_BOT_TOKEN }}' \
+          --data "{
+            \"event_type\": \"connector-update\",
+            \"client_payload\": {
+              \"ballerinaVersion\": \"$ballerinaVersion\"
+            }
+          }"

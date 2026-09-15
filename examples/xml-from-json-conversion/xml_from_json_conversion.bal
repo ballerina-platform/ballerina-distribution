@@ -1,5 +1,5 @@
+import ballerina/data.xmldata;
 import ballerina/io;
-import ballerina/xmldata;
 
 public function main() returns error? {
     // Creates a JSON value.
@@ -12,8 +12,7 @@ public function main() returns error? {
             },
             "codes": ["4", "8"]
         }};
-    // Converts the JSON value to XML using a default `attributePrefix` (i.e., the `@` character)
-    // and the default `arrayEntryTag` (i.e., `root`).
-    xml? xmlValue = check xmldata:fromJson(jsonValue);
+    // Converts the JSON value to XML using a default `attributePrefix` (i.e., the `@` character).
+    xml xmlValue = check xmldata:fromJson(jsonValue);
     io:println(xmlValue);
 }

@@ -68,5 +68,10 @@
     "name": "Transaction standard library",
     "path": "transaction",
     "enableTest": true
+  },
+  {
+    "name": "Library package test",
+    "path": "library_package_test",
+    "enableTest": true
   }
 ]

@@ -4,14 +4,28 @@ import ballerina/log;
 final readonly & log:Config auditConfig = {
     level: log:INFO,
     format: log:JSON_FORMAT,
-    destinations: [{path: "./logs/audit.log"}],
+    destinations: [{
+        path: "./logs/audit.log",
+        rotation: {
+            policy: log:SIZE_BASED,
+            maxFileSize: 10485760,  // 10MB
+            maxBackupFiles: 10
+        }
+    }],
     keyValues: {"component": "audit", "compliance": "SOX"}
 };
 
 final readonly & log:Config metricsConfig = {
     level: log:DEBUG,
     format: log:LOGFMT,
-    destinations: [{path: "./logs/metrics.log"}],
+    destinations: [{
+        path: "./logs/metrics.log",
+        rotation: {
+            policy: log:TIME_BASED,
+            maxAge: 86400,  // 24 hours
+            maxBackupFiles: 7
+        }
+    }],
     keyValues: {"component": "metrics", "retention": "30days"}
 };
 

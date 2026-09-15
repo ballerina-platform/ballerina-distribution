@@ -4216,7 +4216,7 @@
     ]
   },
   {
-    "title": "FTP Service",
+    "title": "FTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4230,8 +4230,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-service-send-file",
+        "name": "Caller object",
+        "url": "ftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4246,8 +4246,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "ftp-client-receive-file",
+        "name": "Write file",
+        "url": "ftp-client-write-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4255,8 +4255,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-client-send-file",
+        "name": "Read file",
+        "url": "ftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4266,7 +4266,7 @@
     ]
   },
   {
-    "title": "SFTP Service",
+    "title": "SFTP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -4280,8 +4280,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-service-send-file",
+        "name": "Caller object",
+        "url": "sftp-caller",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4296,8 +4296,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "sftp-client-receive-file",
+        "name": "Write file",
+        "url": "sftp-client-write-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4305,13 +4305,63 @@
         "isLearnByExample": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-client-send-file",
+        "name": "Read file",
+        "url": "sftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SMB service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "smb-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Caller object",
+        "url": "smb-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "SMB client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Write file",
+        "url": "smb-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read file",
+        "url": "smb-client-read-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
       }
     ]
   },
@@ -4638,6 +4688,15 @@
         "isLearnByExample": false
       },
       {
+        "name": "Log file rotation",
+        "url": "log-file-rotation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output and file creation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Child loggers with context",
         "url": "child-loggers-with-context",
         "verifyBuild": true,
@@ -4827,6 +4886,43 @@
     ]
   },
   {
+    "title": "Zip",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Create a ZIP archive",
+        "url": "zip-compress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Extract a ZIP archive",
+        "url": "zip-decompress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Unpack an untrusted archive",
+        "url": "zip-decompress-untrusted",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "XSLT",
     "column": 3,
     "category": "Common libraries",
@@ -4953,6 +5049,45 @@
     ]
   },
   {
+    "title": "XLSX data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Parse Excel file to records",
+        "url": "xlsx-to-records",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Write records to Excel file",
+        "url": "records-to-xlsx",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Work with Excel tables",
+        "url": "xlsx-tables",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Parse Excel file to records - advanced",
+        "url": "xlsx-to-records-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Constraint",
     "column": 3,
     "category": "Common libraries",
@@ -5035,11 +5170,17 @@
     "samples": [
       {
         "name": "MCP service",
-        "url": "mcp-service"
+        "url": "mcp-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       },
       {
         "name": "MCP advanced service",
-        "url": "mcp-service-advanced"
+        "url": "mcp-service-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },

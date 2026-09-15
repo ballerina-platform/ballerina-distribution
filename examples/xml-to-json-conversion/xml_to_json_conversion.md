@@ -1,8 +1,8 @@
 # XML to JSON conversion
 
-The `xmldata` library provides an API to perform conversions from XML to JSON.
+The `data.xmldata` library provides APIs to convert XML to a Ballerina record, which can then be converted to JSON.
 
-For more information on the underlying module, see the [`xmldata` module](https://lib.ballerina.io/ballerina/xmldata/latest/).
+For more information on the underlying module, see the [`data.xmldata` module](https://lib.ballerina.io/ballerina/data.xmldata/latest/).
 
 ::: code xml_to_json_conversion.bal :::
 

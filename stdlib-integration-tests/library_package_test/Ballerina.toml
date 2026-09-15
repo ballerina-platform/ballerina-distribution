@@ -1,0 +1,8 @@
+[package]
+org = "wso2"
+name = "test_package"
+version = "0.1.0"
+
+[build-options]
+offline = true
+
