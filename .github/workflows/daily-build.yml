@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Set up JDK 25
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -286,7 +286,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -309,7 +309,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -332,7 +332,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -369,7 +369,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -405,7 +405,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -455,7 +455,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'
@@ -492,7 +492,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 25
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '25'

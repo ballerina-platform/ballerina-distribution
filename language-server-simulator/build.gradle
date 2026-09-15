@@ -56,7 +56,7 @@ task downloadBalTestProject(type: Download) {
     // Download nBallerina latest tag
     src "https://github.com/ballerina-platform/nballerina/archive/refs/heads/main.zip"
     onlyIfModified true
-    dest layout.buildDirectory.file("nballeirna-src.zip").get().asFile
+    dest layout.buildDirectory.file("nballerina-src.zip").get().asFile
 }
 
 task downloadBalFHIRTestProject(type: Download) {
@@ -69,7 +69,7 @@ task downloadBalFHIRTestProject(type: Download) {
 task unpackBalTestProject(type: Copy) {
     dependsOn downloadBalTestProject
     def sourceDir = layout.buildDirectory.dir(nbalSourceDir).get().asFile
-    from zipTree { layout.buildDirectory.file("nballeirna-src.zip").get().asFile }
+    from zipTree { layout.buildDirectory.file("nballerina-src.zip").get().asFile }
     sourceDir.mkdirs()
     into sourceDir
 }
