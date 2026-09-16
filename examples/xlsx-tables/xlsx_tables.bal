@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerina/xlsx;
 
+// Represents a line item in an order.
 type Order record {|
     string item;
     int quantity;

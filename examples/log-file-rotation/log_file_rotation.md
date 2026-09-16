@@ -2,7 +2,6 @@
 
 Log file rotation helps manage log file sizes by automatically creating backups when certain conditions are met, preventing disk space issues. This example demonstrates TIME_BASED rotation configured through `Config.toml`.
 
-## Configuring File Rotation
 
 The root logger is configured in `Config.toml` with TIME_BASED rotation. All logs using the default logger will automatically benefit from this rotation policy.
 
@@ -14,11 +13,9 @@ Run the example to see rotation in action:
 
 ::: out log_file_rotation.out :::
 
-## How Rotation Works
 
 When a log file rotates, it's renamed with a timestamp suffix and a new file is created:
 
-```
 logs/
   app.log                            (current log file)
   app-20251223-225602.log            (rotated backup)
@@ -27,16 +24,13 @@ logs/
 
 Older backups beyond `maxBackupFiles` are automatically deleted.
 
-### Application Log Rotation Output
 
 ::: out app_log_rotation.out :::
 
-## Configuration Options
 
 Rotation policies support these configuration parameters:
 
 | Parameter | Default | Description |
-|-----------|---------|-------------|
 | `policy` | `"BOTH"` | Rotation trigger: `"SIZE_BASED"`, `"TIME_BASED"`, or `"BOTH"` |
 | `maxFileSize` | 10485760 | Maximum file size in bytes (10MB default) |
 | `maxAge` | 86400 | Maximum file age in seconds (24 hours default) |

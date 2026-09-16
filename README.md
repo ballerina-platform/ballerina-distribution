@@ -88,3 +88,4 @@ Ballerina code is distributed under [Apache license 2.0](https://github.com/ball
 * The ballerina-dev@googlegroups.com mailing list is for discussing code changes to the Ballerina project.
 * Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
 * Technical questions should be posted on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.
+

@@ -1,0 +1,5 @@
+$ bal run edi_to_record.bal
+Order Id: PO20001
+Reference: CONTRACT-77
+Party BY: SUPERMART
+Party SU: SUPPLIER456

@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerina/xlsx;
 
+// Represents the details of an employee.
 type Employee record {|
     string name;
     string team;

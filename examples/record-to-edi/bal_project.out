@@ -1,3 +1,0 @@
-$ bal new record_to_edi
-$ cd record_to_edi
-$ bal add sorder
