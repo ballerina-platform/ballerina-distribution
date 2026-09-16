@@ -1,0 +1,2 @@
+$ bal run zip_compress.bal
+Created reports.zip

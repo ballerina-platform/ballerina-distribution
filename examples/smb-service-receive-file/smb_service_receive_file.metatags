@@ -1,0 +1,2 @@
+description: This example demonstrates receiving files that arrive on a remote SMB share, binding the JSON content to a record, and moving the file once it is processed.
+keywords: ballerina, ballerina by example, bbe, SMB, remote file, listener, data binding

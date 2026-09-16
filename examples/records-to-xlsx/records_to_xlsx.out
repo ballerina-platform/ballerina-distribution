@@ -1,0 +1,2 @@
+$ bal run records_to_xlsx.bal
+Created employees.xlsx
