@@ -1621,14 +1621,14 @@ task generateCache(dependsOn: ':cache-generator:build') {
                 String jbalPath = "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
 
                 if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-                    exec {
+                    cacheExecHelper.execOperations.exec {
                         workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                         commandLine 'cmd', '/c', "${distPath}/bin/bal.bat gencache ${balaPath} ${jbalPath}"
                         ignoreExitValue true
                     }
                 }
                 else {
-                    exec {
+                    cacheExecHelper.execOperations.exec {
                         workingDir "${buildDir}/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
                         commandLine 'sh', '-c', "${distPath}/bin/bal gencache ${balaPath} ${jbalPath}"
                         ignoreExitValue true
