@@ -1,0 +1,2 @@
+$ bal run ftp_client_read_file.bal
+Batch 42 completed with 0 errors

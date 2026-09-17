@@ -6,7 +6,7 @@ Natural expressions use the `ai:ModelProvider` type as a unified interface for w
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 
-> Note: This feature is supported on Swan Lake Update 13 - Milestone 3 (2201.13.0-m3) or newer versions. This is currently an experimental feature and requires the `--experimental` flag to be used with `bal` commands.
+> Note: This feature is supported on Swan Lake Update 13 or newer versions. This is currently an experimental feature and requires the `--experimental` flag to be used with `bal` commands.
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 

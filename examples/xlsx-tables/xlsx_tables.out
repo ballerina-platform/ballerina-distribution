@@ -1,0 +1,2 @@
+$ bal run xlsx_tables.bal
+[{"item":"Laptop","quantity":2,"price":1250.0},{"item":"Monitor","quantity":5,"price":300.0}]

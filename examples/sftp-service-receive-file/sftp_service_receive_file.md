@@ -1,18 +1,20 @@
 # SFTP service - Receive file
 
-The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. A `ftp:Listener` with SFTP protocol is created by providing the protocol, host-name, required credentials, and the private key. Once connected, service starts receiving events every time a file is deleted or added to the server. To take action for these events `ftp:Caller` is used. The `ftp:Caller` can be specified as a parameter of `onFileChange` remote method. The `ftp:Caller` allows interacting with the server via `get`, `append`, `delete`, etc remote methods. Use this to listen to file changes occurring in a remote file system and take action for those changes.
+The `ftp:Service` connects to a given SFTP server via the `ftp:Listener`. An `ftp:Listener` with SFTP protocol is created by providing the protocol, host-name, required credentials, and the private key. The directory each service watches is given by the `@ftp:ServiceConfig` annotation. Once connected, the listener polls that directory and dispatches every file it finds to the service. The handler is selected by the file extension and the content is bound to its first parameter, so `onFileText` receives the file as a string and the handler never reads it. `onFileJson`, `onFileXml`, and `onFileCsv` bind the other content types. The `afterProcess` and `afterError` actions of `@ftp:FunctionConfig` then move the file, keeping file management out of the handler, and `onError` is called when a file cannot be read, cannot be bound to the handler parameter, or the handler itself fails. Use this to act on files as they arrive on a remote file system.
 
 ::: code sftp_service_receive_file.bal :::
 
 ## Prerequisites
-- Start a [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance.
+- Start an [SFTP server](https://hub.docker.com/r/atmoz/sftp/) instance containing the `/home/in`, `/home/processed`, and `/home/failed` directories.
+- Create an `archive` directory in the directory you run the program from.
 
-Run the program by executing the following command. Each newly added file in the SFTP server will be saved in the local file system.
+Run the program by executing the following command. Each new shipment note in the watched directory is archived on the local file system and then moved to `/home/processed`.
 
 ::: out sftp_service_receive_file.out :::
 
->**Tip:** Run the SFTP client given in the [SFTP client - Send file](/learn/by-example/sftp-client-send-file) example to put a file in the SFTP server.
+>**Tip:** Place a `.txt` file in `/home/in` on the SFTP server to trigger the service.
 
 ## Related links
-- [`ftp:Listener` client object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Listener)
-- [SFTP service - Specification](/spec/ftp/#422-secure-listener)
+- [`ftp:Listener` listener object - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#Listener)
+- [`ftp:FunctionConfig` annotation - API documentation](https://lib.ballerina.io/ballerina/ftp/latest#FunctionConfig)
+- [SFTP service - Specification](/spec/ftp/#432-secure-listener)

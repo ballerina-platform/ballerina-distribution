@@ -1,1 +1,2 @@
-$ bal run sftp_service_read.bal
+$ bal run sftp_service_receive_file.bal
+Archived shipment-1042.txt (47 bytes)

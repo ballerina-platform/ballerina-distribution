@@ -1,0 +1,5 @@
+$ bal run zip_decompress.bal
+reports/: 0 -> 0 bytes (STORE)
+reports/notes.txt: 92 -> 79 bytes (DEFLATE)
+reports/region-totals.csv: 60 -> 57 bytes (DEFLATE)
+Compiled for the August review. The regional totals are provisional until the audit closes.
