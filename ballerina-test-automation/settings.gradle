@@ -15,6 +15,16 @@
  *
  */
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id "com.gradle.develocity" version "3.19.2"
+}
+
 rootProject.name = 'ballerina-test-automation'
 include 'test-automation'
 include 'installer-test'
@@ -23,3 +33,10 @@ include 'update-tool-test'
 project(':test-automation').projectDir = "$rootDir/test-automation" as File
 project(':installer-test').projectDir = "$rootDir/installer-test" as File
 project(':update-tool-test').projectDir = "$rootDir/update-tool-test" as File
+
+develocity {
+    buildScan {
+        termsOfUseUrl = 'https://gradle.com/terms-of-service'
+        termsOfUseAgree = 'yes'
+    }
+}

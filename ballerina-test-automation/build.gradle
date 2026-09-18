@@ -25,7 +25,9 @@ jar {
 group 'io.ballerina'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -48,9 +50,4 @@ repositories {
     maven {
         url = 'http://repo.maven.apache.org/maven2'
     }
-}
-
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
 }
