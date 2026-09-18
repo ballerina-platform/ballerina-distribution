@@ -221,6 +221,14 @@ task copyOtherRepos(type: Copy) {
     def ballerinaDist = "build/target/extracted-distributions/jballerina-tools-zip/jballerina-tools-${ballerinaLangVersion}"
     into ballerinaDist
 
+    // TODO: remove this exclude once the upstream stdlib bala publishing bug is fixed
+    // (plugin-gradle's `build`/`createArtifactZip` tasks + `bal pack` leak a stray
+    // "build/" directory - containing leftover, sometimes deeply recursive, Gradle
+    // scratch content - inside several published .bala artifacts, e.g. http/websocket/
+    // grpc on the java25 platform). That pushes some file paths past Windows' 260-char
+    // MAX_PATH limit and breaks WiX's heat.exe when building the Windows installer.
+    def balaBuildLeakExclude = '**/build/**'
+
     /* Standard Libraries */
     configurations.ballerinaStdLibs.resolvedConfiguration.resolvedArtifacts.each { artifact ->
         def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
@@ -229,6 +237,7 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
+            exclude balaBuildLeakExclude
         }
     }
 
@@ -237,6 +246,7 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
+            exclude balaBuildLeakExclude
         }
     }
 
@@ -248,6 +258,7 @@ task copyOtherRepos(type: Copy) {
         }
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
+            exclude balaBuildLeakExclude
         }
     }
 
@@ -264,6 +275,7 @@ task copyOtherRepos(type: Copy) {
         def artifactExtractedPath = layout.buildDirectory.dir("target/extracted-distributions/" + artifact.name + "-zip").get().asFile
         from("${artifactExtractedPath}/bala") {
             into "repo/bala"
+            exclude balaBuildLeakExclude
         }
         // The module zip ships a prebuilt cache targeting java21; copying it prevents
         // generateCache from regenerating a java25 cache, so it is regenerated instead.
