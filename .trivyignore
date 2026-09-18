@@ -34,3 +34,9 @@ CVE-2025-14813
 CVE-2026-0636
 CVE-2026-63376
 CVE-2026-77465
+
+# devcontainer image (mcr.microsoft.com/vscode/devcontainers/base:debian12) - xz-utils/liblzma5
+# already has a Debian fix (5.4.1-1+deb12u2) but the base image hasn't picked it up yet.
+# Remove once the base image bundles xz-utils/liblzma5 >= 5.4.1-1+deb12u2.
+DLA-4783-1
+TEMP-1147318-639065
