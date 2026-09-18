@@ -22,6 +22,8 @@ GHSA-mhm7-754m-9p8w
 CVE-2026-45536
 CVE-2026-59903
 CVE-2026-49844
+CVE-2026-75595
+CVE-2026-75596
 
 # Temporary exception for the 2201.13.6 release. Remove after upgrading
 # OpenTelemetry to 1.62.0+, Bouncy Castle to 1.84+, and toml to 4.2.0+.

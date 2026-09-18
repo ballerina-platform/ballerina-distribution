@@ -65,7 +65,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("openapi")
                 .resolve(OPENAPI_VERSION_DIR)
-                .resolve("java21")
+                .resolve("java25")
                 .resolve("compiler-plugin")
                 .resolve("libs");
 
@@ -76,7 +76,7 @@ public class OpenAPIDistributionArtifactCheck {
                 .resolve("ballerina")
                 .resolve("tool.openapi")
                 .resolve(OPENAPI_VERSION_DIR)
-                .resolve("java21")
+                .resolve("java25")
                 .resolve("tool")
                 .resolve("libs");
 

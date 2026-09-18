@@ -81,7 +81,7 @@ public class GenCacheCmd implements BLauncherCmd{
             if (diagnosticResult.hasErrors()) {
                 return;
             }
-            JBallerinaBackend jBallerinaBackend = JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_21);
+            JBallerinaBackend jBallerinaBackend = JBallerinaBackend.from(packageCompilation, JvmTarget.JAVA_25);
             diagnosticResult = jBallerinaBackend.diagnosticResult();
             for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
                 outStream.println(diagnostic.toString());
