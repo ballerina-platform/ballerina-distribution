@@ -75,7 +75,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
           prodCentralToken: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -x project-api-tests:test -Pversion=${VERSION}
           ./gradlew release -x project-api-tests:test -Prelease.useAutomaticVersion=true

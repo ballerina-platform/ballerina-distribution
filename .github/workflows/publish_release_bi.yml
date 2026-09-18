@@ -34,7 +34,7 @@ jobs:
           packagePAT: ${{ secrets.GITHUB_TOKEN }}
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
           TEST_MODE_ACTIVE: true
         run: |
           cd ballerina-dev-tools
@@ -91,7 +91,7 @@ jobs:
           devCentralToken: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}
           prodCentralToken: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
           githubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-          ballerinaBotWorkflow: $ {{ secrets.BALLERINA_BOT_WORKFLOW }}
+          ballerinaBotWorkflow: ${{ secrets.BALLERINA_BOT_WORKFLOW }}
         run: |
           ./gradlew build -x test -x project-api-tests:test -Pversion=${VERSION}
           ./gradlew release -Prelease.useAutomaticVersion=true -x test

@@ -22,7 +22,9 @@ plugins {
 group 'io.ballerina'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
 
 dependencies {
     implementation project(':test-automation')
