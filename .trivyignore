@@ -7,13 +7,6 @@ CVE-2026-41907
 CVE-2026-56740
 CVE-2026-56741
 
-# netty-transport-native-epoll / netty-transport-native-kqueue - needs dependency upgrade to 4.1.135.Final/4.2.15.Final+
-CVE-2026-45536
-CVE-2026-59903
-CVE-2026-49844
-CVE-2026-75595
-CVE-2026-75596
-
 # Temporary exception. Remove after upgrading toml to 4.2.0+.
 CVE-2026-63376
 CVE-2026-77465
