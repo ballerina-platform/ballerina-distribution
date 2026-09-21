@@ -180,13 +180,33 @@ jobs:
         run: ./../gradlew build --stacktrace -scan --console=plain --no-daemon -DballerinaInstalled=true
         env:
           TEST_MODE_ACTIVE: true
+    outputs:
+      project-version: ${{ steps.project-version.outputs.version }}
+      project-version-short: ${{ steps.project-version.outputs.sversion }}
+      lang-version: ${{ steps.project-version.outputs.langversion }}
+
+  docker-build:
+
+    needs: ubuntu-build
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'ballerina-platform'
+
+    steps:
+      - name: Download Ballerina Short Name ZIP
+        uses: actions/download-artifact@v4
+        with:
+          name: Ballerina Short Name ZIP
+      - name: Download Linux Installer deb
+        uses: actions/download-artifact@v4
+        with:
+          name: Linux Installer deb
       - name: Checkout docker repo
         uses: actions/checkout@v2
         with:
           repository: ballerina-platform/module-ballerina-docker
           path: module-ballerina-docker
       - name: Copy zip artifact
-        run: cp ballerina/build/distributions/ballerina-22*.zip module-ballerina-docker/base/docker/
+        run: cp ballerina-*.zip module-ballerina-docker/base/docker/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -205,7 +225,7 @@ jobs:
           push: false
           tags: ballerina/ballerina:nightly-test
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
+            BALLERINA_DIST=ballerina-${{ needs.ubuntu-build.outputs.project-version-short }}.zip
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -221,11 +241,11 @@ jobs:
           push: true
           tags: ballerina/ballerina:nightly
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
+            BALLERINA_DIST=ballerina-${{ needs.ubuntu-build.outputs.project-version-short }}.zip
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Copy deb artifact
-        run: cp installers/linux-deb/target/ballerina-*-linux-x64.deb module-ballerina-docker/base/devcontainer/
+        run: cp ballerina-*-linux-x64.deb module-ballerina-docker/base/devcontainer/
       - name: Build the dev container docker image
         id: docker_build_devcontainer
         uses: docker/build-push-action@v2
@@ -235,14 +255,7 @@ jobs:
           push: false
           tags: ballerina/ballerina-devcontainer:nightly-test
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
-      - name: Clean up created artifacts
-        run: |
-          rm -rf installers/linux-deb/target/ballerina-*-linux-x64.deb
-          rm -rf installers/linux-rpm/rpmbuild/RPMS/x86_64/ballerina-*-linux-x64.rpm
-          rm -rf ballerina/build/distributions/ballerina-*-macos.zip
-          rm -rf ballerina/build/distributions/ballerina-*-macos-arm.zip
-          rm -rf ballerina/build/distributions/ballerina-*-windows.zip
+            BALLERINA_DIST=ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-x64.deb
       # TODO: The devcontainer base image (mcr.microsoft.com/vscode/devcontainers/base:debian12)
       # currently carries ~3350 OS-level CVEs (18 CRITICAL, 368 HIGH) with no fix published by
       # Debian yet, so `ignore-unfixed` is used to keep the pipeline green. Revisit and remove
@@ -263,7 +276,7 @@ jobs:
           push: true
           tags: ballerina/ballerina-devcontainer:nightly
           build-args: |
-            BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.version }}-linux-x64.deb
+            BALLERINA_DIST=ballerina-${{ needs.ubuntu-build.outputs.project-version }}-linux-x64.deb
       - name: Notify failure
         if: ${{ failure() }}
         run: |
@@ -278,9 +291,6 @@ jobs:
               \"branch\": \"master\"
             }
           }"
-    outputs:
-      project-version: ${{ steps.project-version.outputs.version }}
-      lang-version: ${{ steps.project-version.outputs.langversion }}
 
   project-api-tests:
 
