@@ -5,6 +5,7 @@ The `http:Client` supports specifying query parameters as resource method argume
 ::: code http_client_query_parameter.bal :::
 
 ## Prerequisites
+
 - Run the HTTP service given in the [REST service - Query parameter](/learn/by-example/http-query-parameter/) example.
 
 Run the client program by executing the following command.
@@ -15,6 +16,13 @@ Furthermore, a `post` request with a query parameter can be sent as shown below.
 
 ::: code http_client_query_parameter_post.bal :::
 
+Multiple query parameters can also be sent together using `http:QueryParams` value.
+
+::: code http_client_query_parameter_map.bal :::
+
+::: out http_client_query_parameter_map.out :::
+
 ## Related links
+
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
 - [HTTP client resource methods - Specification](/spec/http/#2423-resource-methods)
