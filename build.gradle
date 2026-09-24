@@ -200,6 +200,7 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:math.vector-ballerina:${stdlibMathVectorVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:edi-ballerina:${stdlibEdiVersion}"
+        ballerinaStdLibs "io.ballerina.lib:workflow-ballerina:${stdlibWorkflowVersion}"
 
         /* OpenAPI Module */
         openapiModule "io.ballerina:module-ballerina-openapi:${openapiModuleVersion}"
