@@ -1,4 +1,3 @@
 $ bal run http_client_query_parameter.bal
 Received albums: [{"title":"Blue Train", "artist":"John Coltrane"}]
 Received albums: [{"title":"Blue Train", "artist":"John Coltrane"}]
-Received albums: [{"title":"Blue Train", "artist":"John Coltrane"}]

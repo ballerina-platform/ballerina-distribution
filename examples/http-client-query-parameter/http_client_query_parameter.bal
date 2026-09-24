@@ -21,11 +21,4 @@ public function main() returns error? {
     };
     albums = check albumClient->/albums(params = queries);
     io:println("Received albums: " + albums.toJsonString());
-
-    // Multiple query parameters can also be passed using a map.
-    albums = check albumClient->/albums(params = {
-        "title": "Blue Train",
-        "artist": "John Coltrane"
-    });
-    io:println("Received albums: " + albums.toJsonString());
 }
