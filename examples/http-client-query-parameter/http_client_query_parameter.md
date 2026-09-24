@@ -1,6 +1,6 @@
 # HTTP client - Query parameter
 
-The `http:Client` supports specifying query parameters as resource method arguments. Each query parameter can be stated as a key-value pair. When the request is sent, the key-value pairs are appended to the request path (e.g., `?foo=bar`). The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and `array` types of the aforementioned types. Use this when invoking endpoints that expect query parameters.
+The `http:Client` supports specifying query parameters as resource method arguments. Each query parameter can be stated as a key-value pair. When the request is sent, the key-value pairs are appended to the request path (e.g., `?foo=bar`). The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and `array` types of the aforementioned types. Multiple query parameters can also be passed together as an `http:QueryParams` value. Use this when invoking endpoints that expect query parameters.
 
 ::: code http_client_query_parameter.bal :::
 
@@ -16,7 +16,7 @@ Furthermore, a `post` request with a query parameter can be sent as shown below.
 
 ::: code http_client_query_parameter_post.bal :::
 
-A collection of query parameters can also be passed together, either as an `http:QueryParams` value or directly as a map.
+Multiple query parameters can also be passed together as an `http:QueryParams` value.
 
 ::: code http_client_query_parameter_map.bal :::
 
