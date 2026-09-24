@@ -16,12 +16,6 @@ Furthermore, a `post` request with a query parameter can be sent as shown below.
 
 ::: code http_client_query_parameter_post.bal :::
 
-Multiple query parameters can also be passed together as an `http:QueryParams` value.
-
-::: code http_client_query_parameter_map.bal :::
-
-::: out http_client_query_parameter_map.out :::
-
 ## Related links
 
 - [`http` module - API documentation](https://lib.ballerina.io/ballerina/http/latest/)
