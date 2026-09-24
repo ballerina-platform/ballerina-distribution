@@ -16,7 +16,7 @@ Furthermore, a `post` request with a query parameter can be sent as shown below.
 
 ::: code http_client_query_parameter_post.bal :::
 
-Multiple query parameters can also be sent together using `http:QueryParams` value.
+A collection of query parameters can also be passed together, either as an `http:QueryParams` value or directly as a map.
 
 ::: code http_client_query_parameter_map.bal :::
 
