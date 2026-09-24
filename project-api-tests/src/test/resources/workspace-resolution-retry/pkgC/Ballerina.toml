@@ -1,0 +1,13 @@
+[package]
+org = "asmaj"
+name = "pkgC"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
+sticky = true
+
+[[dependency]]
+org = "ballerina"
+name = "http"
+version="2.15.5"

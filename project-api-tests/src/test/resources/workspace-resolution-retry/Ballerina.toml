@@ -1,0 +1,5 @@
+[workspace]
+packages = ["pkgA", "pkgB", "pkgC"]
+
+[dependency-resolution]
+repairOnFailure = true
