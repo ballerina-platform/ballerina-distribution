@@ -6,3 +6,39 @@ CVE-2026-41907
 # Need to be fixed
 CVE-2026-56740
 CVE-2026-56741
+
+# Need to be fixed - found in release-test image scan (2201.14.0, run 36151990086)
+# jackson-core 2.15.4
+GHSA-r7wm-3cxj-wff9
+CVE-2026-18401
+# jackson-databind 2.15.4
+CVE-2026-54512
+CVE-2026-54513
+CVE-2026-54514
+CVE-2026-54515
+CVE-2026-59888
+# protobuf-java 3.23.2
+CVE-2024-7254
+# grpc-netty-shaded / netty 1.58.1, 1.68.2 (tracked in wso2-enterprise/integration-engineering#2467)
+CVE-2025-55163
+# micrometer-core 1.9.9
+CVE-2026-40984
+# netty-codec-http 4.1.136.Final (tracked in wso2-enterprise/integration-engineering#2464)
+CVE-2026-59903
+# netty-handler
+CVE-2026-75595
+CVE-2026-75596
+# json-smart 2.5.0
+CVE-2024-57699
+# bouncycastle bcpg/bcpkix/bcprov 1.80, 1.84 (tracked in wso2-enterprise/integration-engineering#2464, #2935)
+CVE-2026-3505
+CVE-2026-5588
+CVE-2026-8763
+CVE-2026-13506
+CVE-2025-14813
+CVE-2026-0636
+# toml (npm) 0.8.0
+CVE-2026-63376
+CVE-2026-77465
+# workflow (npm) 0.12.0 (tracked in wso2-enterprise/integration-engineering#2467)
+GHSA-9r75-g2cr-3h76
