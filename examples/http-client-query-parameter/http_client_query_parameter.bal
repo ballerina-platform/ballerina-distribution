@@ -10,7 +10,15 @@ public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090");
 
     // Sends a `GET` request to the "/albums" resource.
-    // The query parameter can be provided as parameters in the `get` method invocation.
+    // The query parameter can be provided as a parameter in the `get` method invocation.
     Album[] albums = check albumClient->/albums(artist = "John Coltrane");
+    io:println("Received albums: " + albums.toJsonString());
+
+    // Multiple query parameters can be passed as an `http:QueryParams` value.
+    http:QueryParams queries = {
+        "title": "Blue Train",
+        "artist": "John Coltrane"
+    };
+    albums = check albumClient->/albums(params = queries);
     io:println("Received albums: " + albums.toJsonString());
 }
