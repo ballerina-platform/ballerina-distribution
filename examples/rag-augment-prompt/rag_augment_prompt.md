@@ -2,7 +2,7 @@
 
 The final step of a retrieval-augmented generation (RAG) workflow is generation: the chunks retrieved for the user's question are added to the prompt, so that the large language model (LLM) answers from your data instead of from its training data alone. Ballerina offers two ways to do this.
 
-The `ai:augmentUserQuery` function takes the retrieved chunks (`ai:QueryMatch[]` or `ai:Document[]`) and the query, and returns an `ai:ChatUserMessage` that combines them using a generic prompt template, ready to be sent with the `chat` method of a model provider. For full control over the prompt, insert the chunks into your own prompt template and use the `generate` method, which also binds the answer to an expected type, so you can ask the model for structured output such as an answer together with a grounding flag.
+The `ai:augmentUserQuery` function takes the retrieved chunks (`ai:QueryMatch[]` or `ai:Document[]`) and the query, and returns an `ai:ChatUserMessage` that combines them using a generic prompt template. The content of the message is an `ai:Prompt`, so it can be passed to the `generate` method of a model provider (or the message itself can be sent with the `chat` method). For full control over the prompt, insert the chunks into your own prompt template and pass it to the `generate` method. The `generate` method binds the answer to the expected type, so you can ask the model for structured output such as an answer together with a grounding flag.
 
 This example demonstrates both approaches with the default model provider. The retrieved chunks are defined inline to focus on the augmentation step; see the retrieval examples for how they are retrieved from a knowledge base.
 

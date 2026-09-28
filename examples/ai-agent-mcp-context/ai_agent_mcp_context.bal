@@ -2,7 +2,7 @@ import ballerina/ai;
 import ballerina/io;
 import ballerina/mcp;
 
-// Connects to the MCP server from the MCP service with request metadata example.
+// Connects to the MCP server from the MCP advanced service with request metadata example.
 final mcp:StreamableHttpClient ticketServer = check new ("http://localhost:9090/mcp");
 
 # Gets the open support tickets of the signed-in user.

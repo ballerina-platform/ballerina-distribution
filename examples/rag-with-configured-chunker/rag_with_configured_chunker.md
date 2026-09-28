@@ -2,7 +2,7 @@
 
 By default, an `ai:VectorKnowledgeBase` chunks ingested documents with the `ai:AUTO` configuration, which selects a chunker based on the type of each document. When you need control over the chunk size, overlap, or splitting strategy, pass a configured `ai:Chunker` when creating the knowledge base instead. Ballerina provides `ai:GenericRecursiveChunker`, `ai:MarkdownChunker`, and `ai:HtmlChunker`, and you can also implement the `ai:Chunker` type yourself.
 
-This example demonstrates a knowledge base that uses a generic recursive chunker with a sentence-based strategy and a small chunk size, and inspects the sentence-level chunks that were stored. To retrieve from a knowledge base and generate an answer, see the [Retrieve from an in-memory vector store](/learn/by-example/rag-in-memory-vector-store-retrieval/) example.
+This example demonstrates a knowledge base that uses a generic recursive chunker with a sentence-based strategy and a small chunk size, so that each sentence is stored as a separate chunk. It covers ingestion only. To retrieve from a knowledge base, see the [Retrieve from an in-memory vector store](/learn/by-example/rag-in-memory-vector-store-retrieval/) example.
 
 > Note: This example uses the default embedding provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation.
 

@@ -20,10 +20,12 @@ public function main() returns error? {
     ];
 
     // Option 1: use `ai:augmentUserQuery` to build a user message that combines the retrieved
-    // context and the query using a generic prompt template, and send it with `chat`.
+    // context and the query using a generic prompt template. Its content is an `ai:Prompt`,
+    // which is passed to the `generate` method.
     ai:ChatUserMessage augmentedQuery = ai:augmentUserQuery(retrievedContext, query);
-    ai:ChatAssistantMessage response = check model->chat(augmentedQuery);
-    io:println("Answer (augmentUserQuery): ", response?.content);
+    ai:Prompt augmentedPrompt = check augmentedQuery.content.ensureType();
+    string response = check model->generate(augmentedPrompt);
+    io:println("Answer (augmentUserQuery): ", response);
 
     // Option 2: write your own prompt with the `generate` method. The retrieved chunks are
     // inserted into the prompt template, and the answer is bound to the expected type, so the

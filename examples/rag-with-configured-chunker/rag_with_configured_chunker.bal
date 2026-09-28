@@ -6,8 +6,9 @@ final ai:EmbeddingProvider embeddingProvider = check ai:getDefaultEmbeddingProvi
 
 // Define the chunker to use when documents are ingested. Instead of the default `ai:AUTO`
 // configuration, which selects a chunker based on the document type, this example uses a
-// generic recursive chunker that splits by sentences into chunks of at most 120 characters,
-// with an overlap of 20 characters between consecutive chunks to preserve context.
+// generic recursive chunker that splits by sentences into chunks of at most 120 characters.
+// Consecutive chunks can share up to 20 characters of overlap, made of whole sentences, to
+// preserve context.
 final ai:Chunker chunker = new ai:GenericRecursiveChunker(maxChunkSize = 120, maxOverlapSize = 20,
         strategy = ai:SENTENCE);
 
@@ -16,7 +17,7 @@ final ai:Chunker chunker = new ai:GenericRecursiveChunker(maxChunkSize = 120, ma
 final ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
 
 // Create the knowledge base with the vector store, the embedding provider,
-// and the custom chunker. Any `ai:Chunker` implementation, including your own, can be used.
+// and the configured chunker. Any `ai:Chunker` implementation, including your own, can be used.
 final ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(vectorStore, embeddingProvider, chunker);
 
 public function main() returns error? {
@@ -29,15 +30,7 @@ A medical certificate is required for absences longer than two consecutive days.
 Parental leave is 12 weeks and must be requested one month in advance.`
     };
 
-    // The document is split by the custom chunker before the chunks are embedded and stored.
+    // The document is split by the configured chunker before the chunks are embedded and stored.
     check knowledgeBase.ingest(policy);
     io:println("Ingestion successful");
-
-    // Inspect what was stored. A query without an embedding or filters returns all the
-    // entries of the vector store; each one is a sentence-based chunk produced by the chunker.
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length());
-    foreach ai:VectorMatch entry in entries {
-        io:println("- ", entry.chunk.content);
-    }
 }

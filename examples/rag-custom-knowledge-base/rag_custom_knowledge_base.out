@@ -1,6 +1,0 @@
-$ bal run rag_custom_knowledge_base.bal
-Match: Employees are entitled to 10 days of paid sick leave per year. A medical
-            certificate is required for absences longer than two consecutive days. (score: 0.5714285714285714)
-Match: Full-time employees are entitled to 20 days of paid annual leave per year. (score: 0.42857142857142855)
-
-Answer: Employees are entitled to 10 days of paid sick leave per year.

@@ -1,8 +1,2 @@
 $ bal run rag_with_configured_chunker.bal
 Ingestion successful
-Chunks stored: 5
-- Full-time employees are entitled to 20 days of paid annual leave per year.
-- Leave requests must be submitted at least one week in advance.
-- Employees are entitled to 10 days of paid sick leave per year.
-- A medical certificate is required for absences longer than two consecutive days.
-- Parental leave is 12 weeks and must be requested one month in advance.

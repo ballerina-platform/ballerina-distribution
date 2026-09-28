@@ -16,7 +16,7 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 
 ## Related links
 
-- [The Generate embeddings example](/learn/by-example/rag-embeddings/)
+- [The Generate embeddings with the default WSO2 embedding provider example](/learn/by-example/rag-embeddings/)
 - [The Ingest into an in-memory vector store example](/learn/by-example/rag-in-memory-vector-store-ingestion/)
 - [The Filter results by metadata example](/learn/by-example/rag-query-with-metadata-filters/)
 - [The `ballerinax/ai.pgvector` module](https://central.ballerina.io/ballerinax/ai.pgvector/latest)

@@ -22,12 +22,4 @@ public function main() returns error? {
     // documents, embeds the chunks, and stores the vectors in the vector store.
     check knowledgeBase.ingest(documents);
     io:println("Ingestion successful");
-
-    // Inspect what was stored. A query without an embedding or filters returns all
-    // the entries of the vector store (`topK` of `-1` removes the limit).
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length());
-    foreach ai:VectorMatch entry in entries {
-        io:println("- ", entry.chunk.metadata?.header ?: "(no header)", " (", entry.chunk.content.toString().length(), " characters)");
-    }
 }

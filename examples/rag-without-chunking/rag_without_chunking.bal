@@ -22,12 +22,4 @@ public function main() returns error? {
     // The documents are stored as they are, one chunk per document.
     check knowledgeBase.ingest(faqs);
     io:println("Ingestion successful");
-
-    // Inspect what was stored: the number of entries equals the number of documents,
-    // and each entry is a complete FAQ entry.
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length(), " (documents ingested: ", faqs.length(), ")");
-    foreach ai:VectorMatch entry in entries {
-        io:println("- ", entry.chunk.content);
-    }
 }

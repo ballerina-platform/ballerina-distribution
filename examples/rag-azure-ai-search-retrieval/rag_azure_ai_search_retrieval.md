@@ -4,7 +4,7 @@ Once documents are ingested into an Azure AI Search index, any program can retri
 
 This example demonstrates retrieving from an existing index via the [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) module and generating an answer with Azure OpenAI.
 
-> Prerequisite: Run the [Ingest into Azure AI Search](/learn/by-example/rag-azure-ai-search-ingestion/) example first. It creates and populates the `hr-policies` index that this example queries.
+> Prerequisite: The ingestion for this example is in the [Ingest into Azure AI Search](/learn/by-example/rag-azure-ai-search-ingestion/) example. Run it first. It creates and populates the `hr-policies` index that this example queries.
 
 > Note: Add the Azure AI Search and Azure OpenAI values to the `Config.toml` file (e.g., `searchServiceUrl = "https://<service>.search.windows.net"`, `searchApiKey = "<admin-key>"`, `openAiServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `openAiApiKey = "<api-key>"`, `chatDeploymentId = "<deployment>"`, `embeddingDeploymentId = "<deployment>"`). Never commit API keys to source control.
 
@@ -17,6 +17,5 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 ## Related links
 
 - [The Ingest into Azure AI Search example](/learn/by-example/rag-azure-ai-search-ingestion/)
-- [The Retrieve from a custom knowledge base example](/learn/by-example/rag-custom-knowledge-base/)
 - [The `ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest)
 - [The `ballerinax/azure.ai.search` module](https://central.ballerina.io/ballerinax/azure.ai.search/latest)

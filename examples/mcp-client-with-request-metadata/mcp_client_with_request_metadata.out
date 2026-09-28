@@ -1,0 +1,3 @@
+$ bal run mcp_client_with_request_metadata.bal
+Open tickets of tenant 'acme': [{"id":"TCK-1", "tenantId":"acme", "subject":"Payment gateway timeout"}, {"id":"TCK-3", "tenantId":"acme", "subject":"Report export is empty"}]
+Call without metadata failed: Received JSON-RPC error from server: {"jsonrpc":"2.0", "id":3, "error":{"code":-32603, "message":"Failed to call tool 'getOpenTickets': The 'tenantId' metadata is missing from the request"}}

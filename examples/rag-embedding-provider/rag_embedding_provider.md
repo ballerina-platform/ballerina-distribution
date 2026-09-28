@@ -16,7 +16,7 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 
 ## Related links
 
-- [The Generate embeddings example](/learn/by-example/rag-embeddings/)
+- [The Generate embeddings with the default WSO2 embedding provider example](/learn/by-example/rag-embeddings/)
 - [The Retrieve from an in-memory vector store example](/learn/by-example/rag-in-memory-vector-store-retrieval/)
 - [The Ingest into Pinecone example](/learn/by-example/rag-ingestion-with-external-vector-store/)
 - [The `ballerinax/ai.openai` module](https://central.ballerina.io/ballerinax/ai.openai/latest)

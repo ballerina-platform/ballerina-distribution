@@ -1,20 +1,2 @@
 $ bal run rag_in_memory_vector_store_ingestion.bal
 Ingestion successful
-Chunks stored: 17
-- (no header) (196 characters)
-- 1. 🎯 Purpose (192 characters)
-- 1. 🎯 Purpose (175 characters)
-- 2.1. Annual Leave (Paid Time Off - PTO) (149 characters)
-- 2.1. Annual Leave (Paid Time Off - PTO) (179 characters)
-- 2.1. Annual Leave (Paid Time Off - PTO) (175 characters)
-- 2.3. Casual Leave (163 characters)
-- 2.4. Maternity / Paternity Leave (190 characters)
-- 2.5. Bereavement Leave (168 characters)
-- 2.6. Leave Without Pay (LWP) (170 characters)
-- 2.6. Leave Without Pay (LWP) (128 characters)
-- 3. 📅 Leave Request Procedure (199 characters)
-- 4. 🔁 Leave Encashment (32 characters)
-- 4. 🔁 Leave Encashment (188 characters)
-- 5. ❗ Important Notes (158 characters)
-- 5. ❗ Important Notes (124 characters)
-- 6. 📌 Contact (194 characters)

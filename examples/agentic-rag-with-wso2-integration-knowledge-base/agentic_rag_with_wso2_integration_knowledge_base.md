@@ -15,5 +15,4 @@ For more information on the underlying module, see the [`ballerinax/ai.wso2.inte
 ## Related links
 - [The Retrieve from a WSO2 Cloud knowledge base example](/learn/by-example/rag-wso2-cloud-knowledge-base-retrieval/)
 - [The Agentic RAG with Pinecone example](/learn/by-example/agentic-rag-with-pinecone-vector-store/)
-- [The Retrieve from a custom knowledge base example](/learn/by-example/rag-custom-knowledge-base/)
 - [The `ballerinax/ai.wso2.integration` module](https://central.ballerina.io/ballerinax/ai.wso2.integration/latest)

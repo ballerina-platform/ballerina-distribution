@@ -4,7 +4,7 @@ In addition to the vector store-based `ai:VectorKnowledgeBase`, Ballerina provid
 
 The knowledge base can be created for a new index by passing a `search:SearchIndex` definition, which creates the index, or for an existing index by passing the index name. The index must have a key field of type string, a content field (named `content` by default), and a vector field whose dimension matches the embedding model.
 
-This example demonstrates creating a knowledge base with a new index definition and ingesting documents into it, using Azure OpenAI for the embeddings. To query the index, see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example.
+This example demonstrates creating a knowledge base with a new index definition and ingesting documents into it, using Azure OpenAI for the embeddings. It covers ingestion only. For the query part, see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example.
 
 > Note: Create an [Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal) service and an Azure OpenAI resource with an embedding deployment, and add the values to the `Config.toml` file (e.g., `searchServiceUrl = "https://<service>.search.windows.net"`, `searchApiKey = "<admin-key>"`, `openAiServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `openAiApiKey = "<api-key>"`, `embeddingDeploymentId = "<deployment>"`). Never commit API keys to source control.
 

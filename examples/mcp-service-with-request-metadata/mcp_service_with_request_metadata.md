@@ -1,4 +1,4 @@
-# MCP service with request metadata
+# Model Context Protocol (MCP) advanced service with request metadata
 
 An MCP request can carry a `_meta` field alongside the tool arguments. Metadata describes the call rather than forming part of the input of the tool, which makes it the place for values that the caller determines and the LLM must not choose, such as the tenant or the correlation ID of the request. Since the metadata is not part of the tool input schema, the LLM never sees it.
 

@@ -1,0 +1,3 @@
+$ bal run rag_custom_embedding_provider.bal
+Embedding dimensions: 768
+Best match: Full-time employees get 20 days of paid annual leave per year.

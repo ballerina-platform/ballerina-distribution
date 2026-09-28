@@ -1,6 +1,12 @@
 $ bal run ai_agent_tool_context.bal
 You have two orders:
-- **ORD-1001**: Status is **delivered**
-- **ORD-1003**: Status is **processing**
+- **Order ID: ORD-1001** - Status: Delivered
+- **Order ID: ORD-1003** - Status: Processing
+
+Order **ORD-1003** has been successfully cancelled due to your request.
+
+We offer the following shipping options for Sri Lanka:
+- **Standard** (3-5 days)
+- **Express** (1 day)
 
 You have one order (ORD-1002) that is currently in transit.

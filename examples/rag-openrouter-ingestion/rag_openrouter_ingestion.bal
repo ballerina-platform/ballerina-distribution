@@ -26,12 +26,4 @@ public function main() returns error? {
     ];
     check knowledgeBase.ingest(documents);
     io:println("Ingestion successful");
-
-    // Inspect what was stored. A query without an embedding or filters returns all the entries.
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length());
-    foreach ai:VectorMatch entry in entries {
-        ai:Embedding embedding = entry.embedding;
-        io:println("- ", entry.chunk.content, " (dimension: ", embedding is ai:Vector ? embedding.length() : 0, ")");
-    }
 }

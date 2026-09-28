@@ -8,7 +8,7 @@ These abstractions enable you to query semantically similar content from vector 
 
 This example demonstrates how to retrieve relevant chunks from a knowledge base backed by a [Pinecone](https://www.pinecone.io/) index and use them with a language model to answer questions based on the retrieved context, using both a custom prompt with the `generate` method and `ai:augmentUserQuery` with the `chat` method.
 
-> Prerequisite: Run the [Ingest into Pinecone](/learn/by-example/rag-ingestion-with-external-vector-store/) example first. It populates the Pinecone index that this example queries.
+> Prerequisite: The ingestion for this example is in the [Ingest into Pinecone](/learn/by-example/rag-ingestion-with-external-vector-store/) example. Run it first. It populates the Pinecone index that this example queries.
 
 > Note: This example uses the default model provider and embedding provider implementations and Pinecone. To generate the configuration for the model and embedding providers, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract Pinecone configuration. Alternatively, you can try out the in-memory vector store (`ai:InMemoryVectorStore`).
 

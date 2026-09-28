@@ -1,11 +1,15 @@
 $ bal run rag_document_chunking.bal
-leave_policy.md (text/markdown): 3 chunks
-  [0] header: - | # Leave policy ## Annual leave
-  [1] header: Annual leave | ## Annual leave Full-time employees are entitled to 20 days of paid annual leave per year.
-  [2] header: Sick leave | ## Sick leave Employees are entitled to 10 days of paid sick leave per year.
-travel_policy.html (text/html): 2 chunks
-  [0] header: - | <h1>Travel policy</h1> <h2>Booking</h2> <p>Business travel must be booked two weeks in advance.</p>
-  [1] header: Expenses | <h2>Expenses</h2> <p>Meals are reimbursed up to 60 USD per day.</p>
-code_of_conduct.txt (text/plain): 2 chunks
-  [0] header: - | Treat colleagues, customers, and partners with respect. Harassment is not tolerated.
-  [1] header: - | Report any concerns to the HR team.
+Markdown chunks: 2
+- [leave_policy.md] # Leave policy ## Annual leave 20 days of paid leave per year.
+- [leave_policy.md] ## Sick leave 10 days of paid sick leave per year.
+HTML chunks: 2
+- [travel_policy.html] <h1>Travel policy</h1><h2>Booking</h2><p>Book travel two weeks in advance.</p>
+- [travel_policy.html] <h2>Meals</h2><p>Meals are reimbursed up to 60 USD per day.</p>
+Text chunks: 3
+- [code_of_conduct.txt] Treat colleagues with respect.
+- [code_of_conduct.txt] Harassment is not tolerated.
+- [code_of_conduct.txt] Report concerns to HR.
+Chunks stored with ai:AUTO: 3
+- [leave_policy.md] # Leave policy ## Annual leave 20 days of paid leave per year. ## Sick leave 10 days of paid sick leave per year.
+- [travel_policy.html] <h1>Travel policy</h1><h2>Booking</h2><p>Book travel two weeks in advance.</p><h2>Meals</h2><p>Meals are reimbursed up to 60 USD per day.</p>
+- [code_of_conduct.txt] Treat colleagues with respect. Harassment is not tolerated. Report concerns to HR.
