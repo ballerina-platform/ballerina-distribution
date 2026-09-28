@@ -1,2 +1,2 @@
-description: This BBE demonstrates how to forward values from an ai:Context to an MCP server as request metadata, keeping them out of the tool schema.
-keywords: ballerina, ballerina by example, BBE, ai, agent, mcp, context, metadata, meta
+description: This BBE demonstrates how a custom MCP toolkit forwards values from an ai:Context to an MCP server as request metadata, keeping them out of the tool schema.
+keywords: ballerina, ballerina by example, BBE, ai, agent, mcp, context, metadata, meta, toolkit

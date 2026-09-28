@@ -2,7 +2,7 @@
 
 Ballerina enables developers to easily create intelligent AI agents powered by large language models (LLMs) and integrated with tools, including local tools, MCP tools, and external APIs. These AI agents can automate complex workflows, interact with users through natural language, and seamlessly connect with internal and external systems.
 
-This example demonstrates how to create an AI agent that can access weather information by integrating with a Model Context Protocol (MCP) service, by simply defining an MCP toolkit.
+This example demonstrates how to create an AI agent that can access weather information by integrating with a Model Context Protocol (MCP) service, by simply defining an MCP toolkit. The `ai:McpToolKit` toolkit forwards each call to the server as it is. For more control, such as changing the arguments of a call or forwarding values to the server, define a custom MCP toolkit as demonstrated in the [Agent with advanced MCP integration](/learn/by-example/ai-agent-mcp-integration-advanced/) example.
 
 > Note: You can use this agent with the [MCP service example](/learn/by-example/mcp-service/).
 
@@ -15,6 +15,7 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 ::: out ai_agent_mcp_integration.out :::
 
 ## Related links
+- [The Agent with advanced MCP integration example](/learn/by-example/ai-agent-mcp-integration-advanced/)
 - [The Agent with local tools example](/learn/by-example/ai-agent-local-tools)
 - [The Agent with external endpoint integration example](/learn/by-example/ai-agent-external-endpoint-integration)
 - [The Agent with tool kits example](/learn/by-example/ai-agent-tool-kit)

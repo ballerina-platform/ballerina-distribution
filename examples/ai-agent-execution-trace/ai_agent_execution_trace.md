@@ -2,7 +2,7 @@
 
 Understanding how an agent arrived at an answer is essential for debugging, evaluation, and observability. When `ai:Trace` is used as the expected type of the `run` method, the agent returns the full execution trace instead of only the final answer. The trace (`ai:Trace`) captures the user message, each reasoning-action cycle (`ai:Iteration`) with the message history and the outputs produced (tool results, assistant messages, or errors), the tool calls requested by the LLM, the final output, the tool schemas, and the start and end times.
 
-Traces are also the input to agent evaluations (see the [Agent evaluation](/learn/by-example/ai-agent-evaluation/) example). For production observability, the [ballerinax/amp](https://central.ballerina.io/ballerinax/amp/latest) module publishes agent traces to the WSO2 AI Agent Management Platform via OpenTelemetry when tracing is enabled.
+Traces are also the input to agent evaluations (see the [Agent evaluation](/learn/by-example/ai-agent-evaluation/) example). For production observability, the agent execution is recorded as OpenTelemetry spans and, when tracing is enabled, published to the configured tracing provider, such as Jaeger (see the [Publish agent traces to Jaeger](/learn/by-example/ai-agent-tracing-jaeger/) example) or the WSO2 AI Agent Management Platform with the [ballerinax/amp](https://central.ballerina.io/ballerinax/amp/latest) module.
 
 This example demonstrates how to obtain and inspect the execution trace of an agent run.
 
@@ -16,6 +16,7 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 
 ## Related links
 - [The Agent evaluation example](/learn/by-example/ai-agent-evaluation/)
+- [The Publish agent traces to Jaeger example](/learn/by-example/ai-agent-tracing-jaeger/)
 - [The Agent with typed input and output example](/learn/by-example/ai-agent-typed-input-output/)
 - [The `ballerinax/amp` module](https://central.ballerina.io/ballerinax/amp/latest)
 - [Overview of Ballerina observability](/learn/overview-of-ballerina-observability/)

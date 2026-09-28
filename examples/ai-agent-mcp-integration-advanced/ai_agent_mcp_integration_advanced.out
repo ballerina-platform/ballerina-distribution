@@ -1,0 +1,32 @@
+$ bal run ai_agent_mcp_integration_advanced.bal
+[WeatherToolKit] Limiting the forecast from 5 to 3 days
+Agent: The current weather in Colombo is as follows:
+- **Temperature**: 17.0°C
+- **Humidity**: 40%
+- **Pressure**: 1017 hPa
+- **Condition**: Sunny
+
+For the next 5 days, the weather forecast is as follows:
+
+1. **September 29, 2026**
+   - High: 21°C
+   - Low: 11°C
+   - Condition: Rainy
+   - Precipitation Chance: 44%
+   - Wind Speed: 7 km/h
+
+2. **September 30, 2026**
+   - High: 21°C
+   - Low: 13°C
+   - Condition: Cloudy
+   - Precipitation Chance: 31%
+   - Wind Speed: 9 km/h
+
+3. **October 1, 2026**
+   - High: 24°C
+   - Low: 11°C
+   - Condition: Cloudy
+   - Precipitation Chance: 21%
+   - Wind Speed: 18 km/h
+
+Please note that the forecast only includes data for 3 days instead of the requested 5 days.

@@ -1,5 +1,8 @@
 $ bal run ai_agent_mcp_context.bal
 You have two open tickets:
 
-1. **TCK-1**: Payment gateway timeout
-2. **TCK-3**: Report export is empty
+1. **Ticket ID:** TCK-1  
+   **Subject:** Payment gateway timeout
+
+2. **Ticket ID:** TCK-3  
+   **Subject:** Report export is empty

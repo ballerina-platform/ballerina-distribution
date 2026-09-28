@@ -1,0 +1,4 @@
+$ bal run ai_agent_as_tool.bal
+[Delegating to the order specialist] Can you provide the product category and delivery date for order ID ORD-1001?
+[Delegating to the returns policy specialist] Can the customer return an electronics item delivered on September 20, 2026, as of today, September 28, 2026?
+Agent: Yes, you can still return your order ORD-1001, as it was delivered within the return window. If you need further assistance with the return process, feel free to ask!

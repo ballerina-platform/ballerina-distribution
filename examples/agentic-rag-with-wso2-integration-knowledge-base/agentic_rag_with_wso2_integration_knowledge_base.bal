@@ -6,9 +6,9 @@ import ballerinax/ai.wso2.integration as wso2;
 configurable string knowledgeBaseUrl = ?;
 configurable string knowledgeBaseToken = ?;
 
-// The knowledge base is hosted and populated on the WSO2 Integration platform, so the
-// application only retrieves from it. Ingestion and deletion are not supported by this
-// knowledge base, and return an error.
+// The knowledge base is hosted and populated on the WSO2 Integration Platform, so the
+// application only retrieves from it. The `ingest` and `deleteByFilter` methods are not
+// supported yet.
 final ai:KnowledgeBase knowledgeBase = check new wso2:CloudKnowledgeBase(knowledgeBaseUrl,
         {auth: {token: knowledgeBaseToken}},
         // Chunks scoring below this similarity threshold are dropped.

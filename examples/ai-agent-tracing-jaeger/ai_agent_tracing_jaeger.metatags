@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to publish the OpenTelemetry traces of an AI agent to Jaeger.
+keywords: ballerina, ballerina by example, BBE, ai, agent, tracing, observability, jaeger, opentelemetry
