@@ -2,7 +2,29 @@
 CVE-2020-7768
 CVE-2025-48985
 CVE-2026-41907
+# toml (npm) 0.8.0 - name collision with ballerina/toml module's own bala package.json, not a real npm install
+CVE-2026-63376
+CVE-2026-77465
+# workflow (npm) 0.12.0 - name collision with ballerina/workflow module's own bala package.json, not a real npm install
+GHSA-9r75-g2cr-3h76
 
 # Need to be fixed
 CVE-2026-56740
 CVE-2026-56741
+
+# Need to be fixed - confirmed real (release-test image scan 2201.14.0, run 36151990086;
+# re-verified locally with --skip-files "**/bom.cdx.json" to exclude stale bundled SBOMs)
+# jackson-core 2.15.4 (ballerina/workflow module)
+GHSA-r7wm-3cxj-wff9
+CVE-2026-18401
+# jackson-databind 2.15.4 (ballerina/workflow module)
+CVE-2026-54512
+CVE-2026-54513
+CVE-2026-54514
+CVE-2026-54515
+CVE-2026-59888
+# grpc-netty-shaded 1.68.2 (ballerina/workflow module)
+CVE-2025-55163
+# bcprov-jdk18on 1.84 (ballerina/crypto and ballerina/grpc modules)
+CVE-2026-8763
+CVE-2026-13506
