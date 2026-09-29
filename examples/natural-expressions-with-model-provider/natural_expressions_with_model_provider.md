@@ -8,7 +8,7 @@ This example demonstrates how to use a natural expression with a specific model 
 
 > Note: This feature is supported on Swan Lake Update 13 or newer versions. This is currently an experimental feature and requires the `--experimental` flag to be used with `bal` commands.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.anthropic` module](https://central.ballerina.io/ballerinax/ai.anthropic/latest).
 
 ::: code natural_expressions_with_model_provider.bal :::
 

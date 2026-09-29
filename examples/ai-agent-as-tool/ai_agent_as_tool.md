@@ -2,9 +2,11 @@
 
 A multi-agent system splits a task across several cooperating agents, each with its own instructions, tools, model, and optionally its own memory. In the orchestrator pattern, one agent owns the request, delegates subtasks to specialist agents, and composes their results into the final answer. A specialist is attached to the orchestrator as a tool: a function annotated with `@ai:AgentTool` that runs the specialist with the query composed by the orchestrator and returns its response.
 
-The orchestrator decides when to call the tool from its description, so write the description around the situations that should trigger a hand-off. The specialist does not see the conversation of the orchestrator, so the description also states what the query must include. The return type of the tool binds the response of the specialist: a structured type gives the orchestrator a result that needs no further interpretation. A specialist configured with `memory: ()` is stateless, so it keeps no history between delegations.
+The orchestrator decides when to call the tool from its description, so write the description around the situations that should trigger a hand-off. The specialist does not see the conversation of the orchestrator, so the description also states what the query must include. The return type of the tool binds the response of the specialist, and a structured type gives the orchestrator a result that needs no further interpretation. A specialist configured with `memory: ()` is stateless, so it keeps no history between delegations.
 
-This example demonstrates a customer support agent that delegates order lookups to an order specialist and return decisions to a returns policy specialist.
+A specialist can be an `ai:Agent` created inline, or an agent created from an agent definition, a class that includes the `ai:FixedTypedAgent` type. A definition can be shared, for example by publishing it in a library package, so a specialist built once can be attached as a tool of agents in other integrations and projects. It is attached in the same way, and the fixed return type of the definition gives the calling agent a structured result.
+
+This example demonstrates a customer support agent that delegates order lookups to an inline order specialist, and return decisions to a returns policy specialist created from an agent definition.
 
 > Note: Each delegation is a full agent run, so it adds latency and token usage, and each agent enforces its own maximum number of iterations. Delegate only the subtasks that need their own reasoning, and use a tool for a single action.
 

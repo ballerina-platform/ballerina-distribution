@@ -1,18 +1,13 @@
 import ballerina/ai;
 import ballerina/io;
-import ballerinax/ai.azure;
+import ballerinax/ai.openai;
 
-// The connection details for the model provider. Add them to the `Config.toml` file.
-configurable string azureServiceUrl = ?;
-configurable string azureApiKey = ?;
-configurable string azureDeploymentId = ?;
+// The API key for the model provider. Add it to the `Config.toml` file.
+configurable string openAiApiKey = ?;
 
-// Initialize a model provider for a specific LLM provider using your own keys.
-// This example uses Azure OpenAI; other `ballerinax/ai.<provider>` modules follow the same pattern.
-// With the legacy Azure OpenAI URL (`https://<resource>.openai.azure.com/openai`),
-// pass the `apiVersion` argument too.
-final ai:ModelProvider model = check new azure:OpenAiModelProvider(azureServiceUrl, azureApiKey,
-        azureDeploymentId,
+// Initialize a model provider for a specific LLM provider using your own key.
+// This example uses OpenAI; other `ballerinax/ai.<provider>` modules follow the same pattern.
+final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, openai:GPT_4O_MINI,
         // Set `temperature` to `()` for models that do not support it (e.g., GPT-5 series).
         temperature = 0.2);
 

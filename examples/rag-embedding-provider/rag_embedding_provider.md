@@ -8,7 +8,7 @@ This example demonstrates how to initialize a specific embedding provider with y
 
 > Note: Add the API key to the `Config.toml` file (e.g., `openAiApiKey = "<your-api-key>"`). Never commit API keys to source control.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.openai` module](https://central.ballerina.io/ballerinax/ai.openai/latest).
 
 ::: code rag_embedding_provider.bal :::
 

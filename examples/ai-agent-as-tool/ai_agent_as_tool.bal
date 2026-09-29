@@ -46,18 +46,39 @@ final ai:Agent orderAgent = check new ({
     memory: ()
 });
 
-// A specialist agent that applies the returns policy, with its own tool and instructions.
-final ai:Agent returnsPolicyAgent = check new ({
-    systemPrompt: {
-        role: "Returns Policy Specialist",
-        instructions: string `You decide whether an item can be returned. Electronics can be
-            returned within 14 days of delivery, and other items within 30 days. Use the tool
-            to count the days since the delivery.`
-    },
-    model,
-    tools: [daysBetween],
-    memory: ()
-});
+// A specialist agent defined as an agent definition: a class that includes the
+// `ai:FixedTypedAgent` type. A definition can be shared, for example by publishing it in a
+// library package, and every agent created from it can be attached as a tool of another agent.
+isolated class ReturnsPolicyAgent {
+    *ai:FixedTypedAgent;
+
+    private final ai:Agent agent;
+
+    function init(ai:ModelProvider model) returns error? {
+        self.agent = check new (
+            systemPrompt = {
+                role: "Returns Policy Specialist",
+                instructions: string `You decide whether an item can be returned. Electronics can be
+                    returned within 14 days of delivery, and other items within 30 days. Use the tool
+                    to count the days since the delivery.`
+            },
+            model = model,
+            tools = [daysBetween],
+            memory = ()
+        );
+    }
+
+    // The fixed return type of the definition binds the response to a structured type.
+    public isolated function run(string|ai:Prompt query, string sessionId = "sessionId",
+            ai:Context context = new) returns ReturnEligibility|ai:Error =>
+        self.agent.run(query, sessionId, context);
+
+    public isolated function trace(string|ai:Prompt query, string sessionId = "sessionId",
+            ai:Context context = new) returns ai:Trace|ai:Error =>
+        self.agent.run(query, sessionId, context);
+}
+
+final ReturnsPolicyAgent returnsPolicyAgent = check new (model);
 
 // An agent becomes a tool of another agent through a function that runs it. The calling agent
 // decides when to call the tool and composes the query, so the description says when to use
@@ -81,8 +102,8 @@ isolated function orderAgentTool(string query) returns string|error {
 @ai:AgentTool
 isolated function returnsPolicyAgentTool(string query) returns ReturnEligibility|error {
     io:println("[Delegating to the returns policy specialist] ", query);
-    // The return type of the tool binds the response of the sub-agent to a structured type,
-    // so the calling agent receives a result that needs no further interpretation.
+    // An agent created from a definition is attached as a tool in the same way. Its structured
+    // result needs no further interpretation by the calling agent.
     return returnsPolicyAgent.run(query);
 }
 

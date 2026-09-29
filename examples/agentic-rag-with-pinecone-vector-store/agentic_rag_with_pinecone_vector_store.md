@@ -8,7 +8,7 @@ This example connects to a Pinecone index through an `ai:VectorKnowledgeBase`, e
 
 > Note: This example uses the default model and embedding provider implementations and Pinecone. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract the Pinecone configuration. The embedding provider used here must be the one used for ingestion.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.pinecone` module](https://central.ballerina.io/ballerinax/ai.pinecone/latest).
 
 ::: code agentic_rag_with_pinecone_vector_store.bal :::
 

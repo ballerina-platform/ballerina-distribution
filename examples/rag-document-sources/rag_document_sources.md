@@ -10,7 +10,7 @@ This example demonstrates loading documents from local files, from a SharePoint 
 
 > Note: This example requires a Microsoft Entra ID app registration with the `Sites.Read.All` application permission for Microsoft Graph. Add the tenant ID, client ID, client secret, and SharePoint site ID to the `Config.toml` file (e.g., `siteId = "contoso.sharepoint.com:/sites/HR"`). The example loads the PDF and Markdown files in the `Policies` folder of the site's `Documents` library.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.microsoft.sharepoint` module](https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest).
 
 ::: code rag_document_sources.bal :::
 

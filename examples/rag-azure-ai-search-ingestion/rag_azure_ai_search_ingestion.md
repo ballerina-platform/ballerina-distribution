@@ -8,7 +8,7 @@ This example demonstrates creating a knowledge base with a new index definition 
 
 > Note: Create an [Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal) service and an Azure OpenAI resource with an embedding deployment, and add the values to the `Config.toml` file (e.g., `searchServiceUrl = "https://<service>.search.windows.net"`, `searchApiKey = "<admin-key>"`, `openAiServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `openAiApiKey = "<api-key>"`, `embeddingDeploymentId = "<deployment>"`). Never commit API keys to source control.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest).
 
 ::: code rag_azure_ai_search_ingestion.bal :::
 

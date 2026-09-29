@@ -6,7 +6,7 @@ This example demonstrates how to make direct LLM calls to a model served by a lo
 
 > Note: Install Ollama, start the Ollama server, and pull the model before running the example (e.g., `ollama pull llama3.2`). To use a different model or a server running on another host or port, set the `ollamaModel` and `ollamaServiceUrl` configurable variables in the `Config.toml` file.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.ollama` module](https://central.ballerina.io/ballerinax/ai.ollama/latest).
 
 ::: code direct_llm_calls_with_ollama.bal :::
 

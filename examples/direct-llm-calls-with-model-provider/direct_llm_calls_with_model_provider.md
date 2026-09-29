@@ -1,12 +1,12 @@
 # Direct LLM calls with a specific model provider
 
-The `ai:ModelProvider` type is a unified abstraction to integrate with large language models (LLMs). Provider-specific modules such as [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest), [ballerinax/ai.openai](https://central.ballerina.io/ballerinax/ai.openai/latest), [ballerinax/ai.anthropic](https://central.ballerina.io/ballerinax/ai.anthropic/latest), and others implement this type, so the same code works across providers.
+The `ai:ModelProvider` type is a unified abstraction to integrate with large language models (LLMs). Provider-specific modules such as [ballerinax/ai.openai](https://central.ballerina.io/ballerinax/ai.openai/latest), [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest), [ballerinax/ai.anthropic](https://central.ballerina.io/ballerinax/ai.anthropic/latest), and others implement this type, so the same code works across providers.
 
-This example demonstrates how to initialize a specific model provider with your own keys and use it to make direct LLM calls. The example uses Azure OpenAI, but switching to another provider only requires changing the import and the provider initialization.
+This example demonstrates how to initialize a specific model provider with your own keys and use it to make direct LLM calls. The example uses OpenAI, but switching to another provider only requires changing the import and the provider initialization.
 
-> Note: Add the connection details to the `Config.toml` file (e.g., `azureServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `azureApiKey = "<your-api-key>"`, `azureDeploymentId = "<your-deployment-name>"`). Never commit API keys to source control. Alternatively, to avoid managing keys yourself, use the default model provider via `ai:getDefaultModelProvider()`, as demonstrated in the [Direct LLM calls](/learn/by-example/direct-llm-calls/) example.
+> Note: Add the API key to the `Config.toml` file (e.g., `openAiApiKey = "<your-api-key>"`). Never commit API keys to source control. Alternatively, to avoid managing keys yourself, use the default model provider via `ai:getDefaultModelProvider()`, as demonstrated in the [Direct LLM calls](/learn/by-example/direct-llm-calls/) example.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.openai` module](https://central.ballerina.io/ballerinax/ai.openai/latest).
 
 ::: code direct_llm_calls_with_model_provider.bal :::
 
@@ -14,9 +14,8 @@ For more information on the underlying module, see the [`ballerina/ai` module](h
 
 ## Related links
 - [The Direct LLM calls example](/learn/by-example/direct-llm-calls/)
-- [The `ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest)
-- [Azure OpenAI API version lifecycle](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/api-version-lifecycle)
 - [The `ballerinax/ai.openai` module](https://central.ballerina.io/ballerinax/ai.openai/latest)
+- [The `ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest)
 - [The `ballerinax/ai.anthropic` module](https://central.ballerina.io/ballerinax/ai.anthropic/latest)
 - [The `ballerinax/ai.ollama` module](https://central.ballerina.io/ballerinax/ai.ollama/latest)
 - [The `ballerinax/ai.deepseek` module](https://central.ballerina.io/ballerinax/ai.deepseek/latest)

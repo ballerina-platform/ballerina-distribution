@@ -8,7 +8,7 @@ This example demonstrates retrieving from [pgvector](https://github.com/pgvector
 
 > Note: Add the database configuration to the `Config.toml` file (e.g., `pgPassword = "<password>"`). This example also uses the default embedding provider and model provider implementations. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.pgvector` module](https://central.ballerina.io/ballerinax/ai.pgvector/latest).
 
 ::: code rag_pgvector_retrieval.bal :::
 

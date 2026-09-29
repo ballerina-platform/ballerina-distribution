@@ -8,7 +8,7 @@ This example demonstrates retrieving from an existing index via the [ballerinax/
 
 > Note: Add the Azure AI Search and Azure OpenAI values to the `Config.toml` file (e.g., `searchServiceUrl = "https://<service>.search.windows.net"`, `searchApiKey = "<admin-key>"`, `openAiServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `openAiApiKey = "<api-key>"`, `chatDeploymentId = "<deployment>"`, `embeddingDeploymentId = "<deployment>"`). Never commit API keys to source control.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.azure` module](https://central.ballerina.io/ballerinax/ai.azure/latest).
 
 ::: code rag_azure_ai_search_retrieval.bal :::
 

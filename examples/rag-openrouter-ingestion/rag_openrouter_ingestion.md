@@ -6,7 +6,7 @@ This example demonstrates the ingestion side of a RAG workflow in which the chun
 
 > Note: Add the OpenRouter API key to the `Config.toml` file (e.g., `openRouterApiKey = "<your-api-key>"`). Never commit API keys to source control.
 
-For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
+For more information on the underlying module, see the [`ballerinax/ai.openrouter` module](https://central.ballerina.io/ballerinax/ai.openrouter/latest).
 
 ::: code rag_openrouter_ingestion.bal :::
 
