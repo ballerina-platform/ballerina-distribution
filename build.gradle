@@ -194,7 +194,6 @@ subprojects {
         ballerinaStdLibs "io.ballerina.stdlib:mcp-ballerina:${stdlibMcpVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:sql-ballerina:${stdlibSqlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:persist-ballerina:${stdlibPersistVersion}"
-        ballerinaStdLibs "io.ballerina.stdlib:yaml-ballerina:${stdlibYamlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:toml-ballerina:${stdlibTomlVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:soap-ballerina:${stdlibSoapVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:observe-ballerina:${observeVersion}"
