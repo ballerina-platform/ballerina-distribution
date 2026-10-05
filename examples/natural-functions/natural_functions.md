@@ -1,10 +1,8 @@
 # Natural functions
 
-A natural function is a function whose body is written in natural language instead of code. The function signature (the parameters and the return type) is declared in Ballerina, and the body is a natural expression that describes the logic in English. At runtime, the parameters are available in the prompt via interpolations, the return type is converted to a JSON schema and sent to the LLM along with the prompt, and the response is bound to the return type.
+A natural function has a signature declared in Ballerina and a body that is a natural expression written in English. At runtime, the parameters are interpolated into the prompt, the return type is sent to the LLM as a JSON schema, and the response is bound to the return type. Callers use it like any other function. It works with any `ai:ModelProvider` implementation, including the default model provider.
 
-Natural functions let you keep the typed contract of a regular function while delegating the logic to an LLM, so callers use them exactly like any other function. Any `ai:ModelProvider` implementation can be used, including the default model provider.
-
-This example demonstrates a natural function that analyzes a customer review and returns a typed result.
+This example uses a natural function to analyze a customer review and return a typed result.
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 

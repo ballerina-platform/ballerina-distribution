@@ -1,10 +1,8 @@
 # Implement a custom vector store
 
-A vector store (`ai:VectorStore`) saves vector entries and searches them by similarity. The `ballerina/ai` module provides `ai:InMemoryVectorStore`, and modules such as [ballerinax/ai.pgvector](https://central.ballerina.io/ballerinax/ai.pgvector/latest) and [ballerinax/ai.pinecone](https://central.ballerina.io/ballerinax/ai.pinecone/latest) provide implementations for external databases. To keep the vectors in a database or search service that has no vector store module, implement the `ai:VectorStore` type yourself.
+If you need more control over how vectors are stored and searched, for example to use your own database or your own search logic, implement the `ai:VectorStore` type yourself. Implement its three methods: `add` to save entries, `query` to return the entries that match a query, and `delete` to remove entries by ID. You can then use your vector store in a knowledge base like any other.
 
-An `ai:VectorStore` has three methods: `add`, which saves vector entries, `query`, which returns the entries that match an `ai:VectorStoreQuery`, and `delete`, which removes entries by their IDs. A query has an embedding, metadata filters, or both, plus a `topK` limit, where `-1` returns all the entries. An `ai:VectorKnowledgeBase` adds entries without IDs, so a store should generate an ID when an entry does not have one. A custom store can be passed to an `ai:VectorKnowledgeBase`, which uses it to store and search the embedded chunks.
-
-This example demonstrates a vector store that saves the entries to a JSON file, so they are available across runs. It ranks the entries by cosine similarity and supports metadata filters that use the `==` and `!=` operators. To keep the example self-contained, the embeddings are short, hand-written vectors.
+This example implements a vector store that saves entries to a JSON file, ranks them by cosine similarity, and supports `==` and `!=` metadata filters.
 
 For more information on the underlying module, see the [`ballerina/ai` module](https://lib.ballerina.io/ballerina/ai/latest/).
 

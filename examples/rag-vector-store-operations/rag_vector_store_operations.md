@@ -1,10 +1,8 @@
 # Vector store operations
 
-A vector store (`ai:VectorStore`) persists vector entries and searches them by similarity. Each entry (`ai:VectorEntry`) pairs a chunk with its embedding and can carry an ID and metadata. The store exposes three operations: `add` to store entries, `query` to search by an embedding, optionally combined with metadata filters, and `delete` to remove entries by ID.
+A vector store (`ai:VectorStore`) saves vector entries and searches them by similarity. Each entry (`ai:VectorEntry`) pairs a chunk with its embedding and can have an ID and metadata. The store has three operations: `add` stores entries, `query` searches by an embedding and optional metadata filters, and `delete` removes entries by ID.
 
-In a retrieval-augmented generation (RAG) workflow, the knowledge base (`ai:VectorKnowledgeBase`) drives these operations for you. Using the store directly is useful to understand what happens underneath, to index vectors produced elsewhere, or to manage entries individually. Ballerina provides the built-in `ai:InMemoryVectorStore` and implementations for external databases such as pgvector, Pinecone, Milvus, and Weaviate, which all share the same `ai:VectorStore` type.
-
-This example demonstrates adding entries with IDs and metadata to an in-memory vector store, querying by similarity with and without metadata filters, and deleting an entry.
+This example adds entries to an `ai:InMemoryVectorStore`, queries it with and without metadata filters, and deletes an entry.
 
 > Note: This example uses the default embedding provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation.
 

@@ -1,10 +1,10 @@
 # Ingest into Pinecone
 
-Ballerina has high-level, provider-agnostic APIs to ingest data for retrieval-augmented generation (RAG) workflows. These include abstractions such as `ai:DataLoader`, `ai:VectorStore`, `ai:EmbeddingProvider`, and `ai:KnowledgeBase`.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG), and the `ai:VectorKnowledgeBase` implementation of it. Its `ingest` method splits the documents into chunks, embeds the chunks with an embedding provider, and stores them in a vector store.
 
-These abstractions enable you to load documents, convert them into semantically meaningful vector representations using embedding models, and index them into a vector database (e.g., Pinecone, Weaviate, etc.). The knowledge base (`ai:KnowledgeBase`) orchestrates this process.
+This example loads a PDF document and ingests it into a [Pinecone](https://www.pinecone.io/) index through the [ballerinax/ai.pinecone](https://central.ballerina.io/ballerinax/ai.pinecone/latest) module, with the default embedding provider.
 
-This example demonstrates how to use `ai:TextDataLoader` to load a PDF document, generate embeddings with the default embedding provider, and ingest the chunks into a [Pinecone](https://www.pinecone.io/) index via the [ballerinax/ai.pinecone](https://central.ballerina.io/ballerinax/ai.pinecone/latest) module. It covers ingestion only. For the query part, see the [Retrieve from Pinecone](/learn/by-example/rag-query-with-external-vector-store/) example.
+For the query part, see the [Retrieve from Pinecone](/learn/by-example/rag-query-with-external-vector-store/) example.
 
 > Note: This example uses the default embedding provider implementation and Pinecone. To generate the configuration for the embedding provider, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` embedding provider implementation. Follow [`ballerinax/ai.pinecone` prerequisites](https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites) to extract Pinecone configuration. Alternatively, you can try out the in-memory vector store (`ai:InMemoryVectorStore`).
 

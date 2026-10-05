@@ -50,4 +50,13 @@ public function main() returns error? {
     ];
     check knowledgeBase.ingest(documents);
     io:println("Ingested ", documents.length(), " documents into the 'hr-policies' index");
+
+    // Create a knowledge base backed by an existing index by passing the index name.
+    ai:KnowledgeBase existingIndex = check new azure:AiSearchKnowledgeBase(searchServiceUrl, searchApiKey,
+            "hr-policies", embeddingProvider);
+    ai:TextDocument[] moreDocuments = [
+        {content: "Employees can work remotely for up to two days per week."}
+    ];
+    check existingIndex.ingest(moreDocuments);
+    io:println("Ingested ", moreDocuments.length(), " more document into the existing 'hr-policies' index");
 }

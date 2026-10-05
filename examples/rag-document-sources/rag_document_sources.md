@@ -1,14 +1,12 @@
 # Load documents from multiple sources
 
-The documents for a retrieval-augmented generation (RAG) knowledge base rarely come from a single place. The `ai:DataLoader` abstraction represents any source of documents: the built-in `ai:TextDataLoader` loads local files (`pdf`, `docx`, `markdown`, `html`, and `pptx`), and modules such as [ballerinax/ai.microsoft.sharepoint](https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest) load documents from external services. Content that is already in memory, such as an HTTP response body, can be wrapped as an `ai:TextDocument` directly. To load from any other source, implement the `ai:DataLoader` type, as shown in the [Load using a custom data loader](/learn/by-example/rag-custom-data-loader/) example.
+A retrieval-augmented generation (RAG) knowledge base often gets documents from more than one place. The `ai:DataLoader` type represents any source of documents.
 
-The `sharepoint:TextDataLoader` reads files from SharePoint document libraries, and optionally site pages, through the Microsoft Graph API. It loads text files, such as Markdown, as they are and extracts the text of PDF files. It authenticates with OAuth2 client credentials, a refresh token, or a bearer token. Each source names a site and the libraries, paths, and file extensions to load.
+This example loads documents from local files, a SharePoint document library, and memory.
 
-Because every loader produces `ai:Document` values, documents from different sources can be combined and ingested into a knowledge base together.
+To load from another source, see the [Load using a custom data loader](/learn/by-example/rag-custom-data-loader/) example.
 
-This example demonstrates loading documents from local files, from a SharePoint document library, and from in-memory content.
-
-> Note: This example requires a Microsoft Entra ID app registration with the `Sites.Read.All` application permission for Microsoft Graph. Add the tenant ID, client ID, client secret, and SharePoint site ID to the `Config.toml` file (e.g., `siteId = "contoso.sharepoint.com:/sites/HR"`). The example loads the PDF and Markdown files in the `Policies` folder of the site's `Documents` library.
+> Note: This example requires a Microsoft Entra ID app registration with the `Sites.Read.All` application permission for Microsoft Graph. Add the token URL, client ID, client secret, and SharePoint site ID to the `Config.toml` file (e.g., `tokenUrl = "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token"`, `siteId = "contoso.sharepoint.com:/sites/HR"`). The example loads the PDF and Markdown files in the `Policies` folder of the site's `Documents` library.
 
 For more information on the underlying module, see the [`ballerinax/ai.microsoft.sharepoint` module](https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest).
 

@@ -2,11 +2,12 @@ import ballerina/ai;
 import ballerina/io;
 import ballerinax/ai.microsoft.sharepoint;
 
-// Credentials of a Microsoft Entra ID app registration that has the `Sites.Read.All`
-// application permission for Microsoft Graph.
-configurable string tenantId = ?;
+// OAuth2 client credentials of a Microsoft Entra ID app registration that has the
+// `Sites.Read.All` application permission for Microsoft Graph.
+configurable string tokenUrl = ?;
 configurable string clientId = ?;
 configurable string clientSecret = ?;
+configurable string[] scopes = ["https://graph.microsoft.com/.default"];
 
 // The SharePoint site to load from, in the `{hostname}:/sites/{site-name}` form
 // (e.g., `contoso.sharepoint.com:/sites/HR`).
@@ -26,10 +27,10 @@ public function main() returns error? {
     ai:DataLoader sharePointLoader = check new sharepoint:TextDataLoader(
         {
             auth: {
-                tokenUrl: string `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+                tokenUrl,
                 clientId,
                 clientSecret,
-                scopes: ["https://graph.microsoft.com/.default"]
+                scopes
             }
         },
         [

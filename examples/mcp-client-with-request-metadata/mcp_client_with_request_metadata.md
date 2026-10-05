@@ -1,10 +1,8 @@
 # Model Context Protocol (MCP) client with request metadata
 
-An MCP request can carry a `_meta` field alongside the tool arguments. Metadata describes the call rather than forming part of the input of the tool, so it is the place for values that the caller determines and that must not be chosen by an LLM, such as the tenant or the correlation ID of the request.
+An MCP request can carry a `_meta` field for values that the caller sets and the LLM must not choose, such as the tenant. The `mcp:StreamableHttpClient` client sends it through the `_meta` field of `mcp:CallToolParams`. `mcp:Meta` is an open record, so you can add your own fields. An error returned by a tool comes back as an `mcp:CallToolResult` with `isError` set to `true`, not as an `mcp:ClientError`.
 
-The `mcp:StreamableHttpClient` client sends request metadata via the `_meta` field of `mcp:CallToolParams`. The `mcp:Meta` type is an open record, so the client can attach its own fields in addition to the standard `progressToken` field. On the server side, a tool of an `mcp:StreamableHttpService` reads the metadata through an `mcp:Meta?` parameter, which is not part of the tool input schema.
-
-This example lists the tools of the server, which shows that the `mcp:Meta?` parameters of the tools are not part of their input schemas. It then calls a tool with request metadata only, a tool with both arguments and request metadata, and a tool with arguments only, and shows that a call fails when the metadata that the tool requires is missing. An error returned by a tool is reported as an `mcp:CallToolResult` with the `isError` field set to `true`, rather than as an `mcp:ClientError`.
+This example calls tools with metadata, arguments, or both, and shows a call that fails without the required metadata.
 
 > Note: Start the MCP server from the [MCP service with request metadata](/learn/by-example/mcp-service-with-request-metadata/) example before running this example.
 

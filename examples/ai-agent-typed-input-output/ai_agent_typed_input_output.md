@@ -1,10 +1,8 @@
 # Agent with typed input and output
 
-Agents are not limited to exchanging plain text. The `run` method of an `ai:Agent` accepts any `anydata` value (e.g., a record) or a prompt template as the query, so structured input can be passed directly. The method is also dependently typed: the expected type at the call site determines how the agent's final response is bound. When a structured type such as a record is expected, the JSON schema of the type is sent to the LLM and the response is validated and converted to that type. When `string` is expected, the raw answer is returned, and when `ai:Trace` is expected, the full execution trace is returned.
+The `run` method of an `ai:Agent` accepts any `anydata` value, such as a record, or a prompt template. Its result type is the expected type at the call site. For a record, the JSON schema of the type is sent to the LLM, and the response is validated and converted to that type. For `string`, you get the raw answer, and for `ai:Trace`, the full execution trace.
 
-This makes it possible to integrate agents into typed Ballerina code without parsing free-form text, and to get compile-time checked access to the fields of the result.
-
-This example demonstrates a trip planner agent that accepts a request record and returns a typed itinerary, and also returns a plain string when that is the expected type.
+This example passes a request record to a trip planner agent and gets a typed itinerary, and then a string summary.
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 

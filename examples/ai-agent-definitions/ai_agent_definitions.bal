@@ -23,7 +23,7 @@ isolated function getSupportTier(string customerId) returns string =>
 
 # An agent definition that triages support requests for a product.
 public isolated class SupportTriageAgent {
-    // Including `ai:FixedTypedAgent` makes the class an agent definition with a fixed return type.
+    // Including `ai:FixedTypedAgent` makes this class an agent definition.
     *ai:FixedTypedAgent;
 
     private final ai:Agent agent;
@@ -35,8 +35,7 @@ public isolated class SupportTriageAgent {
     # + categories - The categories that the agent assigns requests to
     public function init(ai:ModelProvider model, ai:Memory? memory = (), string product = "",
             string[] categories = ["Bug", "Outage", "Question"]) returns error? {
-        // The role, instructions, and tools are part of the definition. The model, the
-        // memory, the product, and the categories vary between the agents created from it.
+        // The role, instructions, and tools are fixed; the `init` arguments vary per agent.
         self.agent = check new (
             systemPrompt = {
                 role: string `Support Triage Agent for ${product}`,
@@ -67,7 +66,6 @@ public isolated class SupportTriageAgent {
 }
 
 public function main() returns error? {
-    // Use the default model provider (with configuration added via a Ballerina VS Code command).
     ai:ModelProvider model = check ai:getDefaultModelProvider();
 
     // Create two agents from the same definition, one for each product.
@@ -83,7 +81,7 @@ public function main() returns error? {
         "Customer C-881: how do I change the color of a chart?");
     io:println("Acme Analytics: ", analyticsTriage);
 
-    // The trace shows the tool calls that the agent made to reach the result.
+    // The trace shows the tool calls made to reach the result.
     ai:Trace trace = check analyticsTriageAgent.trace(
         "Customer C-881: how do I change the color of a chart?");
     ai:FunctionCall[] toolCalls = trace.toolCalls ?: [];

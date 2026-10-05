@@ -1,12 +1,10 @@
 # Agent definitions
 
-An agent definition is a reusable template for an agent. It captures the role, the instructions, the tools, and the response type once, so that the same agent can be created in more than one place. Since a definition is a Ballerina class, agents can be shared like any other code: define the class in a library package and publish it, and other integrations and projects import the package and create agents from the definition, supplying their own model provider, memory, and `init` arguments. An agent created from a definition can also be attached as a tool of another agent, as demonstrated in the [Agent as a tool](/learn/by-example/ai-agent-as-tool/) example.
+An agent definition is a reusable agent. Define the role, instructions, tools, and response type once in a class that includes `ai:FixedTypedAgent`, and create as many agents from it as you need. The `init` parameters hold what changes between agents, such as the model provider or the product.
 
-A definition is a class that includes the `ai:FixedTypedAgent` type. The class composes an `ai:Agent` in its `init` method and implements the `run` method, which returns the fixed response type of the definition, and the `trace` method, which returns the execution trace. The parameters of the `init` method are the parts that vary between the agents created from the definition, such as the model provider, the memory, and values such as an endpoint or a tenant. Everything else stays in the definition. A structured response type is easier for the callers to use than a `string`, since the result needs no further interpretation.
+Since a definition is a class, you can share it by publishing it in a library package, so other projects can import it and create their own agents. An agent created from a definition can also be used as a tool of another agent, as shown in the [Agent as a tool](/learn/by-example/ai-agent-as-tool/) example.
 
-This example demonstrates an agent definition that triages support requests, and creates two agents from it for two products with different categories.
-
-> Note: The response type and the `init` parameters of a published definition are its public API. Changing the response type, adding a required `init` parameter, or renaming or removing any `init` parameter breaks its consumers.
+This example defines a support triage agent and creates two agents from it, one for each product.
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 

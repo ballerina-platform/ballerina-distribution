@@ -1,10 +1,8 @@
 # Implement a custom embedding provider
 
-An embedding provider (`ai:EmbeddingProvider`) converts chunks into vector embeddings. Modules such as [ballerinax/ai.openai](https://central.ballerina.io/ballerinax/ai.openai/latest) and [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) provide implementations for their services. To use an embedding model that has no provider module, such as a self-hosted model or an internal embeddings gateway, implement the `ai:EmbeddingProvider` type yourself.
+If you need an embedding provider with your own logic, for example to call a self-hosted model or an internal embeddings service, or to change how the embeddings are created, implement the `ai:EmbeddingProvider` type yourself. Implement its two remote methods: `embed` to create the embedding of one chunk, and `batchEmbed` to create the embeddings of many chunks in one call. You can then use your provider anywhere an embedding provider is expected, such as in a knowledge base.
 
-An `ai:EmbeddingProvider` is a client object with two remote methods: `embed`, which converts a single chunk into an `ai:Embedding`, and `batchEmbed`, which converts a batch of chunks in one call. A custom provider can be used anywhere an embedding provider is expected, including in an `ai:VectorKnowledgeBase`, which uses it both to embed the chunks when ingesting and to embed the query when retrieving.
-
-This example demonstrates a custom embedding provider for services that follow the OpenAI embeddings API, used with a local [Ollama](https://ollama.com) server, and plugs it into a knowledge base.
+This example implements a provider for services that follow the OpenAI embeddings API, uses it with a local [Ollama](https://ollama.com) server, and plugs it into a knowledge base.
 
 > Note: This example requires a running Ollama server with the `nomic-embed-text` model (`ollama pull nomic-embed-text`). To use another OpenAI-compatible service, set `embeddingServiceUrl` and `embeddingModel` in the `Config.toml` file.
 

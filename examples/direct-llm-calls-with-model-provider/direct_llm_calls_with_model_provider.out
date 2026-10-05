@@ -1,6 +1,5 @@
 $ bal run direct_llm_calls_with_model_provider.bal
-Title: Ballerina Programming Language
-- Ballerina is an open-source, cloud-native programming language.
-- It is optimized for integration and supports network protocols and data formats like JSON and XML.
-- The language has built-in support for concurrency.
-- It includes abstractions for working with large language models, agents, and retrieval-augmented generation.
+Title: Ballerina language summary
+- Ballerina is an open-source, cloud-native programming language designed for integration.
+- It provides first-class support for network protocols, data formats like JSON and XML, and concurrency.
+- It includes built-in abstractions for working with large language models, agents, and retrieval-augmented generation.

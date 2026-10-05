@@ -35,10 +35,9 @@ public isolated class TaskManagerToolkit {
     # + serviceUrl - The URL of the task management API
     # + auth - The bearer token configuration used to authenticate with the API
     # + permittedTools - The tools to give the agent, or `()` to give all the tools
-    # + readOnly - Whether to give the agent only the tools that do not change the tasks
     # + return - An error if the initialization fails
     public isolated function init(string serviceUrl, http:BearerTokenConfig auth,
-            TaskTool[]? permittedTools = (), boolean readOnly = false) returns error? {
+            TaskTool[]? permittedTools = ()) returns error? {
         self.taskApi = check new (serviceUrl, {auth});
         // The `ai:getToolConfigs` function generates the tool configurations for the specified
         // tools, which the toolkit then filters based on its configuration. The names of the
@@ -46,8 +45,7 @@ public isolated class TaskManagerToolkit {
         ai:ToolConfig[] allTools = ai:getToolConfigs([self.listTasks, self.addTask, self.completeTask]);
         self.tools = from ai:ToolConfig tool in allTools
             let TaskTool toolName = check tool.name.ensureType()
-            where (permittedTools is () || permittedTools.indexOf(toolName) != ())
-                && (!readOnly || toolName == LIST_TASKS)
+            where permittedTools is () || permittedTools.indexOf(toolName) != ()
             select tool.cloneReadOnly();
     }
 

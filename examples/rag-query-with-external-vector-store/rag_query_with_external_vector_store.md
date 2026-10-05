@@ -1,12 +1,8 @@
 # Retrieve from Pinecone
 
-Retrieval-augmented generation (RAG) is a technique that enhances capabilities of large language models by combining them with external knowledge sources to provide more accurate and contextually-relevant responses.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG), and the `ai:VectorKnowledgeBase` implementation of it. Its `retrieve` method embeds the question with the same embedding provider that was used for ingestion, and returns the most similar chunks from the vector store. You then add the chunks to the prompt, for example with `ai:augmentUserQuery`, and generate the answer with a model provider.
 
-Ballerina has high-level, provider-agnostic APIs for retrieval-augmented generation (RAG) workflows. These include abstractions such as `ai:VectorStore`, `ai:EmbeddingProvider`, and `ai:KnowledgeBase`.
-
-These abstractions enable you to query semantically similar content from vector databases (e.g., Pinecone, Weaviate, etc.) and use retrieved context in the request to the LLM to generate more accurate responses.
-
-This example demonstrates how to retrieve relevant chunks from a knowledge base backed by a [Pinecone](https://www.pinecone.io/) index and use them with a language model to answer questions based on the retrieved context, using both a custom prompt with the `generate` method and `ai:augmentUserQuery` with the `chat` method.
+This example retrieves chunks from the [Pinecone](https://www.pinecone.io/) index that the ingestion example populated, and answers questions in two ways: with a custom prompt and the `generate` method, and with `ai:augmentUserQuery` and the `chat` method.
 
 > Prerequisite: The ingestion for this example is in the [Ingest into Pinecone](/learn/by-example/rag-ingestion-with-external-vector-store/) example. Run it first. It populates the Pinecone index that this example queries.
 

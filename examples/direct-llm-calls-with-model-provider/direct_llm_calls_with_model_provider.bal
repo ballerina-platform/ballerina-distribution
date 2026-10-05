@@ -5,11 +5,9 @@ import ballerinax/ai.openai;
 // The API key for the model provider. Add it to the `Config.toml` file.
 configurable string openAiApiKey = ?;
 
-// Initialize a model provider for a specific LLM provider using your own key.
-// This example uses OpenAI; other `ballerinax/ai.<provider>` modules follow the same pattern.
-final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, openai:GPT_4O_MINI,
-        // Set `temperature` to `()` for models that do not support it (e.g., GPT-5 series).
-        temperature = 0.2);
+final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, openai:GPT_5_MINI,
+        // Use the Responses API.
+        apiType = openai:RESPONSES);
 
 type Summary record {|
     # A short title for the text

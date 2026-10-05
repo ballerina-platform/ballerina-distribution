@@ -1,7 +1,6 @@
 import ballerina/ai;
 import ballerina/http;
-// Include the Jaeger extension, which publishes the traces to Jaeger in the
-// OpenTelemetry format.
+// Import the Jaeger extension to send the traces to Jaeger.
 import ballerinax/jaeger as _;
 
 # Gets the current stock level of a product.
@@ -27,8 +26,7 @@ final ai:Agent inventoryAgent = check new ({
 });
 
 service /inventory on new ai:Listener(8080) {
-    // No tracing code is needed. When tracing is enabled, each request, agent run, LLM call,
-    // and tool call is recorded as a span and published to Jaeger.
+    // No tracing code is needed. With tracing turned on, each agent run is sent to Jaeger.
     resource function post chat(@http:Payload ai:ChatReqMessage request)
             returns ai:ChatRespMessage|error {
         string response = check inventoryAgent.run(request.message, request.sessionId);

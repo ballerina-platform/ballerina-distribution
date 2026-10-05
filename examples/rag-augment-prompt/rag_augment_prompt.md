@@ -1,10 +1,10 @@
 # Augment the prompt with retrieved context
 
-The final step of a retrieval-augmented generation (RAG) workflow is generation: the chunks retrieved for the user's question are added to the prompt, so that the large language model (LLM) answers from your data instead of from its training data alone. Ballerina offers two ways to do this.
+In a retrieval-augmented generation (RAG) application, the documents are first loaded, split into chunks, embedded, and stored in a vector store. When a user asks a question, the question is embedded too, and the most relevant chunks are retrieved from the vector store. The last step is to add these chunks to the user's query as context, so that the large language model (LLM) answers from your data.
 
-The `ai:augmentUserQuery` function takes the retrieved chunks (`ai:QueryMatch[]` or `ai:Document[]`) and the query, and returns an `ai:ChatUserMessage` that combines them using a generic prompt template. The content of the message is an `ai:Prompt`, so it can be passed to the `generate` method of a model provider (or the message itself can be sent with the `chat` method). For full control over the prompt, insert the chunks into your own prompt template and pass it to the `generate` method. The `generate` method binds the answer to the expected type, so you can ask the model for structured output such as an answer together with a grounding flag.
+The `ai:augmentUserQuery` function adds the chunks to the query with a generic prompt template. For full control, insert the chunks into your own prompt and pass it to the `generate` method.
 
-This example demonstrates both approaches with the default model provider. The retrieved chunks are defined inline to focus on the augmentation step; see the retrieval examples for how they are retrieved from a knowledge base.
+This example shows both approaches with the default model provider, using retrieved chunks defined inline.
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 

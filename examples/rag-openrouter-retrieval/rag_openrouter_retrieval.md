@@ -1,8 +1,10 @@
 # Retrieve and generate with OpenRouter
 
-The retrieval side of a retrieval-augmented generation (RAG) workflow embeds the user's question with the same embedding model that was used for ingestion, retrieves the most similar chunks, and augments the prompt sent to the LLM with them. With [OpenRouter](https://openrouter.ai/), both the embedding model and the LLM can be selected from many providers through a single API key, via the [ballerinax/ai.openrouter](https://central.ballerina.io/ballerinax/ai.openrouter/latest) module.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG), and the `ai:VectorKnowledgeBase` implementation of it. Its `retrieve` method embeds the question with the same embedding provider that was used for ingestion, and returns the most similar chunks from the vector store. You then add the chunks to the prompt, for example with `ai:augmentUserQuery`, and generate the answer with a model provider.
 
-This example demonstrates retrieving chunks embedded through OpenRouter and generating the answer with an OpenRouter-hosted model (e.g., `openai/gpt-4o-mini`, `anthropic/claude-3.5-sonnet`). Since it uses the in-memory vector store, the documents are ingested in the same program. The ingestion for this example is explained in the [Ingest with OpenRouter embeddings](/learn/by-example/rag-openrouter-ingestion/) example.
+This example uses an embedding model and an LLM (`openai/gpt-4o-mini`) on [OpenRouter](https://openrouter.ai/) through the [ballerinax/ai.openrouter](https://central.ballerina.io/ballerinax/ai.openrouter/latest) module. It ingests documents into the in-memory vector store first, and then retrieves the relevant chunks and generates the answer.
+
+For the ingestion part, see the [Ingest with OpenRouter embeddings](/learn/by-example/rag-openrouter-ingestion/) example.
 
 > Note: Add the OpenRouter API key to the `Config.toml` file (e.g., `openRouterApiKey = "<your-api-key>"`). Never commit API keys to source control.
 

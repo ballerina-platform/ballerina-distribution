@@ -1,8 +1,8 @@
 # Retrieve from Azure AI Search
 
-Once documents are ingested into an Azure AI Search index, any program can retrieve from it by creating an `azure:AiSearchKnowledgeBase` for the existing index. The retrieval side of a retrieval-augmented generation (RAG) workflow embeds the user's question with the same embedding provider that was used for ingestion, retrieves the most similar chunks with vector search, and augments the prompt sent to the LLM with them.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG). The [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) module implements it with `azure:AiSearchKnowledgeBase`, which works with an [Azure AI Search](https://azure.microsoft.com/en-us/products/ai-services/ai-search) index. Its `retrieve` method embeds the question with the same embedding provider that was used for ingestion, and finds the most similar chunks in the index with vector search.
 
-This example demonstrates retrieving from an existing index via the [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) module and generating an answer with Azure OpenAI.
+This example retrieves chunks from an existing index, adds them to the prompt with `ai:augmentUserQuery`, and generates the answer with Azure OpenAI.
 
 > Prerequisite: The ingestion for this example is in the [Ingest into Azure AI Search](/learn/by-example/rag-azure-ai-search-ingestion/) example. Run it first. It creates and populates the `hr-policies` index that this example queries.
 

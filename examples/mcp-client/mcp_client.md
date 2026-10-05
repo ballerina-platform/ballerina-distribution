@@ -1,10 +1,8 @@
 # Model Context Protocol (MCP) client
 
-The Model Context Protocol (MCP) is a standard for connecting AI applications to external data sources, tools, and workflows (prompts).
+The `mcp:StreamableHttpClient` client connects to an MCP server over the Streamable HTTP transport. It performs the protocol handshake, discovers the tools of the server, and calls them. Use it to call MCP tools without an AI agent. To use MCP tools from an agent, use `ai:McpToolKit`, as shown in the [Agent with MCP integration](/learn/by-example/ai-agent-mcp-integration/) example.
 
-In addition to creating MCP servers, Ballerina's MCP library allows you to create MCP clients that connect to MCP servers using the Streamable HTTP transport. The `mcp:StreamableHttpClient` client performs the protocol handshake, discovers the tools exposed by a server, and calls them. This is useful when integrating tools from an MCP server without an AI agent, or when building custom tooling around MCP servers. To use MCP tools from an AI agent, use `ai:McpToolKit` instead, as demonstrated in the [Agent with MCP integration](/learn/by-example/ai-agent-mcp-integration/) example.
-
-This example demonstrates how to connect to an MCP server, list the available tools, call a tool, and close the connection.
+This example connects to an MCP server, lists its tools, calls a tool, and closes the connection.
 
 > Note: Start the MCP server from the [MCP service](/learn/by-example/mcp-service/) example before running this example.
 

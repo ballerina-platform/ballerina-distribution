@@ -1,8 +1,8 @@
 # Retrieve from pgvector
 
-Once documents are ingested into an external vector store, any program can retrieve from it. The retrieval side of a retrieval-augmented generation (RAG) workflow connects to the same store, embeds the user's question with the same embedding provider that was used for ingestion, retrieves the most similar chunks, and augments the prompt sent to the LLM with them.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG), and the `ai:VectorKnowledgeBase` implementation of it. Its `retrieve` method embeds the question with the same embedding provider that was used for ingestion, and returns the most similar chunks from the vector store. You then add the chunks to the prompt, for example with `ai:augmentUserQuery`, and generate the answer with a model provider.
 
-This example demonstrates retrieving from [pgvector](https://github.com/pgvector/pgvector) via the [ballerinax/ai.pgvector](https://central.ballerina.io/ballerinax/ai.pgvector/latest) module and generating an answer grounded in the retrieved chunks.
+This example retrieves chunks from the [pgvector](https://github.com/pgvector/pgvector) table that the ingestion example populated, through the [ballerinax/ai.pgvector](https://central.ballerina.io/ballerinax/ai.pgvector/latest) module, and generates the answer with the default model provider.
 
 > Prerequisite: The ingestion for this example is in the [Ingest into pgvector](/learn/by-example/rag-pgvector-ingestion/) example. Run it first. It populates the table that this example queries.
 

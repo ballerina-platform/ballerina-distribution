@@ -1,10 +1,10 @@
 # Ingest into Azure AI Search
 
-In addition to the vector store-based `ai:VectorKnowledgeBase`, Ballerina provides knowledge bases backed by managed search services. The [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) module provides `azure:AiSearchKnowledgeBase`, an `ai:KnowledgeBase` implementation backed by [Azure AI Search](https://azure.microsoft.com/en-us/products/ai-services/ai-search), which stores the chunks and their embeddings in a search index and retrieves them with vector search.
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG). The [ballerinax/ai.azure](https://central.ballerina.io/ballerinax/ai.azure/latest) module implements it with `azure:AiSearchKnowledgeBase`, which stores the chunks and their embeddings in an [Azure AI Search](https://azure.microsoft.com/en-us/products/ai-services/ai-search) index. Pass a `search:SearchIndex` definition to create the index, or the name of an existing index.
 
-The knowledge base can be created for a new index by passing a `search:SearchIndex` definition, which creates the index, or for an existing index by passing the index name. The index must have a key field of type string, a content field (named `content` by default), and a vector field whose dimension matches the embedding model.
+This example creates an index and ingests documents into it, and then ingests another document into the same index by connecting to it as an existing index. It uses Azure OpenAI for the embeddings.
 
-This example demonstrates creating a knowledge base with a new index definition and ingesting documents into it, using Azure OpenAI for the embeddings. It covers ingestion only. For the query part, see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example.
+For the query part, see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example.
 
 > Note: Create an [Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal) service and an Azure OpenAI resource with an embedding deployment, and add the values to the `Config.toml` file (e.g., `searchServiceUrl = "https://<service>.search.windows.net"`, `searchApiKey = "<admin-key>"`, `openAiServiceUrl = "https://<resource>.services.ai.azure.com/openai/v1"`, `openAiApiKey = "<api-key>"`, `embeddingDeploymentId = "<deployment>"`). Never commit API keys to source control.
 

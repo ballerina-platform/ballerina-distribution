@@ -1,8 +1,10 @@
 # Ingest with OpenRouter embeddings
 
-[OpenRouter](https://openrouter.ai/) provides unified access to large language models (LLMs) and embedding models from many providers through a single API and key. The [ballerinax/ai.openrouter](https://central.ballerina.io/ballerinax/ai.openrouter/latest) module provides `ai:ModelProvider` and `ai:EmbeddingProvider` implementations for OpenRouter, so any model available on OpenRouter can be used in a retrieval-augmented generation (RAG) workflow by specifying its identifier (e.g., `openai/text-embedding-3-small`).
+Ballerina provides the `ai:KnowledgeBase` type for retrieval-augmented generation (RAG), and the `ai:VectorKnowledgeBase` implementation of it. Its `ingest` method splits the documents into chunks, embeds the chunks with an embedding provider, and stores them in a vector store.
 
-This example demonstrates the ingestion side of a RAG workflow in which the chunks are embedded through OpenRouter. The example stores the vectors in the in-memory vector store; any `ai:VectorStore` implementation can be used instead to persist them. It covers ingestion only. For the query part, where the chunks are retrieved and an OpenRouter-hosted model generates the answer, see the [Retrieve and generate with OpenRouter](/learn/by-example/rag-openrouter-retrieval/) example.
+This example embeds the chunks with an embedding model on [OpenRouter](https://openrouter.ai/) (`openai/text-embedding-3-small`) through the [ballerinax/ai.openrouter](https://central.ballerina.io/ballerinax/ai.openrouter/latest) module, and stores them in the in-memory vector store, which you can replace with any `ai:VectorStore` implementation.
+
+For the query part, see the [Retrieve and generate with OpenRouter](/learn/by-example/rag-openrouter-retrieval/) example.
 
 > Note: Add the OpenRouter API key to the `Config.toml` file (e.g., `openRouterApiKey = "<your-api-key>"`). Never commit API keys to source control.
 
