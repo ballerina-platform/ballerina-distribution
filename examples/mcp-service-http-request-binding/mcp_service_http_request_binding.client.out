@@ -1,0 +1,8 @@
+$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -H "x-tenant-id: acme" -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"getOrders","arguments":{"status":"shipped"}}}'
+{"jsonrpc":"2.0", "id":1, "result":{"content":[{"type":"text", "text":"[{\"id\":\"ORD-1001\",\"tenantId\":\"acme\",\"status\":\"shipped\",\"total\":120.50}]"}]}}
+
+$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -H "x-tenant-id: globex" -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"getOrder","arguments":{"orderId":"ORD-2001"}}}'
+{"jsonrpc":"2.0", "id":2, "result":{"content":[{"type":"text", "text":"{\"id\":\"ORD-2001\",\"tenantId\":\"globex\",\"status\":\"shipped\",\"total\":540.00}"}]}}
+
+$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"getOrder","arguments":{"orderId":"ORD-2001"}}}'
+{"jsonrpc":"2.0", "id":3, "error":{"code":-32602, "message":"Failed to call tool 'getOrder': no header value found for 'x-tenant-id'"}}

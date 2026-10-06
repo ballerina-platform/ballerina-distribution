@@ -1,0 +1,11 @@
+$ bal run rag_document_sources.bal
+Loaded from local files: 2
+- leave_policy.pdf (2833 characters)
+- employee_handbook.md (525 characters)
+Loaded from SharePoint: 2
+- expense_guidelines.md (164 characters)
+- travel_policy.pdf (211 characters)
+Loaded from memory: 1
+- holiday-notice (82 characters)
+
+Total documents: 5

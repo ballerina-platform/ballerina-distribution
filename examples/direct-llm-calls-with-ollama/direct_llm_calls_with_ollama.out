@@ -1,0 +1,3 @@
+$ bal run direct_llm_calls_with_ollama.bal -- city=Kyoto
+Country: Japan
+Known for: Temples and gardens

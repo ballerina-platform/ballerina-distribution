@@ -1,0 +1,10 @@
+$ bal run ai_agent_memory_overflow_handling.bal
+Nice to meet you, Nadia! How can I assist you today?
+That's lovely, Nadia! How is Milo doing?
+That's fascinating, Nadia! What aspect of marine biology do you specialize in?
+
+Messages in memory: 7 ["system","user","assistant","user","assistant","user","assistant"]
+I know that your name is Nadia, you live in Lisbon, you have a cat named Milo, and you work as a marine biologist.
+
+Messages in memory: 4 ["system","assistant","user","assistant"]
+Summary: Nadia, who lives in Lisbon, introduced herself and mentioned that she has a cat named Milo. She also stated that she works as a marine biologist. The assistant responded positively to her introductions and inquired about Milo's well-being and her specialization within marine biology.

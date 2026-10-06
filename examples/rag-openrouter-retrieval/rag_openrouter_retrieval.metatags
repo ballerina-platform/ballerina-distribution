@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to retrieve chunks embedded through OpenRouter and generate an answer with an OpenRouter-hosted model for retrieval-augmented generation (RAG).
+keywords: ballerina, ballerina by example, BBE, ai, llm, rag, retrieval, openrouter

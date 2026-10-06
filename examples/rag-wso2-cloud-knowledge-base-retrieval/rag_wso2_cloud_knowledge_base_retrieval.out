@@ -1,0 +1,6 @@
+$ bal run rag_wso2_cloud_knowledge_base_retrieval.bal
+Retrieved chunks: 2
+- Scheduled tasks are created from the Automation artifact. Set the schedule with a cron expression in the automation configuration and deploy the integration. (score: 0.86)
+- A scheduled automation runs on the configured schedule; use the Try It panel to trigger a run manually while testing. (score: 0.78)
+
+Answer: To configure a scheduled task, create an Automation artifact, set its schedule using a cron expression in the automation configuration, and deploy the integration. While testing, you can trigger a run manually from the Try It panel.

@@ -1,0 +1,2 @@
+$ bal run rag_with_configured_chunker.bal
+Ingestion successful

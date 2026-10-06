@@ -1,0 +1,17 @@
+$ bal run rag_query_with_metadata_filters.bal
+Without filters:
+- Employees get 18 days of paid annual leave. {"index":0,"department":"HR","year":2023}
+- Employees get 20 days of paid annual leave. {"index":0,"department":"HR","year":2025}
+- Expense reports must be submitted within 30 days. {"index":0,"department":"Finance","year":2025}
+- Production deployments require two approvals. {"index":0,"department":"Engineering","year":2025}
+
+Filtered by department == HR:
+- Employees get 18 days of paid annual leave. {"index":0,"department":"HR","year":2023}
+- Employees get 20 days of paid annual leave. {"index":0,"department":"HR","year":2025}
+
+Filtered by department in [HR, Finance] and year >= 2025:
+- Employees get 20 days of paid annual leave. {"index":0,"department":"HR","year":2025}
+- Expense reports must be submitted within 30 days. {"index":0,"department":"Finance","year":2025}
+
+HR chunks after deleting chunks from before 2025:
+- Employees get 20 days of paid annual leave. {"index":0,"department":"HR","year":2025}

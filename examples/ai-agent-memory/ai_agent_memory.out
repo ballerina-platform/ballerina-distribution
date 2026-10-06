@@ -1,0 +1,8 @@
+$ bal run ai_agent_memory.bal
+That sounds exciting! Do you have specific cities or activities in mind for your trip to Japan?
+A great activity for you and your kids would be visiting Tokyo Disneyland, where they can enjoy rides and meet beloved characters. It's a fun experience for the whole family and offers a variety of attractions suitable for all ages.
+You haven't mentioned your travel destination yet. Where are you planning to go?
+
+Messages stored for session 'user-1': 5 ["system","user","assistant","user","assistant"]
+Messages stored for session 'user-1' after deletion: 0
+Messages stored for session 'user-2': 3 ["system","user","assistant"]

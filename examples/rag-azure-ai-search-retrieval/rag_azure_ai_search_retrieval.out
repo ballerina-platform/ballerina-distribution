@@ -1,0 +1,5 @@
+$ bal run rag_azure_ai_search_retrieval.bal
+Match: Full-time employees are entitled to 20 days of paid annual leave per year. (score: 0.03333333507180214)
+Match: Employees are entitled to 10 days of paid sick leave per year. (score: 0.032786883413791656)
+
+Answer: Based on the provided context, as a full-time employee, you are entitled to **20 days of paid annual leave per year**.

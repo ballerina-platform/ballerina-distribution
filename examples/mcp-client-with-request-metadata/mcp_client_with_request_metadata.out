@@ -1,0 +1,8 @@
+$ bal run mcp_client_with_request_metadata.bal
+Tool: getOpenTickets, arguments: []
+Tool: createTicket, arguments: ["subject","priority"]
+Tool: getSupportHours, arguments: ["region"]
+Open tickets of tenant 'acme' (succeeded): [{"id":"TCK-1","tenantId":"acme","subject":"Payment gateway timeout","priority":"high"},{"id":"TCK-3","tenantId":"acme","subject":"Report export is empty","priority":"low"}]
+Created ticket (succeeded): {"id":"TCK-4","tenantId":"acme","subject":"Invoices are not emailed","priority":"high"}
+Support hours (succeeded): {"region":"EU","hours":"08:00-18:00 CET"}
+Call without metadata (failed): The 'tenantId' metadata is missing from the request

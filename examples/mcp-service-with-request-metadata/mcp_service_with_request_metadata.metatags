@@ -1,0 +1,2 @@
+description: This BBE demonstrates how MCP service tools read the request metadata (_meta) sent by the client through an mcp:Meta? parameter, alongside or without other tool parameters.
+keywords: ballerina, ballerina by example, BBE, mcp, metadata, meta, mcp service, tools
