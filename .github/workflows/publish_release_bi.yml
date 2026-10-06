@@ -122,6 +122,8 @@ jobs:
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.version-set.outputs.sversion }}.zip
       - name: Run Trivy vulnerability scanner
+        id: trivy_scan
+        continue-on-error: true
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina:release-test'
@@ -131,6 +133,24 @@ jobs:
           exit-code: '1'
           timeout: "10m0s"
           severity: 'CRITICAL,HIGH'
+      - name: Run Grype vulnerability scanner
+        id: grype_scan
+        continue-on-error: true
+        uses: anchore/scan-action@v7.4.2
+        with:
+          image: 'ballerina/ballerina:release-test'
+          config: .grype.yaml
+          grype-version: 'v0.120.0'
+          output-format: 'table'
+          fail-build: 'true'
+          severity-cutoff: 'high'
+      - name: Check vulnerability scan results
+        if: ${{ steps.trivy_scan.outcome == 'failure' || steps.grype_scan.outcome == 'failure' }}
+        run: |
+          echo "Trivy scan: ${{ steps.trivy_scan.outcome }}"
+          echo "Grype scan: ${{ steps.grype_scan.outcome }}"
+          echo "::error::Vulnerability scan failed (Trivy or Grype). See the scan steps above."
+          exit 1
       - name: cosign-installer
         uses: sigstore/cosign-installer@v3.5.0
       - name: Set up Node.js

@@ -1,0 +1,14 @@
+# Counterpart of .trivyignore / skip-dirs / skip-files for the Grype image scans.
+exclude:
+  # Same as Trivy skip-dirs: ballerina/runtime/examples
+  - "/ballerina/runtime/examples/**"
+  # Same as Trivy skip-files: SBOMs shipped inside Ballerina packages list build-time deps, not installed ones
+  - "**/bom.cdx.json"
+
+ignore:
+  # package.json inside Ballerina packages (bala) describes Ballerina modules (grpc, toml, uuid, ai, http),
+  # not npm packages; Grype matches the names against unrelated npm advisories.
+  - package:
+      type: npm
+      location: "**/repo/bala/ballerina/**/package.json"
+    reason: "Ballerina package metadata, not an npm dependency"
