@@ -3,6 +3,6 @@ CVE-2020-7768
 CVE-2025-48985
 CVE-2026-41907
 
-# Need to be fixed
-CVE-2026-56740
-CVE-2026-56741
+# toml (npm) 0.8.0 - name collision with ballerina/toml bala package.json, not a real npm install
+CVE-2026-63376
+CVE-2026-77465
