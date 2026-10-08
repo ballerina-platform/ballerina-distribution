@@ -132,6 +132,32 @@
                             <stripVersion>true</stripVersion>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                jballerina-tools,
+                                awslambda-extension-balo,
+                                awslambda-extension-examples,
+                                azurefunctions-extension-balo,
+                                azurefunctions-extension-examples,
+                                docker-extension-examples,
+                                docker-extension-annotations,
+                                kubernetes-extension-examples,
+                                kubernetes-extension-annotations
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/extracted-distributions
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -181,39 +207,6 @@
                         <configuration>
                             <url>${jre.windows.location}</url>
                             <outputDirectory>${project.build.directory}/extracted-distributions</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>unpack-dependencies</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeArtifactIds>
-                                jballerina-tools,
-                                awslambda-extension-balo,
-                                awslambda-extension-examples,
-                                azurefunctions-extension-balo,
-                                azurefunctions-extension-examples,
-                                docker-extension-examples,
-                                docker-extension-annotations,
-                                kubernetes-extension-examples,
-                                kubernetes-extension-annotations
-                            </includeArtifactIds>
-                            <outputDirectory>${project.build.directory}/extracted-distributions
-                            </outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
-                            <stripVersion>true</stripVersion>
                         </configuration>
                     </execution>
                 </executions>
