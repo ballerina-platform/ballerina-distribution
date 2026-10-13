@@ -18,15 +18,8 @@
 package io.ballerina.gencache.cmd;
 
 import io.ballerina.cli.BLauncherCmd;
-import io.ballerina.projects.BuildOptions;
-import io.ballerina.projects.DiagnosticResult;
-import io.ballerina.projects.JBallerinaBackend;
-import io.ballerina.projects.JvmTarget;
-import io.ballerina.projects.PackageCompilation;
-import io.ballerina.projects.Project;
-import io.ballerina.projects.ProjectEnvironmentBuilder;
+import io.ballerina.projects.*;
 import io.ballerina.projects.bala.BalaProject;
-import io.ballerina.projects.environment.PackageLockingMode;
 import io.ballerina.projects.repos.FileSystemCache;
 import io.ballerina.tools.diagnostics.Diagnostic;
 import picocli.CommandLine;
@@ -73,15 +66,13 @@ public class GenCacheCmd implements BLauncherCmd{
         try {
             outStream.println(workingDir);
             outStream.println(balaPath);
-            Path jBalToolsPath = Paths.get(workingDir);
+            Path jBalToolsPath = Paths.get( workingDir);
             Path repo = jBalToolsPath.resolve( "repo");
             Path modulePath = Paths.get(balaPath);
             System.setProperty(BALLERINA_HOME_KEY, repo.getParent().toString());
             ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
             defaultBuilder.addCompilationCacheFactory(new FileSystemCache.FileSystemCacheFactory(repo.resolve("cache")));
-            BuildOptions buildOptions = BuildOptions.builder().setOffline(true)
-                    .setLockingMode(PackageLockingMode.SOFT).build();
-            Project balaProject = BalaProject.loadProject(defaultBuilder, modulePath, buildOptions);
+            Project balaProject = BalaProject.loadProject(defaultBuilder, modulePath);
             PackageCompilation packageCompilation = balaProject.currentPackage().getCompilation();
             DiagnosticResult diagnosticResult = packageCompilation.diagnosticResult();
             for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
