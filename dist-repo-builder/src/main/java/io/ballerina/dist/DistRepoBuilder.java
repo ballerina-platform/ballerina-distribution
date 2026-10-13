@@ -17,8 +17,10 @@
  */
 package io.ballerina.dist;
 
+import io.ballerina.projects.BuildOptions;
 import io.ballerina.projects.ProjectEnvironmentBuilder;
 import io.ballerina.projects.bala.BalaProject;
+import io.ballerina.projects.environment.PackageLockingMode;
 import io.ballerina.projects.repos.TempDirCompilationCache;
 import org.ballerinalang.docgen.docs.BallerinaDocGenerator;
 
@@ -112,7 +114,9 @@ public class DistRepoBuilder {
             try {
                 ProjectEnvironmentBuilder defaultBuilder = ProjectEnvironmentBuilder.getDefaultBuilder();
                 defaultBuilder.addCompilationCacheFactory(TempDirCompilationCache::from);
-                BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath);
+                BuildOptions buildOptions = BuildOptions.builder().setOffline(true)
+                        .setLockingMode(PackageLockingMode.SOFT).build();
+                BalaProject balaProject = BalaProject.loadProject(defaultBuilder, balaPath, buildOptions);
                 BallerinaDocGenerator.generateAPIDocs(balaProject, jBalToolsPath.toString() + "/docs", true);
             } catch (Exception e) {
                 e.printStackTrace();
