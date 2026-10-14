@@ -41,6 +41,8 @@ service /orders on new http:Listener(9090) {
     }
 
     // Completes a task as a `manager`. The workflow resumes with the result.
+    // This example passes the role directly. A real service passes the
+    // roles of the authenticated caller.
     resource function post tasks/[string taskId](Approval approval)
             returns error? {
         check workflow:completeHumanTask(taskId, approval, ["manager"]);

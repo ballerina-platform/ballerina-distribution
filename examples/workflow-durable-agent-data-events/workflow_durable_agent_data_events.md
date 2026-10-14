@@ -8,7 +8,7 @@ For more information on the underlying module, see the [`ballerina/workflow` mod
 
 ::: code workflow_durable_agent_data_events.bal :::
 
-To run this example, add the following `Config.toml` file next to the source file.
+To run this example, add the following `Config.toml` file next to the source file. In `IN_MEMORY` mode, workflow state lasts only while the program runs. To keep it across restarts, set `mode` to `LOCAL` and run a Temporal server.
 
 ::: code Config.toml :::
 
