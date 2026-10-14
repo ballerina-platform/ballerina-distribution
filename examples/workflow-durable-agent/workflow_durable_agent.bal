@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/workflow;
 import ballerinax/ai.openai;
 
@@ -10,7 +9,7 @@ configurable string openAiApiKey = ?;
 # + return - Whether the item is in stock
 @workflow:Activity
 function checkStock(string item) returns boolean|error {
-    log:printInfo("Checking stock", item = item);
+    io:println("Checking stock for ", item);
     return true;
 }
 

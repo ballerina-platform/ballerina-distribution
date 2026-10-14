@@ -1,10 +1,9 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/workflow;
 
 @workflow:Activity
 function sendReminder(string text) returns string|error {
-    log:printInfo("Sending reminder", text = text);
+    io:println("Sending reminder: ", text);
     return "REMINDED";
 }
 

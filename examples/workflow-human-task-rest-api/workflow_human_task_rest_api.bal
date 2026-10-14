@@ -1,5 +1,5 @@
 import ballerina/http;
-import ballerina/log;
+import ballerina/io;
 import ballerina/workflow;
 // Importing this module serves the workflow management REST API. Enable
 // it in the `Config.toml` file.
@@ -11,7 +11,7 @@ type Approval record {|
 
 @workflow:Activity
 function placeOrder(string item) returns string|error {
-    log:printInfo("Placing order", item = item);
+    io:println("Placing an order for ", item);
     return "PLACED";
 }
 

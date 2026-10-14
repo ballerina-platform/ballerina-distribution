@@ -5771,8 +5771,7 @@
         "name": "Activity",
         "url": "workflow-activity",
         "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes log output with timestamps",
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
@@ -5781,8 +5780,7 @@
         "name": "Data events",
         "url": "workflow-data-events",
         "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes log output with timestamps",
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
@@ -5791,8 +5789,7 @@
         "name": "Durable sleep",
         "url": "workflow-durable-sleep",
         "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes log output with timestamps",
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false

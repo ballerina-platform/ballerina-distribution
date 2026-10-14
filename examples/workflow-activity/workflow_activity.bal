@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/workflow;
 
 // An activity does the real work, such as calling an API or a database.
@@ -7,7 +6,7 @@ import ballerina/workflow;
 // again when the workflow recovers.
 @workflow:Activity
 function sendEmail(string to) returns string|error {
-    log:printInfo("Sending email", to = to);
+    io:println("Sending an email to ", to);
     return "SENT";
 }
 

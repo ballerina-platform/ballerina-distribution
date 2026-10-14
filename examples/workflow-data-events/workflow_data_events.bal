@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/workflow;
 
 type Payment record {|
@@ -8,7 +7,7 @@ type Payment record {|
 
 @workflow:Activity
 function shipOrder(string orderId) returns string|error {
-    log:printInfo("Shipping order", orderId = orderId);
+    io:println("Shipping order ", orderId);
     return "SHIPPED";
 }
 
