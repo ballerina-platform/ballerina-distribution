@@ -1,5 +1,4 @@
 import ballerina/io;
-import ballerina/log;
 import ballerina/workflow;
 // Serves the workflow management REST API, which lists and completes tasks.
 import ballerina/workflow.management.rest as _;
@@ -16,7 +15,7 @@ type Approval record {|
 # + return - The refund status
 @workflow:Activity
 function issueRefund(string orderId) returns string|error {
-    log:printInfo("Issuing refund", orderId = orderId);
+    io:println("Issuing a refund for ", orderId);
     return "REFUNDED";
 }
 
