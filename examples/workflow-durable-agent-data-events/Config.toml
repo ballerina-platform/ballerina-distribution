@@ -1,0 +1,10 @@
+openAiApiKey = "<OPENAI_API_KEY>"
+
+# Runs the workflow engine inside the program. No server is needed.
+[ballerina.workflow]
+mode = "IN_MEMORY"
+
+# Hides the engine's own observability log lines.
+[ballerina.workflow.observe]
+publishMetricSamples = false
+captureActivityContent = false

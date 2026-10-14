@@ -1,0 +1,7 @@
+$ curl -X POST http://localhost:9090/orders -H "Content-Type: text/plain" -d "laptop"
+01a139c9-7921-798e-bcdd-148e330630d4
+
+$ curl http://localhost:9090/orders/01a139c9-7921-798e-bcdd-148e330630d4/tasks
+[{"taskName":"orderWorkflow.approveOrder", "taskIds":["f91dd93b-1fd9-3591-bcfb-69fec474ed87"]}]
+
+$ curl -X POST http://localhost:9090/orders/tasks/f91dd93b-1fd9-3591-bcfb-69fec474ed87 -H "Content-Type: application/json" -d '{"approved": true}'

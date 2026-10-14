@@ -1,0 +1,8 @@
+$ curl -X POST http://localhost:9090/orders -H "Content-Type: text/plain" -d "laptop"
+01a139cb-36fb-7918-b2cf-8f5ab19406ff
+
+$ curl "http://localhost:8234/workflow/human-tasks?parentWorkflowId=01a139cb-36fb-7918-b2cf-8f5ab19406ff" -H "x-user-roles: manager"
+{"items":[{"kind":"HUMAN_TASK", "taskId":"78390b5e-de84-3862-9eef-b143b9e82945", "taskName":"orderWorkflow.approveOrder", "title":"Approve the order", "description":"", "namespace":"default", "taskQueue":"BALLERINA_WORKFLOW_TASK_QUEUE", "parentWorkflowId":"01a139cb-36fb-7918-b2cf-8f5ab19406ff", "parentWorkflowType":"orderWorkflow", "stepId":"approveOrder#1", "status":"PENDING", "startTime":"2026-10-14T09:43:01.971Z", "closeTime":null, "userRoles":["manager"], "users":[], "excludedUsers":[], "excludedRoles":[], "administratorRoles":[], "administratorUsers":[], "completedBy":null, "completedAt":null, "completedAs":null, "canComplete":true, "canAdminister":false}], "nextPageToken":null, "hasMore":false}
+
+$ curl -X POST http://localhost:8234/workflow/human-tasks/78390b5e-de84-3862-9eef-b143b9e82945/complete -H "x-user-id: bob" -H "x-user-roles: manager" -H "Content-Type: application/json" -d '{"result": {"approved": true}}'
+{"success":true, "completedBy":"bob", "completedAt":"2026-10-14T09:43:11.011499Z"}
