@@ -1,0 +1,14 @@
+# Runs the workflow engine inside the program. No server is needed.
+[ballerina.workflow]
+mode = "IN_MEMORY"
+
+# Hides the engine's own observability log lines.
+[ballerina.workflow.observe]
+publishMetricSamples = false
+captureActivityContent = false
+
+# Serves the management REST API on port 8234. Authentication is off for
+# this example, so the caller's roles come from the `x-user-roles` header.
+[ballerina.workflow.management.rest]
+enableManagementApi = true
+enableBasicAuth = false

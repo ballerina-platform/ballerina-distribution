@@ -1,0 +1,3 @@
+$ bal run workflow_durable_sleep.bal
+time=2026-10-14T15:10:35.496+05:30 level=INFO module="" message="Sending reminder" text="Renew your subscription"
+Reminder status: REMINDED

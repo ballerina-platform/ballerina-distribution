@@ -1,0 +1,2 @@
+description: This BBE demonstrates how a Ballerina workflow waits for data events and how to send data to it.
+keywords: ballerina, ballerina by example, bbe, workflow, data events

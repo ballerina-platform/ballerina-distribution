@@ -1,0 +1,3 @@
+$ bal run workflow_activity.bal
+time=2026-10-14T15:10:17.003+05:30 level=INFO module="" message="Sending email" to="alice@example.com"
+Email status: SENT

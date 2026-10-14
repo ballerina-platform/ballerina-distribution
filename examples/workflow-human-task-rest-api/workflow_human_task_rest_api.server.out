@@ -1,0 +1,5 @@
+$ bal run workflow_human_task_rest_api.bal
+time=2026-10-14T15:13:00.042+05:30 level=INFO module=ballerina/workflow.management.rest message="Workflow management REST API enabled on http://localhost:8234/workflow (auth: none — the API is open to anyone who can reach the port)"
+time=2026-10-14T09:43:03.940Z level=INFO module=ballerina/workflow message="This workflow server does not implement ListWorkflowExecutions; serving listings from the standard open/closed listings instead, with filtering and paging applied in the client."
+time=2026-10-14T15:13:11.005+05:30 level=INFO module=ballerina/workflow.observe message="human task decision accepted" taskKind="HUMAN_TASK" taskId="78390b5e-de84-3862-9eef-b143b9e82945" taskName="orderWorkflow.approveOrder" parentWorkflowId="01a139cb-36fb-7918-b2cf-8f5ab19406ff" action="complete" outcome="accepted" userId="bob" userRoles=["manager"] identitySource="asserted" assignedRoles=["manager"] decidedAt="2026-10-14T09:43:11.000397Z" taskInput="{\"item\":\"laptop\"}" content="{\"approved\":true}"
+time=2026-10-14T15:13:11.099+05:30 level=INFO module="" message="Placing order" item="laptop"

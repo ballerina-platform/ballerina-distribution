@@ -1,0 +1,3 @@
+$ bal run workflow_durable_agent.bal
+time=2026-10-14T15:16:25.926+05:30 level=INFO module="" message="Checking stock" item="laptop"
+Yes, the laptop is in stock.

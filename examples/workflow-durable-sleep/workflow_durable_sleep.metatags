@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to pause a Ballerina workflow with a durable timer that survives restarts.
+keywords: ballerina, ballerina by example, bbe, workflow, durable sleep
