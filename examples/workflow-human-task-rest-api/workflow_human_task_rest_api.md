@@ -2,7 +2,7 @@
 
 The workflow module has a built-in management REST API. Applications such as a task inbox use it to list and complete human tasks without any extra code. Import `ballerina/workflow.management.rest` and set `enableManagementApi` to `true` in the `Config.toml` file. The API is served at `http://localhost:8234/workflow`.
 
-The API lists and completes a task only for a caller who is allowed to act on it. With authentication off, as in this example, the caller's roles come from the `x-user-roles` header. Enable basic, JWT, OAuth2, or API key authentication in production.
+The API lists and completes a task only for a caller who is allowed to act on it. With authentication off, as in this example, any caller can set its roles with the `x-user-roles` header. In production, enable JWT or OAuth2 authentication so that the roles come from a verified token.
 
 For more information on the underlying module, see the [`ballerina/workflow` module](https://lib.ballerina.io/ballerina/workflow/latest/).
 

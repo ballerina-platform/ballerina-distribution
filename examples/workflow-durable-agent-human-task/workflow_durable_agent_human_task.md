@@ -2,7 +2,7 @@
 
 A durable agent can involve a person before it acts. Each entry in `humanTasks` becomes a tool. When the model calls it, the agent creates a human task and pauses durably, for hours or days if needed, until a person completes it. The model then continues with the result.
 
-In this example, a manager completes the task through the workflow management REST API. The program API (`workflow:completeHumanTask`) works the same way.
+In this example, a manager completes the task through the workflow management REST API. The program API (`workflow:completeHumanTask`) works the same way. Authentication is off for this example, so any caller can set its roles with the `x-user-roles` header. In production, enable JWT or OAuth2 authentication so that the roles come from a verified token.
 
 The model provider in this example is `ballerinax/ai.openai`. Set your OpenAI API key in the `Config.toml` file. To use another model, replace it with any `ai:ModelProvider` implementation, such as `ballerinax/ai.anthropic` or `ballerinax/ai.ollama`.
 

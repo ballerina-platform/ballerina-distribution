@@ -1,6 +1,8 @@
 openAiApiKey = "<OPENAI_API_KEY>"
 
-# Runs the workflow engine inside the program. No server is needed.
+# Runs the workflow engine inside the program, so no server is needed. The
+# state lasts only while the program runs. To keep it across restarts, set
+# `mode` to "LOCAL" and run a Temporal server.
 [ballerina.workflow]
 mode = "IN_MEMORY"
 

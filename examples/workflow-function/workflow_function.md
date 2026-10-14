@@ -8,7 +8,7 @@ For more information on the underlying module, see the [`ballerina/workflow` mod
 
 ::: code workflow_function.bal :::
 
-This example runs the workflow engine inside the program. To run it, add the following `Config.toml` file next to the source file.
+This example runs the workflow engine inside the program. To run it, add the following `Config.toml` file next to the source file. In `IN_MEMORY` mode, workflow state lasts only while the program runs. To keep it across restarts, set `mode` to `LOCAL` and run a Temporal server.
 
 ::: code Config.toml :::
 

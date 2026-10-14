@@ -1,6 +1,8 @@
 openAiApiKey = "<OPENAI_API_KEY>"
 
-# Runs the workflow engine inside the program. No server is needed.
+# Runs the workflow engine inside the program, so no server is needed. The
+# state lasts only while the program runs. To keep it across restarts, set
+# `mode` to "LOCAL" and run a Temporal server.
 [ballerina.workflow]
 mode = "IN_MEMORY"
 
@@ -10,7 +12,8 @@ publishMetricSamples = false
 captureActivityContent = false
 
 # Serves the management REST API on port 8234. Authentication is off for
-# this example, so the caller's roles come from the `x-user-roles` header.
+# this example, so any caller can set its roles with the `x-user-roles`
+# header. Do not run it this way in production.
 [ballerina.workflow.management.rest]
 enableManagementApi = true
 enableBasicAuth = false
