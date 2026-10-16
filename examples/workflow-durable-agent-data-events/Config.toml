@@ -5,8 +5,3 @@ openAiApiKey = "<OPENAI_API_KEY>"
 # `mode` to "LOCAL" and run a Temporal server.
 [ballerina.workflow]
 mode = "IN_MEMORY"
-
-# Hides the engine's own observability log lines.
-[ballerina.workflow.observe]
-publishMetricSamples = false
-captureActivityContent = false

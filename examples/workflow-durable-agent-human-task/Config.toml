@@ -6,14 +6,8 @@ openAiApiKey = "<OPENAI_API_KEY>"
 [ballerina.workflow]
 mode = "IN_MEMORY"
 
-# Hides the engine's own observability log lines.
-[ballerina.workflow.observe]
-publishMetricSamples = false
-captureActivityContent = false
-
-# Serves the management REST API on port 8234. Authentication is off for
-# this example, so any caller can set its roles with the `x-user-roles`
-# header. Do not run it this way in production.
+# The import serves the management REST API on port 8234. Authentication is
+# off for this example, so any caller can set its roles with the
+# `x-user-roles` header. Do not run it this way in production.
 [ballerina.workflow.management.rest]
-enableManagementApi = true
 enableBasicAuth = false
