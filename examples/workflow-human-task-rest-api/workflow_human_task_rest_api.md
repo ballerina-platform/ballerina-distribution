@@ -1,6 +1,6 @@
 # Human task with REST API
 
-The workflow module has a built-in management REST API. Applications such as a task inbox use it to list and complete human tasks without any extra code. Import `ballerina/workflow.management.rest` and set `enableManagementApi` to `true` in the `Config.toml` file. The API is served at `http://localhost:8234/workflow`.
+The workflow module has a built-in management REST API. Applications such as a task inbox use it to list and complete human tasks without any extra code. Importing `ballerina/workflow.management.rest` serves the API at `http://localhost:8234/workflow`.
 
 The API lists and completes a task only for a caller who is allowed to act on it. With authentication off, as in this example, any caller can set its roles with the `x-user-roles` header. In production, enable JWT or OAuth2 authentication so that the roles come from a verified token.
 
