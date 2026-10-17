@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to send data events to a durable AI agent in Ballerina and read its replies.
+keywords: ballerina, ballerina by example, bbe, durable agent, data events
