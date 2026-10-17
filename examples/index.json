@@ -5762,7 +5762,8 @@
         "name": "Workflow",
         "url": "workflow-function",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
@@ -5771,7 +5772,8 @@
         "name": "Activity",
         "url": "workflow-activity",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
@@ -5780,7 +5782,8 @@
         "name": "Data events",
         "url": "workflow-data-events",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
@@ -5789,7 +5792,8 @@
         "name": "Durable sleep",
         "url": "workflow-durable-sleep",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
         "disablePlayground": true,
         "isLearnByExample": false,
         "needCentral": false
