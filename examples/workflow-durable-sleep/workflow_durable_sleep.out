@@ -1,0 +1,3 @@
+$ bal run workflow_durable_sleep.bal
+Sending reminder: Renew your subscription
+Reminder status: REMINDED
