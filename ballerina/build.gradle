@@ -16,6 +16,7 @@
 
 
 import groovy.json.JsonSlurper
+import org.apache.tools.ant.filters.ConcatFilter
 import org.apache.tools.ant.filters.ReplaceTokens
 import org.apache.tools.ant.taskdefs.condition.Os
 
@@ -203,6 +204,19 @@ task extractJreForWindows(type: Copy) {
     group = "extract_jre"
     from zipTree { "${jreLocation}/ballerina-jre-win-64-${ballerinaJreVersion}.zip" }
     into("${buildDir}/target/extracted-jre-windows")
+}
+
+// Block compromised eMudhra intermediates in every bundled JRE, preserving existing entries.
+// Remove this workaround once the upstream JRE artifacts block all these certificates.
+def emudhraBlockedCertificates = file("${rootDir}/resources/emudhra-blocked-certs.txt")
+['extractJreForLinux', 'extractJreForLinuxArm', 'extractJreForMac', 'extractJreForMacArm',
+ 'extractJreForWindows'].each { taskName ->
+    tasks.named(taskName, Copy) {
+        inputs.file(emudhraBlockedCertificates)
+        filesMatching('**/lib/security/blocked.certs') {
+            filter(ConcatFilter, append: emudhraBlockedCertificates)
+        }
+    }
 }
 
 task deleteTemporaryFiles(type: Delete) {
