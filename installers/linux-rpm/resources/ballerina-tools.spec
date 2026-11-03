@@ -23,13 +23,13 @@ Ballerina allows you to code with a statically-typed, interaction-centric progra
 rm -f /usr/bin/bal > /dev/null 2>&1
 
 %prep
-rm -rf %{_topdir}/BUILD/*
-cp -r %{_topdir}/SOURCES/%{_ballerina_tools_dir}/* %{_topdir}/BUILD/
+mkdir -p %{_ballerina_tools_dir}
+cp -r %{_topdir}/SOURCES/%{_ballerina_tools_dir}/. %{_ballerina_tools_dir}/
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d %{buildroot}%{_libdir}/ballerina/
-cp -r ./* %{buildroot}%{_libdir}/ballerina/
+cp -r %{_ballerina_tools_dir}/. %{buildroot}%{_libdir}/ballerina/
 
 %post
 rm -f %{_libdir}/ballerina/bin/ballerina
@@ -61,7 +61,7 @@ then
 fi
 
 %clean
-rm -rf %{_topdir}/BUILD/*
+rm -rf %{_ballerina_tools_dir}
 rm -rf %{buildroot}
 
 %files

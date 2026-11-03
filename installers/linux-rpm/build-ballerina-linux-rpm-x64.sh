@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 function printUsage() {
     echo "Usage:"
     echo "$0 [options]"
@@ -91,7 +93,7 @@ function setupVersion_platform() {
     sed -i "/Version:/c\Version:        ${RPM_BALLERINA_VERSION}" ${PLATFORM_SPEC_FILE_LOC}
     sed -i "/%define _ballerina_version/c\%define _ballerina_version ${BALLERINA_VERSION}" ${PLATFORM_SPEC_FILE_LOC}
     sed -i "/%define _ballerina_tools_dir/c\%define _ballerina_tools_dir ${BALLERINA_PLATFORM}" ${PLATFORM_SPEC_FILE_LOC}
-    sed -i "s/export BALLERINA_HOME=/export BALLERINA_HOME=\/usr\/lib64\/ballerina\/" ${PLATFORM_SPEC_FILE_LOC}
+    sed -i "s|export BALLERINA_HOME=|export BALLERINA_HOME=/usr/lib64/ballerina/|" ${PLATFORM_SPEC_FILE_LOC}
     sed -i "s?SED_BALLERINA_HOME?/usr/lib64/ballerina/ballerina-${BALLERINA_VERSION}?" ${PLATFORM_SPEC_FILE_LOC}
 }
 
