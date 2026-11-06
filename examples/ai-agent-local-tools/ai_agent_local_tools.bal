@@ -45,19 +45,19 @@ isolated function getCurrentDate() returns time:Date {
 // Define an AI agent with a system prompt and a set of tools.
 // The agent will use these tools to help manage a task list,
 // following the system prompt instructions.
-final ai:Agent taskAssistantAgent = check new ({
-    systemPrompt: {
+final ai:Agent taskAssistantAgent = check new (
+    systemPrompt = {
         role: "Task Assistant",
         instructions: string `You are a helpful assistant for 
             managing a to-do list. You can manage tasks and
             help a user plan their schedule.`
     },
     // Specify the functions the agent can use as tools.
-    tools: [addTask, listTasks, getCurrentDate],
+    tools = [addTask, listTasks, getCurrentDate],
     // Use the default model provider (with configuration added
     // via a Ballerina VS Code command).
-    model: check ai:getDefaultModelProvider()
-});
+    model = check ai:getDefaultModelProvider()
+);
 
 public function main() returns error? {
     while true {
