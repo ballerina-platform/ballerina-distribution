@@ -1,0 +1,5 @@
+$ bal run mcp_v2_client.bal
+Connected using MCP 2026-07-28
+Tool: getCurrentWeather
+Tool: getWeatherForecast
+Weather: {"location":"London", "temperature":17.0, "humidity":59, "pressure":1005, "condition":"Sunny", "timestamp":"2026-11-09T08:54:53.166703Z"}

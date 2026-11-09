@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to implement an MCP server that defines tool listing and dispatch with the ballerina/mcp.v2 module.
+keywords: ballerina, ballerina by example, BBE, ai, llm, mcp, mcp.v2
