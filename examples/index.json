@@ -5854,6 +5854,34 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true
+      },
+      {
+        "name": "MCP service (v2)",
+        "url": "mcp-v2-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP advanced service (v2)",
+        "url": "mcp-v2-service-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP client (v2)",
+        "url": "mcp-v2-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP service with elicitation (v2)",
+        "url": "mcp-v2-service-elicitation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },
