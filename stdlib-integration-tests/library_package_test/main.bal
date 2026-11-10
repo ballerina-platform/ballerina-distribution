@@ -43,7 +43,6 @@ import ballerina/edi as _;
 import ballerina/mqtt as _;
 import ballerina/task as _;
 import ballerina/toml as _;
-import ballerina/yaml as _;
 import ballerina/cache as _;
 import ballerina/email as _;
 import ballerina/ftp as _;

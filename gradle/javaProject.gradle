@@ -22,12 +22,21 @@ apply plugin: "jacoco"
 
 repositories {
     mavenLocal()
+    // Ballerina artifacts are served from GitHub Packages (declared in the root build.gradle), never from WSO2 Nexus.
     maven {
         url = 'https://maven.wso2.org/nexus/content/repositories/releases/'
+        content {
+            excludeGroupByRegex 'org\\.ballerinalang.*'
+            excludeGroupByRegex 'io\\.ballerina.*'
+        }
     }
 
     maven {
         url = 'https://maven.wso2.org/nexus/content/groups/wso2-public/'
+        content {
+            excludeGroupByRegex 'org\\.ballerinalang.*'
+            excludeGroupByRegex 'io\\.ballerina.*'
+        }
     }
 
     maven {

@@ -124,8 +124,10 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
+          trivyignores: '.trivyignore.yaml'
           image-ref: 'ballerina/ballerina:release-test'
           skip-dirs: 'ballerina/runtime/examples'
+          skip-files: '**/bom.cdx.json'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"

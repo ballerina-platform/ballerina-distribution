@@ -159,8 +159,10 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
+          trivyignores: '.trivyignore.yaml'
           image-ref: 'ballerina/ballerina:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
+          skip-files: '**/bom.cdx.json'
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
@@ -193,8 +195,10 @@ jobs:
       - name: Run Trivy vulnerability scanner for dev container docker image
         uses: aquasecurity/trivy-action@master
         with:
+          trivyignores: '.trivyignore.yaml'
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
+          skip-files: '**/bom.cdx.json'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: 'true'

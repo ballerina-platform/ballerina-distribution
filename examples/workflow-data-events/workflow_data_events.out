@@ -1,0 +1,3 @@
+$ bal run workflow_data_events.bal
+Shipping order ORD-001
+Paid 100.0, SHIPPED

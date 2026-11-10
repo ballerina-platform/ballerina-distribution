@@ -1,0 +1,3 @@
+$ bal run workflow_human_task.bal
+time=2026-10-14T15:11:10.268+05:30 level=INFO module=ballerina/workflow.observe message="human task decision accepted" taskKind="HUMAN_TASK" taskId="f91dd93b-1fd9-3591-bcfb-69fec474ed87" taskName="orderWorkflow.approveOrder" parentWorkflowId="01a139c9-7921-798e-bcdd-148e330630d4" action="complete" outcome="accepted" userId= userRoles=["manager"] identitySource="asserted" assignedRoles=["manager"] decidedAt="2026-10-14T09:41:10.267751Z" taskInput="{\"item\":\"laptop\"}" content="{\"approved\":true}"
+Placing an order for laptop
