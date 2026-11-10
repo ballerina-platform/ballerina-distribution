@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 function printUsage() {
     echo "Usage:"
     echo "$0 [options]"
