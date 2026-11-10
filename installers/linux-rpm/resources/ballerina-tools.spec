@@ -58,7 +58,6 @@ fi
 
 %clean
 rm -rf %{buildroot}
-bal -v
 
 %files
 %{_libdir}/ballerina/
