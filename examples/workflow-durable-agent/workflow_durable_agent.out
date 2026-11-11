@@ -1,0 +1,3 @@
+$ bal run workflow_durable_agent.bal
+Checking stock for laptop
+Yes, the laptop is in stock.
