@@ -1,0 +1,2 @@
+$ curl -X POST http://localhost:8080/inventory/chat -H "Content-Type: application/json" -d '{"sessionId": "session-1", "message": "Is product P-100 running low, and is more stock on the way?"}'
+{"message":"Product P-100 has a stock level of 3, which is low. However, there are 50 units on order from suppliers, so more stock is on the way."}

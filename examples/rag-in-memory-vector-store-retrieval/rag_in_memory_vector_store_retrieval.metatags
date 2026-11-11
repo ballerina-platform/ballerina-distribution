@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to retrieve relevant chunks from an in-memory vector store and generate an answer for retrieval-augmented generation (RAG).
+keywords: ballerina, ballerina by example, BBE, ai, llm, rag, retrieval, vector store, in-memory

@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to handle memory overflow in AI agents by trimming or summarizing older messages.
+keywords: ballerina, ballerina by example, BBE, ai, llm, agent, memory, overflow

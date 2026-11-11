@@ -1,0 +1,5 @@
+$ bal run rag_openrouter_retrieval.bal
+Match: Full-time employees are entitled to 20 days of paid annual leave per year. (score: 0.510345906148898)
+Match: Employees are entitled to 10 days of paid sick leave per year. (score: 0.4908126886666586)
+
+Answer: You are entitled to 20 days of paid annual leave per year.

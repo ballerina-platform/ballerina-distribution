@@ -26,11 +26,11 @@ type WeatherForecast record {|
     ForecastItem[] forecast;
 |};
 
-// Define an MCP service attached to the MCP listener on port 9090.
-listener mcp:Listener mcpListener = new (9090);
+// Define an MCP service attached to the MCP Streamable HTTP listener on port 9090.
+listener mcp:StreamableHttpListener mcpListener = new (9090);
 
-// Note how the service is declared with the `mcp:AdvancedService` type.
-service mcp:AdvancedService /mcp on mcpListener {
+// Note how the service is declared with the `mcp:StreamableHttpAdvancedService` type.
+service mcp:StreamableHttpAdvancedService /mcp on mcpListener {
 
     isolated remote function onListTools() returns mcp:ListToolsResult|mcp:ServerError => {
         tools: [
@@ -71,19 +71,19 @@ service mcp:AdvancedService /mcp on mcpListener {
         ]
     };
 
-    isolated remote function onCallTool(mcp:CallToolParams params, mcp:Session? session) 
+    isolated remote function onCallTool(mcp:CallToolParams params, mcp:Session? session)
             returns mcp:CallToolResult|mcp:ServerError {
         string name = params.name;
         do {
             if name == "getCurrentWeather" {
-                // Attempt parsing the `arguments` field as a mapping consisting 
+                // Attempt parsing the `arguments` field as a mapping consisting
                 // with fields for each parameter type.
                 record {| string city; |} arguments = check params.arguments.cloneWithType();
                 // Use the arguments in the function call.
                 Weather weather = check getCurrentWeather(arguments.city);
                 return {content: [{'type: "text", text: weather.toJsonString()}]};
-            } 
-            
+            }
+
             if name == "getWeatherForecast" {
                 record {| string location; int days; |} {location, days} = check params.arguments.cloneWithType();
                 WeatherForecast forecast = check getWeatherForecast(location, days);
@@ -92,7 +92,7 @@ service mcp:AdvancedService /mcp on mcpListener {
         } on fail {
             return error("Invalid arguments");
         }
-        
+
         return error("Unknown tool: " + name);
     }
 }
@@ -106,14 +106,14 @@ isolated function getCurrentWeather(string city) returns Weather|error {
 
 isolated function getWeatherForecast(string location, int days) returns WeatherForecast|error {
     WeatherForecast mockForecast = {
-        forecast: check getMockForecastItems(days), 
+        forecast: check getMockForecastItems(days),
         location
     };
     log:printInfo(string `Forecast generated for ${location}: ${days} days with random data`);
     return mockForecast;
 }
 
-isolated function getMockWeather(string city) returns Weather|error => {    
+isolated function getMockWeather(string city) returns Weather|error => {
     condition: "Sunny",
     humidity: check random:createIntInRange(30, 70),
     location: city,

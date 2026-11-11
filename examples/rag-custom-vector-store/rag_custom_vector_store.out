@@ -1,0 +1,9 @@
+$ bal run rag_custom_vector_store.bal
+Top 2 matches:
+- leave-1: Employees get 20 days of paid annual leave. (score: 0.991)
+- leave-2: Unused leave can be carried forward. (score: 0.979)
+Entries with the topic 'expenses':
+- expense-1: Submit expense claims within 30 days. (score: 0.0)
+Entries after deleting 'leave-2':
+- leave-1: Employees get 20 days of paid annual leave. (score: 0.0)
+- expense-1: Submit expense claims within 30 days. (score: 0.0)

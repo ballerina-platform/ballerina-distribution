@@ -1,0 +1,5 @@
+$ bal run ai_agent_persistent_memory.bal
+I can help you with that! Let me check the status of your order, ORD-7781. Please hold on for a moment.
+Your order number is ORD-7781.
+
+Messages stored for session 'customer-42': 5 ["system","user","assistant","user","assistant"]

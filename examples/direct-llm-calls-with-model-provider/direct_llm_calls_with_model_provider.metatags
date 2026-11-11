@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to do direct LLM calls using a specific model provider with your own keys.
+keywords: ballerina, ballerina by example, BBE, ai, llm, model-provider, openai

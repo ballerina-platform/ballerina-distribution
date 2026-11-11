@@ -1,0 +1,2 @@
+$ bal run rag_in_memory_vector_store_ingestion.bal
+Ingestion successful

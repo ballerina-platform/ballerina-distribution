@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to ingest documents into a knowledge base with a configured chunker for retrieval-augmented generation (RAG).
+keywords: ballerina, ballerina by example, BBE, ai, llm, rag, ingestion, chunker, knowledge base

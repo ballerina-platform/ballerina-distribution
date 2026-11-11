@@ -1,0 +1,2 @@
+$ bal run rag_pgvector_ingestion.bal
+Ingested 3 documents into the 'leave_policy_vectors' table

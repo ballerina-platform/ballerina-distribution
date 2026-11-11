@@ -1,0 +1,4 @@
+$ bal run --experimental natural_functions.bal
+Sentiment: positive (confidence: 0.9)
+Topics: ["cleanliness","staff","location","noise"]
+Summary: The hotel stay was positive with a spotless room and helpful staff, although street noise at night was a downside.
