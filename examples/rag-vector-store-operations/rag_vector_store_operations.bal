@@ -30,7 +30,8 @@ public function main() returns error? {
     io:println("Entries added: ", entries.length());
 
     // Query the store with the embedding of a question. The results are ranked by similarity.
-    ai:Embedding queryEmbedding = check embeddingProvider->embed(<ai:TextChunk>{content: "How many vacation days do I get?"});
+    ai:Embedding queryEmbedding = check embeddingProvider->embed(
+            <ai:TextChunk>{content: "How many vacation days do I get?"});
     ai:VectorMatch[] matches = check vectorStore.query({embedding: queryEmbedding, topK: 2});
     io:println("\nTop matches:");
     foreach ai:VectorMatch vectorMatch in matches {
