@@ -1,0 +1,7 @@
+[ballerina.observe]
+tracingEnabled = true
+tracingProvider = "jaeger"
+
+[ballerinax.jaeger]
+agentHostname = "localhost"
+agentPort = 4317
