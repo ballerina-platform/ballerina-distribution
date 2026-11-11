@@ -6142,7 +6142,8 @@
         "name": "Chunk documents",
         "url": "rag-document-chunking",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
         "disablePlayground": true,
         "needCentral": false
       },
