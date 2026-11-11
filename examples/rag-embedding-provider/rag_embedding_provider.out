@@ -1,0 +1,4 @@
+$ bal run rag_embedding_provider.bal
+Similarity with "How many days of vacation do I get?": 0.4902967745008488
+Similarity with "Sick leave requires a medical certificate after two days.": 0.39024410544210736
+Similarity with "The quarterly sales report is due on Friday.": 0.10989803814815992

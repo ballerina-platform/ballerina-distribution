@@ -1,0 +1,15 @@
+$ bal run rag_document_loading.bal
+Type: text
+File name: employee_handbook.md
+Content preview: # Employee handbook
+
+## Working hours
+
+Regular working hours are from 9:00 AM to...
+
+Type: text
+File name: leave_policy.pdf
+Content preview: # 📝 Company Leave Policy
+
+**Effective Date:** January 1, 2025
+**Last Update...

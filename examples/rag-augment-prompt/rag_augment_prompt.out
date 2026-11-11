@@ -1,0 +1,5 @@
+$ bal run rag_augment_prompt.bal
+Answer (augmentUserQuery): You can carry forward up to 5 days of unused annual leave, and you must use them before the end of March.
+
+Answer (custom prompt): You can carry forward up to 5 days of unused annual leave, and you must use them before the end of March.
+Grounded in the context: true

@@ -1,0 +1,12 @@
+$ bal run ai_chat_client.bal
+Agent: The task to renew your passport by the end of this month has been successfully added to your to-do list.
+Here’s a summary of your tasks:
+1. **Buy groceries** - Due: September 21, 2026
+2. **Renew passport** - Due: September 30, 2026
+If you need anything else, feel free to ask!
+Agent: Here are your current tasks:
+1. **Buy groceries**
+   - Due: September 21, 2026
+2. **Renew passport**
+   - Due: September 30, 2026
+Let me know if you need help with anything else!

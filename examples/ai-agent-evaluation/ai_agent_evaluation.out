@@ -1,0 +1,18 @@
+$ bal test agent_evaluation
+
+Compiling source
+	ballerinatest/agent_evaluation:0.1.0
+
+Running Tests
+
+	agent_evaluation
+		[pass] testContentCoverage
+		[pass] testHelpfulness
+		[pass] testIterationEfficiency
+
+
+		3 passing
+		0 failing
+		0 skipped
+
+		Test execution time : 15.779s
