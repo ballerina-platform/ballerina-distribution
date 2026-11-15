@@ -1,0 +1,240 @@
+name: Sign macOS Installers
+
+# Builds Developer ID signed and Apple notarized macOS installers (.pkg) from the
+# macOS distribution zips of an existing GitHub release, and replaces the unsigned
+# installers of that release. Run this after "Publish release" and before
+# "Publish Release Artifacts". See installers/mac/README.md for the required secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'Version of the GitHub release without the "v" prefix. e.g., 2201.14.1 or 2201.14.1-rc1'
+        required: true
+      uploadToRelease:
+        description: 'Replace the macOS installers in the GitHub release. If unchecked, the signed installers are uploaded as workflow artifacts'
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: sign-macos-installers-${{ github.event.inputs.releaseVersion }}
+  cancel-in-progress: false
+
+jobs:
+  sign-macos-installers:
+    name: Sign and Notarize macOS Installers
+    runs-on: macos-latest
+    if: github.repository_owner == 'ballerina-platform'
+    environment: macos-signing
+    timeout-minutes: 120
+    env:
+      RELEASE_VERSION: ${{ github.event.inputs.releaseVersion }}
+      NOTARY_PROFILE: ballerina-notary
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set version env variables
+        run: |
+          if [[ ! "$RELEASE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.]+)?$ ]]; then
+            echo "::error::Invalid release version. Expected a version like 2201.14.1 or 2201.14.1-rc1"
+            exit 1
+          fi
+          DIST_VERSION="${RELEASE_VERSION%%-*}"
+          {
+            echo "GIT_TAG=v$RELEASE_VERSION"
+            echo "LONG_VERSION=$DIST_VERSION-swan-lake"
+            echo "WORK_DIR=$RUNNER_TEMP/macos-installers"
+            echo "OUT_DIR=$RUNNER_TEMP/macos-installers/signed"
+          } >> "$GITHUB_ENV"
+
+      - name: Import signing certificates
+        env:
+          MACOS_APP_CERTIFICATE: ${{ secrets.MACOS_APP_CERTIFICATE }}
+          MACOS_APP_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_APP_CERTIFICATE_PASSWORD }}
+          MACOS_INSTALLER_CERTIFICATE: ${{ secrets.MACOS_INSTALLER_CERTIFICATE }}
+          MACOS_INSTALLER_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_INSTALLER_CERTIFICATE_PASSWORD }}
+        run: |
+          if [ -z "$MACOS_APP_CERTIFICATE" ]; then
+            echo "::error::The MACOS_APP_CERTIFICATE secret is not configured. See installers/mac/README.md"
+            exit 1
+          fi
+
+          # Ephemeral keychain with a random password, deleted at the end of the job.
+          KEYCHAIN_PATH="$RUNNER_TEMP/ballerina-signing.keychain-db"
+          KEYCHAIN_PASSWORD="$(openssl rand -base64 32)"
+          echo "::add-mask::$KEYCHAIN_PASSWORD"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          importCertificate() {
+            local certPath="$RUNNER_TEMP/$1.p12"
+            printf '%s' "$2" | tr -d '\r\n ' | base64 --decode > "$certPath"
+            security import "$certPath" -k "$KEYCHAIN_PATH" -P "$3" -f pkcs12 \
+              -T /usr/bin/codesign -T /usr/bin/productsign
+            rm -f "$certPath"
+          }
+          importCertificate app "$MACOS_APP_CERTIFICATE" "$MACOS_APP_CERTIFICATE_PASSWORD"
+          # The installer identity can also be bundled in MACOS_APP_CERTIFICATE.
+          if [ -n "$MACOS_INSTALLER_CERTIFICATE" ]; then
+            importCertificate installer "$MACOS_INSTALLER_CERTIFICATE" "$MACOS_INSTALLER_CERTIFICATE_PASSWORD"
+          fi
+
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s \
+            -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH" > /dev/null
+
+          # Add the signing keychain to the search list, keeping the existing keychains.
+          KEYCHAINS=("$KEYCHAIN_PATH")
+          while IFS= read -r keychain; do
+            keychain="$(echo "$keychain" | sed -e 's/^[[:space:]]*"//' -e 's/"[[:space:]]*$//')"
+            if [ -n "$keychain" ] && [ "$keychain" != "$KEYCHAIN_PATH" ]; then
+              KEYCHAINS+=("$keychain")
+            fi
+          done < <(security list-keychains -d user)
+          security list-keychains -d user -s "${KEYCHAINS[@]}"
+
+          IDENTITIES="$(security find-identity -v "$KEYCHAIN_PATH")"
+          APP_IDENTITY="$(sed -n 's/.*"\(Developer ID Application: [^"]*\)".*/\1/p' <<< "$IDENTITIES" | head -n 1)"
+          INSTALLER_IDENTITY="$(sed -n 's/.*"\(Developer ID Installer: [^"]*\)".*/\1/p' <<< "$IDENTITIES" | head -n 1)"
+          if [ -z "$APP_IDENTITY" ] || [ -z "$INSTALLER_IDENTITY" ]; then
+            echo "::error::Both 'Developer ID Application' and 'Developer ID Installer' identities are required. See installers/mac/README.md"
+            exit 1
+          fi
+          echo "Application signing identity: $APP_IDENTITY"
+          echo "Installer signing identity: $INSTALLER_IDENTITY"
+          {
+            echo "MACOS_SIGN_KEYCHAIN=$KEYCHAIN_PATH"
+            echo "MACOS_APP_SIGN_IDENTITY=$APP_IDENTITY"
+            echo "MACOS_INSTALLER_SIGN_IDENTITY=$INSTALLER_IDENTITY"
+          } >> "$GITHUB_ENV"
+
+      - name: Store notarization credentials
+        env:
+          NOTARY_APPLE_ID: ${{ secrets.MACOS_NOTARY_APPLE_ID }}
+          NOTARY_PASSWORD: ${{ secrets.MACOS_NOTARY_APP_PASSWORD }}
+        run: |
+          if [ -z "$NOTARY_APPLE_ID" ] || [ -z "$NOTARY_PASSWORD" ]; then
+            echo "::error::The MACOS_NOTARY_APPLE_ID and MACOS_NOTARY_APP_PASSWORD secrets are not configured. See installers/mac/README.md"
+            exit 1
+          fi
+          # The team ID is the one in the signing identity, e.g. "Developer ID Application: Org (TEAMID)".
+          TEAM_ID="$(sed -n 's/.*(\([A-Z0-9]\{10\}\))$/\1/p' <<< "$MACOS_APP_SIGN_IDENTITY")"
+          if [ -z "$TEAM_ID" ]; then
+            echo "::error::Could not read the team ID from the application signing identity"
+            exit 1
+          fi
+          xcrun notarytool store-credentials "$NOTARY_PROFILE" \
+            --apple-id "$NOTARY_APPLE_ID" \
+            --team-id "$TEAM_ID" \
+            --password "$NOTARY_PASSWORD" \
+            --keychain "$MACOS_SIGN_KEYCHAIN"
+
+      - name: Download macOS distribution zips
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$WORK_DIR" "$OUT_DIR"
+          gh release download "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --dir "$WORK_DIR" \
+            --pattern "ballerina-$LONG_VERSION-macos.zip" \
+            --pattern "ballerina-$LONG_VERSION-macos-arm.zip"
+          for zip in "ballerina-$LONG_VERSION-macos.zip" "ballerina-$LONG_VERSION-macos-arm.zip"; do
+            if [ ! -f "$WORK_DIR/$zip" ]; then
+              echo "::error::$zip is not found in the $GIT_TAG release"
+              exit 1
+            fi
+          done
+          ls -lh "$WORK_DIR"
+
+      - name: Sign native libraries in the distributions
+        run: |
+          bash ./installers/mac/sign-native-libs.sh "$WORK_DIR/ballerina-$LONG_VERSION-macos.zip"
+          bash ./installers/mac/sign-native-libs.sh "$WORK_DIR/ballerina-$LONG_VERSION-macos-arm.zip"
+
+      - name: Build and sign the installers
+        working-directory: installers/mac
+        run: |
+          ./build-ballerina-macos-x64.sh -v "$LONG_VERSION" -p "$WORK_DIR"
+          mv "target/pkg/ballerina-$LONG_VERSION-macos-x64.pkg" "$OUT_DIR/"
+          ./build-ballerina-macos-x64.sh -v "$LONG_VERSION" -p "$WORK_DIR" -a arm
+          mv "target/pkg/ballerina-$LONG_VERSION-macos-arm-x64.pkg" "$OUT_DIR/"
+          ls -lh "$OUT_DIR"
+
+      - name: Notarize and staple the installers
+        run: |
+          for pkg in "$OUT_DIR"/*.pkg; do
+            name="$(basename "$pkg")"
+            result="$RUNNER_TEMP/notarization-$name.json"
+            echo "Submitting $name for notarization"
+            xcrun notarytool submit "$pkg" \
+              --keychain-profile "$NOTARY_PROFILE" --keychain "$MACOS_SIGN_KEYCHAIN" \
+              --wait --timeout 1h --output-format json > "$result" || true
+            cat "$result"
+            status="$(jq -r '.status // empty' "$result" 2>/dev/null || true)"
+            submissionId="$(jq -r '.id // empty' "$result" 2>/dev/null || true)"
+            if [ "$status" != "Accepted" ]; then
+              echo "::error::Notarization of $name failed with status '${status:-unknown}'"
+              if [ -n "$submissionId" ]; then
+                xcrun notarytool log "$submissionId" \
+                  --keychain-profile "$NOTARY_PROFILE" --keychain "$MACOS_SIGN_KEYCHAIN" || true
+              fi
+              exit 1
+            fi
+            xcrun stapler staple "$pkg"
+            xcrun stapler validate "$pkg"
+          done
+
+      - name: Verify the installers
+        run: |
+          for pkg in "$OUT_DIR"/*.pkg; do
+            pkgutil --check-signature "$pkg"
+            spctl --assess --type install --verbose=4 "$pkg" || echo "::warning::Gatekeeper assessment failed for $(basename "$pkg")"
+          done
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3.5.0
+
+      - name: Generate hashes and cosign signatures
+        working-directory: ${{ env.OUT_DIR }}
+        run: |
+          for pkg in *.pkg; do
+            openssl dgst -sha256 -out "$pkg.sha256" "$pkg"
+            cosign sign-blob "$pkg" --output-certificate "$pkg.pem" --output-signature "$pkg.sig" --yes
+            cosign verify-blob "$pkg" --certificate "$pkg.pem" --signature "$pkg.sig" \
+              --certificate-identity "https://github.com/$GITHUB_REPOSITORY/.github/workflows/sign-macos-installers.yml@$GITHUB_REF" \
+              --certificate-oidc-issuer https://token.actions.githubusercontent.com
+          done
+
+      - name: Replace the installers in the GitHub release
+        if: ${{ inputs.uploadToRelease }}
+        working-directory: ${{ env.OUT_DIR }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --clobber \
+            ./*.pkg ./*.pkg.sha256 ./*.pkg.pem ./*.pkg.sig
+
+      - name: Upload the signed installers as workflow artifacts
+        if: ${{ !inputs.uploadToRelease }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ballerina-${{ env.LONG_VERSION }}-macos-signed-installers
+          path: ${{ env.OUT_DIR }}
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Delete the signing keychain
+        if: always()
+        run: |
+          if [ -n "${MACOS_SIGN_KEYCHAIN:-}" ]; then
+            security delete-keychain "$MACOS_SIGN_KEYCHAIN" || true
+          fi
+          rm -f "$RUNNER_TEMP"/*.p12
