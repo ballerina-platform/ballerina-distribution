@@ -19,6 +19,12 @@ function printUsage() {
     echo "        2. ballerina-runtime"
     echo "eg: $0 -v 1.0.0 -p /home/username/Packs"
     echo "eg: $0 -v 1.0.0 -p /home/username/Packs -d ballerina"
+    echo "environment variables:"
+    echo "    MACOS_INSTALLER_SIGN_IDENTITY"
+    echo "        optional. \"Developer ID Installer\" identity used to sign the installer"
+    echo "        If not specified the installer is not signed"
+    echo "    MACOS_SIGN_KEYCHAIN"
+    echo "        optional. keychain that holds the signing identity"
 }
 
 BUILD_ALL_DISTRIBUTIONS=false
@@ -152,12 +158,33 @@ function buildProduct() {
     target/pkg/$1 > /dev/null 2>&1
 }
 
+function signProduct() {
+    if [ -z "${MACOS_INSTALLER_SIGN_IDENTITY:-}" ]; then
+        echo "MACOS_INSTALLER_SIGN_IDENTITY is not set. Skipping installer signing"
+        return
+    fi
+
+    echo "Signing the installer, " $1
+    local signArgs=(--sign "${MACOS_INSTALLER_SIGN_IDENTITY}" --timestamp)
+    if [ -n "${MACOS_SIGN_KEYCHAIN:-}" ]; then
+        signArgs+=(--keychain "${MACOS_SIGN_KEYCHAIN}")
+    fi
+
+    rm -rf target/pkg-signed
+    mkdir -p target/pkg-signed
+    productsign "${signArgs[@]}" target/pkg/$1 target/pkg-signed/$1 || exit 1
+    pkgutil --check-signature target/pkg-signed/$1 || exit 1
+    mv -f target/pkg-signed/$1 target/pkg/$1
+    rm -rf target/pkg-signed
+}
+
 function createBallerinaPlatform() {
     echo "Creating ballerina platform installer"
     extractPack "$BALLERINA_DISTRIBUTION_LOCATION/$BALLERINA_PLATFORM.zip" ${BALLERINA_PLATFORM}
     createPackInstallationDirectory true
     buildPackage
     buildProduct ${BALLERINA_PLATFORM}-x64.pkg
+    signProduct ${BALLERINA_PLATFORM}-x64.pkg
 }
 
 deleteTargetDirectory
