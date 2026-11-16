@@ -17,6 +17,7 @@ permissions:
 concurrency:
   group: sign-macos-installers-${{ github.event.inputs.versionName }}
   cancel-in-progress: false
+  queue: max
 
 jobs:
   sign-release:
