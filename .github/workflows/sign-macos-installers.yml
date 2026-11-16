@@ -2,8 +2,9 @@ name: Sign macOS Installers
 
 # Builds Developer ID signed and Apple notarized macOS installers (.pkg) from the
 # macOS distribution zips of an existing GitHub release, and replaces the unsigned
-# installers of that release. Run this after "Publish release" and before
-# "Publish Release Artifacts". See installers/mac/README.md for the required secrets.
+# installers of that release. Run this after "Publish release", then run
+# "Sign release artifacts" to re-create the cosign signatures of the replaced
+# installers. See installers/mac/README.md for the required secrets.
 
 on:
   workflow_dispatch:
@@ -19,7 +20,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 concurrency:
   group: sign-macos-installers-${{ github.event.inputs.releaseVersion }}
@@ -199,18 +199,11 @@ jobs:
             spctl --assess --type install --verbose=4 "$pkg" || echo "::warning::Gatekeeper assessment failed for $(basename "$pkg")"
           done
 
-      - name: Install cosign
-        uses: sigstore/cosign-installer@v3.5.0
-
-      - name: Generate hashes and cosign signatures
+      - name: Generate hashes
         working-directory: ${{ env.OUT_DIR }}
         run: |
           for pkg in *.pkg; do
             openssl dgst -sha256 -out "$pkg.sha256" "$pkg"
-            cosign sign-blob "$pkg" --output-certificate "$pkg.pem" --output-signature "$pkg.sig" --yes
-            cosign verify-blob "$pkg" --certificate "$pkg.pem" --signature "$pkg.sig" \
-              --certificate-identity "https://github.com/$GITHUB_REPOSITORY/.github/workflows/sign-macos-installers.yml@$GITHUB_REF" \
-              --certificate-oidc-issuer https://token.actions.githubusercontent.com
           done
 
       - name: Replace the installers in the GitHub release
@@ -219,8 +212,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release upload "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --clobber \
-            ./*.pkg ./*.pkg.sha256 ./*.pkg.pem ./*.pkg.sig
+          gh release upload "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --clobber ./*.pkg ./*.pkg.sha256
 
       - name: Upload the signed installers as workflow artifacts
         if: ${{ !inputs.uploadToRelease }}
