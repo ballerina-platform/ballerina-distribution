@@ -232,25 +232,24 @@ jobs:
           path: scan-config
           sparse-checkout: |
             .grype.yaml
-            .trivyignore
+            .trivyignore.yaml
           sparse-checkout-cone-mode: false
       - name: Run Trivy vulnerability scanner
         id: trivy_scan
         continue-on-error: true
         uses: aquasecurity/trivy-action@master
         with:
-          trivyignores: '.trivyignore.yaml'
           image-ref: 'ballerina/ballerina:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
           skip-files: '**/bom.cdx.json'
-          trivyignores: scan-config/.trivyignore
+          trivyignores: scan-config/.trivyignore.yaml
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
       - name: Run Grype vulnerability scanner
         id: grype_scan
         continue-on-error: true
-        uses: anchore/scan-action@v7.4.2
+        uses: anchore/scan-action@27805bf3b4e84b4a5c980df22ed233c00390a439 # v7.4.2
         with:
           image: 'ballerina/ballerina:nightly-test'
           config: scan-config/.grype.yaml
@@ -296,11 +295,10 @@ jobs:
         continue-on-error: true
         uses: aquasecurity/trivy-action@master
         with:
-          trivyignores: '.trivyignore.yaml'
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
           skip-dirs: 'ballerina/runtime/examples'
           skip-files: '**/bom.cdx.json'
-          trivyignores: scan-config/.trivyignore
+          trivyignores: scan-config/.trivyignore.yaml
           format: 'table'
           exit-code: '1'
           ignore-unfixed: 'true'
@@ -308,7 +306,7 @@ jobs:
       - name: Run Grype vulnerability scanner for dev container docker image
         id: grype_scan_devcontainer
         continue-on-error: true
-        uses: anchore/scan-action@v7.4.2
+        uses: anchore/scan-action@27805bf3b4e84b4a5c980df22ed233c00390a439 # v7.4.2
         with:
           image: 'ballerina/ballerina-devcontainer:nightly-test'
           config: scan-config/.grype.yaml

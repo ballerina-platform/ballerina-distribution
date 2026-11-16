@@ -1,4 +1,4 @@
-# Counterpart of .trivyignore / skip-dirs / skip-files for the Grype image scans.
+# Counterpart of .trivyignore.yaml / skip-dirs / skip-files for the Grype image scans.
 exclude:
   # Same as Trivy skip-dirs: ballerina/runtime/examples
   - "/ballerina/runtime/examples/**"
