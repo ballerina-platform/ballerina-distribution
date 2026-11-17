@@ -206,6 +206,8 @@ jobs:
           build-args: |
             BALLERINA_DIST=ballerina-${{ steps.project-version.outputs.sversion }}.zip
       - name: Run Trivy vulnerability scanner
+        id: trivy_scan
+        continue-on-error: true
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina:nightly-test'
@@ -213,6 +215,24 @@ jobs:
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
+      - name: Run Grype vulnerability scanner
+        id: grype_scan
+        continue-on-error: true
+        uses: anchore/scan-action@27805bf3b4e84b4a5c980df22ed233c00390a439 # v7.4.2
+        with:
+          image: 'ballerina/ballerina:nightly-test'
+          config: .grype.yaml
+          grype-version: 'v0.120.0'
+          output-format: 'table'
+          fail-build: 'true'
+          severity-cutoff: 'negligible'
+      - name: Check vulnerability scan results
+        if: ${{ steps.trivy_scan.outcome == 'failure' || steps.grype_scan.outcome == 'failure' }}
+        run: |
+          echo "Trivy scan: ${{ steps.trivy_scan.outcome }}"
+          echo "Grype scan: ${{ steps.grype_scan.outcome }}"
+          echo "::error::Vulnerability scan failed (Trivy or Grype). See the scan steps above."
+          exit 1
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -243,6 +263,8 @@ jobs:
           rm -rf ballerina/build/distributions/ballerina-*-macos-arm.zip
           rm -rf ballerina/build/distributions/ballerina-*-windows.zip
       - name: Run Trivy vulnerability scanner for dev container docker image
+        id: trivy_scan_devcontainer
+        continue-on-error: true
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ballerina/ballerina-devcontainer:nightly-test'
@@ -250,6 +272,24 @@ jobs:
           format: 'table'
           exit-code: '1'
           timeout: "10m0s"
+      - name: Run Grype vulnerability scanner for dev container docker image
+        id: grype_scan_devcontainer
+        continue-on-error: true
+        uses: anchore/scan-action@27805bf3b4e84b4a5c980df22ed233c00390a439 # v7.4.2
+        with:
+          image: 'ballerina/ballerina-devcontainer:nightly-test'
+          config: .grype.yaml
+          grype-version: 'v0.120.0'
+          output-format: 'table'
+          fail-build: 'true'
+          severity-cutoff: 'negligible'
+      - name: Check vulnerability scan results for dev container docker image
+        if: ${{ steps.trivy_scan_devcontainer.outcome == 'failure' || steps.grype_scan_devcontainer.outcome == 'failure' }}
+        run: |
+          echo "Trivy scan: ${{ steps.trivy_scan_devcontainer.outcome }}"
+          echo "Grype scan: ${{ steps.grype_scan_devcontainer.outcome }}"
+          echo "::error::Vulnerability scan failed (Trivy or Grype). See the scan steps above."
+          exit 1
       - name: Build and push dev container image
         uses: docker/build-push-action@v2
         with:
