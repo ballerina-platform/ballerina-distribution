@@ -1,0 +1,12 @@
+$ bal run ai_agent_execution_trace.bal
+Query: Is product P-100 running low, and is more stock on the way?
+Iterations: 3
+Iteration 1:
+  Tool 'getStockLevel' returned: 3
+Iteration 2:
+  Tool 'getUnitsOnOrder' returned: 50
+Iteration 3:
+  Assistant: Product P-100 currently has a stock level of 3, which is low. However, there are 50 units on order from suppliers.
+Tool calls: ["getStockLevel","getUnitsOnOrder"]
+Final answer: Product P-100 currently has a stock level of 3, which is low. However, there are 50 units on order from suppliers.
+Duration: 6.539017s

@@ -1,17 +1,17 @@
 $ bal run ai_agent_tool_kit.bal
-User (or 'exit' to quit): Hello
-Agent: Hello! How can I assist you today? Do you need help with your to-do list or planning your schedule?
-User (or 'exit' to quit): I have to pay my WiFi bill today and meet Jane for tea at 4pm on the 28th.
-Agent: I've added your tasks to the to-do list:
+warning: [ballerina/http] HTTPS is recommended but using HTTP
+Task tools: ["listTasks","addTask"]
+User (or 'exit' to quit): I have to pay my WiFi bill today and meet Jane for tea at 4pm on the 30th.
+Agent: I have added the tasks to your to-do list:
 
-1. Pay WiFi bill (due today)
-2. Meet Jane for tea at 4 PM on the 28th of October 2025
+1. **Pay WiFi bill** - Due today.
+2. **Meet Jane for tea** - Scheduled for 4 PM on the 30th.
 
-Would you like to do anything else, such as check your current tasks or add more?
+Let me know if you need any further assistance!
 User (or 'exit' to quit): What do I have on my plate today?
-Agent: Today, you have the following task:
+Agent: You have the following task on your plate today:
 
-1. **Pay WiFi bill** (due today)
+1. **Pay WiFi bill** - Due today.
 
-Would you like to mark it as completed or do anything else?
+The meeting with Jane for tea is scheduled for the 30th, so it's not due today. Let me know if you need anything else!
 User (or 'exit' to quit): exit

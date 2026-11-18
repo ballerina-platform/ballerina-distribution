@@ -982,7 +982,7 @@ task testExamples() {
     ext.buildBBE = { bbe ->
 
         def exitVal
-        def additionalParams = bbe.url == "natural-expressions" ? "--experimental" : ""
+        def additionalParams = bbe.url.startsWith("natural-") ? "--experimental" : ""
         if (!bbe.needCentral) {
             additionalParams += " --sticky --offline"
         }

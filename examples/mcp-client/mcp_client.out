@@ -1,0 +1,6 @@
+$ bal run mcp_client.bal
+Available tools:
+- getCurrentWeather: Get current weather for a city.
+- getWeatherForecast: Get weather forecast for upcoming days.
+
+Current weather in Colombo: {"location":"Colombo","temperature":22.0,"humidity":34,"pressure":1015,"condition":"Sunny","timestamp":"2026-09-21T12:57:26.176151Z"}

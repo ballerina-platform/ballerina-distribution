@@ -1,0 +1,3 @@
+$ bal run rag_azure_ai_search_ingestion.bal
+Ingested 3 documents into the 'hr-policies' index
+Ingested 1 more document into the existing 'hr-policies' index

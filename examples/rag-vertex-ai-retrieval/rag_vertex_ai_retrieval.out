@@ -1,0 +1,5 @@
+$ bal run rag_vertex_ai_retrieval.bal
+Match: Full-time employees are entitled to 20 days of paid annual leave per year. (score: 0.715567378480986)
+Match: Parental leave is 12 weeks and must be requested one month in advance. (score: 0.6633565934701463)
+
+Answer: Full-time employees are entitled to 20 days of paid annual leave per year.

@@ -1,0 +1,4 @@
+$ bal run ai_agent_definitions.bal
+Acme Payments: {"category":"Outage","priority":"HIGH","summary":"All card payments have been failing for the enterprise customer since 9 AM."}
+Acme Analytics: {"category":"How-to","priority":"LOW","summary":"The customer is asking for guidance on how to change the color of a chart."}
+Tool calls: ["getSupportTier"]

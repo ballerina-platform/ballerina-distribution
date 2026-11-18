@@ -1,0 +1,2 @@
+$ bal run rag_without_chunking.bal
+Ingestion successful

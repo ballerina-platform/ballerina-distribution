@@ -1,0 +1,2 @@
+description: This BBE demonstrates how to retrieve relevant chunks from a WSO2 Cloud knowledge base and generate an answer for retrieval-augmented generation (RAG).
+keywords: ballerina, ballerina by example, BBE, ai, llm, rag, retrieval, knowledge base, wso2 cloud

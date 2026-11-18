@@ -1,0 +1,4 @@
+$ bal run rag_custom_data_loader.bal
+Documents loaded: 2
+- {"origin":"ticketing-system","ticketId":"T-1042"}: VPN disconnects: Update the VPN client to version 5.2 or later.
+- {"origin":"ticketing-system","ticketId":"T-1043"}: Expense portal login: Reset the SSO password and clear the browser cache.

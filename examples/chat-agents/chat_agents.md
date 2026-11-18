@@ -4,7 +4,7 @@ Ballerina enables developers to easily create intelligent chat agents powered by
 
 This example demonstrates how to create a chat agent service that manages to-do lists while maintaining separate conversation sessions for different users through externally managed session IDs.
 
-Copy the source to a Ballerina project and use the `Try it` CodeLens above the service declaration to use a chat interface within VS Code. 
+To call the service from another Ballerina program, use the `ai:ChatClient` client as demonstrated in the [Chat client](/learn/by-example/ai-chat-client/) example.
 
 > Note: This example uses the default model provider implementation. To generate the necessary configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Alternatively, to use your own keys, use the relevant `ballerinax/ai.<provider>` model provider implementation.
 

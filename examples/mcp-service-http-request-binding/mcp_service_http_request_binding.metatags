@@ -1,0 +1,2 @@
+description: This BBE demonstrates how MCP tools can bind information from the underlying HTTP request.
+keywords: ballerina, ballerina by example, BBE, ai, llm, mcp, http headers

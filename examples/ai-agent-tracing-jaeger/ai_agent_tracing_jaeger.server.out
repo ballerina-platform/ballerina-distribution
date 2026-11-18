@@ -1,0 +1,2 @@
+$ bal run --observability-included ai_agent_tracing_jaeger.bal
+ballerina: started publishing traces to Jaeger on localhost:4317
