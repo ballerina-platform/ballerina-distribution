@@ -13,7 +13,8 @@ permissions:
   contents: write
 
 # Shares its concurrency group with sign-macos-installers.yml, which replaces the
-# macOS installers and their .pem and .sig files in the same release.
+# macOS installers and their .sha256 files, and removes their outdated .pem and
+# .sig files, in the same release.
 concurrency:
   group: sign-macos-installers-${{ github.event.inputs.versionName }}
   cancel-in-progress: false
