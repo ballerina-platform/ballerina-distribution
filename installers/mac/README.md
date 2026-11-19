@@ -16,13 +16,13 @@ The installers built by the **Publish release** workflow are not signed. The **S
 2. Signs the native libraries inside the JAR files with the Developer ID Application identity, using the hardened runtime and a secure timestamp (`sign-native-libs.sh`).
 3. Builds the `.pkg` and signs it with the Developer ID Installer identity (`build-ballerina-macos-x64.sh`).
 4. Notarizes the `.pkg` with Apple, then staples the notarization ticket to it.
-5. Regenerates the `.sha256` file, then replaces the `.pkg` and `.sha256` files in the GitHub release.
+5. Regenerates the `.sha256` file, then replaces the `.pkg` and `.sha256` files in the GitHub release. It also removes the `.pem` and `.sig` files of the unsigned installers, because they no longer match.
 
 ### Release order
 
 1. Run **Publish release**.
 2. Run **Sign macOS Installers** with the release version, e.g. `2201.14.1`, or `2201.14.1-rc1` for a pre-release tag. Leave **uploadToRelease** unchecked for a dry run: the signed installers are then uploaded as workflow artifacts instead.
-3. Run **Sign release artifacts**, which re-creates the cosign `.pem` and `.sig` files of the replaced installers. The two workflows share a concurrency group, so they never run at the same time for a release.
+3. Run **Sign release artifacts**, which re-creates the cosign `.pem` and `.sig` files of the replaced installers. Until it runs, the release has no cosign files for the macOS installers. The two workflows share a concurrency group, so they never run at the same time for a release.
 4. Run **Publish Release Artifacts**, which publishes the installers of the GitHub release.
 
 ### One-time setup
