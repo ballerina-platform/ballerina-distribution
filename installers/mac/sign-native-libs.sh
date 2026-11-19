@@ -6,6 +6,8 @@
 #
 # Only the native library entries are replaced, inside each JAR and inside the
 # distribution zip. Every other entry of the JARs and of the zip is left as is.
+# Signed JARs are skipped, because replacing an entry would break their signature;
+# notarization then reports their unsigned native libraries.
 #
 # Usage:
 #   ./sign-native-libs.sh <path to ballerina-<version>-macos[-arm].zip>
@@ -59,6 +61,7 @@ WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
 JAR_ROOT="$WORK_DIR/jars"
 LIB_DIR="$WORK_DIR/libs"
+VERIFY_DIR="$WORK_DIR/verify"
 mkdir -p "$JAR_ROOT"
 
 echo "Extracting JAR files from $(basename "$DIST_ZIP")"
@@ -84,7 +87,8 @@ while IFS= read -r -d '' jar; do
     fi
 
     if grep -qiE '^META-INF/[^/]+\.(SF|RSA|DSA|EC)$' <<< "$entries"; then
-        echo "warning: $relativeJar is a signed JAR. Replacing its native libraries invalidates the JAR signature." >&2
+        echo "warning: skipping $relativeJar: it is a signed JAR, and replacing its native libraries would break its signature" >&2
+        continue
     fi
 
     patterns=()
@@ -97,6 +101,7 @@ while IFS= read -r -d '' jar; do
     unzip -q -o "$jar" "${patterns[@]}" -d "$LIB_DIR"
 
     signedLibs=()
+    signedPatterns=()
     for lib in "${nativeLibs[@]}"; do
         libPath="$LIB_DIR/$lib"
         fileType="$(file -b "$libPath")"
@@ -106,13 +111,20 @@ while IFS= read -r -d '' jar; do
         fi
         echo "Signing $relativeJar!/$lib"
         codesign "${CODESIGN_ARGS[@]}" "$libPath"
-        codesign --verify --strict "$libPath"
         signedLibs+=("$lib")
+        signedPatterns+=("$(escapePattern "$lib")")
     done
 
     if [ ${#signedLibs[@]} -gt 0 ]; then
         # Replace only the signed entries in the JAR.
         (cd "$LIB_DIR" && zip -q -X -D "$jar" "${signedLibs[@]}")
+        # Check the copies that are now in the JAR.
+        rm -rf "$VERIFY_DIR"
+        mkdir -p "$VERIFY_DIR"
+        unzip -q -o "$jar" "${signedPatterns[@]}" -d "$VERIFY_DIR"
+        for lib in "${signedLibs[@]}"; do
+            codesign --verify --strict "$VERIFY_DIR/$lib"
+        done
         MODIFIED_JARS+=("$relativeJar")
         SIGNED_LIB_COUNT=$((SIGNED_LIB_COUNT + ${#signedLibs[@]}))
     fi
