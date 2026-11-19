@@ -2,9 +2,10 @@ name: Sign macOS Installers
 
 # Builds Developer ID signed and Apple notarized macOS installers (.pkg) from the
 # macOS distribution zips of an existing GitHub release, and replaces the unsigned
-# installers of that release. Run this after "Publish release", then run
-# "Sign release artifacts" to re-create the cosign signatures of the replaced
-# installers. See installers/mac/README.md for the required secrets.
+# installers of that release, removing their outdated cosign files. Run this after
+# "Publish release", then run "Sign release artifacts" to re-create the cosign
+# signatures of the replaced installers. See installers/mac/README.md for the
+# required secrets.
 
 on:
   workflow_dispatch:
@@ -197,7 +198,7 @@ jobs:
         run: |
           for pkg in "$OUT_DIR"/*.pkg; do
             pkgutil --check-signature "$pkg"
-            spctl --assess --type install --verbose=4 "$pkg" || echo "::warning::Gatekeeper assessment failed for $(basename "$pkg")"
+            spctl --assess --type install --verbose=4 "$pkg"
           done
 
       - name: Generate hashes
@@ -214,6 +215,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --clobber ./*.pkg ./*.pkg.sha256
+          # The cosign files of the unsigned installers no longer match. Remove them, so that
+          # a skipped "Sign release artifacts" run shows up as missing files, not bad signatures.
+          assets="$(gh release view "$GIT_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')"
+          for pkg in *.pkg; do
+            for stale in "$pkg.pem" "$pkg.sig"; do
+              if grep -qxF "$stale" <<< "$assets"; then
+                gh release delete-asset "$GIT_TAG" "$stale" --repo "$GITHUB_REPOSITORY" --yes
+              fi
+            done
+          done
 
       - name: Upload the signed installers as workflow artifacts
         if: ${{ !inputs.uploadToRelease }}
