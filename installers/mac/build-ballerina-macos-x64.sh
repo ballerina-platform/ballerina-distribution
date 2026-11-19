@@ -148,14 +148,14 @@ function buildPackage() {
     --version ${BALLERINA_VERSION} \
     --scripts target/darwin/scripts \
     --root target/darwinpkg \
-    target/package/ballerina.pkg
+    target/package/ballerina.pkg || exit 1
 }
 
 function buildProduct() {
     productbuild --distribution target/darwin/Distribution \
     --resources target/darwin/Resources \
     --package-path target/package \
-    target/pkg/$1 > /dev/null 2>&1
+    target/pkg/$1 || exit 1
 }
 
 function signProduct() {
