@@ -1,0 +1,7 @@
+$ bal run workflow_durable_agent_human_task.bal
+time=2026-10-14T15:16:51.217+05:30 level=INFO module=ballerina/workflow.management.rest message="Workflow management REST API enabled on http://localhost:8234/workflow (auth: none — the API is open to anyone who can reach the port)"
+Agent started: 01a139ce-b9a1-7d4f-b2e6-57f251822e14
+time=2026-10-14T09:46:55.223Z level=INFO module=ballerina/workflow message="This workflow server does not implement ListWorkflowExecutions; serving listings from the standard open/closed listings instead, with filtering and paging applied in the client."
+time=2026-10-14T15:16:55.405+05:30 level=INFO module=ballerina/workflow.observe message="human task decision accepted" taskKind="HUMAN_TASK" taskId="0b25cac9-5b5f-3c8b-9146-517eb67d61fb" taskName="refundAgent.approveRefund" parentWorkflowId="01a139ce-b9a1-7d4f-b2e6-57f251822e14" action="complete" outcome="accepted" userId="bob" userRoles=["manager"] identitySource="asserted" assignedRoles=["manager"] decidedAt="2026-10-14T09:46:55.405301Z" taskInput="{\"orderId\":\"ORD-001\"}" content="{\"approved\":true}"
+Issuing a refund for ORD-001
+The refund for order ORD-001 was approved and issued.

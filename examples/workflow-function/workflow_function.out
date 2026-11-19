@@ -1,0 +1,2 @@
+$ bal run workflow_function.bal
+Hello, Alice!

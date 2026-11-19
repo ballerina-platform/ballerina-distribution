@@ -1,0 +1,3 @@
+$ bal run workflow_durable_agent_data_events.bal
+Nice to meet you, Alice!
+Your name is Alice.
