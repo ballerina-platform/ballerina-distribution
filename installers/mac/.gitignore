@@ -1,0 +1,7 @@
+# Signing material and build outputs must never be committed.
+*.p12
+*.cer
+*.keychain
+*.keychain-db
+*.pkg
+*.zip
