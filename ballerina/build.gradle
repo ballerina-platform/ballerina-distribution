@@ -1312,6 +1312,39 @@ def buildAndTestStandardLibs = { distPath, stdlibTest, isStageTest, testMinorVer
     return false
 }
 
+// Builds one package that imports every bundled library with an empty Ballerina home, as on a user's machine: a bundled
+// BIR that only loads beside caches left in the build machine's home fails here (ballerina-distribution#6555).
+task testBundledPackagesLoad() {
+    def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
+    def workDir = layout.buildDirectory.dir("bundled-packages-load").get().asFile
+    def execHelper = project.objects.newInstance(BallerinaExecHelper)
+    doLast {
+        delete workDir
+        def projectDir = new File(workDir, "project")
+        def homeDir = new File(workDir, "home")
+        projectDir.mkdirs()
+        homeDir.mkdirs()
+        def imports = []
+        new File("${distPath}/distributions/ballerina-${shortVersion}/repo/bala/ballerina").eachDir { pkg ->
+            if (!(pkg.name ==~ /lang\..*|jballerina\.java.*|tool\..*|test/)) {
+                imports.add("import ballerina/${pkg.name} as _;")
+            }
+        }
+        new File(projectDir, "Ballerina.toml").text = "[package]\norg = \"smoke\"\nname = \"bundled\"\nversion = \"0.1.0\"\n"
+        new File(projectDir, "main.bal").text = imports.sort().join("\n") + "\n\npublic function main() {\n}\n"
+        println "Building a package that imports ${imports.size()} bundled libraries with an empty Ballerina home"
+        execHelper.execOperations.exec {
+            workingDir projectDir
+            environment "BALLERINA_HOME_DIR", homeDir.absolutePath
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                commandLine 'cmd', '/c', "${distPath}/bin/bal.bat build"
+            } else {
+                commandLine 'sh', '-c', "${distPath}/bin/bal build"
+            }
+        }
+    }
+}
+
 task testStdlibs() {
     def distPath = "${project.rootDir}/ballerina/build/target/extracted-distributions/ballerina-${version}-${codeName}"
     def stdlibTestsList = []
@@ -1474,6 +1507,59 @@ task testDevToolsIntegration() {
             }
 
         }
+    }
+}
+
+// A bundled package that needs a newer dependency than the bundled one gets its cache built against packages pulled into
+// the build machine's home, which users cannot reproduce; its BIR then fails to load (ballerina-distribution#6555).
+task verifyBundledDependencies {
+    doLast {
+        def repoBala = layout.buildDirectory.dir("target/extracted-distributions/jballerina-tools-zip/" +
+                "jballerina-tools-${ballerinaLangVersion}/repo/bala").get().asFile
+        def numeric = { String v -> v.tokenize('-')[0].tokenize('.').collect { it.isInteger() ? it.toInteger() : 0 } }
+        def newer = { String a, String b ->
+            def x = numeric(a), y = numeric(b)
+            for (i in 0..<Math.max(x.size(), y.size())) {
+                def p = i < x.size() ? x[i] : 0, q = i < y.size() ? y[i] : 0
+                if (p != q) {
+                    return p > q
+                }
+            }
+            return false
+        }
+
+        def bundled = [:]
+        def graphs = []
+        repoBala.eachDir { orgDir ->
+            orgDir.eachDir { nameDir ->
+                nameDir.eachDir { versionDir ->
+                    bundled.computeIfAbsent("${orgDir.name}/${nameDir.name}".toString(), { [] }).add(versionDir.name)
+                    versionDir.eachDir { platformDir ->
+                        def graph = new File(platformDir, "dependency-graph.json")
+                        if (graph.exists()) {
+                            graphs.add([pkg: "${orgDir.name}/${nameDir.name}:${versionDir.name}", file: graph])
+                        }
+                    }
+                }
+            }
+        }
+
+        def problems = new TreeSet<String>()
+        graphs.each { entry ->
+            new JsonSlurper().parseText(entry.file.text).packages.each { dep ->
+                def versions = bundled["${dep.org}/${dep.name}".toString()]
+                if (versions != null && !versions.contains(dep.version) &&
+                        versions.every { newer(dep.version.toString(), it.toString()) }) {
+                    problems.add("${entry.pkg} needs ${dep.org}/${dep.name}:${dep.version}, but ${versions.join(', ')} " +
+                            "is bundled")
+                }
+            }
+        }
+        if (!problems.isEmpty()) {
+            throw new GradleException("Bundled packages need newer versions of other bundled packages. Bump these in " +
+                    "gradle.properties:\n  " + problems.join("\n  "))
+        }
+        println "Verified the dependencies of ${graphs.size()} bundled packages"
     }
 }
 
@@ -1745,6 +1831,8 @@ generateCache.dependsOn unpackC2cTooling
 generateCache.dependsOn unpackOpenapiModule
 generateCache.dependsOn copyDevToolsDocUi
 generateCache.dependsOn generateBalToolsToml
+verifyBundledDependencies.dependsOn copyOtherRepos
+generateCache.dependsOn verifyBundledDependencies
 
 /* Extract JRE */
 extractJreForLinux.dependsOn unpackBalCommand
@@ -1781,12 +1869,15 @@ unpackBalCommand.dependsOn downloadBalCommand
 testExamples.dependsOn unzipDistForTests
 testStdlibs.dependsOn unzipDistForTests
 testDevToolsIntegration.dependsOn unzipDistForTests
+testBundledPackagesLoad.dependsOn unzipDistForTests
 
 /* Delete Temporary Files */
 deleteTemporaryFiles.dependsOn packageDistWindows
 deleteTemporaryFiles.dependsOn testExamples
 deleteTemporaryFiles.dependsOn testStdlibs
 deleteTemporaryFiles.dependsOn testDevToolsIntegration
+deleteTemporaryFiles.dependsOn testBundledPackagesLoad
 test.dependsOn deleteTemporaryFiles
 test.dependsOn testExamples
 test.dependsOn testStdlibs
+test.dependsOn testBundledPackagesLoad
