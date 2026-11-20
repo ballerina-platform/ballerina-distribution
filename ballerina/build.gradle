@@ -1325,7 +1325,7 @@ task testBundledPackagesLoad() {
         projectDir.mkdirs()
         homeDir.mkdirs()
         def imports = []
-        new File("${distPath}/repo/bala/ballerina").eachDir { pkg ->
+        new File("${distPath}/distributions/ballerina-${shortVersion}/repo/bala/ballerina").eachDir { pkg ->
             if (!(pkg.name ==~ /lang\..*|jballerina\.java.*|tool\..*|test/)) {
                 imports.add("import ballerina/${pkg.name} as _;")
             }
