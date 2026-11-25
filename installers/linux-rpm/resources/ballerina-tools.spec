@@ -22,14 +22,10 @@ Ballerina allows you to code with a statically-typed, interaction-centric progra
 %pre
 rm -f /usr/bin/bal > /dev/null 2>&1
 
-%prep
-rm -rf %{_topdir}/BUILD/*
-cp -r %{_topdir}/SOURCES/%{_ballerina_tools_dir}/* %{_topdir}/BUILD/
-
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d %{buildroot}%{_libdir}/ballerina/
-cp -r ./* %{buildroot}%{_libdir}/ballerina/
+cp -r "%{_topdir}/SOURCES/%{_ballerina_tools_dir}/." "%{buildroot}%{_libdir}/ballerina/"
 
 %post
 rm -f %{_libdir}/ballerina/bin/ballerina
@@ -53,7 +49,10 @@ elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
 fi
 
 %postun
-sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
+# $1 is 0 only on a full uninstall; on upgrade the new package has already written this line
+if [ "$1" = 0 ]; then
+    sed -i.bak '\:^export BALLERINA_HOME=/usr/lib64/ballerina/$:d' /etc/profile.d/wso2.sh
+fi
 
 if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/bin/ballerina" ]
 then
@@ -61,9 +60,7 @@ then
 fi
 
 %clean
-rm -rf %{_topdir}/BUILD/*
 rm -rf %{buildroot}
-bal -v
 
 %files
 %{_libdir}/ballerina/
