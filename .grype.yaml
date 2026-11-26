@@ -12,3 +12,27 @@ ignore:
       type: npm
       location: "**/repo/bala/ballerina/**/package.json"
     reason: "Ballerina package metadata, not an npm dependency"
+
+  # Mirrors the temporary Guava ignore in .trivyignore.yaml: the GraphQL CLI ships graphql-java-21.5.jar
+  # with embedded Guava 32.1.2-jre. Grype reports the finding as GHSA-xxph-c9ww-hj94.
+  - vulnerability: GHSA-xxph-c9ww-hj94
+    package:
+      name: guava
+      version: 32.1.2-jre
+    reason: "Embedded in graphql-java-21.5.jar (GraphQL CLI); remove once graphql-java is upgraded"
+
+  # Alpine OS packages with no fixed version available yet (e.g. libcrypto3/libssl3, busybox, docker-cli).
+  # Trivy does not report these either, since its Alpine data only lists fixed advisories.
+  # Anything with a fix available, and all non-OS packages, still fail the scan.
+  - package:
+      type: apk
+    fix-state: not-fixed
+    reason: "No fixed Alpine package available yet"
+  - package:
+      type: apk
+    fix-state: wont-fix
+    reason: "Alpine will not ship a fix"
+  - package:
+      type: apk
+    fix-state: unknown
+    reason: "No fixed Alpine package available yet (NVD-only match)"
