@@ -49,7 +49,10 @@ elif [ "$(basename -- "$SHELL")" = "zsh" ]; then
 fi
 
 %postun
-sed -i.bak '\:SED_BALLERINA_HOME:d' /etc/profile.d/wso2.sh
+# $1 is 0 only on a full uninstall; on upgrade the new package has already written this line
+if [ "$1" = 0 ]; then
+    sed -i.bak '\:^export BALLERINA_HOME=/usr/lib64/ballerina/$:d' /etc/profile.d/wso2.sh
+fi
 
 if [ "$(readlink /usr/bin/ballerina)" = "%{_libdir}/ballerina/bin/ballerina" ]
 then
